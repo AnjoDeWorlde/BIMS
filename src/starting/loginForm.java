@@ -22,7 +22,7 @@ public class loginForm extends javax.swing.JFrame {
         initComponents();
     }
     
-    public static String username, password;
+    public static String  lname, username, password, status ,type;
     
     Color navColor = new Color(240,240,240);
     Color logColor = new Color(204,255,204);
@@ -32,7 +32,13 @@ public class loginForm extends javax.swing.JFrame {
         try{
             String query = "SELECT * FROM tbl_user  WHERE u_username = '" + username + "' AND u_password = '" + password + "'";
             ResultSet resultSet = connector.getData(query);
-            return resultSet.next();
+            if(resultSet.next()){
+                lname = resultSet.getString("u_lname");
+                type = resultSet.getString("u_type");
+                return true;
+            }else{
+                return false;
+            }
         }catch (SQLException ex) {
             return false;
         }
@@ -82,7 +88,7 @@ public class loginForm extends javax.swing.JFrame {
             statement.setString(1, username);
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){                
-                String status = resultSet.getString("u_status");
+                status = resultSet.getString("u_status");
                 if(status.equals("Active")){
                     return true;
                 }
@@ -101,7 +107,7 @@ public class loginForm extends javax.swing.JFrame {
             statement.setString(1, username);
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){                
-                String type = resultSet.getString("u_type");
+                type = resultSet.getString("u_type");
                 if(type.equals("Admin")){
                     return true;
                 }
@@ -120,7 +126,7 @@ public class loginForm extends javax.swing.JFrame {
             statement.setString(1, username);
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()){                
-                String type = resultSet.getString("u_type");
+                type = resultSet.getString("u_type");
                 if(type.equals("User")){
                     return true;
                 }
@@ -158,16 +164,17 @@ public class loginForm extends javax.swing.JFrame {
         background.setBackground(new java.awt.Color(204, 255, 204));
         background.setLayout(null);
 
-        lbltitle1.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
-        lbltitle1.setText("Beverage Inventory Management");
+        lbltitle1.setFont(new java.awt.Font("Verdana", 1, 30)); // NOI18N
+        lbltitle1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbltitle1.setText("Beverage Inventory ");
         background.add(lbltitle1);
-        lbltitle1.setBounds(180, 10, 400, 50);
+        lbltitle1.setBounds(290, 10, 400, 50);
 
-        lbltitle2.setFont(new java.awt.Font("Verdana", 1, 20)); // NOI18N
+        lbltitle2.setFont(new java.awt.Font("Verdana", 1, 30)); // NOI18N
         lbltitle2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbltitle2.setText("System ");
+        lbltitle2.setText("Management System ");
         background.add(lbltitle2);
-        lbltitle2.setBounds(180, 50, 390, 50);
+        lbltitle2.setBounds(290, 60, 400, 50);
 
         sidebar.setBackground(new java.awt.Color(0, 51, 0));
         sidebar.setLayout(null);
@@ -179,24 +186,25 @@ public class loginForm extends javax.swing.JFrame {
         logo.setToolTipText("");
         logo.setVerifyInputWhenFocusTarget(false);
         sidebar.add(logo);
-        logo.setBounds(30, 40, 100, 31);
+        logo.setBounds(90, 60, 100, 31);
 
-        lblusername.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
+        lblusername.setFont(new java.awt.Font("Myanmar Text", 1, 16)); // NOI18N
         lblusername.setForeground(new java.awt.Color(255, 255, 255));
         lblusername.setText("USERNAME: ");
         sidebar.add(lblusername);
-        lblusername.setBounds(87, 174, 83, 28);
+        lblusername.setBounds(180, 180, 100, 20);
 
-        lblpassword.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
+        lblpassword.setFont(new java.awt.Font("Myanmar Text", 1, 16)); // NOI18N
         lblpassword.setForeground(new java.awt.Color(255, 255, 255));
         lblpassword.setText("PASSWORD: ");
         sidebar.add(lblpassword);
-        lblpassword.setBounds(83, 213, 87, 28);
+        lblpassword.setBounds(180, 220, 100, 20);
 
         background.add(sidebar);
-        sidebar.setBounds(0, 0, 170, 430);
+        sidebar.setBounds(0, 0, 280, 520);
 
         txtusername.setBackground(new java.awt.Color(204, 255, 204));
+        txtusername.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtusername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 255, 0)));
         txtusername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,9 +212,10 @@ public class loginForm extends javax.swing.JFrame {
             }
         });
         background.add(txtusername);
-        txtusername.setBounds(180, 170, 180, 30);
+        txtusername.setBounds(290, 170, 180, 30);
 
         txtpassword.setBackground(new java.awt.Color(204, 255, 204));
+        txtpassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtpassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 255, 0)));
         txtpassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,7 +223,7 @@ public class loginForm extends javax.swing.JFrame {
             }
         });
         background.add(txtpassword);
-        txtpassword.setBounds(180, 210, 180, 30);
+        txtpassword.setBounds(290, 210, 180, 30);
 
         createaccount.setFont(new java.awt.Font("Myanmar Text", 0, 10)); // NOI18N
         createaccount.setForeground(new java.awt.Color(255, 51, 51));
@@ -225,7 +234,7 @@ public class loginForm extends javax.swing.JFrame {
             }
         });
         background.add(createaccount);
-        createaccount.setBounds(180, 250, 80, 20);
+        createaccount.setBounds(290, 250, 80, 20);
 
         forgotpassword.setFont(new java.awt.Font("Myanmar Text", 0, 10)); // NOI18N
         forgotpassword.setForeground(new java.awt.Color(255, 51, 51));
@@ -236,7 +245,7 @@ public class loginForm extends javax.swing.JFrame {
             }
         });
         background.add(forgotpassword);
-        forgotpassword.setBounds(280, 250, 80, 20);
+        forgotpassword.setBounds(390, 250, 80, 20);
 
         login.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 5));
         login.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -251,8 +260,9 @@ public class loginForm extends javax.swing.JFrame {
             }
         });
 
+        lbllogin.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         lbllogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbllogin.setText("LOGIN");
+        lbllogin.setText("L O G I N");
 
         javax.swing.GroupLayout loginLayout = new javax.swing.GroupLayout(login);
         login.setLayout(loginLayout);
@@ -260,8 +270,8 @@ public class loginForm extends javax.swing.JFrame {
             loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbllogin, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(lbllogin, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                .addContainerGap())
         );
         loginLayout.setVerticalGroup(
             loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,17 +279,17 @@ public class loginForm extends javax.swing.JFrame {
         );
 
         background.add(login);
-        login.setBounds(260, 280, 100, 40);
+        login.setBounds(290, 280, 180, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
         );
 
         pack();
@@ -316,6 +326,8 @@ public class loginForm extends javax.swing.JFrame {
                         System.out.println("Admin Exist!");
                         JOptionPane.showMessageDialog(null, "Login Success!");
                         adminForm adf = new adminForm();
+                        adf.lname.setText(lname+"");
+                        adf.type.setText("("+type+")");
                         adf.setVisible(true);
                         this.dispose();
                     }
@@ -324,6 +336,8 @@ public class loginForm extends javax.swing.JFrame {
                         System.out.println("User Exist!");
                         JOptionPane.showMessageDialog(null, "Login Success!");
                         userForm usf = new userForm();
+                        usf.lname.setText(lname+"");
+                        usf.type.setText("("+type+")");
                         usf.setVisible(true);
                         this.dispose();
                     }

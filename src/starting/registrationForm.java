@@ -110,48 +110,65 @@ public class registrationForm extends javax.swing.JFrame {
         form.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 255, 0), 3));
         form.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblregistration.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblregistration.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        lblregistration.setForeground(new java.awt.Color(0, 51, 0));
         lblregistration.setText("R e g i s t r a t i o n");
-        form.add(lblregistration, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 1, 230, 30));
+        form.add(lblregistration, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 420, 60));
 
-        txtfirstname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), " F i r s t   N a m e ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 10))); // NOI18N
+        txtfirstname.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtfirstname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), "F i r s t   N a m e ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 1, 11), new java.awt.Color(0, 51, 0))); // NOI18N
         txtfirstname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtfirstnameActionPerformed(evt);
             }
         });
-        form.add(txtfirstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 230, 40));
+        form.add(txtfirstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 260, 50));
 
-        txtlastname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), " L a s t   N a m e ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 10))); // NOI18N
+        txtlastname.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtlastname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), "L a s t   N a m e ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 1, 11), new java.awt.Color(0, 51, 0))); // NOI18N
         txtlastname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtlastnameActionPerformed(evt);
             }
         });
-        form.add(txtlastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 230, 40));
+        form.add(txtlastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 260, 50));
 
-        txtemail.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), " E m a i l ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 10))); // NOI18N
+        txtemail.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtemail.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), "E m a i l ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 1, 11), new java.awt.Color(0, 51, 0))); // NOI18N
         txtemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtemailActionPerformed(evt);
             }
         });
-        form.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 230, 40));
+        form.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 260, 50));
 
+        boxtype.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         boxtype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Admin", "User" }));
-        boxtype.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), " T y p e", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 10))); // NOI18N
+        boxtype.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), "T y p e", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(0, 51, 0))); // NOI18N
         boxtype.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boxtypeActionPerformed(evt);
             }
         });
-        form.add(boxtype, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 130, 40));
+        form.add(boxtype, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 260, 50));
 
-        txtusername.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), " U s e r n a m e", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 10))); // NOI18N
-        form.add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 230, 40));
+        txtusername.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtusername.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), " U s e r n a m e", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 1, 11), new java.awt.Color(0, 51, 0))); // NOI18N
+        txtusername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtusernameActionPerformed(evt);
+            }
+        });
+        form.add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, 260, 50));
 
-        txtpassword.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), " P a s s w o r d"));
-        form.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 230, 40));
+        txtpassword.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtpassword.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), " P a s s w o r d", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 1, 11), new java.awt.Color(0, 51, 0))); // NOI18N
+        txtpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtpasswordActionPerformed(evt);
+            }
+        });
+        form.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 260, 50));
 
         register.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 5));
         register.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -166,8 +183,9 @@ public class registrationForm extends javax.swing.JFrame {
             }
         });
 
+        lbllogin.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         lbllogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbllogin.setText("REGISTER");
+        lbllogin.setText("R E G I S T E R");
 
         javax.swing.GroupLayout registerLayout = new javax.swing.GroupLayout(register);
         register.setLayout(registerLayout);
@@ -175,23 +193,24 @@ public class registrationForm extends javax.swing.JFrame {
             registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(registerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbllogin, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(lbllogin, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                .addContainerGap())
         );
         registerLayout.setVerticalGroup(
             registerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lbllogin, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        form.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, -1, -1));
+        form.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, 170, -1));
 
-        txtcontactnumber.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), "Contact Number "));
+        txtcontactnumber.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtcontactnumber.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), "C o n t a c t  N u m b e r ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 1, 11), new java.awt.Color(0, 51, 0))); // NOI18N
         txtcontactnumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtcontactnumberActionPerformed(evt);
             }
         });
-        form.add(txtcontactnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 130, 40));
+        form.add(txtcontactnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 260, 50));
 
         back.setText("BACK");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -199,50 +218,50 @@ public class registrationForm extends javax.swing.JFrame {
                 backMouseClicked(evt);
             }
         });
-        form.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+        form.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, -1, -1));
 
         background.add(form);
-        form.setBounds(130, 70, 420, 330);
+        form.setBounds(140, 90, 550, 420);
 
         header.setBackground(new java.awt.Color(0, 51, 0));
         header.setLayout(null);
         background.add(header);
-        header.setBounds(0, 0, 580, 20);
+        header.setBounds(0, 0, 700, 20);
 
         header1.setBackground(new java.awt.Color(0, 51, 0));
         header1.setLayout(null);
         background.add(header1);
-        header1.setBounds(60, 30, 520, 20);
+        header1.setBounds(60, 30, 640, 20);
 
         header2.setBackground(new java.awt.Color(0, 51, 0));
         header2.setLayout(null);
         background.add(header2);
-        header2.setBounds(110, 60, 470, 20);
+        header2.setBounds(110, 60, 590, 20);
 
         sider.setBackground(new java.awt.Color(0, 51, 0));
         sider.setLayout(null);
         background.add(sider);
-        sider.setBounds(70, 20, 40, 410);
+        sider.setBounds(70, 20, 40, 500);
 
         sider1.setBackground(new java.awt.Color(0, 51, 0));
         sider1.setLayout(null);
         background.add(sider1);
-        sider1.setBounds(20, 20, 40, 410);
+        sider1.setBounds(20, 20, 40, 500);
 
         sider2.setBackground(new java.awt.Color(0, 51, 0));
         sider2.setLayout(null);
         background.add(sider2);
-        sider2.setBounds(120, 20, 40, 410);
+        sider2.setBounds(120, 20, 40, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
         );
 
         pack();
@@ -328,6 +347,14 @@ public class registrationForm extends javax.swing.JFrame {
         lgf.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backMouseClicked
+
+    private void txtusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtusernameActionPerformed
+
+    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtpasswordActionPerformed
 
     /**
      * @param args the command line arguments

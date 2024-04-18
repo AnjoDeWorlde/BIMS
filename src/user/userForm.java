@@ -26,6 +26,7 @@ public class userForm extends javax.swing.JFrame {
         background = new javax.swing.JPanel();
         navigation = new javax.swing.JPanel();
         type = new javax.swing.JLabel();
+        lname = new javax.swing.JLabel();
         profile = new javax.swing.JPanel();
         lblprofile = new javax.swing.JLabel();
         home = new javax.swing.JPanel();
@@ -40,18 +41,25 @@ public class userForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        background.setBackground(new java.awt.Color(204, 255, 204));
         background.setLayout(null);
 
         navigation.setBackground(new java.awt.Color(0, 51, 0));
         navigation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        type.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        type.setFont(new java.awt.Font("Verdana", 1, 11)); // NOI18N
         type.setForeground(new java.awt.Color(255, 255, 255));
         type.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        type.setText("USER");
-        type.setVerifyInputWhenFocusTarget(false);
-        type.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navigation.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 131, 87));
+        type.setText("(type)");
+        navigation.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
+
+        lname.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        lname.setForeground(new java.awt.Color(255, 255, 255));
+        lname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lname.setText("USER");
+        lname.setVerifyInputWhenFocusTarget(false);
+        lname.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        navigation.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -3, 220, 120));
 
         profile.setBackground(new java.awt.Color(0, 51, 0));
         profile.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -67,11 +75,13 @@ public class userForm extends javax.swing.JFrame {
         });
         profile.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblprofile.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
         lblprofile.setForeground(new java.awt.Color(255, 255, 255));
-        lblprofile.setText("                 PROFILE");
-        profile.add(lblprofile, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 150, 40));
+        lblprofile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblprofile.setText("PROFILE");
+        profile.add(lblprofile, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 200, 40));
 
-        navigation.add(profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 170, 40));
+        navigation.add(profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 220, 40));
 
         home.setBackground(new java.awt.Color(0, 51, 0));
         home.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -87,11 +97,13 @@ public class userForm extends javax.swing.JFrame {
         });
         home.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblhome.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
         lblhome.setForeground(new java.awt.Color(255, 255, 255));
-        lblhome.setText("                  HOME");
-        home.add(lblhome, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 0, 140, 40));
+        lblhome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblhome.setText("HOME");
+        home.add(lblhome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 200, 40));
 
-        navigation.add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 170, 40));
+        navigation.add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 220, 40));
 
         inventory.setBackground(new java.awt.Color(0, 51, 0));
         inventory.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -107,11 +119,13 @@ public class userForm extends javax.swing.JFrame {
         });
         inventory.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblinventory.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
         lblinventory.setForeground(new java.awt.Color(255, 255, 255));
-        lblinventory.setText("             INVENTORY");
-        inventory.add(lblinventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 0, 140, 40));
+        lblinventory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblinventory.setText("INVENTORY");
+        inventory.add(lblinventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 200, 40));
 
-        navigation.add(inventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 170, 40));
+        navigation.add(inventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 220, 40));
 
         settings.setBackground(new java.awt.Color(0, 51, 0));
         settings.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -127,14 +141,16 @@ public class userForm extends javax.swing.JFrame {
         });
         settings.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lblsettings.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
         lblsettings.setForeground(new java.awt.Color(255, 255, 255));
-        lblsettings.setText("               SETTINGS");
-        settings.add(lblsettings, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 150, 40));
+        lblsettings.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblsettings.setText("SETTINGS");
+        settings.add(lblsettings, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 200, 40));
 
-        navigation.add(settings, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 170, 40));
+        navigation.add(settings, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 220, 40));
 
         background.add(navigation);
-        navigation.setBounds(0, 0, 170, 430);
+        navigation.setBounds(0, 0, 220, 520);
 
         header.setBackground(new java.awt.Color(0, 51, 0));
 
@@ -151,7 +167,7 @@ public class userForm extends javax.swing.JFrame {
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                .addContainerGap(365, Short.MAX_VALUE)
+                .addContainerGap(435, Short.MAX_VALUE)
                 .addComponent(back)
                 .addGap(19, 19, 19))
         );
@@ -160,11 +176,11 @@ public class userForm extends javax.swing.JFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(back)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         background.add(header);
-        header.setBounds(170, 0, 410, 50);
+        header.setBounds(220, 0, 480, 60);
 
         admindesktop.setBackground(new java.awt.Color(204, 255, 204));
         admindesktop.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 255, 0), 5));
@@ -173,25 +189,25 @@ public class userForm extends javax.swing.JFrame {
         admindesktop.setLayout(admindesktopLayout);
         admindesktopLayout.setHorizontalGroup(
             admindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
         admindesktopLayout.setVerticalGroup(
             admindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
+            .addGap(0, 450, Short.MAX_VALUE)
         );
 
         background.add(admindesktop);
-        admindesktop.setBounds(170, 50, 410, 380);
+        admindesktop.setBounds(220, 60, 480, 460);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
         );
 
         pack();
@@ -307,9 +323,10 @@ public class userForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblinventory;
     private javax.swing.JLabel lblprofile;
     private javax.swing.JLabel lblsettings;
+    public javax.swing.JLabel lname;
     private javax.swing.JPanel navigation;
     private javax.swing.JPanel profile;
     private javax.swing.JPanel settings;
-    private javax.swing.JLabel type;
+    public javax.swing.JLabel type;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,5 +1,6 @@
 package internalForm;
 
+import admin.fulluserlists;
 import config.dbConnector;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -28,7 +29,7 @@ public class userlistsForm extends javax.swing.JInternalFrame {
     public void displayUser(){
         dbConnector connector = new dbConnector();
         try{            
-            try (ResultSet resultSet = connector.getData("SELECT u_id, u_fname, u_lname, u_email FROM tbl_user")) {
+            try (ResultSet resultSet = connector.getData("SELECT u_id, u_lname, u_email, u_type, u_status FROM tbl_user")) {
                 listusers.setModel(DbUtils.resultSetToTableModel(resultSet));
             }
             
@@ -52,9 +53,9 @@ public class userlistsForm extends javax.swing.JInternalFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         background = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listusers = new javax.swing.JTable();
+        lblfulluserlists = new javax.swing.JLabel();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -64,10 +65,6 @@ public class userlistsForm extends javax.swing.JInternalFrame {
 
         background.setBackground(new java.awt.Color(204, 255, 204));
         background.setLayout(null);
-
-        jLabel1.setText("USER LISTS");
-        background.add(jLabel1);
-        jLabel1.setBounds(320, 290, 240, 130);
 
         listusers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -80,30 +77,48 @@ public class userlistsForm extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(listusers);
 
         background.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 0, 400, 330);
+        jScrollPane1.setBounds(10, 10, 460, 410);
+
+        lblfulluserlists.setFont(new java.awt.Font("Verdana", 2, 12)); // NOI18N
+        lblfulluserlists.setForeground(new java.awt.Color(255, 0, 0));
+        lblfulluserlists.setText("==> User Lists Full Feature");
+        lblfulluserlists.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblfulluserlistsMouseClicked(evt);
+            }
+        });
+        background.add(lblfulluserlists);
+        lblfulluserlists.setBounds(294, 430, 170, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void lblfulluserlistsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblfulluserlistsMouseClicked
+        System.out.println("Full User Lists Accesed!");
+        fulluserlists fusf = new fulluserlists();
+        fusf.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lblfulluserlistsMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblfulluserlists;
     private javax.swing.JTable listusers;
     // End of variables declaration//GEN-END:variables
 }

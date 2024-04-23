@@ -1,15 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package admin;
 
+import config.Session;
 import config.dbConnector;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
+import starting.loginForm;
 
 /**
  *
@@ -31,7 +30,7 @@ public class fulluserlists extends javax.swing.JFrame {
     public void displayUser(){
         dbConnector connector = new dbConnector();
         try{            
-            try (ResultSet resultSet = connector.getData("SELECT u_id, u_fname, u_lname, u_email, u_contactnumber, u_username, u_password, u_type, u_status FROM tbl_user")) {
+            try (ResultSet resultSet = connector.getData("SELECT u_id, u_lname, u_email, u_type, u_status FROM tbl_user")) {
                 listusers.setModel(DbUtils.resultSetToTableModel(resultSet));
             }
             
@@ -55,14 +54,19 @@ public class fulluserlists extends javax.swing.JFrame {
         navigation = new javax.swing.JPanel();
         type = new javax.swing.JLabel();
         lname = new javax.swing.JLabel();
-        insert = new javax.swing.JPanel();
-        lblinsert = new javax.swing.JLabel();
+        create = new javax.swing.JPanel();
+        lblcreate = new javax.swing.JLabel();
         update = new javax.swing.JPanel();
         lblupdate = new javax.swing.JLabel();
         delete = new javax.swing.JPanel();
         lbldelete = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         background.setBackground(new java.awt.Color(204, 255, 204));
         background.setLayout(null);
@@ -97,27 +101,27 @@ public class fulluserlists extends javax.swing.JFrame {
         lname.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         navigation.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 120));
 
-        insert.setBackground(new java.awt.Color(0, 51, 0));
-        insert.addMouseListener(new java.awt.event.MouseAdapter() {
+        create.setBackground(new java.awt.Color(0, 51, 0));
+        create.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                insertMouseClicked(evt);
+                createMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                insertMouseEntered(evt);
+                createMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                insertMouseExited(evt);
+                createMouseExited(evt);
             }
         });
-        insert.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        create.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblinsert.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
-        lblinsert.setForeground(new java.awt.Color(255, 255, 255));
-        lblinsert.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblinsert.setText("INSERT");
-        insert.add(lblinsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 220, 40));
+        lblcreate.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
+        lblcreate.setForeground(new java.awt.Color(255, 255, 255));
+        lblcreate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblcreate.setText("CREATE");
+        create.add(lblcreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 220, 40));
 
-        navigation.add(insert, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 240, 40));
+        navigation.add(create, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 240, 40));
 
         update.setBackground(new java.awt.Color(0, 51, 0));
         update.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -181,20 +185,49 @@ public class fulluserlists extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void insertMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_insertMouseClicked
-        
-    }//GEN-LAST:event_insertMouseClicked
+    private void createMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createMouseClicked
+        System.out.println("Admin click Create Account!");
+        fulluserForm fuf = new fulluserForm();
+        fuf.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_createMouseClicked
 
-    private void insertMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_insertMouseEntered
-        insert.setBackground(enterColor);
-    }//GEN-LAST:event_insertMouseEntered
+    private void createMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createMouseEntered
+        create.setBackground(enterColor);
+    }//GEN-LAST:event_createMouseEntered
 
-    private void insertMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_insertMouseExited
-        insert.setBackground(navColor);
-    }//GEN-LAST:event_insertMouseExited
+    private void createMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createMouseExited
+        create.setBackground(navColor);
+    }//GEN-LAST:event_createMouseExited
 
     private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
+        int row = listusers.getSelectedRow();
         
+        if(row < 0){
+            JOptionPane.showMessageDialog(null, "Please Select an Item");
+        }else{
+            try{
+                dbConnector connector = new dbConnector();
+                TableModel tbl = listusers.getModel();
+                ResultSet resultSet = connector.getData("SELECT * FROM tbl_user WHERE u_id = '"+tbl.getValueAt(row, 0)+"' ");
+                if(resultSet.next()){
+                    System.out.println("Admin click Updating Account!");
+                    fulluserForm fuf = new fulluserForm();
+                    fuf.setVisible(true);
+                    this.dispose();
+                    fuf.txtid.setText(""+resultSet.getInt("u_id"));
+                    fuf.txtfirstname.setText(""+resultSet.getString("u_fname"));
+                    fuf.txtlastname.setText(""+resultSet.getString("u_lname"));
+                    fuf.txtemail.setText(""+resultSet.getString("u_email"));
+                    fuf.txtcontactnumber.setText(""+resultSet.getString("u_contactnumber"));
+                    fuf.txtusername.setText(""+resultSet.getString("u_username"));
+                    fuf.txtpassword.setText(""+resultSet.getString("u_password"));
+                    fuf.boxtype.setSelectedItem(""+resultSet.getString("u_type"));
+                    fuf.boxstatus.setSelectedItem(""+resultSet.getString("u_status"));
+                }
+            }catch(SQLException ex){
+            }
+        }
     }//GEN-LAST:event_updateMouseClicked
 
     private void updateMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseEntered
@@ -206,7 +239,7 @@ public class fulluserlists extends javax.swing.JFrame {
     }//GEN-LAST:event_updateMouseExited
 
     private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
-        
+        // TODO add your handling code here:
     }//GEN-LAST:event_deleteMouseClicked
 
     private void deleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseEntered
@@ -216,6 +249,20 @@ public class fulluserlists extends javax.swing.JFrame {
     private void deleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseExited
         delete.setBackground(navColor);
     }//GEN-LAST:event_deleteMouseExited
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        Session shesh = Session.getInstance();
+        
+        if(shesh.getUid() == 0){
+            JOptionPane.showMessageDialog(null, "No account, Login First!");
+            loginForm lf = new loginForm();
+            lf.setVisible(true);
+            this.dispose();
+        }else{
+        lname.setText(""+shesh.getLname());
+        type.setText(""+shesh.getType());
+        }
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -254,11 +301,11 @@ public class fulluserlists extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
+    private javax.swing.JPanel create;
     private javax.swing.JPanel delete;
-    private javax.swing.JPanel insert;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblcreate;
     private javax.swing.JLabel lbldelete;
-    private javax.swing.JLabel lblinsert;
     private javax.swing.JLabel lblupdate;
     private javax.swing.JTable listusers;
     public javax.swing.JLabel lname;

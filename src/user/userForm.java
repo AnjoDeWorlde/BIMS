@@ -1,7 +1,9 @@
 package user;
 
+import config.Session;
 import java.awt.Color;
 import internalForm.*;
+import javax.swing.JOptionPane;
 import starting.loginForm;
 /**
  *
@@ -40,6 +42,11 @@ public class userForm extends javax.swing.JFrame {
         admindesktop = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         background.setBackground(new java.awt.Color(204, 255, 204));
         background.setLayout(null);
@@ -276,6 +283,20 @@ public class userForm extends javax.swing.JFrame {
         lgf.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backMouseClicked
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        Session shesh = Session.getInstance();
+        
+        if(shesh.getUid() == 0){
+            JOptionPane.showMessageDialog(null, "No account, Login First!");
+            loginForm lf = new loginForm();
+            lf.setVisible(true);
+            this.dispose();
+        }else{
+        lname.setText(""+shesh.getLname());
+        type.setText(""+shesh.getType());
+        }
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments

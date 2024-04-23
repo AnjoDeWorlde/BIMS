@@ -1,8 +1,12 @@
 package starting;
 
 import admin.adminForm;
+import admin.fulluserlists;
+import config.Session;
 import config.dbConnector;
+import config.passwordHasher;
 import java.awt.Color;
+import java.security.NoSuchAlgorithmException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,118 +28,46 @@ public class loginForm extends javax.swing.JFrame {
     
     public static String  lname, username, password, status ,type;
     
-    Color navColor = new Color(240,240,240);
+    Color navColor = new Color(204,204,204);
     Color logColor = new Color(204,255,204);
     
-    public static boolean loginAcc(String username, String password){
-        dbConnector connector = new dbConnector();
-        try{
-            String query = "SELECT * FROM tbl_user  WHERE u_username = '" + username + "' AND u_password = '" + password + "'";
-            ResultSet resultSet = connector.getData(query);
-            if(resultSet.next()){
-                lname = resultSet.getString("u_lname");
-                type = resultSet.getString("u_type");
+public static boolean loginAcc(String username, String password){
+    dbConnector connector = new dbConnector();
+    try{
+        String query = "SELECT * FROM tbl_user WHERE u_username = ? AND u_password = ? AND u_status = 'Active'";
+        PreparedStatement preparedStatement = connector.prepareStatement(query);
+        preparedStatement.setString(1, username);
+        String hashedPassword = passwordHasher.hashPassword(password);
+        preparedStatement.setString(2, hashedPassword);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if(resultSet.next()){
+            lname = resultSet.getString("u_lname");
+            type = resultSet.getString("u_type");
+            Session shesh = Session.getInstance();
+            shesh.setUid(resultSet.getInt("u_id"));
+            shesh.setFname(resultSet.getString("u_fname"));
+            shesh.setLname(resultSet.getString("u_lname"));
+            shesh.setEmail(resultSet.getString("u_email"));
+            shesh.setContactnumber(resultSet.getLong("u_contactnumber"));
+            shesh.setUsername(resultSet.getString("u_username"));
+            shesh.setType(resultSet.getString("u_type"));
+            shesh.setStatus(resultSet.getString("u_status"));
+            if(type.equals("Admin") || type.equals("User")){
                 return true;
             }else{
+                System.out.println("Invalid user type!"); 
                 return false;
             }
-        }catch (SQLException ex) {
+        }else{
+            System.out.println("Invalid username, password, or account status!"); 
             return false;
         }
+    }catch (SQLException | NoSuchAlgorithmException ex) {
+        System.out.println("Exception: " + ex.getMessage());
+        return false;
     }
-   
-    public boolean checkUname(){
-        dbConnector connector = new dbConnector();
-        try{
-            String query = "SELECT * FROM tbl_user  WHERE u_username = '" + txtusername.getText() + "'";
-            ResultSet resultSet = connector.getData(query);
-            
-            if(resultSet.next()){                             
-                username = resultSet.getString("u_username");
-                if(username.equals(txtusername.getText())){
-                    return true;
-                }
-            }
-            return false;                
-        }catch (SQLException ex) {
-            return false;
-        }
-    }
- 
-    public boolean checkPword(){
-        dbConnector connector = new dbConnector();
-        try{
-            String query = "SELECT * FROM tbl_user  WHERE u_password = '" + txtpassword.getText() + "'";
-            ResultSet resultSet = connector.getData(query);
-            
-            if(resultSet.next()){                             
-                password = resultSet.getString("u_password");
-                if(password.equals(txtpassword.getText())){
-                    return true;
-                }
-            }
-            return false;                 
-        }catch (SQLException ex) {
-            return false;
-        }
-    }
+}
 
-    public boolean validAcc(String username){
-        dbConnector connector = new dbConnector();        
-        try{
-            String query = "SELECT * FROM tbl_user  WHERE u_username = ?";
-            PreparedStatement statement = connector.prepareStatement(query);
-            statement.setString(1, username);
-            ResultSet resultSet = statement.executeQuery();
-            if(resultSet.next()){                
-                status = resultSet.getString("u_status");
-                if(status.equals("Active")){
-                    return true;
-                }
-            }
-            return false;        
-        }catch (SQLException ex) {
-            return false;
-        }
-    }
-    
-    public boolean checkAdmin(String username){
-        dbConnector connector = new dbConnector();
-        try{
-            String query = "SELECT * FROM tbl_user  WHERE u_username = ?";
-            PreparedStatement statement = connector.prepareStatement(query);
-            statement.setString(1, username);
-            ResultSet resultSet = statement.executeQuery();
-            if(resultSet.next()){                
-                type = resultSet.getString("u_type");
-                if(type.equals("Admin")){
-                    return true;
-                }
-            }
-            return false;               
-        }catch (SQLException ex){
-            return false;
-        }            
-    }
-    
-    public boolean checkUser(String username){
-        dbConnector connector = new dbConnector();
-        try{
-            String query = "SELECT * FROM tbl_user  WHERE u_username = ?";
-            PreparedStatement statement = connector.prepareStatement(query);
-            statement.setString(1, username);
-            ResultSet resultSet = statement.executeQuery();
-            if(resultSet.next()){                
-                type = resultSet.getString("u_type");
-                if(type.equals("User")){
-                    return true;
-                }
-            }
-            return false;               
-        }catch (SQLException ex){
-            return false;
-        }            
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -153,7 +85,7 @@ public class loginForm extends javax.swing.JFrame {
         lblusername = new javax.swing.JLabel();
         lblpassword = new javax.swing.JLabel();
         txtusername = new javax.swing.JTextField();
-        txtpassword = new javax.swing.JTextField();
+        txtpassword = new javax.swing.JPasswordField();
         createaccount = new javax.swing.JLabel();
         forgotpassword = new javax.swing.JLabel();
         login = new javax.swing.JPanel();
@@ -247,6 +179,7 @@ public class loginForm extends javax.swing.JFrame {
         background.add(forgotpassword);
         forgotpassword.setBounds(390, 250, 80, 20);
 
+        login.setBackground(new java.awt.Color(204, 204, 204));
         login.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 5));
         login.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -300,10 +233,6 @@ public class loginForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtusernameActionPerformed
 
-    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtpasswordActionPerformed
-
     private void createaccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createaccountMouseClicked
         System.out.println("Registration Start!");
         registrationForm rgf = new registrationForm();
@@ -321,50 +250,23 @@ public class loginForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "All fields are required!");
         }else{
             if(loginAcc(txtusername.getText(), txtpassword.getText())){
-                if(validAcc(txtusername.getText())){
-                    if(checkAdmin(txtusername.getText())){
-                        System.out.println("Admin Exist!");
-                        JOptionPane.showMessageDialog(null, "Login Success!");
-                        adminForm adf = new adminForm();
-                        adf.lname.setText(lname+"");
-                        adf.type.setText("("+type+")");
-                        adf.setVisible(true);
-                        this.dispose();
-                    }
-
-                    if(checkUser(txtusername.getText())){
-                        System.out.println("User Exist!");
-                        JOptionPane.showMessageDialog(null, "Login Success!");
-                        userForm usf = new userForm();
-                        usf.lname.setText(lname+"");
-                        usf.type.setText("("+type+")");
-                        usf.setVisible(true);
-                        this.dispose();
-                    }
-                }else{
-                    System.out.println("Account Inactive!");
-                    JOptionPane.showMessageDialog(null, "Account is still Inactive!");
+                System.out.println(type + " Exist!");
+               JOptionPane.showMessageDialog(null, "Login Success!");
+                if(type.equals("Admin")){
+                    adminForm adf = new adminForm();
+                    fulluserlists fusf = new fulluserlists();
+                    adf.setVisible(true);
+                    this.dispose();
+                }else if(type.equals("User")){
+                    userForm usf = new userForm();
+                    usf.setVisible(true);
+                    this.dispose();
                 }
             }else{
-                if(!checkUname() && !checkPword()){
-                    System.out.println("Account Invalid!");
-                    txtusername.setText("");
-                    txtpassword.setText("");
-                    JOptionPane.showMessageDialog(null, "Account does not exist!");
-                }else{
-                
-                if(!checkUname()){
-                    System.out.println("Username Invalid!");
-                    txtusername.setText("");
-                    JOptionPane.showMessageDialog(null, "Username is incorrect!");
-                }
-                
-                if(!checkPword()){
-                    System.out.println("Password Invalid!");
-                    txtpassword.setText("");
-                    JOptionPane.showMessageDialog(null, "Password is incorrect!");
-                }
-                }
+                System.out.println("Invalid username, password, or account status!"); 
+                txtusername.setText("");
+                txtpassword.setText("");
+                JOptionPane.showMessageDialog(null, "Invalid username, password, or account status!");
             }
         }
     }//GEN-LAST:event_loginMouseClicked
@@ -376,6 +278,10 @@ public class loginForm extends javax.swing.JFrame {
     private void loginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseExited
         login.setBackground(navColor);
     }//GEN-LAST:event_loginMouseExited
+
+    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtpasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -421,10 +327,10 @@ public class loginForm extends javax.swing.JFrame {
     private javax.swing.JLabel lbltitle1;
     private javax.swing.JLabel lbltitle2;
     private javax.swing.JLabel lblusername;
-    private javax.swing.JPanel login;
+    public javax.swing.JPanel login;
     private javax.swing.JLabel logo;
     private javax.swing.JPanel sidebar;
-    private javax.swing.JTextField txtpassword;
+    private javax.swing.JPasswordField txtpassword;
     private javax.swing.JTextField txtusername;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2024 at 09:10 AM
+-- Generation Time: Apr 27, 2024 at 01:04 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -34,7 +34,7 @@ CREATE TABLE `tbl_user` (
   `u_email` varchar(70) NOT NULL,
   `u_contactnumber` bigint(13) NOT NULL,
   `u_username` varchar(50) NOT NULL,
-  `u_password` varchar(50) NOT NULL,
+  `u_password` varchar(150) NOT NULL,
   `u_type` varchar(7) NOT NULL,
   `u_status` varchar(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -44,10 +44,8 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`u_id`, `u_fname`, `u_lname`, `u_email`, `u_contactnumber`, `u_username`, `u_password`, `u_type`, `u_status`) VALUES
-(1, 'Admin', 'TheCommander', 'admin@supreme.com', 99999999999, 'admin', 'qwe123!@#', 'Admin', 'Active'),
-(2, 'User', 'ThePeasant', 'user@inferior.com', 11111111111, 'user', '123456789', 'User', 'Active'),
-(3, 'first', 'test', 'test1st@outlook.com', 9612399964, 'tester1', 'SCC@12345', 'User', 'Inactive'),
-(4, 'Krystel', 'Mae', 'abogadakrystel@gmail.com', 99647480635, 'tel', 'asdfghjkl', 'Admin', 'Inactive');
+(1, 'Admin', 'Commander', 'admin.commander@gmail.com', 9999999999, 'admin', 'QeVlP8euuJQCbWu3stt/ZZArRUlF+o/WWmMnBHtSd/s=', 'Admin', 'Active'),
+(2, 'User', 'Peasant', 'user.peasant@yahoo.com', 1111111111, 'user', '14XWNRGmRaJIdaEJ4O8dplYN2U0Um2c0lJqWVWyzRJ8=', 'User', 'Inactive');
 
 --
 -- Indexes for dumped tables
@@ -67,7 +65,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `u_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `u_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

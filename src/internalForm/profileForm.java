@@ -34,9 +34,99 @@ public class profileForm extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         background = new javax.swing.JPanel();
+        form = new javax.swing.JPanel();
+        txtid = new javax.swing.JTextField();
+        lblregistration = new javax.swing.JLabel();
+        boxstatus = new javax.swing.JComboBox<>();
+        txtfirstname = new javax.swing.JTextField();
+        txtlastname = new javax.swing.JTextField();
+        txtemail = new javax.swing.JTextField();
+        txtcontactnumber = new javax.swing.JTextField();
+        txtusername = new javax.swing.JTextField();
+        boxtype = new javax.swing.JComboBox<>();
+        txtpassword = new javax.swing.JPasswordField();
 
         background.setBackground(new java.awt.Color(204, 255, 204));
         background.setLayout(null);
+
+        form.setBackground(new java.awt.Color(204, 204, 204));
+        form.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3));
+        form.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtid.setBackground(new java.awt.Color(204, 204, 204));
+        txtid.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
+        txtid.setForeground(new java.awt.Color(0, 51, 0));
+        txtid.setBorder(null);
+        form.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 90, 40));
+
+        lblregistration.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        lblregistration.setForeground(new java.awt.Color(0, 51, 0));
+        lblregistration.setText("Account #");
+        form.add(lblregistration, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 420, 60));
+
+        boxstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "Active", "Inactive" }));
+        boxstatus.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), "A c c o u n t   S t a t u s", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 9), new java.awt.Color(0, 51, 0))); // NOI18N
+        boxstatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxstatusActionPerformed(evt);
+            }
+        });
+        form.add(boxstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 190, 40));
+
+        txtfirstname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), "F i r s t   N a m e ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 1, 9), new java.awt.Color(0, 51, 0))); // NOI18N
+        txtfirstname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfirstnameActionPerformed(evt);
+            }
+        });
+        form.add(txtfirstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 190, 40));
+
+        txtlastname.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), "L a s t   N a m e ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 1, 9), new java.awt.Color(0, 51, 0))); // NOI18N
+        txtlastname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtlastnameActionPerformed(evt);
+            }
+        });
+        form.add(txtlastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 190, 40));
+
+        txtemail.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), "E m a i l ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 1, 9), new java.awt.Color(0, 51, 0))); // NOI18N
+        txtemail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtemailActionPerformed(evt);
+            }
+        });
+        form.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 190, 40));
+
+        txtcontactnumber.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), "C o n t a c t  N u m b e r ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 1, 9), new java.awt.Color(0, 51, 0))); // NOI18N
+        txtcontactnumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtcontactnumberActionPerformed(evt);
+            }
+        });
+        form.add(txtcontactnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 190, 40));
+
+        txtusername.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), "U s e r n a m e", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 1, 9), new java.awt.Color(0, 51, 0))); // NOI18N
+        txtusername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtusernameActionPerformed(evt);
+            }
+        });
+        form.add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 190, 40));
+
+        boxtype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "User", "Admin" }));
+        boxtype.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), "T y p e", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 9), new java.awt.Color(0, 51, 0))); // NOI18N
+        boxtype.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxtypeActionPerformed(evt);
+            }
+        });
+        form.add(boxtype, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 190, 40));
+
+        txtpassword.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), "P a s s w o r d", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 9), new java.awt.Color(0, 51, 0))); // NOI18N
+        form.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 190, 40));
+
+        background.add(form);
+        form.setBounds(20, 20, 440, 430);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -52,8 +142,47 @@ public class profileForm extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void boxstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxstatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxstatusActionPerformed
+
+    private void txtfirstnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfirstnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfirstnameActionPerformed
+
+    private void txtlastnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtlastnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtlastnameActionPerformed
+
+    private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtemailActionPerformed
+
+    private void txtcontactnumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcontactnumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtcontactnumberActionPerformed
+
+    private void txtusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtusernameActionPerformed
+
+    private void boxtypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxtypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxtypeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
+    public javax.swing.JComboBox<String> boxstatus;
+    public javax.swing.JComboBox<String> boxtype;
+    private javax.swing.JPanel form;
+    private javax.swing.JLabel lblregistration;
+    public javax.swing.JTextField txtcontactnumber;
+    public javax.swing.JTextField txtemail;
+    public javax.swing.JTextField txtfirstname;
+    public javax.swing.JTextField txtid;
+    public javax.swing.JTextField txtlastname;
+    private javax.swing.JPasswordField txtpassword;
+    public javax.swing.JTextField txtusername;
     // End of variables declaration//GEN-END:variables
 }

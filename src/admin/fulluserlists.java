@@ -215,7 +215,7 @@ public class fulluserlists extends javax.swing.JFrame {
                     fulluserForm fuf = new fulluserForm();
                     fuf.setVisible(true);
                     this.dispose();
-                    fuf.txtid.setText(""+resultSet.getInt("u_id"));
+                    fuf.id.setText(""+resultSet.getInt("u_id"));
                     fuf.txtfirstname.setText(""+resultSet.getString("u_fname"));
                     fuf.txtlastname.setText(""+resultSet.getString("u_lname"));
                     fuf.txtemail.setText(""+resultSet.getString("u_email"));
@@ -259,8 +259,8 @@ public class fulluserlists extends javax.swing.JFrame {
             lf.setVisible(true);
             this.dispose();
         }else{
-        lname.setText(""+shesh.getLname());
-        type.setText(""+shesh.getType());
+            lname.setText(""+shesh.getLname());
+            type.setText(""+shesh.getType());
         }
     }//GEN-LAST:event_formWindowActivated
 

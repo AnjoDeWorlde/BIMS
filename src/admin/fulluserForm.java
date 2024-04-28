@@ -2,8 +2,10 @@ package admin;
 
 import config.Session;
 import config.dbConnector;
+import config.passwordHasher;
 import java.awt.Color;
 import java.math.BigInteger;
+import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
@@ -83,7 +85,7 @@ public class fulluserForm extends javax.swing.JFrame {
         
         try{
             String query = "SELECT * FROM tbl_user  WHERE (u_email = '" + txtemail.getText() 
-            + "' OR u_username = '" + txtusername.getText() + "') AND u_id  != '"+txtid.getText()+"'";
+            + "' OR u_username = '" + txtusername.getText() + "') AND u_id  != '"+id.getText()+"'";
             ResultSet resultSet = connector.getData(query);
             
             if(resultSet.next()){                
@@ -121,7 +123,7 @@ public class fulluserForm extends javax.swing.JFrame {
         javax.swing.JPanel background = new javax.swing.JPanel();
         form = new javax.swing.JPanel();
         back = new javax.swing.JLabel();
-        txtid = new javax.swing.JTextField();
+        id = new javax.swing.JLabel();
         lblregistration = new javax.swing.JLabel();
         boxstatus = new javax.swing.JComboBox<>();
         txtfirstname = new javax.swing.JTextField();
@@ -129,7 +131,7 @@ public class fulluserForm extends javax.swing.JFrame {
         txtemail = new javax.swing.JTextField();
         txtcontactnumber = new javax.swing.JTextField();
         txtusername = new javax.swing.JTextField();
-        txtpassword = new javax.swing.JTextField();
+        txtpassword = new javax.swing.JPasswordField();
         boxtype = new javax.swing.JComboBox<>();
         botcreate = new javax.swing.JPanel();
         lblbotcreate = new javax.swing.JLabel();
@@ -170,10 +172,9 @@ public class fulluserForm extends javax.swing.JFrame {
         });
         form.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
 
-        txtid.setBackground(new java.awt.Color(204, 204, 204));
-        txtid.setFont(new java.awt.Font("Verdana", 0, 36)); // NOI18N
-        txtid.setBorder(null);
-        form.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 90, 40));
+        id.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        id.setForeground(new java.awt.Color(0, 51, 0));
+        form.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 150, 50));
 
         lblregistration.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         lblregistration.setForeground(new java.awt.Color(0, 51, 0));
@@ -229,7 +230,7 @@ public class fulluserForm extends javax.swing.JFrame {
         });
         form.add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 190, 40));
 
-        txtpassword.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 3), " P a s s w o r d", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Verdana", 1, 9), new java.awt.Color(0, 51, 0))); // NOI18N
+        txtpassword.setBorder(null);
         txtpassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtpasswordActionPerformed(evt);
@@ -440,10 +441,6 @@ public class fulluserForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtusernameActionPerformed
 
-    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtpasswordActionPerformed
-
     private void boxtypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxtypeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_boxtypeActionPerformed
@@ -482,22 +479,25 @@ public class fulluserForm extends javax.swing.JFrame {
 
         }else{
             dbConnector dbc = new dbConnector();
-            long conNum = Long.parseLong(cNum);
-            if(dbc.insertData("INSERT INTO tbl_user(u_fname ,u_lname ,u_email ,u_contactnumber ,u_username ,u_password ,u_type "
-                + ",u_status) VALUES('"+txtfirstname.getText()+"','"+txtlastname.getText()+"','"+txtemail.getText()+"',"
-                + "'"+conNum+"','"+txtusername.getText()+"','"+txtpassword.getText()+"','"+boxtype.getSelectedItem()
-                +"','"+boxstatus.getSelectedItem()+"')")){
-            System.out.println("Information Inserted!");
-            JOptionPane.showMessageDialog(null, "Created Account Successfully!");
-            fulluserlists ful = new fulluserlists();
-            ful.setVisible(true);
-            this.dispose();
-
-        }else{
-            System.out.println("Information Rejected!");
-            JOptionPane.showMessageDialog(null, "Failed Successfully!");
-
-        }
+            try{
+                long conNum = Long.parseLong(cNum);
+                String password = passwordHasher.hashPassword(txtpassword.getText());
+                    if(dbc.insertData("INSERT INTO tbl_user(u_fname ,u_lname ,u_email ,u_contactnumber ,u_username ,u_password "
+                    + ",u_type ,u_status) VALUES('"+txtfirstname.getText()+"','"+txtlastname.getText()+"','"
+                    +txtemail.getText()+"','"+conNum+"','"+txtusername.getText()+"','"+password+"','"
+                    +boxtype.getSelectedItem()+"','"+boxstatus.getSelectedItem()+"')")){
+                        System.out.println("Information Inserted!");
+                        JOptionPane.showMessageDialog(null, "Created Account Successfully!");
+                        fulluserlists ful = new fulluserlists();
+                        ful.setVisible(true);
+                        this.dispose();
+                    }else{
+                        System.out.println("Information Rejected!");
+                        JOptionPane.showMessageDialog(null, "Failed Successfully!");
+                    }
+            }catch(NoSuchAlgorithmException ex){
+                System.out.println(""+ex);
+            }
         }
     }//GEN-LAST:event_botcreateMouseClicked
 
@@ -577,7 +577,7 @@ public class fulluserForm extends javax.swing.JFrame {
             connector.updateData("UPDATE tbl_user SET u_fname = '"+txtfirstname.getText()+"', u_lname = '"
             +txtlastname.getText()+"', u_email = '"+txtemail.getText()+"', u_contactnumber = '"+txtcontactnumber.getText()
             +"', u_username = '"+txtusername.getText()+"', u_password = '"+txtpassword.getText()+"', u_type = '"
-            +boxtype.getSelectedItem()+"', u_status = '"+boxstatus.getSelectedItem()+"' WHERE u_id = '"+txtid.getText()+"'");
+            +boxtype.getSelectedItem()+"', u_status = '"+boxstatus.getSelectedItem()+"' WHERE u_id = '"+id.getText()+"'");
             fulluserlists ful = new fulluserlists();
             ful.setVisible(true);
             this.dispose();
@@ -608,10 +608,14 @@ public class fulluserForm extends javax.swing.JFrame {
             lf.setVisible(true);
             this.dispose();
         }else{
-        lname.setText(""+shesh.getLname());
-        type.setText(""+shesh.getType());
+            lname.setText(""+shesh.getLname());
+            type.setText(""+shesh.getType());
         }
     }//GEN-LAST:event_formWindowActivated
+
+    private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtpasswordActionPerformed
 
     /**
      * @param args the command line arguments
@@ -657,6 +661,7 @@ public class fulluserForm extends javax.swing.JFrame {
     private javax.swing.JPanel create;
     private javax.swing.JPanel delete;
     private javax.swing.JPanel form;
+    public javax.swing.JLabel id;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblbotcreate;
     private javax.swing.JLabel lblbotupdate;
@@ -669,12 +674,10 @@ public class fulluserForm extends javax.swing.JFrame {
     public javax.swing.JTextField txtcontactnumber;
     public javax.swing.JTextField txtemail;
     public javax.swing.JTextField txtfirstname;
-    public javax.swing.JTextField txtid;
     public javax.swing.JTextField txtlastname;
-    public javax.swing.JTextField txtpassword;
+    public javax.swing.JPasswordField txtpassword;
     public javax.swing.JTextField txtusername;
     public javax.swing.JLabel type;
     private javax.swing.JPanel update;
     // End of variables declaration//GEN-END:variables
-
 }

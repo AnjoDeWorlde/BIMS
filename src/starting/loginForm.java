@@ -78,62 +78,22 @@ public static boolean loginAcc(String username, String password){
     private void initComponents() {
 
         background = new javax.swing.JPanel();
-        lbltitle1 = new javax.swing.JLabel();
-        lbltitle2 = new javax.swing.JLabel();
-        sidebar = new javax.swing.JPanel();
-        logo = new javax.swing.JLabel();
-        lblusername = new javax.swing.JLabel();
-        lblpassword = new javax.swing.JLabel();
         txtusername = new javax.swing.JTextField();
         txtpassword = new javax.swing.JPasswordField();
         createaccount = new javax.swing.JLabel();
         forgotpassword = new javax.swing.JLabel();
         login = new javax.swing.JPanel();
         lbllogin = new javax.swing.JLabel();
+        lowbar = new javax.swing.JPanel();
+        lblusername = new javax.swing.JLabel();
+        lblpassword = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
+        logo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        background.setBackground(new java.awt.Color(204, 255, 204));
+        background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(null);
-
-        lbltitle1.setFont(new java.awt.Font("Verdana", 1, 30)); // NOI18N
-        lbltitle1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbltitle1.setText("Beverage Inventory ");
-        background.add(lbltitle1);
-        lbltitle1.setBounds(290, 10, 400, 50);
-
-        lbltitle2.setFont(new java.awt.Font("Verdana", 1, 30)); // NOI18N
-        lbltitle2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbltitle2.setText("Management System ");
-        background.add(lbltitle2);
-        lbltitle2.setBounds(290, 60, 400, 50);
-
-        sidebar.setBackground(new java.awt.Color(0, 51, 0));
-        sidebar.setLayout(null);
-
-        logo.setFont(new java.awt.Font("Verdana", 1, 30)); // NOI18N
-        logo.setForeground(new java.awt.Color(255, 255, 255));
-        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setText("LOGO");
-        logo.setToolTipText("");
-        logo.setVerifyInputWhenFocusTarget(false);
-        sidebar.add(logo);
-        logo.setBounds(90, 60, 100, 31);
-
-        lblusername.setFont(new java.awt.Font("Myanmar Text", 1, 16)); // NOI18N
-        lblusername.setForeground(new java.awt.Color(255, 255, 255));
-        lblusername.setText("USERNAME: ");
-        sidebar.add(lblusername);
-        lblusername.setBounds(180, 180, 100, 20);
-
-        lblpassword.setFont(new java.awt.Font("Myanmar Text", 1, 16)); // NOI18N
-        lblpassword.setForeground(new java.awt.Color(255, 255, 255));
-        lblpassword.setText("PASSWORD: ");
-        sidebar.add(lblpassword);
-        lblpassword.setBounds(180, 220, 100, 20);
-
-        background.add(sidebar);
-        sidebar.setBounds(0, 0, 280, 520);
 
         txtusername.setBackground(new java.awt.Color(204, 255, 204));
         txtusername.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -144,7 +104,7 @@ public static boolean loginAcc(String username, String password){
             }
         });
         background.add(txtusername);
-        txtusername.setBounds(290, 170, 180, 30);
+        txtusername.setBounds(290, 240, 180, 30);
 
         txtpassword.setBackground(new java.awt.Color(204, 255, 204));
         txtpassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -155,7 +115,7 @@ public static boolean loginAcc(String username, String password){
             }
         });
         background.add(txtpassword);
-        txtpassword.setBounds(290, 210, 180, 30);
+        txtpassword.setBounds(290, 280, 180, 30);
 
         createaccount.setFont(new java.awt.Font("Myanmar Text", 0, 10)); // NOI18N
         createaccount.setForeground(new java.awt.Color(255, 51, 51));
@@ -166,7 +126,7 @@ public static boolean loginAcc(String username, String password){
             }
         });
         background.add(createaccount);
-        createaccount.setBounds(290, 250, 80, 20);
+        createaccount.setBounds(290, 320, 80, 20);
 
         forgotpassword.setFont(new java.awt.Font("Myanmar Text", 0, 10)); // NOI18N
         forgotpassword.setForeground(new java.awt.Color(255, 51, 51));
@@ -177,7 +137,7 @@ public static boolean loginAcc(String username, String password){
             }
         });
         background.add(forgotpassword);
-        forgotpassword.setBounds(390, 250, 80, 20);
+        forgotpassword.setBounds(390, 320, 80, 20);
 
         login.setBackground(new java.awt.Color(204, 204, 204));
         login.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 0), 5));
@@ -202,17 +162,51 @@ public static boolean loginAcc(String username, String password){
         loginLayout.setHorizontalGroup(
             loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbllogin, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                .addGap(856, 856, 856)
+                .addComponent(lbllogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         loginLayout.setVerticalGroup(
             loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbllogin, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+            .addComponent(lbllogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         background.add(login);
-        login.setBounds(290, 280, 180, 40);
+        login.setBounds(290, 350, 180, 40);
+
+        lowbar.setBackground(new java.awt.Color(0, 174, 239));
+        lowbar.setLayout(null);
+
+        lblusername.setFont(new java.awt.Font("Franklin Gothic Medium Cond", 1, 16)); // NOI18N
+        lblusername.setText("USERNAME: ");
+        lowbar.add(lblusername);
+        lblusername.setBounds(120, 30, 100, 20);
+
+        lblpassword.setFont(new java.awt.Font("Myanmar Text", 1, 16)); // NOI18N
+        lblpassword.setText("PASSWORD: ");
+        lowbar.add(lblpassword);
+        lblpassword.setBounds(120, 80, 100, 20);
+
+        background.add(lowbar);
+        lowbar.setBounds(0, 180, 700, 340);
+
+        logo.setFont(new java.awt.Font("Verdana", 1, 30)); // NOI18N
+        logo.setForeground(new java.awt.Color(255, 255, 255));
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo_wname_orig80.jpg"))); // NOI18N
+        logo.setToolTipText("");
+        logo.setVerifyInputWhenFocusTarget(false);
+        background.add(logo);
+        logo.setBounds(0, 0, 700, 180);
+
+        logo1.setFont(new java.awt.Font("Verdana", 1, 30)); // NOI18N
+        logo1.setForeground(new java.awt.Color(255, 255, 255));
+        logo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo_wname_orig80.jpg"))); // NOI18N
+        logo1.setToolTipText("");
+        logo1.setVerifyInputWhenFocusTarget(false);
+        background.add(logo1);
+        logo1.setBounds(-70, 0, 840, 170);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -324,12 +318,11 @@ public static boolean loginAcc(String username, String password){
     private javax.swing.JLabel forgotpassword;
     private javax.swing.JLabel lbllogin;
     private javax.swing.JLabel lblpassword;
-    private javax.swing.JLabel lbltitle1;
-    private javax.swing.JLabel lbltitle2;
     private javax.swing.JLabel lblusername;
     public javax.swing.JPanel login;
     private javax.swing.JLabel logo;
-    private javax.swing.JPanel sidebar;
+    private javax.swing.JLabel logo1;
+    private javax.swing.JPanel lowbar;
     private javax.swing.JPasswordField txtpassword;
     private javax.swing.JTextField txtusername;
     // End of variables declaration//GEN-END:variables

@@ -222,9 +222,10 @@ public class userForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void profileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseClicked
-        profileForm prf = new profileForm();
+        profileFForm prff = new profileFForm();
         System.out.println("User clicked Profile!");
-        admindesktop.add(prf).setVisible(true);
+        prff.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_profileMouseClicked
 
     private void profileMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseEntered
@@ -293,8 +294,8 @@ public class userForm extends javax.swing.JFrame {
             lf.setVisible(true);
             this.dispose();
         }else{
-        lname.setText(""+shesh.getLname());
-        type.setText(""+shesh.getType());
+            lname.setText(""+shesh.getLname());
+            type.setText(""+shesh.getType());
         }
     }//GEN-LAST:event_formWindowActivated
 

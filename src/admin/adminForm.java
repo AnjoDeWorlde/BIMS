@@ -331,8 +331,8 @@ public class adminForm extends javax.swing.JFrame {
             lf.setVisible(true);
             this.dispose();
         }else{
-        lname.setText(""+shesh.getLname());
-        type.setText(""+shesh.getType());
+            lname.setText(""+shesh.getLname());
+            type.setText(""+shesh.getType());
         }
     }//GEN-LAST:event_formWindowActivated
 

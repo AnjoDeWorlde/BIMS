@@ -50,7 +50,7 @@ public class adminForm extends javax.swing.JFrame {
             }
         });
 
-        background.setBackground(new java.awt.Color(204, 255, 204));
+        background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(null);
 
         navigation.setBackground(new java.awt.Color(0, 51, 0));
@@ -213,18 +213,17 @@ public class adminForm extends javax.swing.JFrame {
         background.add(header);
         header.setBounds(220, 0, 480, 60);
 
-        admindesktop.setBackground(new java.awt.Color(204, 255, 204));
-        admindesktop.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 255, 204), 5));
+        admindesktop.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout admindesktopLayout = new javax.swing.GroupLayout(admindesktop);
         admindesktop.setLayout(admindesktopLayout);
         admindesktopLayout.setHorizontalGroup(
             admindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGap(0, 480, Short.MAX_VALUE)
         );
         admindesktopLayout.setVerticalGroup(
             admindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGap(0, 460, Short.MAX_VALUE)
         );
 
         background.add(admindesktop);

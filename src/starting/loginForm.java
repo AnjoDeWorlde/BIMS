@@ -1,7 +1,6 @@
 package starting;
 
 import admin.adminForm;
-import admin.fulluserlists;
 import config.Session;
 import config.dbConnector;
 import config.passwordHasher;
@@ -268,10 +267,6 @@ public static boolean loginAcc(String username, String password){
         this.dispose();
     }//GEN-LAST:event_createaccountMouseClicked
 
-    private void forgotpasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotpasswordMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_forgotpasswordMouseClicked
-
     private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
         if(txtusername.getText().isEmpty() || txtpassword.getText().isEmpty()){
             System.out.println("Empty Text Field!");
@@ -282,7 +277,6 @@ public static boolean loginAcc(String username, String password){
                JOptionPane.showMessageDialog(null, "Login Success!");
                 if(type.equals("Admin")){
                     adminForm adf = new adminForm();
-                    fulluserlists fusf = new fulluserlists();
                     adf.setVisible(true);
                     this.dispose();
                 }else if(type.equals("User")){
@@ -323,6 +317,10 @@ public static boolean loginAcc(String username, String password){
     private void exitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseExited
         exit.setBackground(lowColor);// TODO add your handling code here:
     }//GEN-LAST:event_exitMouseExited
+
+    private void forgotpasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotpasswordMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_forgotpasswordMouseClicked
 
     /**
      * @param args the command line arguments

@@ -1,8 +1,9 @@
 package admin;
 
+import internaluserlistsForm.userlistsForm;
 import config.Session;
 import java.awt.Color;
-import internalForm.*;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import starting.loginForm;
 /**
@@ -18,15 +19,23 @@ public class adminForm extends javax.swing.JFrame {
         initComponents();
     }
 
-    Color navColor = new Color(0,51,0);
-    Color enterColor = new Color(204,255,204);
-       
+    Color navColor = new Color(0, 174, 239);
+    Color enterColor = new Color(46,49,146);
+    
+    private void closeAllInternalFrames() {
+        JInternalFrame[] frames = admindesktop.getAllFrames();
+        for (JInternalFrame frame : frames) {
+            frame.dispose();
+        }
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         background = new javax.swing.JPanel();
         navigation = new javax.swing.JPanel();
+        u_icon = new javax.swing.JLabel();
         type = new javax.swing.JLabel();
         lname = new javax.swing.JLabel();
         profile = new javax.swing.JPanel();
@@ -40,7 +49,7 @@ public class adminForm extends javax.swing.JFrame {
         settings = new javax.swing.JPanel();
         lblsettings = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
-        back = new javax.swing.JLabel();
+        logout = new javax.swing.JLabel();
         admindesktop = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,24 +62,25 @@ public class adminForm extends javax.swing.JFrame {
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(null);
 
-        navigation.setBackground(new java.awt.Color(0, 51, 0));
+        navigation.setBackground(new java.awt.Color(0, 174, 239));
         navigation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        navigation.add(u_icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 90, 90));
 
-        type.setFont(new java.awt.Font("Verdana", 1, 11)); // NOI18N
+        type.setFont(new java.awt.Font("Myanmar Text", 1, 11)); // NOI18N
         type.setForeground(new java.awt.Color(255, 255, 255));
         type.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         type.setText("(type)");
-        navigation.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, 20));
+        navigation.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 150, 20));
 
-        lname.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        lname.setFont(new java.awt.Font("Myanmar Text", 1, 15)); // NOI18N
         lname.setForeground(new java.awt.Color(255, 255, 255));
         lname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lname.setText("ADMIN");
         lname.setVerifyInputWhenFocusTarget(false);
         lname.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navigation.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 120));
+        navigation.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 150, 70));
 
-        profile.setBackground(new java.awt.Color(0, 51, 0));
+        profile.setBackground(new java.awt.Color(0, 174, 239));
         profile.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 profileMouseClicked(evt);
@@ -84,15 +94,15 @@ public class adminForm extends javax.swing.JFrame {
         });
         profile.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblprofile.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
+        lblprofile.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         lblprofile.setForeground(new java.awt.Color(255, 255, 255));
         lblprofile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblprofile.setText("PROFILE");
-        profile.add(lblprofile, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 200, 40));
+        profile.add(lblprofile, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 130, 40));
 
-        navigation.add(profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 220, 40));
+        navigation.add(profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 150, 40));
 
-        home.setBackground(new java.awt.Color(0, 51, 0));
+        home.setBackground(new java.awt.Color(0, 174, 239));
         home.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 homeMouseClicked(evt);
@@ -106,15 +116,15 @@ public class adminForm extends javax.swing.JFrame {
         });
         home.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblhome.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
+        lblhome.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         lblhome.setForeground(new java.awt.Color(255, 255, 255));
         lblhome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblhome.setText(" HOME");
-        home.add(lblhome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 200, 40));
+        home.add(lblhome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 130, 40));
 
-        navigation.add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 220, 40));
+        navigation.add(home, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 150, 40));
 
-        inventory.setBackground(new java.awt.Color(0, 51, 0));
+        inventory.setBackground(new java.awt.Color(0, 174, 239));
         inventory.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 inventoryMouseClicked(evt);
@@ -128,15 +138,15 @@ public class adminForm extends javax.swing.JFrame {
         });
         inventory.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblinventory.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
+        lblinventory.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         lblinventory.setForeground(new java.awt.Color(255, 255, 255));
         lblinventory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblinventory.setText("INVENTORY");
-        inventory.add(lblinventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 200, 40));
+        inventory.add(lblinventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 130, 40));
 
-        navigation.add(inventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 220, 40));
+        navigation.add(inventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 150, 40));
 
-        userlists.setBackground(new java.awt.Color(0, 51, 0));
+        userlists.setBackground(new java.awt.Color(0, 174, 239));
         userlists.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 userlistsMouseClicked(evt);
@@ -150,15 +160,15 @@ public class adminForm extends javax.swing.JFrame {
         });
         userlists.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbluserlists.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
+        lbluserlists.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         lbluserlists.setForeground(new java.awt.Color(255, 255, 255));
         lbluserlists.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbluserlists.setText(" USER LISTS");
-        userlists.add(lbluserlists, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 200, 40));
+        userlists.add(lbluserlists, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 130, 40));
 
-        navigation.add(userlists, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 220, 40));
+        navigation.add(userlists, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 150, 40));
 
-        settings.setBackground(new java.awt.Color(0, 51, 0));
+        settings.setBackground(new java.awt.Color(0, 174, 239));
         settings.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 settingsMouseClicked(evt);
@@ -172,24 +182,25 @@ public class adminForm extends javax.swing.JFrame {
         });
         settings.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblsettings.setFont(new java.awt.Font("Myanmar Text", 1, 14)); // NOI18N
+        lblsettings.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         lblsettings.setForeground(new java.awt.Color(255, 255, 255));
         lblsettings.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblsettings.setText("SETTINGS");
-        settings.add(lblsettings, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 200, 40));
+        settings.add(lblsettings, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 130, 40));
 
-        navigation.add(settings, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 220, 40));
+        navigation.add(settings, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 150, 40));
 
         background.add(navigation);
-        navigation.setBounds(0, 0, 220, 520);
+        navigation.setBounds(0, 0, 150, 520);
 
-        header.setBackground(new java.awt.Color(0, 51, 0));
+        header.setBackground(new java.awt.Color(0, 174, 239));
 
-        back.setForeground(new java.awt.Color(255, 255, 255));
-        back.setText("BACK");
-        back.addMouseListener(new java.awt.event.MouseAdapter() {
+        logout.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        logout.setForeground(new java.awt.Color(255, 255, 255));
+        logout.setText("LOGOUT");
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backMouseClicked(evt);
+                logoutMouseClicked(evt);
             }
         });
 
@@ -198,20 +209,20 @@ public class adminForm extends javax.swing.JFrame {
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                .addContainerGap(435, Short.MAX_VALUE)
-                .addComponent(back)
+                .addContainerGap(473, Short.MAX_VALUE)
+                .addComponent(logout)
                 .addGap(19, 19, 19))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(back)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addComponent(logout)
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         background.add(header);
-        header.setBounds(220, 0, 480, 60);
+        header.setBounds(150, 0, 550, 40);
 
         admindesktop.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -219,15 +230,15 @@ public class adminForm extends javax.swing.JFrame {
         admindesktop.setLayout(admindesktopLayout);
         admindesktopLayout.setHorizontalGroup(
             admindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGap(0, 550, Short.MAX_VALUE)
         );
         admindesktopLayout.setVerticalGroup(
             admindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 460, Short.MAX_VALUE)
+            .addGap(0, 480, Short.MAX_VALUE)
         );
 
         background.add(admindesktop);
-        admindesktop.setBounds(220, 60, 480, 460);
+        admindesktop.setBounds(150, 40, 550, 480);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -245,9 +256,8 @@ public class adminForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void profileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseClicked
-        profileForm prf = new profileForm();
+        closeAllInternalFrames();
         System.out.println("Admin clicked Profile!");
-        admindesktop.add(prf).setVisible(true);
     }//GEN-LAST:event_profileMouseClicked
 
     private void profileMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseEntered
@@ -291,35 +301,32 @@ public class adminForm extends javax.swing.JFrame {
     }//GEN-LAST:event_settingsMouseExited
 
     private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
-        homeForm hmf = new homeForm();
+        closeAllInternalFrames();
         System.out.println("Admin clicked Home!");
-        admindesktop.add(hmf).setVisible(true);
     }//GEN-LAST:event_homeMouseClicked
 
     private void inventoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventoryMouseClicked
-        inventoryForm inf = new inventoryForm();
+        closeAllInternalFrames();
         System.out.println("Admin clicked Inventory!");
-        admindesktop.add(inf).setVisible(true);
     }//GEN-LAST:event_inventoryMouseClicked
 
     private void userlistsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userlistsMouseClicked
+        closeAllInternalFrames();
         userlistsForm usf = new userlistsForm();
         System.out.println("Admin clicked User Lists!");
-        admindesktop.add(usf).setVisible(true);
     }//GEN-LAST:event_userlistsMouseClicked
 
     private void settingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsMouseClicked
-        settingsForm stf = new settingsForm();
+        closeAllInternalFrames();
         System.out.println("Admin clicked Settings!");
-        admindesktop.add(stf).setVisible(true);
     }//GEN-LAST:event_settingsMouseClicked
 
-    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        System.out.println("Login Returned!");
+    private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
+        System.out.println("Admin Logouts!");
         loginForm lgf = new loginForm();
         lgf.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_backMouseClicked
+    }//GEN-LAST:event_logoutMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         Session shesh = Session.getInstance();
@@ -372,7 +379,6 @@ public class adminForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane admindesktop;
-    private javax.swing.JLabel back;
     private javax.swing.JPanel background;
     private javax.swing.JPanel header;
     private javax.swing.JPanel home;
@@ -383,10 +389,12 @@ public class adminForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblsettings;
     private javax.swing.JLabel lbluserlists;
     public javax.swing.JLabel lname;
+    private javax.swing.JLabel logout;
     private javax.swing.JPanel navigation;
     private javax.swing.JPanel profile;
     private javax.swing.JPanel settings;
     public javax.swing.JLabel type;
+    private javax.swing.JLabel u_icon;
     private javax.swing.JPanel userlists;
     // End of variables declaration//GEN-END:variables
 }

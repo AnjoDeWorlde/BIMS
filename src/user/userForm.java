@@ -2,7 +2,6 @@ package user;
 
 import config.Session;
 import java.awt.Color;
-import internalForm.*;
 import javax.swing.JOptionPane;
 import starting.loginForm;
 /**
@@ -237,9 +236,7 @@ public class userForm extends javax.swing.JFrame {
     }//GEN-LAST:event_profileMouseExited
 
     private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
-        homeForm hmf = new homeForm();
         System.out.println("User clicked Home!");
-        admindesktop.add(hmf).setVisible(true);
     }//GEN-LAST:event_homeMouseClicked
 
     private void homeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseEntered
@@ -251,9 +248,7 @@ public class userForm extends javax.swing.JFrame {
     }//GEN-LAST:event_homeMouseExited
 
     private void inventoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventoryMouseClicked
-        inventoryForm inf = new inventoryForm();
         System.out.println("User clicked Inventory!");
-        admindesktop.add(inf).setVisible(true);
     }//GEN-LAST:event_inventoryMouseClicked
 
     private void inventoryMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventoryMouseEntered
@@ -265,9 +260,7 @@ public class userForm extends javax.swing.JFrame {
     }//GEN-LAST:event_inventoryMouseExited
 
     private void settingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsMouseClicked
-        settingsForm stf = new settingsForm();
         System.out.println("User clicked Settings!");
-        admindesktop.add(stf).setVisible(true);
     }//GEN-LAST:event_settingsMouseClicked
 
     private void settingsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsMouseEntered

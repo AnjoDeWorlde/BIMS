@@ -221,9 +221,7 @@ public class userForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void profileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseClicked
-        profileFForm prff = new profileFForm();
         System.out.println("User clicked Profile!");
-        prff.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_profileMouseClicked
 

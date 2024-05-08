@@ -6,11 +6,12 @@ import java.sql.SQLException;
 import javax.swing.JTable;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import net.proteanit.sql.DbUtils;
+
 /**
  *
  * @author DERECHO
  */
-public class tablelistForm extends javax.swing.JInternalFrame {
+public final class tablelistForm extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form tablelistForm
@@ -43,7 +44,8 @@ public class tablelistForm extends javax.swing.JInternalFrame {
     public void displayUser(){
         dbConnector connector = new dbConnector();
         try{            
-            try (ResultSet resultSet = connector.getData("SELECT u_id, u_lname, u_email, u_type, u_status FROM tbl_user")) {
+            try (ResultSet resultSet = connector.getData("SELECT u_id, u_lname, u_email, u_type, u_status FROM tbl_user "
+                + "WHERE u_status NOT IN ('Archive', 'Reset')")) {
                 listusers.setModel(DbUtils.resultSetToTableModel(resultSet));
             }
             
@@ -58,14 +60,14 @@ public class tablelistForm extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         background = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        table = new javax.swing.JScrollPane();
         listusers = new javax.swing.JTable();
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 3));
         background.setLayout(null);
 
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 3));
+        table.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 3));
 
         listusers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -75,10 +77,10 @@ public class tablelistForm extends javax.swing.JInternalFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(listusers);
+        table.setViewportView(listusers);
 
-        background.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 10, 510, 390);
+        background.add(table);
+        table.setBounds(10, 10, 510, 390);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,10 +100,9 @@ public class tablelistForm extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable listusers;
+    private javax.swing.JScrollPane table;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
+
 /**
  *
  * @author DERECHO
@@ -102,7 +103,7 @@ public class registrationForm extends javax.swing.JFrame {
         register = new javax.swing.JPanel();
         lblregister = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
-        logo2 = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
         bar1 = new javax.swing.JPanel();
         bar2 = new javax.swing.JPanel();
 
@@ -274,8 +275,8 @@ public class registrationForm extends javax.swing.JFrame {
         });
         form.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, -1, -1));
 
-        logo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo1_orig.jpg"))); // NOI18N
-        form.add(logo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 440, 270));
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo1_orig.jpg"))); // NOI18N
+        form.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 440, 270));
 
         background.add(form);
         form.setBounds(80, 60, 550, 420);
@@ -453,7 +454,7 @@ public class registrationForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblregistration;
     private javax.swing.JLabel lbltype;
     private javax.swing.JLabel lblusername;
-    private javax.swing.JLabel logo2;
+    private javax.swing.JLabel logo;
     private javax.swing.JPanel register;
     private javax.swing.JTextField txtcontactnumber;
     private javax.swing.JTextField txtemail;

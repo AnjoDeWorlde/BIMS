@@ -88,6 +88,7 @@ public static boolean loginAcc(String username, String password){
         login = new javax.swing.JPanel();
         lbllogin = new javax.swing.JLabel();
         forgotpassword = new javax.swing.JLabel();
+        check = new javax.swing.JCheckBox();
         logo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -148,34 +149,15 @@ public static boolean loginAcc(String username, String password){
                 exitMouseExited(evt);
             }
         });
+        exit.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblexit.setBackground(new java.awt.Color(255, 255, 255));
         lblexit.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         lblexit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblexit.setText("E X I T");
+        exit.add(lblexit, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 11, -1, -1));
 
-        javax.swing.GroupLayout exitLayout = new javax.swing.GroupLayout(exit);
-        exit.setLayout(exitLayout);
-        exitLayout.setHorizontalGroup(
-            exitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 80, Short.MAX_VALUE)
-            .addGroup(exitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(exitLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(lblexit)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        exitLayout.setVerticalGroup(
-            exitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
-            .addGroup(exitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(exitLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(lblexit)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        lowbar.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 90, 40));
+        lowbar.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 80, 40));
 
         login.setBackground(new java.awt.Color(255, 255, 255));
         login.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -190,34 +172,15 @@ public static boolean loginAcc(String username, String password){
                 loginMouseExited(evt);
             }
         });
+        login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbllogin.setBackground(new java.awt.Color(255, 255, 255));
         lbllogin.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         lbllogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbllogin.setText("L O G I N");
+        login.add(lbllogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 11, 80, -1));
 
-        javax.swing.GroupLayout loginLayout = new javax.swing.GroupLayout(login);
-        login.setLayout(loginLayout);
-        loginLayout.setHorizontalGroup(
-            loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 84, Short.MAX_VALUE)
-            .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(loginLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(lbllogin)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        loginLayout.setVerticalGroup(
-            loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
-            .addGroup(loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(loginLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(lbllogin)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        lowbar.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 170, -1, 40));
+        lowbar.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 100, 40));
 
         forgotpassword.setFont(new java.awt.Font("Myanmar Text", 2, 11)); // NOI18N
         forgotpassword.setForeground(new java.awt.Color(255, 51, 51));
@@ -228,6 +191,18 @@ public static boolean loginAcc(String username, String password){
             }
         });
         lowbar.add(forgotpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 100, 20));
+
+        check.setBackground(new java.awt.Color(0, 174, 239));
+        check.setForeground(new java.awt.Color(0, 174, 239));
+        check.setBorder(null);
+        check.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        check.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        check.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkActionPerformed(evt);
+            }
+        });
+        lowbar.add(check, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 20, 20));
 
         background.add(lowbar);
         lowbar.setBounds(0, 180, 700, 340);
@@ -306,7 +281,7 @@ public static boolean loginAcc(String username, String password){
     }//GEN-LAST:event_txtpasswordActionPerformed
 
     private void exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseClicked
-        System.out.println("Get Lost! Wrong Button");
+        System.out.println("Exit the App!");
         this.dispose();//shutdown
     }//GEN-LAST:event_exitMouseClicked
 
@@ -315,12 +290,23 @@ public static boolean loginAcc(String username, String password){
     }//GEN-LAST:event_exitMouseEntered
 
     private void exitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseExited
-        exit.setBackground(lowColor);// TODO add your handling code here:
+        exit.setBackground(lowColor);
     }//GEN-LAST:event_exitMouseExited
 
     private void forgotpasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotpasswordMouseClicked
-        // TODO add your handling code here:
+        System.out.println("Registration Start!");
+        forgotpassForm fpf = new forgotpassForm();
+        fpf.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_forgotpasswordMouseClicked
+
+    private void checkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkActionPerformed
+        if(check.isSelected()){
+            txtpassword.setEchoChar((char)0);
+        }else{
+            txtpassword.setEchoChar('*');
+        }
+    }//GEN-LAST:event_checkActionPerformed
 
     /**
      * @param args the command line arguments
@@ -350,15 +336,14 @@ public static boolean loginAcc(String username, String password){
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new loginForm().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new loginForm().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
+    private javax.swing.JCheckBox check;
     private javax.swing.JLabel createaccount;
     public javax.swing.JPanel exit;
     private javax.swing.JLabel forgotpassword;

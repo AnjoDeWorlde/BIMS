@@ -1,37 +1,40 @@
 package internaluserlistsForm;
 
 import config.dbConnector;
-import java.math.BigInteger;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.swing.plaf.basic.BasicInternalFrameUI;
-import javax.swing.JOptionPane;
 import config.passwordHasher;
 import java.awt.Color;
+import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
-import javax.swing.JDesktopPane;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+
 /**
  *
  * @author DERECHO
  */
 public class usereditForm extends javax.swing.JInternalFrame {
-     /**
+
+    /**
      * Creates new form usereditForm
+     * @param isCreating
      */
-    public usereditForm(userlistsForm parentFrame, boolean isCreating) {
+    public usereditForm(boolean isCreating) {
         initComponents();
-        this.parentFrame = parentFrame;
+        
         this.isCreating = isCreating;
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
     }
-    private userlistsForm parentFrame;
+
     private boolean isCreating;
     public static String email, username;    
     Color borderColor = new Color(255,255,255);
     Color enterColor = new Color(46,49,146);
-
+    
     public boolean duplicateEmail(){
         dbConnector connector = new dbConnector();
         
@@ -142,8 +145,6 @@ public class usereditForm extends javax.swing.JInternalFrame {
         lblstatus = new javax.swing.JLabel();
         confirm = new javax.swing.JPanel();
         lblconfirm = new javax.swing.JLabel();
-
-        setPreferredSize(new java.awt.Dimension(510, 380));
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(null);
@@ -316,25 +317,19 @@ public class usereditForm extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        parentFrame.restoreOriginalState();
-        System.out.println("Admin clicked Back!");
-        this.dispose();
-    }//GEN-LAST:event_backMouseClicked
-
-    private void boxstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxstatusActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_boxstatusActionPerformed
 
     private void txtfirstnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfirstnameActionPerformed
         // TODO add your handling code here:
@@ -364,18 +359,14 @@ public class usereditForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_boxtypeActionPerformed
 
-    private void confirmMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseExited
-        confirm.setBackground(borderColor);
-    }//GEN-LAST:event_confirmMouseExited
-
-    private void confirmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseEntered
-        confirm.setBackground(enterColor);
-    }//GEN-LAST:event_confirmMouseEntered
+    private void boxstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxstatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxstatusActionPerformed
 
     private void confirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseClicked
         String cNum = txtcontactnumber.getText();
         if (txtfirstname.getText().isEmpty() || txtlastname.getText().isEmpty() || txtemail.getText().isEmpty()
-        || txtusername.getText().isEmpty() || txtpassword.getText().isEmpty() || txtcontactnumber.getText().isEmpty()) {
+            || txtusername.getText().isEmpty() || txtpassword.getText().isEmpty() || txtcontactnumber.getText().isEmpty()) {
             System.out.println("Empty Text Field!");
             JOptionPane.showMessageDialog(null, "All fields are required!");
 
@@ -404,38 +395,60 @@ public class usereditForm extends javax.swing.JInternalFrame {
 
                 if (isCreating) {
                     if (connector.insertData("INSERT INTO tbl_user(u_fname ,u_lname ,u_email ,u_contactnumber ,u_username "
-                    + ",u_password ,u_type ,u_status) VALUES('" + txtfirstname.getText() + "','" + txtlastname.getText() 
-                    + "','" + txtemail.getText() + "','" + conNum + "','" + txtusername.getText() + "','" + password + "','"
-                    + boxtype.getSelectedItem() + "','" + boxstatus.getSelectedItem() + "')")) {
-                        System.out.println("Information Inserted!");
-                        JOptionPane.showMessageDialog(null, "Created Account Successfully!");
-                        parentFrame.restoreOriginalState();
-                        this.dispose();
+                        + ",u_password ,u_type ,u_status) VALUES('" + txtfirstname.getText() + "','" + txtlastname.getText()
+                        + "','" + txtemail.getText() + "','" + conNum + "','" + txtusername.getText() + "','" + password + "','"
+                        + boxtype.getSelectedItem() + "','" + boxstatus.getSelectedItem() + "')")) {
+                        try {
+                            userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
+                            userListFrame.restoreOriginalState();
+                            System.out.println("Information Inserted!");
+                            JOptionPane.showMessageDialog(null, "Created Account Successfully!");
+                        } catch (ClassCastException e) {
+                        }
                     } else {
                         System.out.println("Information Rejected!");
                         JOptionPane.showMessageDialog(null, "Failed Successfully!");
                     }
                 } else {
                     if(connector.updateData("UPDATE tbl_user SET u_fname = '" + txtfirstname.getText() + "', u_lname = '"
-                    + txtlastname.getText() + "', u_email = '" + txtemail.getText() + "', u_contactnumber = '"
-                    + txtcontactnumber.getText() + "', u_username = '" + txtusername.getText() + "', u_password = '"
-                    + txtpassword.getText() + "', u_type = '" + boxtype.getSelectedItem() + "', u_status = '"
-                    + boxstatus.getSelectedItem() + "' WHERE u_id = '" + id.getText() + "'")){
-                        System.out.println("Information Updated!");
-                        JOptionPane.showMessageDialog(null, "Updated Account Successfully!");
-                        parentFrame.restoreOriginalState();
-                        this.dispose();
+                        + txtlastname.getText() + "', u_email = '" + txtemail.getText() + "', u_contactnumber = '"
+                        + txtcontactnumber.getText() + "', u_username = '" + txtusername.getText() + "', u_password = '"
+                        + txtpassword.getText() + "', u_type = '" + boxtype.getSelectedItem() + "', u_status = '"
+                        + boxstatus.getSelectedItem() + "' WHERE u_id = '" + id.getText() + "'")){
+                        try {
+                            userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
+                            userListFrame.restoreOriginalState();
+                            System.out.println("Information Updated!");
+                            JOptionPane.showMessageDialog(null, "Updated Account Successfully!");
+                        } catch (ClassCastException e) {
+                        }
                     } else {
                         System.out.println("Information Rejected!");
                         JOptionPane.showMessageDialog(null, "Failed Successfully!");
                     }
                 }
-        } catch (NoSuchAlgorithmException ex) {
+            } catch (NoSuchAlgorithmException ex) {
             System.out.println("" + ex);
+            }
         }
-    }
     }//GEN-LAST:event_confirmMouseClicked
 
+    private void confirmMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseEntered
+        confirm.setBackground(enterColor);
+    }//GEN-LAST:event_confirmMouseEntered
+
+    private void confirmMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseExited
+        confirm.setBackground(borderColor);
+    }//GEN-LAST:event_confirmMouseExited
+
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        try {
+            userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
+            userListFrame.restoreOriginalState();
+            System.out.println("Admin clicked Back!");
+        } catch (ClassCastException e) {
+        }
+    }//GEN-LAST:event_backMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel back;

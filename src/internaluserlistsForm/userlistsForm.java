@@ -1,13 +1,16 @@
 package internaluserlistsForm;
 
+import admin.adminForm;
 import config.dbConnector;
 import java.awt.Color;
-import java.awt.Component;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+
 /**
  *
  * @author DERECHO
@@ -16,18 +19,23 @@ public class userlistsForm extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form userlistsForm
+     * @param admindesktop
      */
-    public userlistsForm() {
+    public userlistsForm(JDesktopPane admindesktop) {
         initComponents();
         
+        this.admindesktop = admindesktop;
         tablelistForm tlf = new tablelistForm();
         userlistdesktop.add(tlf);
         tlf.setVisible(true);
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
-        bi.setNorthPane(null);       
+        bi.setNorthPane(null);
+        update.setEnabled(false);
+        archive.setEnabled(false);
     }
-    
+ 
+    private JDesktopPane admindesktop; 
     Color borderColor = new Color(255,255,255);
     Color enterColor = new Color(46,49,146);
     
@@ -37,48 +45,50 @@ public class userlistsForm extends javax.swing.JInternalFrame {
             frame.dispose();
         }
     }
-
+        
     public void restoreOriginalState() {
-        Component[] components = userlistdesktop.getComponents();
-        for (Component component : components) {
-            if (component instanceof tablelistForm) {
-                userlistdesktop.remove(component);
-                ((JInternalFrame) component).dispose();
+        JInternalFrame[] frames = userlistdesktop.getAllFrames();
+        for (JInternalFrame frame : frames) {
+            if (frame  instanceof tablelistForm) {
+                frame.dispose();
                 break;
             }
         }
         tablelistForm tlf = new tablelistForm();
         userlistdesktop.add(tlf);
         tlf.setVisible(true);
-    }    
-
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
         background = new javax.swing.JPanel();
+        back = new javax.swing.JLabel();
         create = new javax.swing.JPanel();
         lblcreate = new javax.swing.JLabel();
         update = new javax.swing.JPanel();
         lblupdate = new javax.swing.JLabel();
-        delete = new javax.swing.JPanel();
-        lbldelete = new javax.swing.JLabel();
+        archive = new javax.swing.JPanel();
+        lblarchive = new javax.swing.JLabel();
         reset = new javax.swing.JPanel();
         lblreset = new javax.swing.JLabel();
         userlistdesktop = new javax.swing.JDesktopPane();
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
         background.setBackground(new java.awt.Color(255, 255, 255));
-        background.setPreferredSize(new java.awt.Dimension(550, 480));
         background.setLayout(null);
+
+        back.setForeground(new java.awt.Color(46, 49, 146));
+        back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        back.setText("BACK");
+        back.setToolTipText("");
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
+        background.add(back);
+        back.setBounds(470, 10, 50, 40);
 
         create.setBackground(new java.awt.Color(255, 255, 255));
         create.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -130,63 +140,55 @@ public class userlistsForm extends javax.swing.JInternalFrame {
         background.add(update);
         update.setBounds(90, 10, 70, 40);
 
-        delete.setBackground(new java.awt.Color(255, 255, 255));
-        delete.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
-        delete.addMouseListener(new java.awt.event.MouseAdapter() {
+        archive.setBackground(new java.awt.Color(255, 255, 255));
+        archive.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
+        archive.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                deleteMouseClicked(evt);
+                archiveMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                deleteMouseEntered(evt);
+                archiveMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                deleteMouseExited(evt);
+                archiveMouseExited(evt);
             }
         });
-        delete.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        archive.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbldelete.setBackground(new java.awt.Color(255, 255, 255));
-        lbldelete.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        lbldelete.setForeground(new java.awt.Color(46, 49, 146));
-        lbldelete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbldelete.setText("DELETE");
-        delete.add(lbldelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 70, 20));
+        lblarchive.setBackground(new java.awt.Color(255, 255, 255));
+        lblarchive.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        lblarchive.setForeground(new java.awt.Color(46, 49, 146));
+        lblarchive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblarchive.setText("ARCHIVE");
+        archive.add(lblarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 70, 20));
 
-        background.add(delete);
-        delete.setBounds(170, 10, 70, 40);
+        background.add(archive);
+        archive.setBounds(170, 10, 70, 40);
 
         reset.setBackground(new java.awt.Color(255, 255, 255));
         reset.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
+        reset.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                resetMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                resetMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                resetMouseExited(evt);
+            }
+        });
+        reset.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblreset.setBackground(new java.awt.Color(255, 255, 255));
         lblreset.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
         lblreset.setForeground(new java.awt.Color(46, 49, 146));
         lblreset.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblreset.setText("RESET");
-
-        javax.swing.GroupLayout resetLayout = new javax.swing.GroupLayout(reset);
-        reset.setLayout(resetLayout);
-        resetLayout.setHorizontalGroup(
-            resetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 59, Short.MAX_VALUE)
-            .addGroup(resetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(resetLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(lblreset, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        resetLayout.setVerticalGroup(
-            resetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
-            .addGroup(resetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(resetLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(lblreset, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        reset.add(lblreset, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 20));
 
         background.add(reset);
-        reset.setBounds(250, 10, 69, 40);
+        reset.setBounds(250, 10, 60, 40);
 
         userlistdesktop.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -208,13 +210,11 @@ public class userlistsForm extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
         );
 
         pack();
@@ -222,9 +222,8 @@ public class userlistsForm extends javax.swing.JInternalFrame {
 
     private void createMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createMouseClicked
         closeAllInternalFrames();
-        usereditForm uef = new usereditForm(this, true);
+        usereditForm uef = new usereditForm(true);
         System.out.println("Admin clicked Create Account!");
-        uef.setSize(530, 410);
         userlistdesktop.add(uef).setVisible(true);
     }//GEN-LAST:event_createMouseClicked
 
@@ -237,33 +236,40 @@ public class userlistsForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_createMouseExited
 
     private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
-        tablelistForm tlf = (tablelistForm) userlistdesktop.getSelectedFrame();
-        if (tlf != null && tlf.getSelectedRowIndex() != -1) {
-            try {
-                int row = tlf.getSelectedRowIndex();
-                int accountId = tlf.getSelectedAccountId();
-                dbConnector connector = new dbConnector();
-                ResultSet resultSet = connector.getData("SELECT * FROM tbl_user WHERE u_id = '"+ accountId +"' ");
-                if(resultSet.next()){
-                    closeAllInternalFrames();
-                    usereditForm uef = new usereditForm(this, false);
-                    System.out.println("Admin clicked Update Account!");
-                    userlistdesktop.add(uef).setVisible(true);
-                    uef.id.setText(""+resultSet.getInt("u_id"));
-                    uef.txtfirstname.setText(""+resultSet.getString("u_fname"));
-                    uef.txtlastname.setText(""+resultSet.getString("u_lname"));
-                    uef.txtemail.setText(""+resultSet.getString("u_email"));
-                    uef.txtcontactnumber.setText(""+resultSet.getString("u_contactnumber"));
-                    uef.txtusername.setText(""+resultSet.getString("u_username"));
-                    uef.txtpassword.setText(""+resultSet.getString("u_password"));
-                    uef.boxtype.setSelectedItem(""+resultSet.getString("u_type"));
-                    uef.boxstatus.setSelectedItem(""+resultSet.getString("u_status"));
+        JInternalFrame selectedFrame = userlistdesktop.getSelectedFrame();
+        update.setEnabled(true);
+        if (selectedFrame instanceof tablelistForm) {
+            tablelistForm tlf = (tablelistForm) selectedFrame;
+            if (tlf != null && tlf.getSelectedRowIndex() != -1) {
+                try {
+                    int row = tlf.getSelectedRowIndex();
+                    int accountId = tlf.getSelectedAccountId();
+                    dbConnector connector = new dbConnector();
+                    ResultSet resultSet = connector.getData("SELECT * FROM tbl_user WHERE u_id = '"+ accountId +"' ");
+                    if(resultSet.next()){
+                        closeAllInternalFrames();
+                        usereditForm uef = new usereditForm(false);
+                        System.out.println("Admin clicked Update Account!");
+                        userlistdesktop.add(uef).setVisible(true);
+                        uef.id.setText(""+resultSet.getInt("u_id"));
+                        uef.txtfirstname.setText(""+resultSet.getString("u_fname"));
+                        uef.txtlastname.setText(""+resultSet.getString("u_lname"));
+                        uef.txtemail.setText(""+resultSet.getString("u_email"));
+                        uef.txtcontactnumber.setText(""+resultSet.getString("u_contactnumber"));
+                        uef.txtusername.setText(""+resultSet.getString("u_username"));
+                        uef.txtpassword.setText(""+resultSet.getString("u_password"));
+                        uef.boxtype.setSelectedItem(""+resultSet.getString("u_type"));
+                        uef.boxstatus.setSelectedItem(""+resultSet.getString("u_status"));
+                    }
+                } catch (SQLException ex) {
                 }
-            } catch (SQLException ex) {
+            } else { 
+                update.setEnabled(false);
+                System.out.println("No Item!");
+                JOptionPane.showMessageDialog(null, "Please select an item.");
             }
         } else {
-            System.out.println("No Item!");
-            JOptionPane.showMessageDialog(null, "Please select an item.");
+            System.out.println("Invalid Action!");
         }
     }//GEN-LAST:event_updateMouseClicked
 
@@ -275,46 +281,73 @@ public class userlistsForm extends javax.swing.JInternalFrame {
         update.setBackground(borderColor);
     }//GEN-LAST:event_updateMouseExited
 
-    private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
-        tablelistForm tlf = (tablelistForm) userlistdesktop.getSelectedFrame();
-        if (tlf != null && tlf.getSelectedRowIndex() != -1) {
-            int row = tlf.getSelectedRowIndex();
-            int accountId = tlf.getSelectedAccountId();
-            dbConnector connector = new dbConnector();
-            boolean deleted = connector.deleteData("DELETE FROM tbl_user WHERE u_id = '"+ accountId +"' ");
-            if(deleted) {
-                closeAllInternalFrames();
-                restoreOriginalState();
-                System.out.println("Admin clicked Update Account!");
-                JOptionPane.showMessageDialog(null, "Deleted Account Successfully!");
+    private void archiveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_archiveMouseClicked
+        JInternalFrame selectedFrame = userlistdesktop.getSelectedFrame();
+        archive.setEnabled(true);
+        if (selectedFrame instanceof tablelistForm) {
+            tablelistForm tlf = (tablelistForm) selectedFrame;
+            if (tlf != null && tlf.getSelectedRowIndex() != -1) {
+                try {
+                    int row = tlf.getSelectedRowIndex();
+                    int accountId = tlf.getSelectedAccountId();
+                    dbConnector connector = new dbConnector();
+                    String updateQuery = "UPDATE tbl_user SET u_status = 'Archive' WHERE u_id = '"+ accountId +"'";
+                    connector.updateData(updateQuery);
+                    ResultSet resultSet = connector.getData("SELECT * FROM tbl_user WHERE u_id = '"+ accountId +"' ");
+                    if(resultSet.next()){
+                        closeAllInternalFrames();
+                        userarchiveForm urf = new userarchiveForm();
+                        System.out.println("Admin clicked Archive Account!");
+                        userlistdesktop.add(urf).setVisible(true);
+                    }
+                } catch (SQLException ex) {
+                }
             } else {
-                System.out.println("Information Rejected!");
-                JOptionPane.showMessageDialog(null, "Failed Successfully!");
             }
-        } else {
-            System.out.println("No Item!");
-            JOptionPane.showMessageDialog(null, "Please select an item.");
+        }else {
+            closeAllInternalFrames();
+            userarchiveForm urf = new userarchiveForm();
+            System.out.println("Admin clicked Archive Account!");
+            userlistdesktop.add(urf).setVisible(true);
         }
-    }//GEN-LAST:event_deleteMouseClicked
+    }//GEN-LAST:event_archiveMouseClicked
 
-    private void deleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseEntered
-        delete.setBackground(enterColor);
-    }//GEN-LAST:event_deleteMouseEntered
+    private void archiveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_archiveMouseEntered
+        archive.setBackground(enterColor);
+    }//GEN-LAST:event_archiveMouseEntered
 
-    private void deleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseExited
-        delete.setBackground(borderColor);
-    }//GEN-LAST:event_deleteMouseExited
+    private void archiveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_archiveMouseExited
+        archive.setBackground(borderColor);
+    }//GEN-LAST:event_archiveMouseExited
 
+    private void resetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseClicked
+        closeAllInternalFrames();
+        userresetForm urf = new userresetForm();
+        System.out.println("Admin clicked Reset Password!");
+        userlistdesktop.add(urf).setVisible(true);
+    }//GEN-LAST:event_resetMouseClicked
+
+    private void resetMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseEntered
+        reset.setBackground(enterColor);
+    }//GEN-LAST:event_resetMouseEntered
+
+    private void resetMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseExited
+        reset.setBackground(borderColor);
+    }//GEN-LAST:event_resetMouseExited
+
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        adminForm parentFrame = (adminForm) SwingUtilities.getWindowAncestor(this);
+        parentFrame.restoreOriginalState();
+        System.out.println("Admin clicked Back!");
+    }//GEN-LAST:event_backMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel archive;
+    private javax.swing.JLabel back;
     private javax.swing.JPanel background;
     private javax.swing.JPanel create;
-    private javax.swing.JPanel delete;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel lblarchive;
     private javax.swing.JLabel lblcreate;
-    private javax.swing.JLabel lbldelete;
     private javax.swing.JLabel lblreset;
     private javax.swing.JLabel lblupdate;
     private javax.swing.JPanel reset;

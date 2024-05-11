@@ -11,12 +11,12 @@ import net.proteanit.sql.DbUtils;
  *
  * @author DERECHO
  */
-public final class tablelistForm extends javax.swing.JInternalFrame {
+public final class tableulistForm extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form tablelistForm
+     * Creates new form tableulistForm
      */
-    public tablelistForm() {
+    public tableulistForm() {
         initComponents();
         displayUser();
         
@@ -24,7 +24,7 @@ public final class tablelistForm extends javax.swing.JInternalFrame {
         BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
     }
-    
+
     public JTable getListUsersTable() {
         return listusers;
     }
@@ -50,8 +50,6 @@ public final class tablelistForm extends javax.swing.JInternalFrame {
             }
             
         }catch(SQLException ex){
-            System.out.println("Errors: "+ex.getMessage());
-            
         }
     }
     

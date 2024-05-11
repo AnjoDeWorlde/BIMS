@@ -30,42 +30,42 @@ public class loginForm extends javax.swing.JFrame {
     Color lowColor = new Color(255,255,255);
     Color enterColor = new Color(46,49,146);
     
-public static boolean loginAcc(String username, String password){
-    dbConnector connector = new dbConnector();
-    try{
-        String query = "SELECT * FROM tbl_user WHERE u_username = ? AND u_password = ? AND u_status = 'Active'";
-        PreparedStatement preparedStatement = connector.prepareStatement(query);
-        preparedStatement.setString(1, username);
-        String hashedPassword = passwordHasher.hashPassword(password);
-        preparedStatement.setString(2, hashedPassword);
-        ResultSet resultSet = preparedStatement.executeQuery();
-        if(resultSet.next()){
-            lname = resultSet.getString("u_lname");
-            type = resultSet.getString("u_type");
-            Session shesh = Session.getInstance();
-            shesh.setUid(resultSet.getInt("u_id"));
-            shesh.setFname(resultSet.getString("u_fname"));
-            shesh.setLname(resultSet.getString("u_lname"));
-            shesh.setEmail(resultSet.getString("u_email"));
-            shesh.setContactnumber(resultSet.getLong("u_contactnumber"));
-            shesh.setUsername(resultSet.getString("u_username"));
-            shesh.setType(resultSet.getString("u_type"));
-            shesh.setStatus(resultSet.getString("u_status"));
-            if(type.equals("Admin") || type.equals("User")){
-                return true;
+    public static boolean loginAcc(String username, String password){
+        dbConnector connector = new dbConnector();
+        try{
+            String query = "SELECT * FROM tbl_user WHERE u_username = ? AND u_password = ? AND u_status = 'Active'";
+            PreparedStatement preparedStatement = connector.prepareStatement(query);
+            preparedStatement.setString(1, username);
+            String hashedPassword = passwordHasher.hashPassword(password);
+            preparedStatement.setString(2, hashedPassword);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                lname = resultSet.getString("u_lname");
+               type = resultSet.getString("u_type");
+               Session shesh = Session.getInstance();
+                shesh.setUid(resultSet.getInt("u_id"));
+                shesh.setFname(resultSet.getString("u_fname"));
+               shesh.setLname(resultSet.getString("u_lname"));
+               shesh.setEmail(resultSet.getString("u_email"));
+                shesh.setContactnumber(resultSet.getLong("u_contactnumber"));
+                shesh.setUsername(resultSet.getString("u_username"));
+                shesh.setType(resultSet.getString("u_type"));
+               shesh.setStatus(resultSet.getString("u_status"));
+               if(type.equals("Admin") || type.equals("User")){
+                   return true;
+               }else{
+                    System.out.println("Invalid user type!"); 
+                    return false;
+                }
             }else{
-                System.out.println("Invalid user type!"); 
+                System.out.println("Invalid username, password, or account status!"); 
                 return false;
             }
-        }else{
-            System.out.println("Invalid username, password, or account status!"); 
+        }catch (SQLException | NoSuchAlgorithmException ex) {
+            System.out.println("Exception: " + ex.getMessage());
             return false;
         }
-    }catch (SQLException | NoSuchAlgorithmException ex) {
-        System.out.println("Exception: " + ex.getMessage());
-        return false;
     }
-}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -294,7 +294,7 @@ public static boolean loginAcc(String username, String password){
     }//GEN-LAST:event_exitMouseExited
 
     private void forgotpasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotpasswordMouseClicked
-        System.out.println("Registration Start!");
+        System.out.println("Reset Password Start!");
         forgotpassForm fpf = new forgotpassForm();
         fpf.setVisible(true);
         this.dispose();
@@ -324,15 +324,11 @@ public static boolean loginAcc(String username, String password){
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(loginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(loginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(loginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(loginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the form */

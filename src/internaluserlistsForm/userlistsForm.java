@@ -25,9 +25,9 @@ public class userlistsForm extends javax.swing.JInternalFrame {
         initComponents();
         
         this.admindesktop = admindesktop;
-        tablelistForm tlf = new tablelistForm();
-        userlistdesktop.add(tlf);
-        tlf.setVisible(true);
+        tableulistForm tulf = new tableulistForm();
+        userlistdesktop.add(tulf);
+        tulf.setVisible(true);
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
@@ -49,12 +49,12 @@ public class userlistsForm extends javax.swing.JInternalFrame {
     public void restoreOriginalState() {
         JInternalFrame[] frames = userlistdesktop.getAllFrames();
         for (JInternalFrame frame : frames) {
-            if (frame  instanceof tablelistForm) {
+            if (frame  instanceof tableulistForm) {
                 frame.dispose();
                 break;
             }
         }
-        tablelistForm tlf = new tablelistForm();
+        tableulistForm tlf = new tableulistForm();
         userlistdesktop.add(tlf);
         tlf.setVisible(true);
     }
@@ -214,7 +214,9 @@ public class userlistsForm extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -238,8 +240,8 @@ public class userlistsForm extends javax.swing.JInternalFrame {
     private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
         JInternalFrame selectedFrame = userlistdesktop.getSelectedFrame();
         update.setEnabled(true);
-        if (selectedFrame instanceof tablelistForm) {
-            tablelistForm tlf = (tablelistForm) selectedFrame;
+        if (selectedFrame instanceof tableulistForm) {
+            tableulistForm tlf = (tableulistForm) selectedFrame;
             if (tlf != null && tlf.getSelectedRowIndex() != -1) {
                 try {
                     int row = tlf.getSelectedRowIndex();
@@ -251,7 +253,7 @@ public class userlistsForm extends javax.swing.JInternalFrame {
                         usereditForm uef = new usereditForm(false);
                         System.out.println("Admin clicked Update Account!");
                         userlistdesktop.add(uef).setVisible(true);
-                        uef.id.setText(""+resultSet.getInt("u_id"));
+                        uef.id.setText("# "+resultSet.getInt("u_id"));
                         uef.txtfirstname.setText(""+resultSet.getString("u_fname"));
                         uef.txtlastname.setText(""+resultSet.getString("u_lname"));
                         uef.txtemail.setText(""+resultSet.getString("u_email"));
@@ -284,8 +286,8 @@ public class userlistsForm extends javax.swing.JInternalFrame {
     private void archiveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_archiveMouseClicked
         JInternalFrame selectedFrame = userlistdesktop.getSelectedFrame();
         archive.setEnabled(true);
-        if (selectedFrame instanceof tablelistForm) {
-            tablelistForm tlf = (tablelistForm) selectedFrame;
+        if (selectedFrame instanceof tableulistForm) {
+            tableulistForm tlf = (tableulistForm) selectedFrame;
             if (tlf != null && tlf.getSelectedRowIndex() != -1) {
                 try {
                     int row = tlf.getSelectedRowIndex();

@@ -170,27 +170,14 @@ public class changepassForm extends javax.swing.JInternalFrame {
                 changepassMouseExited(evt);
             }
         });
+        changepass.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblreset.setBackground(new java.awt.Color(255, 255, 255));
         lblreset.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         lblreset.setForeground(new java.awt.Color(46, 49, 146));
         lblreset.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblreset.setText("CHANGE PASSWORD");
-
-        javax.swing.GroupLayout changepassLayout = new javax.swing.GroupLayout(changepass);
-        changepass.setLayout(changepassLayout);
-        changepassLayout.setHorizontalGroup(
-            changepassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-            .addGroup(changepassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblreset, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        changepassLayout.setVerticalGroup(
-            changepassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-            .addGroup(changepassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(lblreset, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
-        );
+        changepass.add(lblreset, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 5, 150, 40));
 
         background.add(changepass);
         changepass.setBounds(230, 330, 160, 50);

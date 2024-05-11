@@ -152,13 +152,13 @@ public class usereditForm extends javax.swing.JInternalFrame {
         id.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         id.setForeground(new java.awt.Color(46, 49, 146));
         background.add(id);
-        id.setBounds(220, 10, 150, 50);
+        id.setBounds(180, 10, 190, 50);
 
         lblregistration.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         lblregistration.setForeground(new java.awt.Color(46, 49, 146));
-        lblregistration.setText("Account #");
+        lblregistration.setText("Account");
         background.add(lblregistration);
-        lblregistration.setBounds(10, 10, 420, 60);
+        lblregistration.setBounds(10, 10, 170, 60);
 
         back.setForeground(new java.awt.Color(46, 49, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -366,7 +366,7 @@ public class usereditForm extends javax.swing.JInternalFrame {
     private void confirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseClicked
         String cNum = txtcontactnumber.getText();
         if (txtfirstname.getText().isEmpty() || txtlastname.getText().isEmpty() || txtemail.getText().isEmpty()
-            || txtusername.getText().isEmpty() || txtpassword.getText().isEmpty() || txtcontactnumber.getText().isEmpty()) {
+        || txtusername.getText().isEmpty() || txtpassword.getText().isEmpty() || txtcontactnumber.getText().isEmpty()) {
             System.out.println("Empty Text Field!");
             JOptionPane.showMessageDialog(null, "All fields are required!");
 
@@ -395,9 +395,9 @@ public class usereditForm extends javax.swing.JInternalFrame {
 
                 if (isCreating) {
                     if (connector.insertData("INSERT INTO tbl_user(u_fname ,u_lname ,u_email ,u_contactnumber ,u_username "
-                        + ",u_password ,u_type ,u_status) VALUES('" + txtfirstname.getText() + "','" + txtlastname.getText()
-                        + "','" + txtemail.getText() + "','" + conNum + "','" + txtusername.getText() + "','" + password + "','"
-                        + boxtype.getSelectedItem() + "','" + boxstatus.getSelectedItem() + "')")) {
+                    + ",u_password ,u_type ,u_status) VALUES('" + txtfirstname.getText() + "','" + txtlastname.getText()
+                    + "','" + txtemail.getText() + "','" + conNum + "','" + txtusername.getText() + "','" + password + "','"
+                    + boxtype.getSelectedItem() + "','" + boxstatus.getSelectedItem() + "')")) {
                         try {
                             userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
                             userListFrame.restoreOriginalState();
@@ -410,11 +410,12 @@ public class usereditForm extends javax.swing.JInternalFrame {
                         JOptionPane.showMessageDialog(null, "Failed Successfully!");
                     }
                 } else {
+                    //THIS DOES NOT WORKS!
                     if(connector.updateData("UPDATE tbl_user SET u_fname = '" + txtfirstname.getText() + "', u_lname = '"
-                        + txtlastname.getText() + "', u_email = '" + txtemail.getText() + "', u_contactnumber = '"
-                        + txtcontactnumber.getText() + "', u_username = '" + txtusername.getText() + "', u_password = '"
-                        + txtpassword.getText() + "', u_type = '" + boxtype.getSelectedItem() + "', u_status = '"
-                        + boxstatus.getSelectedItem() + "' WHERE u_id = '" + id.getText() + "'")){
+                    + txtlastname.getText() + "', u_email = '" + txtemail.getText() + "', u_contactnumber = '"
+                    + txtcontactnumber.getText() + "', u_username = '" + txtusername.getText() + "', u_type = '" 
+                    + boxtype.getSelectedItem() + "', u_status = '" + boxstatus.getSelectedItem() + "' WHERE u_id = '" 
+                    + id.getText() + "'")){
                         try {
                             userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
                             userListFrame.restoreOriginalState();
@@ -428,7 +429,6 @@ public class usereditForm extends javax.swing.JInternalFrame {
                     }
                 }
             } catch (NoSuchAlgorithmException ex) {
-            System.out.println("" + ex);
             }
         }
     }//GEN-LAST:event_confirmMouseClicked

@@ -1,6 +1,5 @@
 package internaluserlistsForm;
 
-import config.Session;
 import config.dbConnector;
 import config.passwordHasher;
 import java.awt.Color;
@@ -8,8 +7,6 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -39,7 +36,7 @@ public final class userresetForm extends javax.swing.JInternalFrame {
     public void displayUser(){
         dbConnector connector = new dbConnector();
         try{            
-            try (ResultSet resultSet = connector.getData("SELECT u_id, u_lname, u_email FROM tbl_user WHERE u_status = 'Reset'")) {
+            try (ResultSet resultSet = connector.getData("SELECT u_id, u_email, u_contactnumber, u_username FROM tbl_user WHERE u_status = 'Reset'")) {
                 userlists.setModel(DbUtils.resultSetToTableModel(resultSet));
             }
             

@@ -2,7 +2,7 @@ package admin;
 
 import internaluserlistsForm.userlistsForm;
 import config.Session;
-import internalproductForm.productForm;
+import internalproductForm.productlistsForm;
 import internalprofileForm.profileForm;
 import java.awt.Color;
 import javax.swing.JInternalFrame;
@@ -324,8 +324,8 @@ public class adminForm extends javax.swing.JFrame {
 
     private void ProductsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductsMouseClicked
         closeAllInternalFrames();
-        productForm pf = new productForm(admindesktop);
-        admindesktop.add(pf).setVisible(true);
+        productlistsForm plf = new productlistsForm(admindesktop);
+        admindesktop.add(plf).setVisible(true);
         System.out.println("Admin clicked Product Lists!");
     }//GEN-LAST:event_ProductsMouseClicked
 

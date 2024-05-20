@@ -65,6 +65,7 @@ public final class tableulistForm extends javax.swing.JInternalFrame {
         background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 3));
         background.setLayout(null);
 
+        table.setBackground(new java.awt.Color(255, 255, 255));
         table.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 3));
 
         listusers.setModel(new javax.swing.table.DefaultTableModel(

@@ -4,7 +4,6 @@ import config.dbConnector;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import net.proteanit.sql.DbUtils;
@@ -21,7 +20,7 @@ public final class userarchiveForm extends javax.swing.JInternalFrame {
     public userarchiveForm() {
         initComponents();
         displayUser();
-        
+
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
@@ -35,11 +34,8 @@ public final class userarchiveForm extends javax.swing.JInternalFrame {
         try{            
             try (ResultSet resultSet = connector.getData("SELECT u_id, u_lname, u_email, u_type, u_status FROM tbl_user WHERE u_status = 'Archive'")) {
                 userlists.setModel(DbUtils.resultSetToTableModel(resultSet));
-            }
-            
+            }      
         }catch(SQLException ex){
-            System.out.println("Errors: "+ex.getMessage());
-            
         }
     }
         
@@ -88,7 +84,6 @@ public final class userarchiveForm extends javax.swing.JInternalFrame {
         unarchive.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblunarchive.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        lblunarchive.setForeground(new java.awt.Color(46, 49, 146));
         lblunarchive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblunarchive.setText("U N A R C H I V E");
         unarchive.add(lblunarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 30));
@@ -98,6 +93,7 @@ public final class userarchiveForm extends javax.swing.JInternalFrame {
 
         back.setForeground(new java.awt.Color(46, 49, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/leftarrow_orig.png"))); // NOI18N
         back.setText("BACK");
         back.setToolTipText("");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -106,7 +102,7 @@ public final class userarchiveForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(back);
-        back.setBounds(470, 360, 50, 40);
+        back.setBounds(450, 380, 70, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -125,7 +121,7 @@ public final class userarchiveForm extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void unarchiveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_unarchiveMouseClicked
         int selectedRow = userlists.getSelectedRow();
         if (selectedRow != -1) {
@@ -136,16 +132,16 @@ public final class userarchiveForm extends javax.swing.JInternalFrame {
                 connector.updateData(updateQuery);
                 ResultSet resultSet = connector.getData("SELECT * FROM tbl_user WHERE u_id = '" + accountId + "' ");
                 if (resultSet.next()) {
-                    userarchiveForm uaf = new userarchiveForm();
-                    uaf.dispose(); 
+                    userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
                     System.out.println("Unarchive Successfully!");
-                    JOptionPane.showMessageDialog(null, "Unarchive an User Account!");
-                    uaf.setVisible(true);
+                    userListFrame.getLblMessage().setText("Unarchive Successfully!");
                 }
             } catch (SQLException ex) {
             }
         } else {
-            JOptionPane.showMessageDialog(this, "You need to select an item from the table.", "Error", JOptionPane.ERROR_MESSAGE);
+            userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
+            System.out.println("No Selected Item!");
+            userListFrame.getLblMessage().setText("Please select an Item!");
         }
     }//GEN-LAST:event_unarchiveMouseClicked
 
@@ -158,12 +154,10 @@ public final class userarchiveForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_unarchiveMouseExited
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        try {
-            userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
-            userListFrame.restoreOriginalState();
-            System.out.println("Admin clicked Back!");
-        } catch (ClassCastException e) {
-        }
+        userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
+        userListFrame.restoreOriginalState();
+        userListFrame.getLblMessage().setText("");
+        System.out.println("Go Back!");
     }//GEN-LAST:event_backMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

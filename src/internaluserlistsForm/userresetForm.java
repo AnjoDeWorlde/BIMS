@@ -7,7 +7,6 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Random;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import net.proteanit.sql.DbUtils;
@@ -61,7 +60,6 @@ public final class userresetForm extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSeparator1 = new javax.swing.JSeparator();
         background = new javax.swing.JPanel();
         back = new javax.swing.JLabel();
         scroll = new javax.swing.JScrollPane();
@@ -80,6 +78,7 @@ public final class userresetForm extends javax.swing.JInternalFrame {
 
         back.setForeground(new java.awt.Color(46, 49, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/leftarrow_orig.png"))); // NOI18N
         back.setText("BACK");
         back.setToolTipText("");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -88,7 +87,7 @@ public final class userresetForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(back);
-        back.setBounds(470, 360, 50, 40);
+        back.setBounds(450, 380, 70, 20);
 
         scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 3));
 
@@ -121,7 +120,6 @@ public final class userresetForm extends javax.swing.JInternalFrame {
         confirm1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblconfirm1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        lblconfirm1.setForeground(new java.awt.Color(46, 49, 146));
         lblconfirm1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblconfirm1.setText("C H A N G E");
         confirm1.add(lblconfirm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 6, 110, 40));
@@ -145,7 +143,6 @@ public final class userresetForm extends javax.swing.JInternalFrame {
         confirm.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblconfirm.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        lblconfirm.setForeground(new java.awt.Color(46, 49, 146));
         lblconfirm.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblconfirm.setText("C O N F I R M");
         confirm.add(lblconfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 6, 110, 40));
@@ -198,12 +195,10 @@ public final class userresetForm extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        try {
-            userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
-            userListFrame.restoreOriginalState();
-            System.out.println("Admin clicked Back!");
-        } catch (ClassCastException e) {
-        }
+        userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
+        userListFrame.restoreOriginalState();
+        userListFrame.getLblMessage().setText("");
+        System.out.println("Admin clicked Back!");
     }//GEN-LAST:event_backMouseClicked
 
     private void txtnewpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnewpassActionPerformed
@@ -220,12 +215,14 @@ public final class userresetForm extends javax.swing.JInternalFrame {
                 if (resultSet.next()) {
                     String password = generatePassword();
                     txtnewpass.setText(password);
+                    userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
+                    userListFrame.getLblMessage().setText("Copy Password!");
                     System.out.println("Generated New Password!");
                 }
             } catch (SQLException ex) {
             }
         } else {
-            JOptionPane.showMessageDialog(this, "You need to select an item from the table.", "Error", JOptionPane.ERROR_MESSAGE);
+            
         }
     }//GEN-LAST:event_confirmMouseClicked
 
@@ -239,8 +236,9 @@ public final class userresetForm extends javax.swing.JInternalFrame {
 
     private void confirm1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirm1MouseClicked
         if(txtnewpass.getText().isEmpty() || txtconfirmpass.getText().isEmpty()){
-            System.out.println("Empty Text Field!");
-            JOptionPane.showMessageDialog(null, "All fields are required!");
+            System.out.println("Empty Text Fields!");
+            userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
+            userListFrame.getLblMessage().setText("Required All Fields!");
         }else{
             int selectedRow = userlists.getSelectedRow();
             if (selectedRow != -1) {
@@ -256,11 +254,13 @@ public final class userresetForm extends javax.swing.JInternalFrame {
                             userresetForm urf = new userresetForm();
                             urf.dispose(); 
                             System.out.println("Password Changed!");
-                            JOptionPane.showMessageDialog(null, "Change Password Succesfully!");
+                            userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
+                            userListFrame.getLblMessage().setText("Change Password Succesfully!");
                             urf.setVisible(true);
                         }else{
                             System.out.println("Password Not Matching!");
-                            JOptionPane.showMessageDialog(null, "New Password and Confirm Password doesn't match!");
+                            userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
+                            userListFrame.getLblMessage().setText("Password doesn't matched!");
                             txtconfirmpass.setText("");
                         }
                     }   
@@ -287,7 +287,6 @@ public final class userresetForm extends javax.swing.JInternalFrame {
     private javax.swing.JPanel background;
     private javax.swing.JPanel confirm;
     private javax.swing.JPanel confirm1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblconfirm;
     private javax.swing.JLabel lblconfirm1;
     private javax.swing.JLabel lblconfirmpass;

@@ -15,7 +15,7 @@ public class dbConnector {
         try{
             connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_bims", "root", "");
         }catch(SQLException ex){
-                System.out.println("Can't connect to database: "+ex.getMessage());
+            System.out.println("DB CONNECTOR Can't connect to database: "+ex.getMessage());
         }
     }
 
@@ -33,8 +33,8 @@ public class dbConnector {
                 pst.close();
                return true;
             }catch(SQLException ex){
-                System.out.println("Connection Error: "+ex);
-               return false;
+                System.out.println("INSERT Connection Error: "+ex);
+                return false;
             }
     }
     
@@ -50,7 +50,7 @@ public class dbConnector {
             pst.close();
             return rowsUpdated > 0;
         } catch(SQLException ex){
-            System.out.println("Connection Error: " + ex);
+            System.out.println("UPDATE Connection Error: " + ex);
             return false;
         }
     }

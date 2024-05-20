@@ -6,10 +6,8 @@ import config.passwordHasher;
 import java.awt.Color;
 import java.math.BigDecimal;
 import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -41,7 +39,7 @@ public class producteditForm extends javax.swing.JInternalFrame {
     }
     
     public static boolean equalPass(String oldpass, String passhash) {
-        return true;
+        return oldpass.equals(passhash);
     }
     
     @SuppressWarnings("unchecked")
@@ -50,18 +48,21 @@ public class producteditForm extends javax.swing.JInternalFrame {
 
         background = new javax.swing.JPanel();
         id = new javax.swing.JLabel();
-        lblregistration = new javax.swing.JLabel();
+        lblproduct = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
+        lblmessage1 = new javax.swing.JLabel();
         txtname = new javax.swing.JTextField();
         lblname = new javax.swing.JLabel();
+        lblmessage2 = new javax.swing.JLabel();
         txtqty = new javax.swing.JTextField();
         lblqty = new javax.swing.JLabel();
+        lblmessage3 = new javax.swing.JLabel();
         txtprice = new javax.swing.JTextField();
         lblprice = new javax.swing.JLabel();
+        lblmessage4 = new javax.swing.JLabel();
         boxstatus = new javax.swing.JComboBox<>();
         lblstatus = new javax.swing.JLabel();
-        txtnotes = new javax.swing.JTextField();
-        lblnotes = new javax.swing.JLabel();
+        lblmessage5 = new javax.swing.JLabel();
         txtpassword = new javax.swing.JPasswordField();
         lblpassword = new javax.swing.JLabel();
         confirm = new javax.swing.JPanel();
@@ -73,16 +74,17 @@ public class producteditForm extends javax.swing.JInternalFrame {
         id.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         id.setForeground(new java.awt.Color(46, 49, 146));
         background.add(id);
-        id.setBounds(170, 10, 150, 50);
+        id.setBounds(220, 10, 140, 60);
 
-        lblregistration.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
-        lblregistration.setForeground(new java.awt.Color(46, 49, 146));
-        lblregistration.setText("Product");
-        background.add(lblregistration);
-        lblregistration.setBounds(10, 10, 160, 60);
+        lblproduct.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        lblproduct.setForeground(new java.awt.Color(46, 49, 146));
+        lblproduct.setText("Product #");
+        background.add(lblproduct);
+        lblproduct.setBounds(10, 10, 210, 60);
 
         back.setForeground(new java.awt.Color(46, 49, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/leftarrow_orig.png"))); // NOI18N
         back.setText("BACK");
         back.setToolTipText("");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -91,7 +93,13 @@ public class producteditForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(back);
-        back.setBounds(470, 10, 50, 40);
+        back.setBounds(460, 10, 60, 20);
+
+        lblmessage1.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage1.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        background.add(lblmessage1);
+        lblmessage1.setBounds(310, 80, 30, 30);
 
         txtname.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
@@ -108,6 +116,12 @@ public class producteditForm extends javax.swing.JInternalFrame {
         background.add(lblname);
         lblname.setBounds(40, 80, 110, 30);
 
+        lblmessage2.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage2.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        background.add(lblmessage2);
+        lblmessage2.setBounds(310, 130, 30, 30);
+
         txtqty.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtqty.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtqty.addActionListener(new java.awt.event.ActionListener() {
@@ -123,6 +137,12 @@ public class producteditForm extends javax.swing.JInternalFrame {
         background.add(lblqty);
         lblqty.setBounds(40, 130, 110, 30);
 
+        lblmessage3.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage3.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        background.add(lblmessage3);
+        lblmessage3.setBounds(310, 180, 30, 30);
+
         txtprice.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtprice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,6 +156,12 @@ public class producteditForm extends javax.swing.JInternalFrame {
         lblprice.setText("Price:");
         background.add(lblprice);
         lblprice.setBounds(40, 180, 110, 30);
+
+        lblmessage4.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage4.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        background.add(lblmessage4);
+        lblmessage4.setBounds(290, 230, 30, 30);
 
         boxstatus.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         boxstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "Active", "Inactive" }));
@@ -153,20 +179,11 @@ public class producteditForm extends javax.swing.JInternalFrame {
         background.add(lblstatus);
         lblstatus.setBounds(40, 230, 110, 30);
 
-        txtnotes.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        txtnotes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
-        txtnotes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtnotesActionPerformed(evt);
-            }
-        });
-        background.add(txtnotes);
-        txtnotes.setBounds(150, 280, 190, 30);
-
-        lblnotes.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        lblnotes.setText("Notes:");
-        background.add(lblnotes);
-        lblnotes.setBounds(40, 280, 110, 30);
+        lblmessage5.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage5.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        background.add(lblmessage5);
+        lblmessage5.setBounds(310, 330, 30, 30);
 
         txtpassword.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtpassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
@@ -223,12 +240,10 @@ public class producteditForm extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        try {
-            productlistsForm productListFrame = (productlistsForm) SwingUtilities.getAncestorOfClass(productlistsForm.class, this);
-            productListFrame.restoreOriginalState();
-            System.out.println("Admin clicked Back!");
-        } catch (ClassCastException e) {
-        }
+        productlistsForm productListFrame = (productlistsForm) SwingUtilities.getAncestorOfClass(productlistsForm.class, this);
+        productListFrame.restoreOriginalState();
+        productListFrame.getLblMessage().setText("");
+        System.out.println("Go Back!");
     }//GEN-LAST:event_backMouseClicked
 
     private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
@@ -247,34 +262,29 @@ public class producteditForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_boxstatusActionPerformed
 
-    private void txtnotesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnotesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtnotesActionPerformed
-
     private void txtpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtpasswordActionPerformed
 
     private void confirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseClicked
-        if (txtname.getText().isEmpty() || txtqty.getText().isEmpty() || txtprice.getText().isEmpty()
-            || txtpassword.getText().isEmpty()) {
-            System.out.println("Empty Text Field!");
-            JOptionPane.showMessageDialog(null, "All fields are required!");
-
-        } else if (boxstatus.getSelectedItem().equals("N/A")) {
-            System.out.println("Product Status Invalid!");
-            JOptionPane.showMessageDialog(null, "Product Status must be Active or Inactive!");
-
+        if (txtname.getText().isEmpty() || txtqty.getText().isEmpty() || txtprice.getText().isEmpty() || txtpassword.getText().isEmpty()) {
+            System.out.println("Empty All Text Fields!");
+            lblmessage1.setText("***");
+            lblmessage2.setText("***");
+            lblmessage3.setText("***");
+            lblmessage4.setText("***");
+            lblmessage5.setText("***");
         } else if (!isNumeric(txtqty.getText())){
             System.out.println("Quantity must be numbers!");
-            JOptionPane.showMessageDialog(null, "Quantity must be numbers!");
+            lblmessage2.setText("***");
             txtqty.setText("");
-            
         } else if (!isNumeric(txtprice.getText())){
             System.out.println("Price must be numbers!");
-            JOptionPane.showMessageDialog(null, "Price must be numbers!");
+            lblmessage3.setText("***");
             txtprice.setText("");
-        
+        } else if (boxstatus.getSelectedItem().equals("N/A")) {
+            System.out.println("Product Status Invalid!");
+            lblmessage4.setText("***");
         } else {
             dbConnector connector = new dbConnector();
             BigDecimal qty = new BigDecimal(txtqty.getText());
@@ -288,47 +298,38 @@ public class producteditForm extends javax.swing.JInternalFrame {
                     String passhash = passwordHasher.hashPassword(txtpassword.getText());
                     if (!equalPass(oldpass, passhash)) {
                         System.out.println("Passwords do not match!");
-                        JOptionPane.showMessageDialog(null, "Passwords do not match!");
+                        lblmessage5.setText("***");
                     } else {
                         if (isCreating) {
-                        if (connector.insertData("INSERT INTO tbl_products( p_name, p_qty, p_price, p_status, p_notes) "
-                                + "VALUES('" + txtname.getText() + "','" + qty + "','" + price + "',"
-                                        + "'" + boxstatus.getSelectedItem() + "','"+ txtnotes.getText() + "')")) {
-                            try {
+                            if (connector.insertData("INSERT INTO tbl_products( p_name, p_qty, p_price, p_status) "
+                            + "VALUES('" + txtname.getText() + "','" + qty + "','" + price + "','" + boxstatus.getSelectedItem() + "')")) {
                                 productlistsForm productListFrame = (productlistsForm) SwingUtilities.getAncestorOfClass(productlistsForm.class, this);
                                 productListFrame.restoreOriginalState();
                                 System.out.println("Information Inserted!");
-                                JOptionPane.showMessageDialog(null, "Created Product Successfully!");
-                            } catch (ClassCastException e) {
+                                productListFrame.getLblMessage().setText("Created Product Successfully!");
+                            } else {
+                                productlistsForm productListFrame = (productlistsForm) SwingUtilities.getAncestorOfClass(productlistsForm.class, this);
+                                System.out.println("Information Rejected!");
+                                productListFrame.getLblMessage().setText("Failed Successfully!");
                             }
                         } else {
-                            System.out.println("Information Rejected!");
-                            JOptionPane.showMessageDialog(null, "Failed Successfully!");
-                        }
-                    } else {
-                        if (connector.updateData("UPDATE tbl_products SET p_name = '" + txtname.getText() + "', p_qty = '"
-                                + txtqty.getText() + "', p_price = '" + txtprice.getText() + "', p_status = '"
-                                + boxstatus.getSelectedItem()+ "', p_notes = '" + txtnotes.getText() + "' WHERE p_id = '"
-                                + id.getText() + "'")) {
-                            try {
+                            if (connector.updateData("UPDATE tbl_products SET p_name = '" + txtname.getText() + "', p_qty = '"
+                            + txtqty.getText() + "', p_price = '" + txtprice.getText() + "', p_status = '"
+                            + boxstatus.getSelectedItem()+ "' WHERE p_id = '" + id.getText() + "'")) {
                                 productlistsForm productListFrame = (productlistsForm) SwingUtilities.getAncestorOfClass(productlistsForm.class, this);
                                 productListFrame.restoreOriginalState();
                                 System.out.println("Information Updated!");
-                                JOptionPane.showMessageDialog(null, "Updated Product Successfully!");
-                            } catch (ClassCastException e) {
+                                productListFrame.getLblMessage().setText("Updated Product Successfully!");                            
+                            } else {
+                                productlistsForm productListFrame = (productlistsForm) SwingUtilities.getAncestorOfClass(productlistsForm.class, this);
+                                System.out.println("Information Rejected!");
+                                productListFrame.getLblMessage().setText("Failed Successfully!");
                             }
-                        } else {
-                            System.out.println("Information Rejected!");
-                            JOptionPane.showMessageDialog(null, "Failed Successfully!");
                         }
                     }
-                    }
                 } else {
-                    System.out.println("User not found in database!");
-                    JOptionPane.showMessageDialog(null, "User not found in database!");
                 }
             } catch (NoSuchAlgorithmException | SQLException ex) {
-                ex.printStackTrace(); // Print exception stack trace for debugging
             }
         }
     }//GEN-LAST:event_confirmMouseClicked
@@ -348,15 +349,18 @@ public class producteditForm extends javax.swing.JInternalFrame {
     private javax.swing.JPanel confirm;
     public javax.swing.JLabel id;
     private javax.swing.JLabel lblconfirm;
+    private javax.swing.JLabel lblmessage1;
+    private javax.swing.JLabel lblmessage2;
+    private javax.swing.JLabel lblmessage3;
+    private javax.swing.JLabel lblmessage4;
+    private javax.swing.JLabel lblmessage5;
     private javax.swing.JLabel lblname;
-    private javax.swing.JLabel lblnotes;
     private javax.swing.JLabel lblpassword;
     private javax.swing.JLabel lblprice;
+    private javax.swing.JLabel lblproduct;
     private javax.swing.JLabel lblqty;
-    private javax.swing.JLabel lblregistration;
     private javax.swing.JLabel lblstatus;
     public javax.swing.JTextField txtname;
-    public javax.swing.JTextField txtnotes;
     public javax.swing.JPasswordField txtpassword;
     public javax.swing.JTextField txtprice;
     public javax.swing.JTextField txtqty;

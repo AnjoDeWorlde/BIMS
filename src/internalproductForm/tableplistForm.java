@@ -33,7 +33,7 @@ public final class tableplistForm extends javax.swing.JInternalFrame {
         return listproducts.getSelectedRow();
     }
 
-    public int getSelectedAccountId() {
+    public int getSelectedProductId() {
         int row = listproducts.getSelectedRow();
         if (row != -1) {
             return (int) listproducts.getValueAt(row, 0); 
@@ -44,8 +44,8 @@ public final class tableplistForm extends javax.swing.JInternalFrame {
     public void displayProduct(){
         dbConnector connector = new dbConnector();
         try{            
-            try (ResultSet resultSet = connector.getData("SELECT p_id, p_name, p_qty, p_price, p_status, p_notes "
-             + "FROM tbl_products")) {
+            try (ResultSet resultSet = connector.getData("SELECT p_id, p_name, p_qty, p_price, p_status FROM tbl_products "
+                    + "WHERE p_status NOT IN ('Archive') ")) {
                 listproducts.setModel(DbUtils.resultSetToTableModel(resultSet));
             }
             
@@ -65,6 +65,7 @@ public final class tableplistForm extends javax.swing.JInternalFrame {
         background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 3));
         background.setLayout(null);
 
+        table.setBackground(new java.awt.Color(255, 255, 255));
         table.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 3));
 
         listproducts.setModel(new javax.swing.table.DefaultTableModel(
@@ -75,6 +76,7 @@ public final class tableplistForm extends javax.swing.JInternalFrame {
 
             }
         ));
+        listproducts.getTableHeader().setReorderingAllowed(false);
         table.setViewportView(listproducts);
 
         background.add(table);
@@ -90,7 +92,9 @@ public final class tableplistForm extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();

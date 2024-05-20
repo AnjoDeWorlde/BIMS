@@ -5,7 +5,6 @@ import config.passwordHasher;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
 
@@ -26,44 +25,35 @@ public class registrationForm extends javax.swing.JFrame {
     Color navColor = new Color(204,204,204);
     Color enterColor = new Color(46,49,146);
     
-    public boolean duplicateEmail(){
+    public boolean duplicateEmail(String email) {
         dbConnector connector = new dbConnector();
-        
-        try{
-            String query = "SELECT * FROM tbl_user  WHERE u_email = '" + txtemail.getText() + "'";
+        try {
+            String query = "SELECT * FROM tbl_user WHERE u_email = '" + email + "'";
             ResultSet resultSet = connector.getData(query);
-            
-            if(resultSet.next()){                
-                email = resultSet.getString("u_email");
-                if(email.equals(txtemail.getText())){
-                    txtemail.setText("");
-                }
+        
+            if (resultSet.next()) {
+                lblmessage3.setText("Used Email!");
                 return true;
-            }else{
+            } else {
                 return false;
             }
-                
-        }catch (SQLException ex) {
+        } catch (SQLException ex) {
             return false;
         }
     }
-    
-    public boolean duplicateUser(){
+
+    public boolean duplicateUser(String username) {
         dbConnector connector = new dbConnector();
-        try{
-            String query = "SELECT * FROM tbl_user  WHERE u_username = '" + txtusername.getText() + "'";
+        try {
+            String query = "SELECT * FROM tbl_user WHERE u_username = '" + username + "'";
             ResultSet resultSet = connector.getData(query);
-            
-            if(resultSet.next()){                             
-                username = resultSet.getString("u_username");
-                if(username.equals(txtusername.getText())){
-                    txtusername.setText("");
-                }
+            if (resultSet.next()) {
+                lblmessage5.setText("Used Username!");
                 return true;
-            }else{
+            } else {
                 return false;
-            }                
-        }catch (SQLException ex) {
+            }
+        } catch (SQLException ex) {
             return false;
         }
     }
@@ -77,12 +67,45 @@ public class registrationForm extends javax.swing.JFrame {
             return false;
         }
     }
+
+    public boolean validateUserInput(String fName, String lName, String email, String cNum, String username, String password, String userType) {
+        boolean isValid = true;
+
+        if (duplicateEmail(email)) {
+            System.out.println("Email Exist!");
+            txtemail.setText("");
+            isValid = false;
+        }
+        if (!validCNum(cNum)) {
+            System.out.println("Contact Number Invalid!");
+            txtcontactnumber.setText("");
+            lblmessage4.setText("Numbers should be 11 digits!");
+            isValid = false;
+        }
+        if (duplicateUser(username)) {
+            System.out.println("Username Exist!");
+            txtusername.setText("");
+            isValid = false;
+        }
+        if (password.length() < 8) {
+            System.out.println("Password Invalid!");
+            txtpassword.setText("");
+            lblmessage6.setText("Character should be 8+!");
+            isValid = false;
+        }
+        if (boxtype.getSelectedItem().equals("N/A")) {
+            System.out.println("Account Type Invalid!");
+            lblmessage7.setText("Pick Admin or User!");
+            isValid = false;
+        }
+
+        return isValid;
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         javax.swing.JPanel background = new javax.swing.JPanel();
         form = new javax.swing.JPanel();
         lblregistration = new javax.swing.JLabel();
@@ -103,20 +126,16 @@ public class registrationForm extends javax.swing.JFrame {
         register = new javax.swing.JPanel();
         lblregister = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
-        logo = new javax.swing.JLabel();
+        lblmessage1 = new javax.swing.JLabel();
+        lblmessage2 = new javax.swing.JLabel();
+        lblmessage3 = new javax.swing.JLabel();
+        lblmessage4 = new javax.swing.JLabel();
+        lblmessage5 = new javax.swing.JLabel();
+        lblmessage6 = new javax.swing.JLabel();
+        lblmessage7 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         bar1 = new javax.swing.JPanel();
         bar2 = new javax.swing.JPanel();
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -267,16 +286,45 @@ public class registrationForm extends javax.swing.JFrame {
 
         back.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         back.setForeground(new java.awt.Color(46, 49, 146));
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/leftarrow_orig.png"))); // NOI18N
         back.setText("BACK");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
             }
         });
-        form.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, -1, -1));
+        form.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, 60, 30));
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo1_orig.jpg"))); // NOI18N
-        form.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 440, 270));
+        lblmessage1.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage1.setForeground(new java.awt.Color(255, 0, 0));
+        form.add(lblmessage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 130, 30));
+
+        lblmessage2.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage2.setForeground(new java.awt.Color(255, 0, 0));
+        form.add(lblmessage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 110, 130, 30));
+
+        lblmessage3.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage3.setForeground(new java.awt.Color(255, 0, 0));
+        form.add(lblmessage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 130, 30));
+
+        lblmessage4.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage4.setForeground(new java.awt.Color(255, 0, 0));
+        form.add(lblmessage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 190, 130, 30));
+
+        lblmessage5.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage5.setForeground(new java.awt.Color(255, 0, 0));
+        form.add(lblmessage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, 130, 30));
+
+        lblmessage6.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage6.setForeground(new java.awt.Color(255, 0, 0));
+        form.add(lblmessage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 130, 30));
+
+        lblmessage7.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage7.setForeground(new java.awt.Color(255, 0, 0));
+        form.add(lblmessage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 130, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/paper_origblue.png"))); // NOI18N
+        form.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 60));
 
         background.add(form);
         form.setBounds(80, 60, 550, 420);
@@ -323,55 +371,39 @@ public class registrationForm extends javax.swing.JFrame {
     }//GEN-LAST:event_boxtypeActionPerformed
 
     private void registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerMouseClicked
+        //big problem is the picture, nee implement inserting images
         String cNum = txtcontactnumber.getText();
         if(txtfirstname.getText().isEmpty() || txtlastname.getText().isEmpty() || txtemail.getText().isEmpty()
             || txtusername.getText().isEmpty() || txtpassword.getText().isEmpty() || txtcontactnumber.getText().isEmpty()){
-            System.out.println("Empty Text Field!");
-            JOptionPane.showMessageDialog(null, "All fields are required!");
+            System.out.println("All fields are required!");
+            lblmessage1.setText("***");
+            lblmessage2.setText("***");
+            lblmessage3.setText("***");
+            lblmessage4.setText("***");
+            lblmessage5.setText("***");
+            lblmessage6.setText("***");
+            lblmessage7.setText("***");
 
-        }else if(txtpassword.getText().length() < 8){
-            System.out.println("Password Invalid!");
-            JOptionPane.showMessageDialog(null, "Password character should be 8 above!");
-            txtpassword.setText("");
-
-        }else if(duplicateEmail()){
-            System.out.println("Email Exist!");
-            JOptionPane.showMessageDialog(null, "Email is Already Used!");
-
-        }else if(duplicateUser()){
-            System.out.println("Username Exist!");
-            JOptionPane.showMessageDialog(null, "Username is Already Used!");
-
-        }else if(!validCNum(cNum)){
-            System.out.println("Contact Number Invalid!");
-            JOptionPane.showMessageDialog(null, "Contact Number should be numbers or less than 11 digits!");
-        
-        }else if(boxtype.getSelectedItem().equals("N/A")){
-            System.out.println("Account Type Invalid!");
-            JOptionPane.showMessageDialog(null, "Account Type must be Admin or User!");
-            
         }else{
-            dbConnector connector = new dbConnector();
-            try{
-                long conNum = Long.parseLong(cNum);
-                String password = passwordHasher.hashPassword(txtpassword.getText());
-                if(connector.insertData("INSERT INTO tbl_user(u_fname ,u_lname ,u_email ,u_contactnumber ,u_username ,u_password ,u_type ,u_status)"
-                    + "VALUES('"+txtfirstname.getText()+"','"+txtlastname.getText()+"','"+txtemail.getText()+"',"
-                    + "'"+conNum+"','"+txtusername.getText()+"','"+password+"','"+boxtype.getSelectedItem()
-                    +"','Inactive')")){
-                    System.out.println("Information Inserted!");
-                    JOptionPane.showMessageDialog(null, "Registered Successfully!");
-                    loginForm lgf = new loginForm();
-                    lgf.setVisible(true);
-                    this.dispose();
-
-                }else{
-                    System.out.println("Information Rejected!");
-                    JOptionPane.showMessageDialog(null, "Failed Successfully!");
-
+            if (validateUserInput(txtfirstname.getText(), txtlastname.getText(), txtemail.getText(), cNum, txtusername.getText(), txtpassword.getText(), (String) boxtype.getSelectedItem())) {
+                dbConnector connector = new dbConnector();
+                try {
+                    long conNum = Long.parseLong(cNum);
+                    String password = passwordHasher.hashPassword(txtpassword.getText());
+                    if (connector.insertData("INSERT INTO tbl_user(u_fname ,u_lname ,u_email ,u_contactnumber ,u_username ,u_password ,u_type ,u_status)"
+                    + "VALUES('" + txtfirstname.getText() + "','" + txtlastname.getText() + "','" + txtemail.getText() + "',"
+                    + "'" + conNum + "','" + txtusername.getText() + "','" + password + "','" + boxtype.getSelectedItem()
+                    + "','Inactive')")) {
+                        System.out.println("Information Inserted!");
+                        loginForm lgf = new loginForm();
+                        lgf.setVisible(true);
+                        this.dispose();
+                    } else {
+                        System.out.println("Information Rejected!");
+                    }
+                } catch (NoSuchAlgorithmException ex) {
+                    System.out.println("" + ex);
                 }
-            }catch(NoSuchAlgorithmException ex){
-                System.out.println(""+ex);
             }
         }
     }//GEN-LAST:event_registerMouseClicked
@@ -438,17 +470,23 @@ public class registrationForm extends javax.swing.JFrame {
     private javax.swing.JPanel bar2;
     private javax.swing.JComboBox<String> boxtype;
     private javax.swing.JPanel form;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblcontactnumber;
     private javax.swing.JLabel lblemail;
     private javax.swing.JLabel lblfirstname;
     private javax.swing.JLabel lbllastname;
+    private javax.swing.JLabel lblmessage1;
+    private javax.swing.JLabel lblmessage2;
+    private javax.swing.JLabel lblmessage3;
+    private javax.swing.JLabel lblmessage4;
+    private javax.swing.JLabel lblmessage5;
+    private javax.swing.JLabel lblmessage6;
+    private javax.swing.JLabel lblmessage7;
     private javax.swing.JLabel lblpassword;
     private javax.swing.JLabel lblregister;
     private javax.swing.JLabel lblregistration;
     private javax.swing.JLabel lbltype;
     private javax.swing.JLabel lblusername;
-    private javax.swing.JLabel logo;
     private javax.swing.JPanel register;
     private javax.swing.JTextField txtcontactnumber;
     private javax.swing.JTextField txtemail;

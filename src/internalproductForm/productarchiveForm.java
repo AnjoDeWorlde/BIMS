@@ -4,7 +4,6 @@ import config.dbConnector;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import net.proteanit.sql.DbUtils;
@@ -33,14 +32,10 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
     public void displayProduct(){
         dbConnector connector = new dbConnector();
         try{            
-            try (ResultSet resultSet = connector.getData("SELECT p_id, p_name, p_price, p_status, p_notes "
-            + "FROM tbl_products WHERE p_status = 'Archive'")) {
+            try (ResultSet resultSet = connector.getData("SELECT p_id, p_name, p_price, p_status FROM tbl_products WHERE p_status = 'Archive'")) {
                 productlists.setModel(DbUtils.resultSetToTableModel(resultSet));
-            }
-            
-        }catch(SQLException ex){
-            System.out.println("Errors: "+ex.getMessage());
-            
+            }            
+        }catch(SQLException ex){            
         }
     }
 
@@ -89,7 +84,6 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
         unarchive.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblunarchive.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        lblunarchive.setForeground(new java.awt.Color(46, 49, 146));
         lblunarchive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblunarchive.setText("U N A R C H I V E");
         unarchive.add(lblunarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 30));
@@ -99,6 +93,7 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
 
         back.setForeground(new java.awt.Color(46, 49, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/leftarrow_orig.png"))); // NOI18N
         back.setText("BACK");
         back.setToolTipText("");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -107,7 +102,7 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(back);
-        back.setBounds(470, 360, 50, 40);
+        back.setBounds(440, 376, 80, 24);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,22 +126,22 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
         int selectedRow = productlists.getSelectedRow();
         if (selectedRow != -1) {
             try {
-                String accountId = productlists.getValueAt(selectedRow, 0).toString();
+                String producttId = productlists.getValueAt(selectedRow, 0).toString();
                 dbConnector connector = new dbConnector();
-                String updateQuery = "UPDATE tbl_user SET u_status = 'Inactive' WHERE u_id = '" + accountId + "'";
+                String updateQuery = "UPDATE tbl_products SET p_status = 'Inactive' WHERE p_id = '" + producttId + "'";
                 connector.updateData(updateQuery);
-                ResultSet resultSet = connector.getData("SELECT * FROM tbl_user WHERE u_id = '" + accountId + "' ");
+                ResultSet resultSet = connector.getData("SELECT * FROM tbl_products WHERE p_id = '" + producttId + "' ");
                 if (resultSet.next()) {
-                    productarchiveForm paf = new productarchiveForm();
-                    paf.dispose();
+                    productlistsForm productListFrame = (productlistsForm) SwingUtilities.getAncestorOfClass(productlistsForm.class, this);
                     System.out.println("Unarchive Successfully!");
-                    JOptionPane.showMessageDialog(null, "Unarchive an User Account!");
-                    paf.setVisible(true);
+                    productListFrame.getLblMessage().setText("Unarchive Successfully!");
                 }
             } catch (SQLException ex) {
             }
         } else {
-            JOptionPane.showMessageDialog(this, "You need to select an item from the table.", "Error", JOptionPane.ERROR_MESSAGE);
+            productlistsForm productListFrame = (productlistsForm) SwingUtilities.getAncestorOfClass(productlistsForm.class, this);
+            System.out.println("No Selected Item!");
+            productListFrame.getLblMessage().setText("Please select an Item!");
         }
     }//GEN-LAST:event_unarchiveMouseClicked
 
@@ -159,12 +154,10 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_unarchiveMouseExited
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        try {
-            productlistsForm productListFrame = (productlistsForm) SwingUtilities.getAncestorOfClass(productlistsForm.class, this);
-            productListFrame.restoreOriginalState();
-            System.out.println("Admin clicked Back!");
-        } catch (ClassCastException e) {
-        }
+        productlistsForm productListFrame = (productlistsForm) SwingUtilities.getAncestorOfClass(productlistsForm.class, this);
+        productListFrame.restoreOriginalState();
+        productListFrame.getLblMessage().setText("");
+        System.out.println("Go Back!");
     }//GEN-LAST:event_backMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,5 +1,16 @@
 package internalinventoryForm;
 
+import admin.adminForm;
+import config.dbConnector;
+import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JDesktopPane;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+
 /**
  *
  * @author DERECHO
@@ -8,25 +19,64 @@ public class inventoryForm extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form inventoryForm
+     * @param admindesktop
      */
-    public inventoryForm() {
+    public inventoryForm(JDesktopPane admindesktop) {
         initComponents();
+        
+        this.admindesktop = admindesktop;
+        tabletoryForm ttf = new tabletoryForm();
+        inventorydesktop.add(ttf);
+        ttf.setVisible(true);
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
+        BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
+        bi.setNorthPane(null);
+        update.setEnabled(false);
     }
-
+    
+    public JLabel getLblMessage() {
+        return lblmessage;
+    }
+    
+    private JDesktopPane admindesktop; 
+    Color borderColor = new Color(255,255,255);
+    Color enterColor = new Color(46,49,146);
+    
+    private void closeAllInternalFrames() {
+        JInternalFrame[] frames = inventorydesktop.getAllFrames();
+        for (JInternalFrame frame : frames) {
+            frame.dispose();
+        }
+    }
+        
+    public void restoreOriginalState() {
+        JInternalFrame[] frames = inventorydesktop.getAllFrames();
+        for (JInternalFrame frame : frames) {
+            if (frame  instanceof tabletoryForm) {
+                frame.dispose();
+                break;
+            }
+        }
+        tabletoryForm ttf = new tabletoryForm();
+        inventorydesktop.add(ttf);
+        ttf.setVisible(true);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         background = new javax.swing.JPanel();
         back = new javax.swing.JLabel();
+        lblmessage = new javax.swing.JLabel();
         create = new javax.swing.JPanel();
         lblcreate = new javax.swing.JLabel();
         update = new javax.swing.JPanel();
         lblupdate = new javax.swing.JLabel();
-        delete = new javax.swing.JPanel();
-        lbldelete = new javax.swing.JLabel();
-        purchase = new javax.swing.JPanel();
-        lblpurchase = new javax.swing.JLabel();
+        archive = new javax.swing.JPanel();
+        lblarchive = new javax.swing.JLabel();
+        print = new javax.swing.JPanel();
+        lblprint = new javax.swing.JLabel();
         inventorydesktop = new javax.swing.JDesktopPane();
 
         background.setBackground(new java.awt.Color(255, 255, 255));
@@ -34,6 +84,7 @@ public class inventoryForm extends javax.swing.JInternalFrame {
 
         back.setForeground(new java.awt.Color(46, 49, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/leftarrow_orig.png"))); // NOI18N
         back.setText("BACK");
         back.setToolTipText("");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -42,10 +93,17 @@ public class inventoryForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(back);
-        back.setBounds(470, 10, 50, 40);
+        back.setBounds(480, 10, 60, 40);
+
+        lblmessage.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
+        lblmessage.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        background.add(lblmessage);
+        lblmessage.setBounds(330, 20, 150, 20);
 
         create.setBackground(new java.awt.Color(255, 255, 255));
         create.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
+        create.setPreferredSize(new java.awt.Dimension(60, 30));
         create.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 createMouseClicked(evt);
@@ -61,10 +119,9 @@ public class inventoryForm extends javax.swing.JInternalFrame {
 
         lblcreate.setBackground(new java.awt.Color(255, 255, 255));
         lblcreate.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        lblcreate.setForeground(new java.awt.Color(46, 49, 146));
         lblcreate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblcreate.setText("CREATE");
-        create.add(lblcreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 70, 20));
+        create.add(lblcreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 10, 60, 20));
 
         background.add(create);
         create.setBounds(10, 10, 70, 40);
@@ -86,63 +143,60 @@ public class inventoryForm extends javax.swing.JInternalFrame {
 
         lblupdate.setBackground(new java.awt.Color(255, 255, 255));
         lblupdate.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        lblupdate.setForeground(new java.awt.Color(46, 49, 146));
         lblupdate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblupdate.setText("UPDATE");
-        update.add(lblupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 70, 20));
+        update.add(lblupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 20));
 
         background.add(update);
         update.setBounds(90, 10, 70, 40);
 
-        delete.setBackground(new java.awt.Color(255, 255, 255));
-        delete.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
-        delete.addMouseListener(new java.awt.event.MouseAdapter() {
+        archive.setBackground(new java.awt.Color(255, 255, 255));
+        archive.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
+        archive.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                deleteMouseClicked(evt);
+                archiveMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                deleteMouseEntered(evt);
+                archiveMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                deleteMouseExited(evt);
+                archiveMouseExited(evt);
             }
         });
-        delete.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        archive.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbldelete.setBackground(new java.awt.Color(255, 255, 255));
-        lbldelete.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        lbldelete.setForeground(new java.awt.Color(46, 49, 146));
-        lbldelete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbldelete.setText("DELETE");
-        delete.add(lbldelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 70, 20));
+        lblarchive.setBackground(new java.awt.Color(255, 255, 255));
+        lblarchive.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        lblarchive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblarchive.setText("ARCHIVE");
+        archive.add(lblarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 20));
 
-        background.add(delete);
-        delete.setBounds(170, 10, 70, 40);
+        background.add(archive);
+        archive.setBounds(170, 10, 80, 40);
 
-        purchase.setBackground(new java.awt.Color(255, 255, 255));
-        purchase.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
-        purchase.addMouseListener(new java.awt.event.MouseAdapter() {
+        print.setBackground(new java.awt.Color(255, 255, 255));
+        print.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
+        print.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                purchaseMouseClicked(evt);
+                printMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                purchaseMouseEntered(evt);
+                printMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                purchaseMouseExited(evt);
+                printMouseExited(evt);
             }
         });
-        purchase.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        print.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblpurchase.setBackground(new java.awt.Color(255, 255, 255));
-        lblpurchase.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        lblpurchase.setForeground(new java.awt.Color(46, 49, 146));
-        lblpurchase.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblpurchase.setText("PURCHASE");
-        purchase.add(lblpurchase, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 10, 80, 20));
+        lblprint.setBackground(new java.awt.Color(255, 255, 255));
+        lblprint.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        lblprint.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblprint.setText("PRINT");
+        print.add(lblprint, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 10, 50, 20));
 
-        background.add(purchase);
-        purchase.setBounds(250, 10, 90, 40);
+        background.add(print);
+        print.setBounds(260, 10, 60, 40);
 
         inventorydesktop.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -168,61 +222,55 @@ public class inventoryForm extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        System.out.println("Admin clicked Back!");
-        this.dispose();
+        adminForm parentFrame = (adminForm) SwingUtilities.getWindowAncestor(this);
+        parentFrame.restoreOriginalState();
+        System.out.println("Go Back!");
     }//GEN-LAST:event_backMouseClicked
 
-    private void createMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createMouseClicked
-        closeAllInternalFrames();
-        usereditForm uef = new usereditForm(this, true);
-        System.out.println("Admin clicked Create Account!");
-        uef.setSize(530, 410);
-        inventorydesktop.add(uef).setVisible(true);
-    }//GEN-LAST:event_createMouseClicked
-
-    private void createMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createMouseEntered
-        create.setBackground(enterColor);
-    }//GEN-LAST:event_createMouseEntered
-
-    private void createMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createMouseExited
-        create.setBackground(borderColor);
-    }//GEN-LAST:event_createMouseExited
-
     private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
-        tablelistForm tlf = (tablelistForm) inventorydesktop.getSelectedFrame();
-        if (tlf != null && tlf.getSelectedRowIndex() != -1) {
-            try {
-                int row = tlf.getSelectedRowIndex();
-                int accountId = tlf.getSelectedAccountId();
-                dbConnector connector = new dbConnector();
-                ResultSet resultSet = connector.getData("SELECT * FROM tbl_user WHERE u_id = '"+ accountId +"' ");
-                if(resultSet.next()){
-                    closeAllInternalFrames();
-                    usereditForm uef = new usereditForm(this, false);
-                    System.out.println("Admin clicked Update Account!");
-                    inventorydesktop.add(uef).setVisible(true);
-                    uef.id.setText(""+resultSet.getInt("u_id"));
-                    uef.txtfirstname.setText(""+resultSet.getString("u_fname"));
-                    uef.txtlastname.setText(""+resultSet.getString("u_lname"));
-                    uef.txtemail.setText(""+resultSet.getString("u_email"));
-                    uef.txtcontactnumber.setText(""+resultSet.getString("u_contactnumber"));
-                    uef.txtusername.setText(""+resultSet.getString("u_username"));
-                    uef.txtpassword.setText(""+resultSet.getString("u_password"));
-                    uef.boxtype.setSelectedItem(""+resultSet.getString("u_type"));
-                    uef.boxstatus.setSelectedItem(""+resultSet.getString("u_status"));
+        JInternalFrame selectedFrame = inventorydesktop.getSelectedFrame();
+        update.setEnabled(true);
+        if (selectedFrame instanceof tabletoryForm) {
+            tabletoryForm tlf = (tabletoryForm) selectedFrame;
+            if (tlf != null && tlf.getSelectedRowIndex() != -1) {
+                try {
+                    int inventoryId = tlf.getSelectedInventoryId();
+                    dbConnector connector = new dbConnector();
+                    ResultSet resultSet = connector.getData("SELECT * FROM tbl_inventory WHERE i_id = '"+ inventoryId +"' ");
+                    if(resultSet.next()){
+                        closeAllInternalFrames();
+                        inventoryeditForm ief = new inventoryeditForm(false);
+                        System.out.println("Update Product Opens!");
+                        lblmessage.setText("");
+                        inventorydesktop.add(ief).setVisible(true);
+                        ief.id.setText(""+resultSet.getInt("i_id"));
+                        ief.boxproductID.setSelectedItem(""+resultSet.getString("p_id"));
+                        ief.txtdate.setText(""+resultSet.getInt("i_date"));
+                        ief.txtastocks.setText(""+resultSet.getString("i_availablestocks"));
+                        ief.txtsstocks.setText(""+resultSet.getString("i_soldstocks"));
+                        ief.txtlstocks.setText(""+resultSet.getString("i_lossstocks"));
+                        ief.boxstatus.setSelectedItem(""+resultSet.getString("i_status"));
+                    }
+                } catch (SQLException ex) {
                 }
-            } catch (SQLException ex) {
+            } else {
+                update.setEnabled(false);
+                System.out.println("No Selected Item!");
+                lblmessage.setText("Please select an Item!");
             }
         } else {
-            System.out.println("No Item!");
-            JOptionPane.showMessageDialog(null, "Please select an item.");
+            update.setEnabled(false);
+            System.out.println("No Selected Item!");
+            lblmessage.setText("Please select an Item!");
         }
     }//GEN-LAST:event_updateMouseClicked
 
@@ -234,63 +282,90 @@ public class inventoryForm extends javax.swing.JInternalFrame {
         update.setBackground(borderColor);
     }//GEN-LAST:event_updateMouseExited
 
-    private void deleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseClicked
-        tablelistForm tlf = (tablelistForm) inventorydesktop.getSelectedFrame();
-        if (tlf != null && tlf.getSelectedRowIndex() != -1) {
-            int row = tlf.getSelectedRowIndex();
-            int accountId = tlf.getSelectedAccountId();
-            dbConnector connector = new dbConnector();
-            boolean deleted = connector.deleteData("DELETE FROM tbl_user WHERE u_id = '"+ accountId +"' ");
-            if(deleted) {
-                closeAllInternalFrames();
-                restoreOriginalState();
-                System.out.println("Admin clicked Update Account!");
-                JOptionPane.showMessageDialog(null, "Deleted Account Successfully!");
-            } else {
-                System.out.println("Information Rejected!");
-                JOptionPane.showMessageDialog(null, "Failed Successfully!");
-            }
-        } else {
-            System.out.println("No Item!");
-            JOptionPane.showMessageDialog(null, "Please select an item.");
-        }
-    }//GEN-LAST:event_deleteMouseClicked
-
-    private void deleteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseEntered
-        delete.setBackground(enterColor);
-    }//GEN-LAST:event_deleteMouseEntered
-
-    private void deleteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteMouseExited
-        delete.setBackground(borderColor);
-    }//GEN-LAST:event_deleteMouseExited
-
-    private void purchaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purchaseMouseClicked
+    private void createMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createMouseClicked
         closeAllInternalFrames();
-        userresetForm urf = new userresetForm();
-        System.out.println("Admin clicked Reset Password!");
-        urf.setSize(530, 410);
-        inventorydesktop.add(urf).setVisible(true);
-    }//GEN-LAST:event_purchaseMouseClicked
+        inventoryeditForm ief = new inventoryeditForm(true);
+        System.out.println("Create Account Opens!");
+        lblmessage.setText("");
+        inventorydesktop.add(ief).setVisible(true);
+    }//GEN-LAST:event_createMouseClicked
 
-    private void purchaseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purchaseMouseEntered
-        purchase.setBackground(enterColor);
-    }//GEN-LAST:event_purchaseMouseEntered
+    private void createMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createMouseEntered
+        create.setBackground(enterColor);
+    }//GEN-LAST:event_createMouseEntered
 
-    private void purchaseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_purchaseMouseExited
-        purchase.setBackground(borderColor);
-    }//GEN-LAST:event_purchaseMouseExited
+    private void createMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createMouseExited
+        create.setBackground(borderColor);
+    }//GEN-LAST:event_createMouseExited
+
+    private void archiveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_archiveMouseClicked
+        JInternalFrame selectedFrame = inventorydesktop.getSelectedFrame();
+        if (selectedFrame instanceof tabletoryForm) {
+            tabletoryForm tlf = (tabletoryForm) selectedFrame;
+            if (tlf != null && tlf.getSelectedRowIndex() != -1) {
+                try {
+                    int inventoryId = tlf.getSelectedInventoryId();
+                    dbConnector connector = new dbConnector();
+                    String updateQuery = "UPDATE tbl_inventory SET i_status = 'Archive' WHERE i_id = '"+ inventoryId +"'";
+                    connector.updateData(updateQuery);
+                    ResultSet resultSet = connector.getData("SELECT * FROM tbl_products WHERE i_id = '"+ inventoryId +"' ");
+                    if(resultSet.next()){
+                        closeAllInternalFrames();
+                        inventoryarchiveForm iaf = new inventoryarchiveForm();
+                        System.out.println("Archive Product Opens!");
+                        lblmessage.setText("");
+                        inventorydesktop.add(iaf).setVisible(true);
+                    }
+                } catch (SQLException ex) {
+                }
+            } else {
+                closeAllInternalFrames();
+                inventoryarchiveForm iaf = new inventoryarchiveForm();
+                System.out.println("Archive Product Opens!");
+                lblmessage.setText("");
+                inventorydesktop.add(iaf).setVisible(true);
+            }
+        }else {
+            closeAllInternalFrames();
+            inventoryarchiveForm iaf = new inventoryarchiveForm();
+            System.out.println("Archive Product Opens!");
+            lblmessage.setText("");
+            inventorydesktop.add(iaf).setVisible(true);
+        }
+    }//GEN-LAST:event_archiveMouseClicked
+
+    private void archiveMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_archiveMouseEntered
+        archive.setBackground(enterColor);
+    }//GEN-LAST:event_archiveMouseEntered
+
+    private void archiveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_archiveMouseExited
+        archive.setBackground(borderColor);
+    }//GEN-LAST:event_archiveMouseExited
+
+    private void printMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printMouseClicked
+
+    }//GEN-LAST:event_printMouseClicked
+
+    private void printMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printMouseEntered
+        print.setBackground(enterColor);
+    }//GEN-LAST:event_printMouseEntered
+
+    private void printMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printMouseExited
+        print.setBackground(borderColor);
+    }//GEN-LAST:event_printMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel archive;
     private javax.swing.JLabel back;
     private javax.swing.JPanel background;
     private javax.swing.JPanel create;
-    private javax.swing.JPanel delete;
     public javax.swing.JDesktopPane inventorydesktop;
+    private javax.swing.JLabel lblarchive;
     private javax.swing.JLabel lblcreate;
-    private javax.swing.JLabel lbldelete;
-    private javax.swing.JLabel lblpurchase;
+    public javax.swing.JLabel lblmessage;
+    private javax.swing.JLabel lblprint;
     private javax.swing.JLabel lblupdate;
-    private javax.swing.JPanel purchase;
+    private javax.swing.JPanel print;
     private javax.swing.JPanel update;
     // End of variables declaration//GEN-END:variables
 }

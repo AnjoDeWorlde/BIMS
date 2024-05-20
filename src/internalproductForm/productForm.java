@@ -41,7 +41,6 @@ public class productForm extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         background = new javax.swing.JPanel();
-        back = new javax.swing.JLabel();
         lblgreetings = new javax.swing.JLabel();
         logo = new javax.swing.JLabel();
         scroll = new javax.swing.JScrollPane();
@@ -67,19 +66,8 @@ public class productForm extends javax.swing.JInternalFrame {
         stopper = new javax.swing.JSeparator();
 
         background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         background.setLayout(null);
-
-        back.setForeground(new java.awt.Color(46, 49, 146));
-        back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        back.setText("BACK");
-        back.setToolTipText("");
-        back.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backMouseClicked(evt);
-            }
-        });
-        background.add(back);
-        back.setBounds(500, 0, 50, 30);
 
         lblgreetings.setFont(new java.awt.Font("Verdana", 1, 30)); // NOI18N
         lblgreetings.setForeground(new java.awt.Color(46, 49, 146));
@@ -112,7 +100,7 @@ public class productForm extends javax.swing.JInternalFrame {
             }
         });
         product1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        displaybar.add(product1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 160, 150));
+        displaybar.add(product1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 160, 150));
 
         product2.setBackground(new java.awt.Color(255, 255, 255));
         product2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -128,7 +116,7 @@ public class productForm extends javax.swing.JInternalFrame {
             }
         });
         product2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        displaybar.add(product2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 160, 150));
+        displaybar.add(product2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 160, 150));
 
         product3.setBackground(new java.awt.Color(255, 255, 255));
         product3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -144,7 +132,7 @@ public class productForm extends javax.swing.JInternalFrame {
             }
         });
         product3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        displaybar.add(product3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 30, 160, 150));
+        displaybar.add(product3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 160, 150));
 
         product4.setBackground(new java.awt.Color(255, 255, 255));
         product4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -160,7 +148,7 @@ public class productForm extends javax.swing.JInternalFrame {
             }
         });
         product4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        displaybar.add(product4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 160, 150));
+        displaybar.add(product4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 160, 150));
 
         product5.setBackground(new java.awt.Color(255, 255, 255));
         product5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -176,7 +164,7 @@ public class productForm extends javax.swing.JInternalFrame {
             }
         });
         product5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        displaybar.add(product5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 160, 150));
+        displaybar.add(product5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 160, 150));
 
         product6.setBackground(new java.awt.Color(255, 255, 255));
         product6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -192,7 +180,7 @@ public class productForm extends javax.swing.JInternalFrame {
             }
         });
         product6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        displaybar.add(product6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 190, 160, 150));
+        displaybar.add(product6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, 160, 150));
 
         product7.setBackground(new java.awt.Color(255, 255, 255));
         product7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -208,7 +196,7 @@ public class productForm extends javax.swing.JInternalFrame {
             }
         });
         product7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        displaybar.add(product7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 160, 150));
+        displaybar.add(product7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 160, 150));
 
         product8.setBackground(new java.awt.Color(255, 255, 255));
         product8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -224,7 +212,7 @@ public class productForm extends javax.swing.JInternalFrame {
             }
         });
         product8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        displaybar.add(product8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 160, 150));
+        displaybar.add(product8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 160, 150));
 
         product9.setBackground(new java.awt.Color(255, 255, 255));
         product9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -240,7 +228,7 @@ public class productForm extends javax.swing.JInternalFrame {
             }
         });
         product9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        displaybar.add(product9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, 160, 150));
+        displaybar.add(product9, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 350, 160, 150));
 
         product10.setBackground(new java.awt.Color(255, 255, 255));
         product10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -256,7 +244,7 @@ public class productForm extends javax.swing.JInternalFrame {
             }
         });
         product10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        displaybar.add(product10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 160, 150));
+        displaybar.add(product10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 160, 150));
 
         product11.setBackground(new java.awt.Color(255, 255, 255));
         product11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -272,7 +260,7 @@ public class productForm extends javax.swing.JInternalFrame {
             }
         });
         product11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        displaybar.add(product11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 510, 160, 150));
+        displaybar.add(product11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 510, 160, 150));
 
         product12.setBackground(new java.awt.Color(255, 255, 255));
         product12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -288,7 +276,7 @@ public class productForm extends javax.swing.JInternalFrame {
             }
         });
         product12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        displaybar.add(product12, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 510, 160, 150));
+        displaybar.add(product12, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 510, 160, 150));
 
         product13.setBackground(new java.awt.Color(255, 255, 255));
         product13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -304,7 +292,7 @@ public class productForm extends javax.swing.JInternalFrame {
             }
         });
         product13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        displaybar.add(product13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 670, 160, 150));
+        displaybar.add(product13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 670, 160, 150));
 
         product14.setBackground(new java.awt.Color(255, 255, 255));
         product14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -320,7 +308,7 @@ public class productForm extends javax.swing.JInternalFrame {
             }
         });
         product14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        displaybar.add(product14, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 670, 160, 150));
+        displaybar.add(product14, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 670, 160, 150));
 
         product15.setBackground(new java.awt.Color(255, 255, 255));
         product15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -336,7 +324,7 @@ public class productForm extends javax.swing.JInternalFrame {
             }
         });
         product15.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        displaybar.add(product15, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 670, 160, 150));
+        displaybar.add(product15, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 670, 160, 150));
 
         product16.setBackground(new java.awt.Color(255, 255, 255));
         product16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -352,7 +340,7 @@ public class productForm extends javax.swing.JInternalFrame {
             }
         });
         product16.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        displaybar.add(product16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 830, 160, 150));
+        displaybar.add(product16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 830, 160, 150));
 
         product17.setBackground(new java.awt.Color(255, 255, 255));
         product17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -368,7 +356,7 @@ public class productForm extends javax.swing.JInternalFrame {
             }
         });
         product17.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        displaybar.add(product17, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 830, 160, 150));
+        displaybar.add(product17, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 830, 160, 150));
 
         product18.setBackground(new java.awt.Color(255, 255, 255));
         product18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -384,13 +372,13 @@ public class productForm extends javax.swing.JInternalFrame {
             }
         });
         product18.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        displaybar.add(product18, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 830, 160, 150));
+        displaybar.add(product18, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 830, 160, 150));
         displaybar.add(stopper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 990, 530, 0));
 
         scroll.setViewportView(displaybar);
 
         background.add(scroll);
-        scroll.setBounds(0, 70, 550, 410);
+        scroll.setBounds(10, 70, 530, 400);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -628,14 +616,7 @@ public class productForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_product18MouseExited
 
-    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        adminForm parentFrame = (adminForm) SwingUtilities.getWindowAncestor(this);
-        parentFrame.restoreOriginalState();
-        System.out.println("Admin clicked !");
-    }//GEN-LAST:event_backMouseClicked
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel back;
     private javax.swing.JPanel background;
     private javax.swing.JPanel displaybar;
     private javax.swing.JLabel lblgreetings;

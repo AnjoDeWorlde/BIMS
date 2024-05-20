@@ -222,7 +222,6 @@ public class homeForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_directtolistofsalesMouseExited
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
     private javax.swing.JPanel directtolistofproducts;

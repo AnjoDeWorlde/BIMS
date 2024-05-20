@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -23,12 +22,29 @@ public class forgotpassForm extends javax.swing.JFrame {
     Color navColor = new Color(204,204,204);
     Color enterColor = new Color(46,49,146);
     
+    private boolean checkUsernameAndContactNumber(String username, String cNum, String usernameDB, long contactNumberDB) {
+        if (!cNum.equals(String.valueOf(contactNumberDB))) {
+            System.out.println("Nonexistent Contact Number!");
+            lblmessage3.setText("Nonexistent Contact Number!");
+            txtcontactnumber.setText("");
+            return false;
+        }
+        if (!username.equals(usernameDB)) {
+            System.out.println("Nonexistent Username!");
+            lblmessage2.setText("Nonexistent Username!");
+            txtusername.setText("");
+            return false;
+        } 
+        return true;
+    }
+        
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         javax.swing.JPanel background = new javax.swing.JPanel();
         form = new javax.swing.JPanel();
+        logo = new javax.swing.JLabel();
         lblreset1 = new javax.swing.JLabel();
         txtemail = new javax.swing.JTextField();
         lblemail = new javax.swing.JLabel();
@@ -39,7 +55,9 @@ public class forgotpassForm extends javax.swing.JFrame {
         reset = new javax.swing.JPanel();
         lblreset2 = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
-        logo = new javax.swing.JLabel();
+        lblmessage1 = new javax.swing.JLabel();
+        lblmessage2 = new javax.swing.JLabel();
+        lblmessage3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,10 +68,13 @@ public class forgotpassForm extends javax.swing.JFrame {
         form.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 3));
         form.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo_wname_orig35.jpg"))); // NOI18N
+        form.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 310, 60));
+
         lblreset1.setFont(new java.awt.Font("Candara", 1, 50)); // NOI18N
         lblreset1.setForeground(new java.awt.Color(46, 49, 146));
         lblreset1.setText("Reset");
-        form.add(lblreset1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 130, 60));
+        form.add(lblreset1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 130, 50));
 
         txtemail.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtemail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
@@ -62,11 +83,11 @@ public class forgotpassForm extends javax.swing.JFrame {
                 txtemailActionPerformed(evt);
             }
         });
-        form.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 230, 30));
+        form.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 230, 30));
 
         lblemail.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         lblemail.setText("E-mail:");
-        form.add(lblemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 110, 30));
+        form.add(lblemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 110, 30));
 
         txtcontactnumber.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtcontactnumber.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
@@ -75,11 +96,11 @@ public class forgotpassForm extends javax.swing.JFrame {
                 txtcontactnumberActionPerformed(evt);
             }
         });
-        form.add(txtcontactnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 230, 30));
+        form.add(txtcontactnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 230, 30));
 
         lblcontactnumber.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         lblcontactnumber.setText("Contact Number:");
-        form.add(lblcontactnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 110, 30));
+        form.add(lblcontactnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 110, 30));
 
         txtusername.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtusername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
@@ -88,11 +109,11 @@ public class forgotpassForm extends javax.swing.JFrame {
                 txtusernameActionPerformed(evt);
             }
         });
-        form.add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 230, 30));
+        form.add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 230, 30));
 
         lblusername.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         lblusername.setText("Username:");
-        form.add(lblusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 110, 30));
+        form.add(lblusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 110, 30));
 
         reset.setBackground(new java.awt.Color(255, 255, 255));
         reset.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -110,7 +131,6 @@ public class forgotpassForm extends javax.swing.JFrame {
         reset.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblreset2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        lblreset2.setForeground(new java.awt.Color(46, 49, 146));
         lblreset2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblreset2.setText("R  E  S  E  T");
         reset.add(lblreset2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 20));
@@ -119,16 +139,26 @@ public class forgotpassForm extends javax.swing.JFrame {
 
         back.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         back.setForeground(new java.awt.Color(46, 49, 146));
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/leftarrow_orig.png"))); // NOI18N
         back.setText("BACK");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
             }
         });
-        form.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 390, -1, -1));
+        form.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(479, 390, 60, -1));
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo1_orig.jpg"))); // NOI18N
-        form.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 440, 270));
+        lblmessage1.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage1.setForeground(new java.awt.Color(255, 0, 0));
+        form.add(lblmessage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 130, 30));
+
+        lblmessage2.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage2.setForeground(new java.awt.Color(255, 0, 0));
+        form.add(lblmessage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 130, 30));
+
+        lblmessage3.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage3.setForeground(new java.awt.Color(255, 0, 0));
+        form.add(lblmessage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 130, 30));
 
         background.add(form);
         form.setBounds(80, 60, 550, 420);
@@ -163,8 +193,10 @@ public class forgotpassForm extends javax.swing.JFrame {
     private void resetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseClicked
         String cNum = txtcontactnumber.getText();
         if(txtemail.getText().isEmpty() || txtusername.getText().isEmpty() || cNum.isEmpty()) {
-            System.out.println("Empty Text Field!");
-            JOptionPane.showMessageDialog(null, "All fields are required!");
+            System.out.println("All fields are required!");
+            lblmessage1.setText("***");
+            lblmessage2.setText("***");
+            lblmessage3.setText("***");
         } else {
             dbConnector dbc = new dbConnector();
             try {
@@ -172,26 +204,25 @@ public class forgotpassForm extends javax.swing.JFrame {
                 PreparedStatement statement = dbc.prepareStatement(query);
                 statement.setString(1, txtemail.getText());
                 ResultSet emailResultSet = statement.executeQuery();
-                if (emailResultSet.next()) {
-                    String usernameDB = emailResultSet.getString("u_username");
+                if (emailResultSet.next()) {     
                     long contactNumberDB = emailResultSet.getLong("u_contactnumber");
-                    if (txtusername.getText().equals(usernameDB) && cNum.equals(String.valueOf(contactNumberDB))) {
+                    String usernameDB = emailResultSet.getString("u_username");
+                    if (checkUsernameAndContactNumber(txtusername.getText(), cNum, usernameDB, contactNumberDB)) {
                         String updateQuery = "UPDATE tbl_user SET u_status = 'Reset' WHERE u_email = ?";
                         PreparedStatement updateStatement = dbc.prepareStatement(updateQuery);
                         updateStatement.setString(1, txtemail.getText());
                         updateStatement.executeUpdate();
                         System.out.println("Account's Password Reset!");
-                        JOptionPane.showMessageDialog(null, "Reset Successfully, wait for the admin to approve!");
                         loginForm lgf = new loginForm();
                         lgf.setVisible(true);
                         this.dispose();
-                    } else {
-                        System.out.println("Information Mismatch!");
-                        JOptionPane.showMessageDialog(null, "Information does not match existing records!");
                     }
                 } else {
-                    System.out.println("Email does not exist in the database!");
-                    JOptionPane.showMessageDialog(null, "Email does not exist in the database!");
+                    System.out.println("Nonexistent Email!");
+                    txtemail.setText("");
+                    txtcontactnumber.setText("");
+                    txtusername.setText("");
+                    lblmessage1.setText("Nonexistent Email!");
                 }
             } catch (SQLException ex) {
             }
@@ -207,7 +238,7 @@ public class forgotpassForm extends javax.swing.JFrame {
     }//GEN-LAST:event_resetMouseExited
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        System.out.println("Login Returned!");
+        System.out.println("Go Back!");
         loginForm lgf = new loginForm();
         lgf.setVisible(true);
         this.dispose();
@@ -247,6 +278,9 @@ public class forgotpassForm extends javax.swing.JFrame {
     private javax.swing.JPanel form;
     private javax.swing.JLabel lblcontactnumber;
     private javax.swing.JLabel lblemail;
+    private javax.swing.JLabel lblmessage1;
+    private javax.swing.JLabel lblmessage2;
+    private javax.swing.JLabel lblmessage3;
     private javax.swing.JLabel lblreset1;
     private javax.swing.JLabel lblreset2;
     private javax.swing.JLabel lblusername;

@@ -51,17 +51,20 @@ public class changepassForm extends javax.swing.JInternalFrame {
         back = new javax.swing.JLabel();
         id = new javax.swing.JLabel();
         lblregistration = new javax.swing.JLabel();
+        check = new javax.swing.JCheckBox();
+        lblmessage1 = new javax.swing.JLabel();
         txtoldpass = new javax.swing.JPasswordField();
         lbloldpass = new javax.swing.JLabel();
+        check1 = new javax.swing.JCheckBox();
+        lblmessage2 = new javax.swing.JLabel();
         txtnewpass = new javax.swing.JPasswordField();
         lblnewpass = new javax.swing.JLabel();
+        check2 = new javax.swing.JCheckBox();
+        lblmessage3 = new javax.swing.JLabel();
         txtconfirmpass = new javax.swing.JPasswordField();
         lblconfirmpassw = new javax.swing.JLabel();
         changepass = new javax.swing.JPanel();
         lblreset = new javax.swing.JLabel();
-        check = new javax.swing.JCheckBox();
-        check1 = new javax.swing.JCheckBox();
-        check2 = new javax.swing.JCheckBox();
 
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -92,6 +95,7 @@ public class changepassForm extends javax.swing.JInternalFrame {
         picture.setBounds(10, 30, 110, 30);
 
         back.setForeground(new java.awt.Color(46, 49, 146));
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/leftarrow_orig.png"))); // NOI18N
         back.setText("BACK");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -99,7 +103,7 @@ public class changepassForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(back);
-        back.setBounds(470, 40, 60, 30);
+        back.setBounds(480, 10, 60, 30);
 
         id.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         id.setForeground(new java.awt.Color(46, 49, 146));
@@ -111,6 +115,25 @@ public class changepassForm extends javax.swing.JInternalFrame {
         lblregistration.setText("Account #");
         background.add(lblregistration);
         lblregistration.setBounds(150, 20, 330, 60);
+
+        check.setBackground(new java.awt.Color(255, 255, 255));
+        check.setForeground(new java.awt.Color(255, 255, 255));
+        check.setBorder(null);
+        check.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        check.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        check.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkActionPerformed(evt);
+            }
+        });
+        background.add(check);
+        check.setBounds(410, 120, 23, 23);
+
+        lblmessage1.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage1.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        background.add(lblmessage1);
+        lblmessage1.setBounds(370, 120, 30, 30);
 
         txtoldpass.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtoldpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
@@ -127,6 +150,25 @@ public class changepassForm extends javax.swing.JInternalFrame {
         background.add(lbloldpass);
         lbloldpass.setBounds(50, 120, 160, 30);
 
+        check1.setBackground(new java.awt.Color(255, 255, 255));
+        check1.setForeground(new java.awt.Color(255, 255, 255));
+        check1.setBorder(null);
+        check1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        check1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        check1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                check1ActionPerformed(evt);
+            }
+        });
+        background.add(check1);
+        check1.setBounds(410, 180, 20, 20);
+
+        lblmessage2.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage2.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        background.add(lblmessage2);
+        lblmessage2.setBounds(370, 180, 30, 30);
+
         txtnewpass.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtnewpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtnewpass.addActionListener(new java.awt.event.ActionListener() {
@@ -141,6 +183,25 @@ public class changepassForm extends javax.swing.JInternalFrame {
         lblnewpass.setText("New Password:");
         background.add(lblnewpass);
         lblnewpass.setBounds(50, 180, 160, 30);
+
+        check2.setBackground(new java.awt.Color(255, 255, 255));
+        check2.setForeground(new java.awt.Color(255, 255, 255));
+        check2.setBorder(null);
+        check2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        check2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        check2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                check2ActionPerformed(evt);
+            }
+        });
+        background.add(check2);
+        check2.setBounds(410, 240, 20, 20);
+
+        lblmessage3.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage3.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        background.add(lblmessage3);
+        lblmessage3.setBounds(370, 240, 30, 30);
 
         txtconfirmpass.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtconfirmpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
@@ -174,52 +235,12 @@ public class changepassForm extends javax.swing.JInternalFrame {
 
         lblreset.setBackground(new java.awt.Color(255, 255, 255));
         lblreset.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        lblreset.setForeground(new java.awt.Color(46, 49, 146));
         lblreset.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblreset.setText("CHANGE PASSWORD");
         changepass.add(lblreset, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 5, 150, 40));
 
         background.add(changepass);
         changepass.setBounds(230, 330, 160, 50);
-
-        check.setBackground(new java.awt.Color(255, 255, 255));
-        check.setForeground(new java.awt.Color(255, 255, 255));
-        check.setBorder(null);
-        check.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        check.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        check.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkActionPerformed(evt);
-            }
-        });
-        background.add(check);
-        check.setBounds(410, 120, 23, 23);
-
-        check1.setBackground(new java.awt.Color(255, 255, 255));
-        check1.setForeground(new java.awt.Color(255, 255, 255));
-        check1.setBorder(null);
-        check1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        check1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        check1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                check1ActionPerformed(evt);
-            }
-        });
-        background.add(check1);
-        check1.setBounds(410, 180, 20, 20);
-
-        check2.setBackground(new java.awt.Color(255, 255, 255));
-        check2.setForeground(new java.awt.Color(255, 255, 255));
-        check2.setBorder(null);
-        check2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        check2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        check2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                check2ActionPerformed(evt);
-            }
-        });
-        background.add(check2);
-        check2.setBounds(410, 240, 20, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -254,15 +275,15 @@ public class changepassForm extends javax.swing.JInternalFrame {
 
     private void changepassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changepassMouseClicked
         if(txtoldpass.getText().isEmpty() || txtnewpass.getText().isEmpty() || txtconfirmpass.getText().isEmpty()){
-            System.out.println("Empty Text Field!");
-            JOptionPane.showMessageDialog(null, "All fields are required!");
-
+            System.out.println("Empty Text Fields!");
+            lblmessage1.setText("***");
+            lblmessage2.setText("***");
+            lblmessage3.setText("***");
         }else if(txtnewpass.getText().length() < 8){
             System.out.println("Password Invalid!");
-            JOptionPane.showMessageDialog(null, "Password character should be 8 above!");
+            lblmessage2.setText("***");
             txtnewpass.setText("");
             txtconfirmpass.setText("");
-
         }else{
             try{
                 dbConnector dbc = new dbConnector();
@@ -271,13 +292,13 @@ public class changepassForm extends javax.swing.JInternalFrame {
                 ResultSet resultSet = dbc.getData(query);
                 if(resultSet.next()){
                     String oldpass = resultSet.getString("u_password");
-                    String oldhash = passwordHasher.hashPassword(txtoldpass.getText());
-                    
+                    String oldhash = passwordHasher.hashPassword(txtoldpass.getText());                    
                     if(oldpass.equals(oldhash)){
                         String newpass = passwordHasher.hashPassword(txtnewpass.getText());
                         if (newpass.equals(oldpass)) {
                             System.out.println("New and Old Password is alike!");
-                            JOptionPane.showMessageDialog(null, "New Password is the same as Old Password");
+                            lblmessage1.setText("***");
+                            lblmessage2.setText("***");
                             txtnewpass.setText("");
                             txtconfirmpass.setText("");
                         } else if(txtnewpass.getText().equals(txtconfirmpass.getText())){
@@ -289,12 +310,13 @@ public class changepassForm extends javax.swing.JInternalFrame {
                             admindesktop.add(pf).setVisible(true);
                         }else{
                             System.out.println("Password Not Matching!");
-                            JOptionPane.showMessageDialog(null, "New Password and Confirm Password doesn't match!");
+                            lblmessage2.setText("***");
+                            lblmessage3.setText("***");
                             txtconfirmpass.setText("");
                         }
                     }else{
                         System.out.println("Wrong Password!");
-                        JOptionPane.showMessageDialog(null, "Incorrect Old Password!");
+                        lblmessage1.setText("***");
                         txtoldpass.setText("");
                         txtnewpass.setText("");
                         txtconfirmpass.setText("");
@@ -353,6 +375,9 @@ public class changepassForm extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox check2;
     public javax.swing.JLabel id;
     private javax.swing.JLabel lblconfirmpassw;
+    private javax.swing.JLabel lblmessage1;
+    private javax.swing.JLabel lblmessage2;
+    private javax.swing.JLabel lblmessage3;
     private javax.swing.JLabel lblnewpass;
     private javax.swing.JLabel lbloldpass;
     private javax.swing.JLabel lblregistration;

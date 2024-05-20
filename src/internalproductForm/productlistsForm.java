@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
+import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
@@ -32,7 +32,10 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
         bi.setNorthPane(null);
         update.setEnabled(false);
-        archive.setEnabled(false);
+    }
+    
+    public JLabel getLblMessage() {
+        return lblmessage;
     }
 
     private JDesktopPane admindesktop; 
@@ -72,12 +75,14 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         archive = new javax.swing.JPanel();
         lblarchive = new javax.swing.JLabel();
         productlistdesktop = new javax.swing.JDesktopPane();
+        lblmessage = new javax.swing.JLabel();
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(null);
 
         back.setForeground(new java.awt.Color(46, 49, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/leftarrow_orig.png"))); // NOI18N
         back.setText("BACK");
         back.setToolTipText("");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -86,7 +91,7 @@ public class productlistsForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(back);
-        back.setBounds(470, 10, 50, 40);
+        back.setBounds(480, 10, 60, 40);
 
         create.setBackground(new java.awt.Color(255, 255, 255));
         create.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -105,7 +110,6 @@ public class productlistsForm extends javax.swing.JInternalFrame {
 
         lblcreate.setBackground(new java.awt.Color(255, 255, 255));
         lblcreate.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        lblcreate.setForeground(new java.awt.Color(46, 49, 146));
         lblcreate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblcreate.setText("CREATE");
         create.add(lblcreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 70, 20));
@@ -130,7 +134,6 @@ public class productlistsForm extends javax.swing.JInternalFrame {
 
         lblupdate.setBackground(new java.awt.Color(255, 255, 255));
         lblupdate.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        lblupdate.setForeground(new java.awt.Color(46, 49, 146));
         lblupdate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblupdate.setText("UPDATE");
         update.add(lblupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 70, 20));
@@ -155,7 +158,6 @@ public class productlistsForm extends javax.swing.JInternalFrame {
 
         lblarchive.setBackground(new java.awt.Color(255, 255, 255));
         lblarchive.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
-        lblarchive.setForeground(new java.awt.Color(46, 49, 146));
         lblarchive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblarchive.setText("ARCHIVE");
         archive.add(lblarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 70, 20));
@@ -179,6 +181,12 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         background.add(productlistdesktop);
         productlistdesktop.setBounds(10, 60, 530, 410);
 
+        lblmessage.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
+        lblmessage.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        background.add(lblmessage);
+        lblmessage.setBounds(310, 20, 170, 20);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -189,9 +197,7 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -200,13 +206,14 @@ public class productlistsForm extends javax.swing.JInternalFrame {
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
         adminForm parentFrame = (adminForm) SwingUtilities.getWindowAncestor(this);
         parentFrame.restoreOriginalState();
-        System.out.println("Admin clicked Back!");
+        System.out.println("Go Back!");
     }//GEN-LAST:event_backMouseClicked
 
     private void createMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createMouseClicked
         closeAllInternalFrames();
         producteditForm uef = new producteditForm(true);
-        System.out.println("Admin clicked Create Product!");
+        System.out.println("Create Product Opens!");
+        lblmessage.setText("");
         productlistdesktop.add(uef).setVisible(true);
     }//GEN-LAST:event_createMouseClicked
 
@@ -225,31 +232,32 @@ public class productlistsForm extends javax.swing.JInternalFrame {
             tableplistForm tlf = (tableplistForm) selectedFrame;
             if (tlf != null && tlf.getSelectedRowIndex() != -1) {
                 try {
-                    int row = tlf.getSelectedRowIndex();
-                    int productId = tlf.getSelectedAccountId();
+                    int productId = tlf.getSelectedProductId();
                     dbConnector connector = new dbConnector();
                     ResultSet resultSet = connector.getData("SELECT * FROM tbl_products WHERE p_id = '"+ productId +"' ");
                     if(resultSet.next()){
                         closeAllInternalFrames();
                         producteditForm pef = new producteditForm(false);
-                        System.out.println("Admin clicked Update Product!");
+                        System.out.println("Update Product Opens!");
+                        lblmessage.setText("");
                         productlistdesktop.add(pef).setVisible(true);
-                        pef.id.setText("# "+resultSet.getInt("p_id"));
+                        pef.id.setText(""+resultSet.getInt("p_id"));
                         pef.txtname.setText(""+resultSet.getString("p_name"));
                         pef.txtqty.setText(""+resultSet.getString("p_qty"));
                         pef.txtprice.setText(""+resultSet.getString("p_price"));
                         pef.boxstatus.setSelectedItem(""+resultSet.getString("p_status"));
-                        pef.txtnotes.setText(""+resultSet.getString("p_notes"));
                     }
                 } catch (SQLException ex) {
                 }
             } else {
                 update.setEnabled(false);
-                System.out.println("No Item!");
-                JOptionPane.showMessageDialog(null, "Please select an item.");
+                System.out.println("No Selected Item!");
+                lblmessage.setText("Please select an Item!");
             }
         } else {
-            System.out.println("Invalid Action!");
+            update.setEnabled(false);
+            System.out.println("No Selected Item!");
+            lblmessage.setText("Please select an Item!");
         }
     }//GEN-LAST:event_updateMouseClicked
 
@@ -263,31 +271,36 @@ public class productlistsForm extends javax.swing.JInternalFrame {
 
     private void archiveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_archiveMouseClicked
         JInternalFrame selectedFrame = productlistdesktop.getSelectedFrame();
-        archive.setEnabled(true);
         if (selectedFrame instanceof tableplistForm) {
             tableplistForm tlf = (tableplistForm) selectedFrame;
             if (tlf != null && tlf.getSelectedRowIndex() != -1) {
                 try {
-                    int row = tlf.getSelectedRowIndex();
-                    int accountId = tlf.getSelectedAccountId();
+                    int producttId = tlf.getSelectedProductId();
                     dbConnector connector = new dbConnector();
-                    String updateQuery = "UPDATE tbl_user SET u_status = 'Archive' WHERE p_id = '"+ accountId +"'";
+                    String updateQuery = "UPDATE tbl_products SET p_status = 'Archive' WHERE p_id = '"+ producttId +"'";
                     connector.updateData(updateQuery);
-                    ResultSet resultSet = connector.getData("SELECT * FROM tbl_user WHERE p_id = '"+ accountId +"' ");
+                    ResultSet resultSet = connector.getData("SELECT * FROM tbl_products WHERE p_id = '"+ producttId +"' ");
                     if(resultSet.next()){
                         closeAllInternalFrames();
                         productarchiveForm prf = new productarchiveForm();
-                        System.out.println("Admin clicked Archive Product!");
+                        System.out.println("Archive Product Opens!");
+                        lblmessage.setText("");
                         productlistdesktop.add(prf).setVisible(true);
                     }
                 } catch (SQLException ex) {
                 }
             } else {
+                closeAllInternalFrames();
+                productarchiveForm prf = new productarchiveForm();
+                System.out.println("Archive Product Opens!");
+                lblmessage.setText("");
+                productlistdesktop.add(prf).setVisible(true);
             }
         }else {
             closeAllInternalFrames();
             productarchiveForm prf = new productarchiveForm();
-            System.out.println("Admin clicked Archive Product!");
+            System.out.println("Archive Product Opens!");
+            lblmessage.setText("");
             productlistdesktop.add(prf).setVisible(true);
         }
     }//GEN-LAST:event_archiveMouseClicked
@@ -307,6 +320,7 @@ public class productlistsForm extends javax.swing.JInternalFrame {
     private javax.swing.JPanel create;
     private javax.swing.JLabel lblarchive;
     private javax.swing.JLabel lblcreate;
+    public javax.swing.JLabel lblmessage;
     private javax.swing.JLabel lblupdate;
     public javax.swing.JDesktopPane productlistdesktop;
     private javax.swing.JPanel update;

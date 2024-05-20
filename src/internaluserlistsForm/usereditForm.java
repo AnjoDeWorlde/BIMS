@@ -23,7 +23,7 @@ public class usereditForm extends javax.swing.JInternalFrame {
      */
     public usereditForm(boolean isCreating) {
         initComponents();
-        
+
         this.isCreating = isCreating;
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
@@ -125,22 +125,30 @@ public class usereditForm extends javax.swing.JInternalFrame {
 
         background = new javax.swing.JPanel();
         id = new javax.swing.JLabel();
-        lblregistration = new javax.swing.JLabel();
+        lblaccount = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
+        lblmessage1 = new javax.swing.JLabel();
         txtfirstname = new javax.swing.JTextField();
         lblfirstname = new javax.swing.JLabel();
+        lblmessage2 = new javax.swing.JLabel();
         txtlastname = new javax.swing.JTextField();
         lbllastname = new javax.swing.JLabel();
+        lblmessage3 = new javax.swing.JLabel();
         txtemail = new javax.swing.JTextField();
         lblemail = new javax.swing.JLabel();
+        lblmessage4 = new javax.swing.JLabel();
         txtcontactnumber = new javax.swing.JTextField();
         lblcontactnumber = new javax.swing.JLabel();
+        lblmessage5 = new javax.swing.JLabel();
         txtusername = new javax.swing.JTextField();
         lblusername = new javax.swing.JLabel();
+        lblmessage6 = new javax.swing.JLabel();
         txtpassword = new javax.swing.JPasswordField();
         lblpassword = new javax.swing.JLabel();
+        lblmessage7 = new javax.swing.JLabel();
         boxtype = new javax.swing.JComboBox<>();
         lbltype = new javax.swing.JLabel();
+        lblmessage8 = new javax.swing.JLabel();
         boxstatus = new javax.swing.JComboBox<>();
         lblstatus = new javax.swing.JLabel();
         confirm = new javax.swing.JPanel();
@@ -152,16 +160,17 @@ public class usereditForm extends javax.swing.JInternalFrame {
         id.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         id.setForeground(new java.awt.Color(46, 49, 146));
         background.add(id);
-        id.setBounds(180, 10, 190, 50);
+        id.setBounds(230, 10, 150, 60);
 
-        lblregistration.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
-        lblregistration.setForeground(new java.awt.Color(46, 49, 146));
-        lblregistration.setText("Account");
-        background.add(lblregistration);
-        lblregistration.setBounds(10, 10, 170, 60);
+        lblaccount.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        lblaccount.setForeground(new java.awt.Color(46, 49, 146));
+        lblaccount.setText("Account #");
+        background.add(lblaccount);
+        lblaccount.setBounds(10, 10, 220, 60);
 
         back.setForeground(new java.awt.Color(46, 49, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/leftarrow_orig.png"))); // NOI18N
         back.setText("BACK");
         back.setToolTipText("");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -170,7 +179,13 @@ public class usereditForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(back);
-        back.setBounds(470, 10, 50, 40);
+        back.setBounds(450, 20, 70, 20);
+
+        lblmessage1.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage1.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        background.add(lblmessage1);
+        lblmessage1.setBounds(310, 80, 30, 30);
 
         txtfirstname.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtfirstname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
@@ -187,6 +202,12 @@ public class usereditForm extends javax.swing.JInternalFrame {
         background.add(lblfirstname);
         lblfirstname.setBounds(40, 80, 110, 30);
 
+        lblmessage2.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage2.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        background.add(lblmessage2);
+        lblmessage2.setBounds(310, 130, 30, 30);
+
         txtlastname.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtlastname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtlastname.addActionListener(new java.awt.event.ActionListener() {
@@ -202,6 +223,12 @@ public class usereditForm extends javax.swing.JInternalFrame {
         background.add(lbllastname);
         lbllastname.setBounds(40, 130, 110, 30);
 
+        lblmessage3.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage3.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        background.add(lblmessage3);
+        lblmessage3.setBounds(310, 180, 30, 30);
+
         txtemail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,6 +242,12 @@ public class usereditForm extends javax.swing.JInternalFrame {
         lblemail.setText("E-mail:");
         background.add(lblemail);
         lblemail.setBounds(40, 180, 110, 30);
+
+        lblmessage4.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage4.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        background.add(lblmessage4);
+        lblmessage4.setBounds(310, 230, 30, 30);
 
         txtcontactnumber.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtcontactnumber.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
@@ -231,6 +264,12 @@ public class usereditForm extends javax.swing.JInternalFrame {
         background.add(lblcontactnumber);
         lblcontactnumber.setBounds(40, 230, 110, 30);
 
+        lblmessage5.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage5.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        background.add(lblmessage5);
+        lblmessage5.setBounds(310, 280, 30, 30);
+
         txtusername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtusername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,6 +283,12 @@ public class usereditForm extends javax.swing.JInternalFrame {
         lblusername.setText("Username:");
         background.add(lblusername);
         lblusername.setBounds(40, 280, 110, 30);
+
+        lblmessage6.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage6.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        background.add(lblmessage6);
+        lblmessage6.setBounds(310, 330, 30, 30);
 
         txtpassword.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtpassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
@@ -260,6 +305,12 @@ public class usereditForm extends javax.swing.JInternalFrame {
         background.add(lblpassword);
         lblpassword.setBounds(40, 330, 110, 30);
 
+        lblmessage7.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage7.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        background.add(lblmessage7);
+        lblmessage7.setBounds(430, 110, 30, 30);
+
         boxtype.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         boxtype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "User", "Admin" }));
         boxtype.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
@@ -275,6 +326,12 @@ public class usereditForm extends javax.swing.JInternalFrame {
         lbltype.setText("Account Type:");
         background.add(lbltype);
         lbltype.setBounds(360, 80, 120, 30);
+
+        lblmessage8.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage8.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        background.add(lblmessage8);
+        lblmessage8.setBounds(430, 210, 30, 30);
 
         boxstatus.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         boxstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "Active", "Inactive" }));
@@ -366,70 +423,78 @@ public class usereditForm extends javax.swing.JInternalFrame {
     private void confirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseClicked
         String cNum = txtcontactnumber.getText();
         if (txtfirstname.getText().isEmpty() || txtlastname.getText().isEmpty() || txtemail.getText().isEmpty()
-        || txtusername.getText().isEmpty() || txtpassword.getText().isEmpty() || txtcontactnumber.getText().isEmpty()) {
-            System.out.println("Empty Text Field!");
-            JOptionPane.showMessageDialog(null, "All fields are required!");
-
-        } else if (txtpassword.getText().length() < 8) {
-            System.out.println("Password Invalid!");
-            JOptionPane.showMessageDialog(null, "Password character should be 8 above!");
-            txtpassword.setText("");
-
+        || txtusername.getText().isEmpty() || txtcontactnumber.getText().isEmpty()) {
+            if(isCreating){
+                if(txtpassword.getText().isEmpty()){
+                    System.out.println("Empty All Text Field!");
+                    lblmessage1.setText("***");
+                    lblmessage2.setText("***");
+                    lblmessage3.setText("***");
+                    lblmessage4.setText("***");
+                    lblmessage5.setText("***");
+                    lblmessage6.setText("***");
+                    lblmessage7.setText("***");
+                    lblmessage8.setText("***");
+                }
+            }else{
+                System.out.println("Empty All Text Field!");
+                lblmessage1.setText("***");
+                lblmessage2.setText("***");
+                lblmessage3.setText("***");
+                lblmessage4.setText("***");
+                lblmessage5.setText("***");
+                lblmessage7.setText("***");
+                lblmessage8.setText("***");
+            }
         } else if (!validCNum(cNum)) {
             System.out.println("Contact Number Invalid!");
-            JOptionPane.showMessageDialog(null, "Contact Number should be numbers or less than 11 digits!");
-
+            lblmessage4.setText("***");
+        } else if (txtpassword.getText().length() < 8) {
+            System.out.println("Password Invalid!");
+            lblmessage6.setText("***");
+            txtpassword.setText("");
         } else if (boxtype.getSelectedItem().equals("N/A")) {
             System.out.println("Account Type Invalid!");
-            JOptionPane.showMessageDialog(null, "Account Type must be Admin or User!");
-
+            lblmessage7.setText("***");
         } else if (boxstatus.getSelectedItem().equals("N/A")) {
             System.out.println("Account Status Invalid!");
-            JOptionPane.showMessageDialog(null, "Account Status must be Active or Inactive!");
-
+            lblmessage8.setText("***");
         } else {
             dbConnector connector = new dbConnector();
+            long conNum = Long.parseLong(cNum);
             try {
-                long conNum = Long.parseLong(cNum);
-                String password = passwordHasher.hashPassword(txtpassword.getText());
-
                 if (isCreating) {
-                    if (connector.insertData("INSERT INTO tbl_user(u_fname ,u_lname ,u_email ,u_contactnumber ,u_username "
-                    + ",u_password ,u_type ,u_status) VALUES('" + txtfirstname.getText() + "','" + txtlastname.getText()
-                    + "','" + txtemail.getText() + "','" + conNum + "','" + txtusername.getText() + "','" + password + "','"
-                    + boxtype.getSelectedItem() + "','" + boxstatus.getSelectedItem() + "')")) {
-                        try {
+                    String password = passwordHasher.hashPassword(txtpassword.getText());
+                        if (connector.insertData("INSERT INTO tbl_user(u_fname ,u_lname ,u_email ,u_contactnumber ,u_username "
+                        + ",u_password ,u_type ,u_status) VALUES('" + txtfirstname.getText() + "','" + txtlastname.getText() + "','" 
+                        + txtemail.getText() + "','" + conNum + "','" + txtusername.getText() + "','" + password + "','"
+                        + boxtype.getSelectedItem() + "','" + boxstatus.getSelectedItem() + "')")) {
                             userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
                             userListFrame.restoreOriginalState();
                             System.out.println("Information Inserted!");
-                            JOptionPane.showMessageDialog(null, "Created Account Successfully!");
-                        } catch (ClassCastException e) {
+                            userListFrame.getLblMessage().setText("Created Account Successfully!");
+                        } else {
+                            userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
+                            System.out.println("Information Rejected!");
+                            userListFrame.getLblMessage().setText("Failed Successfully!");
                         }
-                    } else {
-                        System.out.println("Information Rejected!");
-                        JOptionPane.showMessageDialog(null, "Failed Successfully!");
-                    }
                 } else {
-                    //THIS DOES NOT WORKS!
                     if(connector.updateData("UPDATE tbl_user SET u_fname = '" + txtfirstname.getText() + "', u_lname = '"
                     + txtlastname.getText() + "', u_email = '" + txtemail.getText() + "', u_contactnumber = '"
-                    + txtcontactnumber.getText() + "', u_username = '" + txtusername.getText() + "', u_type = '" 
-                    + boxtype.getSelectedItem() + "', u_status = '" + boxstatus.getSelectedItem() + "' WHERE u_id = '" 
-                    + id.getText() + "'")){
-                        try {
-                            userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
-                            userListFrame.restoreOriginalState();
-                            System.out.println("Information Updated!");
-                            JOptionPane.showMessageDialog(null, "Updated Account Successfully!");
-                        } catch (ClassCastException e) {
-                        }
+                    + conNum + "', u_username = '" + txtusername.getText() + "', u_type = '"  + boxtype.getSelectedItem() + "', u_status = '" 
+                    + boxstatus.getSelectedItem() + "' WHERE u_id = '" + id.getText() + "'")){
+                        userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
+                        userListFrame.restoreOriginalState();
+                        System.out.println("Information Updated!");
+                        userListFrame.getLblMessage().setText("Updated Account Successfully!");
                     } else {
+                        userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
                         System.out.println("Information Rejected!");
-                        JOptionPane.showMessageDialog(null, "Failed Successfully!");
-                    }
+                        userListFrame.getLblMessage().setText("Failed Successfully!");
+                    }                
                 }
             } catch (NoSuchAlgorithmException ex) {
-            }
+            }  
         }
     }//GEN-LAST:event_confirmMouseClicked
 
@@ -442,12 +507,10 @@ public class usereditForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_confirmMouseExited
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        try {
-            userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
-            userListFrame.restoreOriginalState();
-            System.out.println("Admin clicked Back!");
-        } catch (ClassCastException e) {
-        }
+        userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
+        userListFrame.restoreOriginalState();
+        userListFrame.getLblMessage().setText("");
+        System.out.println("Go Back!");
     }//GEN-LAST:event_backMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -457,13 +520,21 @@ public class usereditForm extends javax.swing.JInternalFrame {
     public javax.swing.JComboBox<String> boxtype;
     private javax.swing.JPanel confirm;
     public javax.swing.JLabel id;
+    private javax.swing.JLabel lblaccount;
     private javax.swing.JLabel lblconfirm;
     private javax.swing.JLabel lblcontactnumber;
     private javax.swing.JLabel lblemail;
     private javax.swing.JLabel lblfirstname;
     private javax.swing.JLabel lbllastname;
+    private javax.swing.JLabel lblmessage1;
+    private javax.swing.JLabel lblmessage2;
+    private javax.swing.JLabel lblmessage3;
+    private javax.swing.JLabel lblmessage4;
+    private javax.swing.JLabel lblmessage5;
+    private javax.swing.JLabel lblmessage6;
+    private javax.swing.JLabel lblmessage7;
+    private javax.swing.JLabel lblmessage8;
     private javax.swing.JLabel lblpassword;
-    private javax.swing.JLabel lblregistration;
     private javax.swing.JLabel lblstatus;
     private javax.swing.JLabel lbltype;
     private javax.swing.JLabel lblusername;

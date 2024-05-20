@@ -2,6 +2,7 @@ package admin;
 
 import internaluserlistsForm.userlistsForm;
 import config.Session;
+import internalinventoryForm.inventoryForm;
 import internalproductForm.productlistsForm;
 import internalprofileForm.profileForm;
 import java.awt.Color;
@@ -55,12 +56,12 @@ public class adminForm extends javax.swing.JFrame {
 
         background = new javax.swing.JPanel();
         navigation = new javax.swing.JPanel();
-        u_icon = new javax.swing.JLabel();
+        icon = new javax.swing.JLabel();
         type = new javax.swing.JLabel();
         lname = new javax.swing.JLabel();
         profile = new javax.swing.JPanel();
         lblprofile = new javax.swing.JLabel();
-        Products = new javax.swing.JPanel();
+        products = new javax.swing.JPanel();
         lblproducts = new javax.swing.JLabel();
         inventory = new javax.swing.JPanel();
         lblinventory = new javax.swing.JLabel();
@@ -84,7 +85,7 @@ public class adminForm extends javax.swing.JFrame {
 
         navigation.setBackground(new java.awt.Color(0, 174, 239));
         navigation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        navigation.add(u_icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 90, 90));
+        navigation.add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 90, 90));
 
         type.setFont(new java.awt.Font("Myanmar Text", 1, 11)); // NOI18N
         type.setForeground(new java.awt.Color(255, 255, 255));
@@ -122,27 +123,27 @@ public class adminForm extends javax.swing.JFrame {
 
         navigation.add(profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 150, 40));
 
-        Products.setBackground(new java.awt.Color(0, 174, 239));
-        Products.addMouseListener(new java.awt.event.MouseAdapter() {
+        products.setBackground(new java.awt.Color(0, 174, 239));
+        products.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ProductsMouseClicked(evt);
+                productsMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                ProductsMouseEntered(evt);
+                productsMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                ProductsMouseExited(evt);
+                productsMouseExited(evt);
             }
         });
-        Products.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        products.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblproducts.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
         lblproducts.setForeground(new java.awt.Color(255, 255, 255));
         lblproducts.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblproducts.setText("PRODUCTS");
-        Products.add(lblproducts, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 130, 40));
+        products.add(lblproducts, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 130, 40));
 
-        navigation.add(Products, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 150, 40));
+        navigation.add(products, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 150, 40));
 
         inventory.setBackground(new java.awt.Color(0, 174, 239));
         inventory.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -217,6 +218,7 @@ public class adminForm extends javax.swing.JFrame {
 
         logout.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         logout.setForeground(new java.awt.Color(255, 255, 255));
+        logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout_orig.png"))); // NOI18N
         logout.setText("LOGOUT");
         logout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -229,16 +231,12 @@ public class adminForm extends javax.swing.JFrame {
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                .addContainerGap(473, Short.MAX_VALUE)
-                .addComponent(logout)
-                .addGap(19, 19, 19))
+                .addGap(0, 452, Short.MAX_VALUE)
+                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(logout)
-                .addContainerGap(13, Short.MAX_VALUE))
+            .addComponent(logout, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
         background.add(header);
@@ -279,7 +277,7 @@ public class adminForm extends javax.swing.JFrame {
         closeAllInternalFrames();
         profileForm pf = new profileForm(admindesktop);
         admindesktop.add(pf).setVisible(true);
-        System.out.println("Admin clicked Profile!");
+        System.out.println("Profile Starts!");
     }//GEN-LAST:event_profileMouseClicked
 
     private void profileMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseEntered
@@ -290,13 +288,13 @@ public class adminForm extends javax.swing.JFrame {
         profile.setBackground(navColor);
     }//GEN-LAST:event_profileMouseExited
 
-    private void ProductsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductsMouseEntered
-        Products.setBackground(enterColor);
-    }//GEN-LAST:event_ProductsMouseEntered
+    private void productsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productsMouseEntered
+        products.setBackground(enterColor);
+    }//GEN-LAST:event_productsMouseEntered
 
-    private void ProductsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductsMouseExited
-        Products.setBackground(navColor);
-    }//GEN-LAST:event_ProductsMouseExited
+    private void productsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productsMouseExited
+        products.setBackground(navColor);
+    }//GEN-LAST:event_productsMouseExited
 
     private void inventoryMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventoryMouseEntered
         inventory.setBackground(enterColor);
@@ -322,28 +320,30 @@ public class adminForm extends javax.swing.JFrame {
         sales.setBackground(navColor);
     }//GEN-LAST:event_salesMouseExited
 
-    private void ProductsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductsMouseClicked
+    private void productsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productsMouseClicked
         closeAllInternalFrames();
         productlistsForm plf = new productlistsForm(admindesktop);
         admindesktop.add(plf).setVisible(true);
-        System.out.println("Admin clicked Product Lists!");
-    }//GEN-LAST:event_ProductsMouseClicked
+        System.out.println("Product Lists Starts!");
+    }//GEN-LAST:event_productsMouseClicked
 
     private void inventoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inventoryMouseClicked
         closeAllInternalFrames();
-        System.out.println("Admin clicked Inventory!");
+        inventoryForm inf = new inventoryForm(admindesktop);
+        admindesktop.add(inf).setVisible(true);
+        System.out.println("Inventory Starts!");
     }//GEN-LAST:event_inventoryMouseClicked
 
     private void userlistsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userlistsMouseClicked
         closeAllInternalFrames();
         userlistsForm usf = new userlistsForm(admindesktop);
         admindesktop.add(usf).setVisible(true);
-        System.out.println("Admin clicked User Lists!");
+        System.out.println("User Lists Starts!");
     }//GEN-LAST:event_userlistsMouseClicked
 
     private void salesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesMouseClicked
         closeAllInternalFrames();
-        System.out.println("Admin clicked Sales!");
+        System.out.println("Sales Starts!");
     }//GEN-LAST:event_salesMouseClicked
 
     private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
@@ -357,7 +357,7 @@ public class adminForm extends javax.swing.JFrame {
         Session shesh = Session.getInstance();
         
         if(shesh.getUid() == 0){
-            JOptionPane.showMessageDialog(null, "No account, Login First!");
+            JOptionPane.showMessageDialog(null, "Found 404 Account Not Found, Login First!");
             loginForm lf = new loginForm();
             lf.setVisible(true);
             this.dispose();
@@ -397,10 +397,10 @@ public class adminForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Products;
     private javax.swing.JDesktopPane admindesktop;
     private javax.swing.JPanel background;
     private javax.swing.JPanel header;
+    private javax.swing.JLabel icon;
     private javax.swing.JPanel inventory;
     private javax.swing.JLabel lblinventory;
     private javax.swing.JLabel lblproducts;
@@ -410,10 +410,10 @@ public class adminForm extends javax.swing.JFrame {
     public javax.swing.JLabel lname;
     private javax.swing.JLabel logout;
     private javax.swing.JPanel navigation;
+    private javax.swing.JPanel products;
     private javax.swing.JPanel profile;
     private javax.swing.JPanel sales;
     public javax.swing.JLabel type;
-    private javax.swing.JLabel u_icon;
     private javax.swing.JPanel userlists;
     // End of variables declaration//GEN-END:variables
 }

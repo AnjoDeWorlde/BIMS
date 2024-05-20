@@ -84,17 +84,24 @@ public class profileForm extends javax.swing.JInternalFrame {
         });
 
         background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setLayout(null);
 
         picture.setForeground(new java.awt.Color(46, 49, 146));
         picture.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         picture.setText("picture.png");
+        background.add(picture);
+        picture.setBounds(0, 60, 110, 30);
 
         id.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         id.setForeground(new java.awt.Color(46, 49, 146));
+        background.add(id);
+        id.setBounds(350, 30, 120, 60);
 
         lblregistration.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         lblregistration.setForeground(new java.awt.Color(46, 49, 146));
         lblregistration.setText("Account #");
+        background.add(lblregistration);
+        lblregistration.setBounds(140, 30, 330, 60);
 
         txtfirstname.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtfirstname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
@@ -103,9 +110,13 @@ public class profileForm extends javax.swing.JInternalFrame {
                 txtfirstnameActionPerformed(evt);
             }
         });
+        background.add(txtfirstname);
+        txtfirstname.setBounds(140, 110, 190, 30);
 
         lblfirstname.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         lblfirstname.setText("First Name:");
+        background.add(lblfirstname);
+        lblfirstname.setBounds(30, 110, 110, 30);
 
         txtlastname.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtlastname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
@@ -114,9 +125,13 @@ public class profileForm extends javax.swing.JInternalFrame {
                 txtlastnameActionPerformed(evt);
             }
         });
+        background.add(txtlastname);
+        txtlastname.setBounds(140, 160, 190, 30);
 
         lbllastname.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         lbllastname.setText("Last Name:");
+        background.add(lbllastname);
+        lbllastname.setBounds(30, 160, 110, 30);
 
         txtemail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtemail.addActionListener(new java.awt.event.ActionListener() {
@@ -124,9 +139,13 @@ public class profileForm extends javax.swing.JInternalFrame {
                 txtemailActionPerformed(evt);
             }
         });
+        background.add(txtemail);
+        txtemail.setBounds(140, 210, 190, 30);
 
         lblemail.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         lblemail.setText("E-mail:");
+        background.add(lblemail);
+        lblemail.setBounds(30, 210, 110, 30);
 
         txtcontactnumber.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtcontactnumber.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
@@ -135,9 +154,13 @@ public class profileForm extends javax.swing.JInternalFrame {
                 txtcontactnumberActionPerformed(evt);
             }
         });
+        background.add(txtcontactnumber);
+        txtcontactnumber.setBounds(140, 260, 190, 30);
 
         lblcontactnumber.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         lblcontactnumber.setText("Contact Number:");
+        background.add(lblcontactnumber);
+        lblcontactnumber.setBounds(30, 260, 110, 30);
 
         txtusername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtusername.addActionListener(new java.awt.event.ActionListener() {
@@ -145,9 +168,13 @@ public class profileForm extends javax.swing.JInternalFrame {
                 txtusernameActionPerformed(evt);
             }
         });
+        background.add(txtusername);
+        txtusername.setBounds(140, 310, 190, 30);
 
         lblusername.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         lblusername.setText("Username:");
+        background.add(lblusername);
+        lblusername.setBounds(30, 310, 110, 30);
 
         txtpassword.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtpassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
@@ -156,9 +183,13 @@ public class profileForm extends javax.swing.JInternalFrame {
                 txtpasswordActionPerformed(evt);
             }
         });
+        background.add(txtpassword);
+        txtpassword.setBounds(140, 360, 190, 30);
 
         lblpassword.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         lblpassword.setText("Password:");
+        background.add(lblpassword);
+        lblpassword.setBounds(30, 360, 110, 30);
 
         txttype.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txttype.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
@@ -167,9 +198,13 @@ public class profileForm extends javax.swing.JInternalFrame {
                 txttypeActionPerformed(evt);
             }
         });
+        background.add(txttype);
+        txttype.setBounds(350, 140, 110, 30);
 
         lbltype.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         lbltype.setText("Account Type:");
+        background.add(lbltype);
+        lbltype.setBounds(350, 110, 110, 30);
 
         txtstatus.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtstatus.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
@@ -178,9 +213,13 @@ public class profileForm extends javax.swing.JInternalFrame {
                 txtstatusActionPerformed(evt);
             }
         });
+        background.add(txtstatus);
+        txtstatus.setBounds(350, 240, 110, 30);
 
         lblstatus.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         lblstatus.setText("Status:");
+        background.add(lblstatus);
+        lblstatus.setBounds(350, 210, 110, 30);
 
         changepass.setBackground(new java.awt.Color(255, 255, 255));
         changepass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -199,13 +238,16 @@ public class profileForm extends javax.swing.JInternalFrame {
 
         lblreset.setBackground(new java.awt.Color(255, 255, 255));
         lblreset.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        lblreset.setForeground(new java.awt.Color(46, 49, 146));
         lblreset.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblreset.setText("CHANGE PASSWORD");
-        changepass.add(lblreset, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 5, 150, 40));
+        changepass.add(lblreset, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, 20));
+
+        background.add(changepass);
+        changepass.setBounds(355, 420, 168, 39);
 
         back.setForeground(new java.awt.Color(46, 49, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/leftarrow_orig.png"))); // NOI18N
         back.setText("BACK");
         back.setToolTipText("");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -213,131 +255,22 @@ public class profileForm extends javax.swing.JInternalFrame {
                 backMouseClicked(evt);
             }
         });
-
-        javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
-        background.setLayout(backgroundLayout);
-        backgroundLayout.setHorizontalGroup(
-            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 550, Short.MAX_VALUE)
-            .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(backgroundLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(backgroundLayout.createSequentialGroup()
-                            .addComponent(picture, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(30, 30, 30)
-                            .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblregistration, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(backgroundLayout.createSequentialGroup()
-                                    .addGap(210, 210, 210)
-                                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(10, 10, 10)
-                            .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(backgroundLayout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addComponent(lblfirstname, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, 0)
-                            .addComponent(txtfirstname, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(20, 20, 20)
-                            .addComponent(lbltype, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(backgroundLayout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addComponent(lbllastname, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, 0)
-                            .addComponent(txtlastname, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(20, 20, 20)
-                            .addComponent(txttype, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(backgroundLayout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addComponent(lblemail, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, 0)
-                            .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(20, 20, 20)
-                            .addComponent(lblstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(backgroundLayout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addComponent(lblcontactnumber, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, 0)
-                            .addComponent(txtcontactnumber, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(20, 20, 20)
-                            .addComponent(txtstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(backgroundLayout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addComponent(lblusername, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, 0)
-                            .addComponent(txtusername, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(backgroundLayout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addComponent(lblpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, 0)
-                            .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(backgroundLayout.createSequentialGroup()
-                            .addGap(340, 340, 340)
-                            .addComponent(changepass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        backgroundLayout.setVerticalGroup(
-            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
-            .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(backgroundLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(backgroundLayout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addComponent(picture, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(backgroundLayout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblregistration, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(20, 20, 20)
-                    .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblfirstname, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtfirstname, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lbltype, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txttype, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(backgroundLayout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lbllastname, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtlastname, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGap(20, 20, 20)
-                    .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblemail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(backgroundLayout.createSequentialGroup()
-                            .addGap(20, 20, 20)
-                            .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblcontactnumber, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtcontactnumber, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGap(20, 20, 20)
-                    .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblusername, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtusername, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(20, 20, 20)
-                    .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(30, 30, 30)
-                    .addComponent(changepass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        background.add(back);
+        back.setBounds(473, 11, 63, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();

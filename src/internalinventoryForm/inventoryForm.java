@@ -343,7 +343,11 @@ public class inventoryForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_archiveMouseExited
 
     private void printMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printMouseClicked
-
+        closeAllInternalFrames();
+        inventoryprintForm ipf = new inventoryprintForm();
+        System.out.println("Print Opens!");
+        lblmessage.setText("");
+        inventorydesktop.add(ipf).setVisible(true);
     }//GEN-LAST:event_printMouseClicked
 
     private void printMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printMouseEntered

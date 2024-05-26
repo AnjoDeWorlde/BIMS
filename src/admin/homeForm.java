@@ -45,7 +45,7 @@ public class homeForm extends javax.swing.JInternalFrame {
         background.add(lblgreetings);
         lblgreetings.setBounds(20, 10, 200, 60);
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo_wname_orig35.jpg"))); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo_wname_orig35.jpg"))); // NOI18N
         background.add(logo);
         logo.setBounds(210, 10, 320, 60);
 

@@ -3,8 +3,10 @@ package internaluserlistsForm;
 import admin.adminForm;
 import config.dbConnector;
 import java.awt.Color;
+import java.awt.Image;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -84,7 +86,7 @@ public class userlistsForm extends javax.swing.JInternalFrame {
 
         back.setForeground(new java.awt.Color(46, 49, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/leftarrow_orig.png"))); // NOI18N
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/leftarrow_orig.png"))); // NOI18N
         back.setText("BACK");
         back.setToolTipText("");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -270,6 +272,11 @@ public class userlistsForm extends javax.swing.JInternalFrame {
                         uef.txtpassword.setText("*************************");
                         uef.boxtype.setSelectedItem(""+resultSet.getString("u_type"));
                         uef.boxstatus.setSelectedItem(""+resultSet.getString("u_status"));
+                        String picturePath = resultSet.getString("u_picture");
+                        ImageIcon imageIcon = new ImageIcon(picturePath);
+                        Image image = imageIcon.getImage().getScaledInstance(uef.picture.getWidth(), uef.picture.getHeight(), Image.SCALE_SMOOTH);
+                        uef.picture.setIcon(new ImageIcon(image));
+                        uef.destination = picturePath;
                     }
                 } catch (SQLException ex) {
                 }
@@ -308,7 +315,7 @@ public class userlistsForm extends javax.swing.JInternalFrame {
                         closeAllInternalFrames();
                         userarchiveForm urf = new userarchiveForm();
                         System.out.println("Archive Account Opens!");
-                        lblmessage.setText("");
+                        lblmessage.setText("Accomplished Successfully!");
                         userlistdesktop.add(urf).setVisible(true);
                     }
                 } catch (SQLException ex) {

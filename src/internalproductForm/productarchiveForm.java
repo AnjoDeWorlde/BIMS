@@ -83,7 +83,7 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
         });
         unarchive.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblunarchive.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblunarchive.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblunarchive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblunarchive.setText("U N A R C H I V E");
         unarchive.add(lblunarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 30));
@@ -93,7 +93,7 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
 
         back.setForeground(new java.awt.Color(46, 49, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/leftarrow_orig.png"))); // NOI18N
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/leftarrow_orig.png"))); // NOI18N
         back.setText("BACK");
         back.setToolTipText("");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -102,7 +102,7 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(back);
-        back.setBounds(440, 376, 80, 24);
+        back.setBounds(440, 380, 80, 24);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -6,7 +6,6 @@ import config.passwordHasher;
 import java.awt.Color;
 import java.math.BigDecimal;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -28,12 +27,14 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
     /**
      * Creates new form inventoryeditForm
      * @param isCreating
+     * @param selectedProductId
      */
-    public inventoryeditForm(boolean isCreating) {
+    public inventoryeditForm(boolean isCreating, String selectedProductId) {
         initComponents();
         CurrentDate();
         fillproductID();
-        
+                
+        this.selectedProductId = selectedProductId;
         this.isCreating = isCreating;
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
@@ -49,6 +50,7 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
         txtdate.setText(month+"/"+day+"/"+year);
     }
     
+    private final String selectedProductId;
     private Map<String, Product> productMap = new HashMap<>();
     private boolean isCreating; 
     Color borderColor = new Color(255,255,255);
@@ -62,7 +64,7 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
         return oldpass.equals(passhash);
     }
     
-    private void fillproductID() {
+    public void fillproductID() {
         try {
             String query = "SELECT p_id, p_name FROM tbl_products WHERE p_status NOT IN ('Archive', 'Inactive')";
             dbConnector connector = new dbConnector();
@@ -74,6 +76,9 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
                 Product product = new Product(id, name);
                 productMap.put(name, product);
                 model.addElement(name);
+                if (id.equals(selectedProductId)) {
+                    boxproductID.setSelectedItem(name);
+                }
             }
         } catch (SQLException e) {
         }
@@ -125,20 +130,20 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(null);
 
-        id.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        id.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         id.setForeground(new java.awt.Color(46, 49, 146));
         background.add(id);
-        id.setBounds(260, 10, 140, 60);
+        id.setBounds(230, 10, 140, 60);
 
-        lblregistration.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        lblregistration.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lblregistration.setForeground(new java.awt.Color(46, 49, 146));
         lblregistration.setText("Inventory #");
         background.add(lblregistration);
-        lblregistration.setBounds(10, 10, 250, 60);
+        lblregistration.setBounds(10, 10, 220, 60);
 
         back.setForeground(new java.awt.Color(46, 49, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/leftarrow_orig.png"))); // NOI18N
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/leftarrow_orig.png"))); // NOI18N
         back.setText("BACK");
         back.setToolTipText("");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -153,9 +158,9 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
         lblmessage1.setForeground(new java.awt.Color(255, 0, 0));
         lblmessage1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage1);
-        lblmessage1.setBounds(310, 80, 30, 30);
+        lblmessage1.setBounds(290, 80, 30, 30);
 
-        boxproductID.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        boxproductID.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
         boxproductID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         boxproductID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,7 +171,7 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
         boxproductID.setBounds(150, 80, 190, 30);
 
         lblproductID.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        lblproductID.setText("Product ID:");
+        lblproductID.setText("Product Name:");
         background.add(lblproductID);
         lblproductID.setBounds(30, 80, 120, 30);
 
@@ -176,7 +181,7 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
         background.add(lblmessage2);
         lblmessage2.setBounds(310, 120, 30, 30);
 
-        txtdate.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtdate.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
         txtdate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,7 +202,7 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
         background.add(lblmessage3);
         lblmessage3.setBounds(310, 160, 30, 30);
 
-        txtastocks.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtastocks.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
         txtastocks.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtastocks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,7 +223,7 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
         background.add(lblmessage4);
         lblmessage4.setBounds(310, 200, 30, 30);
 
-        txtsstocks.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtsstocks.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
         txtsstocks.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtsstocks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -239,7 +244,7 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
         background.add(lblmessage5);
         lblmessage5.setBounds(310, 240, 30, 30);
 
-        txtlstocks.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtlstocks.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
         txtlstocks.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtlstocks.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,7 +265,7 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
         background.add(lblmessage6);
         lblmessage6.setBounds(290, 280, 30, 30);
 
-        boxstatus.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        boxstatus.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
         boxstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "Available", "Out-of-Stocks", "Limited Stock" }));
         boxstatus.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         boxstatus.addActionListener(new java.awt.event.ActionListener() {
@@ -282,7 +287,7 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
         background.add(lblmessage7);
         lblmessage7.setBounds(310, 370, 30, 30);
 
-        txtpassword.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtpassword.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
         txtpassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtpassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -311,7 +316,8 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
         });
         confirm.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblconfirm.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        lblconfirm.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblconfirm.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblconfirm.setText("C O N F I R M");
         confirm.add(lblconfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 20));
 
@@ -407,7 +413,7 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
                                 inventoryForm inventoryFrame = (inventoryForm) SwingUtilities.getAncestorOfClass(inventoryForm.class, this);
                                 inventoryFrame.restoreOriginalState();
                                 System.out.println("Information Inserted!");
-                                inventoryFrame.getLblMessage().setText("Created Inventory Successfully!");
+                                inventoryFrame.getLblMessage().setText("Accomplished Successfully!");
                             } else {
                                 inventoryForm inventoryFrame = (inventoryForm) SwingUtilities.getAncestorOfClass(inventoryForm.class, this);
                                 System.out.println("Information Rejected!");
@@ -420,8 +426,8 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
                                 System.out.println("Information Updated!");
                                 inventoryForm inventoryFrame = (inventoryForm) SwingUtilities.getAncestorOfClass(inventoryForm.class, this);
                                 inventoryFrame.restoreOriginalState();
-                                System.out.println("Information Inserted!");
-                                inventoryFrame.getLblMessage().setText("Created Inventory Successfully!");
+                                System.out.println("Information Updated!");
+                                inventoryFrame.getLblMessage().setText("Accomplished Successfully!");
                             } else {
                                 inventoryForm inventoryFrame = (inventoryForm) SwingUtilities.getAncestorOfClass(inventoryForm.class, this);
                                 System.out.println("Information Rejected!");

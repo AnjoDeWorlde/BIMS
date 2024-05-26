@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 20, 2024 at 06:22 PM
+-- Generation Time: May 26, 2024 at 07:29 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,15 +42,46 @@ CREATE TABLE `tbl_inventory` (
 --
 
 INSERT INTO `tbl_inventory` (`i_id`, `p_id`, `i_date`, `i_availablestocks`, `i_soldstocks`, `i_lossstocks`, `i_status`) VALUES
-(1, 1, '2024-05-20', 0, 45, 0, 'Out-of-Stocks'),
-(2, 10, '2024-05-18', 55, 25, 0, 'Available'),
-(3, 1, '2024-05-19', 2, 43, 0, 'Available'),
-(4, 2, '2024-05-20', 1, 30, 0, 'Available'),
-(5, 16, '2024-05-21', 3, 1, 0, 'Available'),
-(6, 13, '2024-05-21', 3, 3, 0, 'Available'),
-(7, 7, '2024-05-21', 0, 20, 5, 'Out-of-Stocks'),
-(8, 9, '2024-05-21', 6, 29, 0, 'Available'),
-(9, 17, '2024-05-21', 4, 1, 1, 'Limited Stock');
+(1, 1, '2024-05-25', 23, 35, 0, 'Inactive'),
+(2, 7, '2024-05-17', 49, 51, 11, 'Available'),
+(3, 3, '2024-05-25', 15, 18, 2, 'Available'),
+(4, 8, '2024-05-26', 9, 12, 0, 'Limited Stock');
+
+--
+-- Triggers `tbl_inventory`
+--
+DELIMITER $$
+CREATE TRIGGER `after_inventory_insert` AFTER INSERT ON `tbl_inventory` FOR EACH ROW BEGIN
+    DECLARE v_p_price DECIMAL(20, 2);
+    DECLARE v_s_gross DECIMAL(20, 2);
+    DECLARE v_s_deductions DECIMAL(20, 2);
+    DECLARE v_s_net DECIMAL(20, 2);
+
+    -- Get product price
+    SELECT p_price INTO v_p_price
+    FROM tbl_products
+    WHERE p_id = NEW.p_id;
+
+    -- Calculate gross, deductions, and net
+    SET v_s_gross = NEW.i_soldstocks * v_p_price;
+    SET v_s_deductions = NEW.i_lossstocks * v_p_price;
+    SET v_s_net = v_s_gross - v_s_deductions;
+
+    -- Insert into tbl_sales
+    INSERT INTO tbl_sales (p_id, i_id, s_gross, s_deductions, s_net, s_status)
+    VALUES (NEW.p_id, NEW.i_id, v_s_gross, v_s_deductions, v_s_net, NEW.i_status);
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `after_inventory_update` AFTER UPDATE ON `tbl_inventory` FOR EACH ROW BEGIN
+    -- Update s_status in tbl_sales
+    UPDATE tbl_sales
+    SET s_status = NEW.i_status
+    WHERE i_id = NEW.i_id;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -63,33 +94,51 @@ CREATE TABLE `tbl_products` (
   `p_name` varchar(50) NOT NULL,
   `p_qty` decimal(20,2) NOT NULL,
   `p_price` decimal(20,2) NOT NULL,
-  `p_status` varchar(15) NOT NULL
+  `p_status` varchar(15) NOT NULL,
+  `p_picture` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_products`
 --
 
-INSERT INTO `tbl_products` (`p_id`, `p_name`, `p_qty`, `p_price`, `p_status`) VALUES
-(1, 'Coke8oz', 24.00, 180.00, 'Active'),
-(2, 'CokeLitro', 12.00, 370.00, 'Active'),
-(3, 'Royal8oz', 24.00, 180.00, 'Active'),
-(4, 'RoyalLitro', 12.00, 370.00, 'Inactive'),
-(5, 'Sprite8oz', 24.00, 180.00, 'Active'),
-(6, 'SpriteLitro', 12.00, 370.00, 'Inactive'),
-(7, 'Mountain Dew8oz', 24.00, 175.00, 'Active'),
-(8, 'Vitamilk', 24.00, 655.00, 'Inactive'),
-(9, 'SM Grande', 6.00, 560.00, 'Active'),
-(10, 'RH Jumbo', 6.00, 585.00, 'Active'),
-(11, 'RH 500', 12.00, 575.00, 'Active'),
-(12, 'SM Light', 24.00, 990.00, 'Active'),
-(13, 'SM Flavored Beer Apple', 24.00, 840.00, 'Active'),
-(14, 'SM Flavored Beer Lemon', 24.00, 840.00, 'Inactive'),
-(15, 'SM Pilsen Grande', 24.00, 840.00, 'Active'),
-(16, 'SM Stallion', 24.00, 890.00, 'Active'),
-(17, 'SM Light Jumbo', 6.00, 650.00, 'Active'),
-(18, '1.5LChristmasPack', 3.00, 150.00, 'Archive'),
-(19, 'Coke1.5L', 12.00, 500.00, 'Inactive');
+INSERT INTO `tbl_products` (`p_id`, `p_name`, `p_qty`, `p_price`, `p_status`, `p_picture`) VALUES
+(1, '8oz Coke', 24.00, 180.00, 'Active', 'src/images/productphotos/8oz_coke.png'),
+(2, '8oz Royal', 24.00, 180.00, 'Inactive', 'src/images/productphotos/8oz_royal.png'),
+(3, '8oz Sprite', 24.00, 180.00, 'Active', 'src/images/productphotos/8oz_sprite.png'),
+(4, 'Cobra Citrus', 24.00, 310.00, 'Inactive', 'src/images/productphotos/cobra_citrus.png'),
+(5, 'Cobra Original', 24.00, 310.00, 'Active', 'src/images/productphotos/cobra_orig.png'),
+(6, '1.5L Coke', 12.00, 710.00, 'Inactive', 'src/images/productphotos/coke_1.5L.png'),
+(7, 'Mismo Coke', 12.00, 200.00, 'Active', 'src/images/productphotos/coke_mismo.png'),
+(8, '750mL Emperador Light', 12.00, 1640.00, 'Active', 'src/images/productphotos/emperador_light.png'),
+(9, '350 mL Kulafu', 24.00, 1010.00, 'Inactive', 'src/images/productphotos/kulafu_smol.png'),
+(10, 'Starara', 1.00, 100000.00, 'Archive', 'src/images/productphotos/starF.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_sales`
+--
+
+CREATE TABLE `tbl_sales` (
+  `s_id` int(20) NOT NULL,
+  `p_id` int(20) NOT NULL,
+  `i_id` int(20) NOT NULL,
+  `s_gross` decimal(20,0) NOT NULL,
+  `s_deductions` decimal(20,0) NOT NULL,
+  `s_net` decimal(20,0) NOT NULL,
+  `s_status` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_sales`
+--
+
+INSERT INTO `tbl_sales` (`s_id`, `p_id`, `i_id`, `s_gross`, `s_deductions`, `s_net`, `s_status`) VALUES
+(1, 1, 1, 6300, 0, 6300, 'Inactive'),
+(2, 7, 2, 10200, 2200, 8000, 'Available'),
+(3, 3, 3, 3240, 360, 2880, 'Available'),
+(4, 8, 4, 19680, 0, 19680, 'Limited Stock');
 
 -- --------------------------------------------------------
 
@@ -106,19 +155,17 @@ CREATE TABLE `tbl_user` (
   `u_username` varchar(50) NOT NULL,
   `u_password` varchar(150) NOT NULL,
   `u_type` varchar(7) NOT NULL,
-  `u_status` varchar(9) NOT NULL
+  `u_status` varchar(9) NOT NULL,
+  `u_picture` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`u_id`, `u_fname`, `u_lname`, `u_email`, `u_contactnumber`, `u_username`, `u_password`, `u_type`, `u_status`) VALUES
-(1, 'Admin', 'Commander', 'admin.comm@gmail.com', 9999999999, 'admin', 'QeVlP8euuJQCbWu3stt/ZZArRUlF+o/WWmMnBHtSd/s=', 'Admin', 'Active'),
-(2, 'User', 'Peasant', 'user.peas@yahoo.com', 1111111111, 'user', 'vEiDTau2j3Ba47mg6iWh1HdhnV9Y8J4v9lauh+MV8Y4=', 'User', 'Active'),
-(3, 'Anjo', 'World', 'anjoW@outlook.com', 9365485486, 'Admin', 'xK4gTTp2SG0w5INs/c0YVmITrumLqkkAhUHolxmu3LU=', 'Admin', 'Active'),
-(4, 'Michael', 'Baca', 'pAntsu@gmail.com', 9784652584, 'baca', 'FeKw08M4keuw8e9gnsQZQgwg4yDOlMZfvIwzEkSOsiU=', 'User', 'Archive'),
-(5, 'Temae', 'Ganda', 'te@yahoo.com', 9875483456, 'mae', 'eFsw9sf4b+wiiBQExYjvRQs7lDwmN08QC6bblIb42HM=', 'User', 'Inactive');
+INSERT INTO `tbl_user` (`u_id`, `u_fname`, `u_lname`, `u_email`, `u_contactnumber`, `u_username`, `u_password`, `u_type`, `u_status`, `u_picture`) VALUES
+(1, 'Admin', 'Commander', 'admin.comm@gmail.com', 9999999999, 'admin', 'QeVlP8euuJQCbWu3stt/ZZArRUlF+o/WWmMnBHtSd/s=', 'Admin', 'Active', 'src/images/userphotos/superM.png'),
+(2, 'User', 'Peasant', 'user.peas@yahoo.com', 1111111111, 'user', 'vEiDTau2j3Ba47mg6iWh1HdhnV9Y8J4v9lauh+MV8Y4=', 'User', 'Inactive', 'src/images/userphotos/braindeadM.png');
 
 --
 -- Indexes for dumped tables
@@ -138,6 +185,14 @@ ALTER TABLE `tbl_products`
   ADD PRIMARY KEY (`p_id`);
 
 --
+-- Indexes for table `tbl_sales`
+--
+ALTER TABLE `tbl_sales`
+  ADD PRIMARY KEY (`s_id`),
+  ADD KEY `p_id` (`p_id`),
+  ADD KEY `i_id` (`i_id`);
+
+--
 -- Indexes for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
@@ -151,19 +206,25 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_inventory`
 --
 ALTER TABLE `tbl_inventory`
-  MODIFY `i_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `i_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_products`
 --
 ALTER TABLE `tbl_products`
-  MODIFY `p_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `p_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `tbl_sales`
+--
+ALTER TABLE `tbl_sales`
+  MODIFY `s_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `u_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `u_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -174,6 +235,13 @@ ALTER TABLE `tbl_user`
 --
 ALTER TABLE `tbl_inventory`
   ADD CONSTRAINT `tbl_inventory_ibfk_1` FOREIGN KEY (`p_id`) REFERENCES `tbl_products` (`p_id`);
+
+--
+-- Constraints for table `tbl_sales`
+--
+ALTER TABLE `tbl_sales`
+  ADD CONSTRAINT `tbl_sales_ibfk_1` FOREIGN KEY (`p_id`) REFERENCES `tbl_products` (`p_id`),
+  ADD CONSTRAINT `tbl_sales_ibfk_2` FOREIGN KEY (`i_id`) REFERENCES `tbl_inventory` (`i_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

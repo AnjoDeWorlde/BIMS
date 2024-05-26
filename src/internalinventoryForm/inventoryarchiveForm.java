@@ -39,6 +39,7 @@ public final class inventoryarchiveForm extends javax.swing.JInternalFrame {
         }catch(SQLException ex){            
         }
     }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -83,8 +84,7 @@ public final class inventoryarchiveForm extends javax.swing.JInternalFrame {
         });
         unarchive.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblunarchive.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-        lblunarchive.setForeground(new java.awt.Color(46, 49, 146));
+        lblunarchive.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblunarchive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblunarchive.setText("U N A R C H I V E");
         unarchive.add(lblunarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 30));
@@ -94,7 +94,7 @@ public final class inventoryarchiveForm extends javax.swing.JInternalFrame {
 
         back.setForeground(new java.awt.Color(46, 49, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/leftarrow_orig.png"))); // NOI18N
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/leftarrow_orig.png"))); // NOI18N
         back.setText("BACK");
         back.setToolTipText("");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -155,11 +155,10 @@ public final class inventoryarchiveForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_unarchiveMouseExited
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        inventoryForm productListFrame = (inventoryForm) SwingUtilities.getAncestorOfClass(inventoryForm.class, this);
-        productListFrame.restoreOriginalState();
+        inventoryForm inventoryFrame = (inventoryForm) SwingUtilities.getAncestorOfClass(inventoryForm.class, this);
+        inventoryFrame.restoreOriginalState();
         System.out.println("Go Back!");
     }//GEN-LAST:event_backMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel back;

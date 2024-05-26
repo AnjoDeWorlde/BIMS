@@ -78,7 +78,7 @@ public final class userresetForm extends javax.swing.JInternalFrame {
 
         back.setForeground(new java.awt.Color(46, 49, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/leftarrow_orig.png"))); // NOI18N
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/leftarrow_orig.png"))); // NOI18N
         back.setText("BACK");
         back.setToolTipText("");
         back.addMouseListener(new java.awt.event.MouseAdapter() {

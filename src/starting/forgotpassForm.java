@@ -44,7 +44,6 @@ public class forgotpassForm extends javax.swing.JFrame {
 
         javax.swing.JPanel background = new javax.swing.JPanel();
         form = new javax.swing.JPanel();
-        logo = new javax.swing.JLabel();
         lblreset1 = new javax.swing.JLabel();
         txtemail = new javax.swing.JTextField();
         lblemail = new javax.swing.JLabel();
@@ -52,12 +51,12 @@ public class forgotpassForm extends javax.swing.JFrame {
         lblcontactnumber = new javax.swing.JLabel();
         txtusername = new javax.swing.JTextField();
         lblusername = new javax.swing.JLabel();
-        reset = new javax.swing.JPanel();
-        lblreset2 = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
         lblmessage1 = new javax.swing.JLabel();
         lblmessage2 = new javax.swing.JLabel();
         lblmessage3 = new javax.swing.JLabel();
+        reset = new javax.swing.JPanel();
+        lblreset2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,13 +67,10 @@ public class forgotpassForm extends javax.swing.JFrame {
         form.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 3));
         form.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo_wname_orig35.jpg"))); // NOI18N
-        form.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 310, 60));
-
         lblreset1.setFont(new java.awt.Font("Candara", 1, 50)); // NOI18N
         lblreset1.setForeground(new java.awt.Color(46, 49, 146));
         lblreset1.setText("Reset");
-        form.add(lblreset1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 130, 50));
+        form.add(lblreset1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 130, 50));
 
         txtemail.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtemail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
@@ -83,11 +79,11 @@ public class forgotpassForm extends javax.swing.JFrame {
                 txtemailActionPerformed(evt);
             }
         });
-        form.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 230, 30));
+        form.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 230, 30));
 
         lblemail.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         lblemail.setText("E-mail:");
-        form.add(lblemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 110, 30));
+        form.add(lblemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 110, 30));
 
         txtcontactnumber.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtcontactnumber.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
@@ -96,11 +92,11 @@ public class forgotpassForm extends javax.swing.JFrame {
                 txtcontactnumberActionPerformed(evt);
             }
         });
-        form.add(txtcontactnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 230, 30));
+        form.add(txtcontactnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 230, 30));
 
         lblcontactnumber.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         lblcontactnumber.setText("Contact Number:");
-        form.add(lblcontactnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 110, 30));
+        form.add(lblcontactnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 110, 30));
 
         txtusername.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         txtusername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
@@ -109,11 +105,34 @@ public class forgotpassForm extends javax.swing.JFrame {
                 txtusernameActionPerformed(evt);
             }
         });
-        form.add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 230, 30));
+        form.add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 230, 30));
 
         lblusername.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         lblusername.setText("Username:");
-        form.add(lblusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 110, 30));
+        form.add(lblusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 110, 30));
+
+        back.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        back.setForeground(new java.awt.Color(46, 49, 146));
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/leftarrow_orig.png"))); // NOI18N
+        back.setText("BACK");
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
+        form.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, 60, -1));
+
+        lblmessage1.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage1.setForeground(new java.awt.Color(255, 0, 0));
+        form.add(lblmessage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 130, 30));
+
+        lblmessage2.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage2.setForeground(new java.awt.Color(255, 0, 0));
+        form.add(lblmessage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 130, 30));
+
+        lblmessage3.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage3.setForeground(new java.awt.Color(255, 0, 0));
+        form.add(lblmessage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 130, 30));
 
         reset.setBackground(new java.awt.Color(255, 255, 255));
         reset.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
@@ -136,29 +155,6 @@ public class forgotpassForm extends javax.swing.JFrame {
         reset.add(lblreset2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 20));
 
         form.add(reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 140, 40));
-
-        back.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        back.setForeground(new java.awt.Color(46, 49, 146));
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/leftarrow_orig.png"))); // NOI18N
-        back.setText("BACK");
-        back.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backMouseClicked(evt);
-            }
-        });
-        form.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(479, 390, 60, -1));
-
-        lblmessage1.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
-        lblmessage1.setForeground(new java.awt.Color(255, 0, 0));
-        form.add(lblmessage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 130, 30));
-
-        lblmessage2.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
-        lblmessage2.setForeground(new java.awt.Color(255, 0, 0));
-        form.add(lblmessage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 130, 30));
-
-        lblmessage3.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
-        lblmessage3.setForeground(new java.awt.Color(255, 0, 0));
-        form.add(lblmessage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 130, 30));
 
         background.add(form);
         form.setBounds(80, 60, 550, 420);
@@ -284,7 +280,6 @@ public class forgotpassForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblreset1;
     private javax.swing.JLabel lblreset2;
     private javax.swing.JLabel lblusername;
-    private javax.swing.JLabel logo;
     private javax.swing.JPanel reset;
     private javax.swing.JTextField txtcontactnumber;
     private javax.swing.JTextField txtemail;

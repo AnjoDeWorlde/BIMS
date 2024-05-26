@@ -3,6 +3,8 @@ package internalprofileForm;
 import admin.adminForm;
 import config.Session;
 import java.awt.Color;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.SwingUtilities;
@@ -16,6 +18,7 @@ public class profileForm extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form profileForm
+     * @param admindesktop
      */
     public profileForm(JDesktopPane admindesktop) {
         initComponents();
@@ -43,27 +46,27 @@ public class profileForm extends javax.swing.JInternalFrame {
 
         background = new javax.swing.JPanel();
         picture = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
         id = new javax.swing.JLabel();
-        lblregistration = new javax.swing.JLabel();
+        lblaccount = new javax.swing.JLabel();
         txtfirstname = new javax.swing.JTextField();
         lblfirstname = new javax.swing.JLabel();
         txtlastname = new javax.swing.JTextField();
         lbllastname = new javax.swing.JLabel();
         txtemail = new javax.swing.JTextField();
         lblemail = new javax.swing.JLabel();
+        txttype = new javax.swing.JTextField();
         txtcontactnumber = new javax.swing.JTextField();
         lblcontactnumber = new javax.swing.JLabel();
         txtusername = new javax.swing.JTextField();
         lblusername = new javax.swing.JLabel();
         txtpassword = new javax.swing.JPasswordField();
         lblpassword = new javax.swing.JLabel();
-        txttype = new javax.swing.JTextField();
         lbltype = new javax.swing.JLabel();
         txtstatus = new javax.swing.JTextField();
         lblstatus = new javax.swing.JLabel();
         changepass = new javax.swing.JPanel();
         lblreset = new javax.swing.JLabel();
-        back = new javax.swing.JLabel();
 
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -86,24 +89,37 @@ public class profileForm extends javax.swing.JInternalFrame {
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(null);
 
+        picture.setFont(new java.awt.Font("Candara", 0, 11)); // NOI18N
         picture.setForeground(new java.awt.Color(46, 49, 146));
         picture.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        picture.setText("picture.png");
         background.add(picture);
-        picture.setBounds(0, 60, 110, 30);
+        picture.setBounds(10, 10, 110, 90);
 
-        id.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        back.setForeground(new java.awt.Color(46, 49, 146));
+        back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/leftarrow_orig.png"))); // NOI18N
+        back.setText("BACK");
+        back.setToolTipText("");
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
+        background.add(back);
+        back.setBounds(473, 11, 63, 30);
+
+        id.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         id.setForeground(new java.awt.Color(46, 49, 146));
         background.add(id);
-        id.setBounds(350, 30, 120, 60);
+        id.setBounds(330, 30, 120, 60);
 
-        lblregistration.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
-        lblregistration.setForeground(new java.awt.Color(46, 49, 146));
-        lblregistration.setText("Account #");
-        background.add(lblregistration);
-        lblregistration.setBounds(140, 30, 330, 60);
+        lblaccount.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        lblaccount.setForeground(new java.awt.Color(46, 49, 146));
+        lblaccount.setText("Account #");
+        background.add(lblaccount);
+        lblaccount.setBounds(140, 30, 190, 60);
 
-        txtfirstname.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtfirstname.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
         txtfirstname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtfirstname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,7 +134,7 @@ public class profileForm extends javax.swing.JInternalFrame {
         background.add(lblfirstname);
         lblfirstname.setBounds(30, 110, 110, 30);
 
-        txtlastname.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtlastname.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
         txtlastname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtlastname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,6 +149,7 @@ public class profileForm extends javax.swing.JInternalFrame {
         background.add(lbllastname);
         lbllastname.setBounds(30, 160, 110, 30);
 
+        txtemail.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
         txtemail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,7 +164,17 @@ public class profileForm extends javax.swing.JInternalFrame {
         background.add(lblemail);
         lblemail.setBounds(30, 210, 110, 30);
 
-        txtcontactnumber.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txttype.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txttype.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
+        txttype.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txttypeActionPerformed(evt);
+            }
+        });
+        background.add(txttype);
+        txttype.setBounds(350, 140, 110, 30);
+
+        txtcontactnumber.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
         txtcontactnumber.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtcontactnumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,6 +189,7 @@ public class profileForm extends javax.swing.JInternalFrame {
         background.add(lblcontactnumber);
         lblcontactnumber.setBounds(30, 260, 110, 30);
 
+        txtusername.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
         txtusername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtusername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,7 +204,7 @@ public class profileForm extends javax.swing.JInternalFrame {
         background.add(lblusername);
         lblusername.setBounds(30, 310, 110, 30);
 
-        txtpassword.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtpassword.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
         txtpassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtpassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -191,22 +219,12 @@ public class profileForm extends javax.swing.JInternalFrame {
         background.add(lblpassword);
         lblpassword.setBounds(30, 360, 110, 30);
 
-        txttype.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        txttype.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
-        txttype.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttypeActionPerformed(evt);
-            }
-        });
-        background.add(txttype);
-        txttype.setBounds(350, 140, 110, 30);
-
         lbltype.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         lbltype.setText("Account Type:");
         background.add(lbltype);
         lbltype.setBounds(350, 110, 110, 30);
 
-        txtstatus.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtstatus.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
         txtstatus.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtstatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,26 +255,13 @@ public class profileForm extends javax.swing.JInternalFrame {
         changepass.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblreset.setBackground(new java.awt.Color(255, 255, 255));
-        lblreset.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblreset.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblreset.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblreset.setText("CHANGE PASSWORD");
         changepass.add(lblreset, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, 20));
 
         background.add(changepass);
         changepass.setBounds(355, 420, 168, 39);
-
-        back.setForeground(new java.awt.Color(46, 49, 146));
-        back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/leftarrow_orig.png"))); // NOI18N
-        back.setText("BACK");
-        back.setToolTipText("");
-        back.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backMouseClicked(evt);
-            }
-        });
-        background.add(back);
-        back.setBounds(473, 11, 63, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -312,7 +317,7 @@ public class profileForm extends javax.swing.JInternalFrame {
         closeAllInternalFrames();
         changepassForm cpf = new changepassForm(admindesktop);
         admindesktop.add(cpf).setVisible(true);
-        System.out.println("Admin clicked Change Password!");
+        System.out.println("Change Password Opens!");
     }//GEN-LAST:event_changepassMouseClicked
 
     private void changepassMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changepassMouseEntered
@@ -326,7 +331,7 @@ public class profileForm extends javax.swing.JInternalFrame {
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
         adminForm parentFrame = (adminForm) SwingUtilities.getWindowAncestor(this);
         parentFrame.restoreOriginalState();
-        System.out.println("Admin clicked Back!");
+        System.out.println("Go Back!");
     }//GEN-LAST:event_backMouseClicked
 
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
@@ -340,6 +345,10 @@ public class profileForm extends javax.swing.JInternalFrame {
         txtpassword.setText("**************************************************");
         txttype.setText(""+shesh.getType());
         txtstatus.setText(""+shesh.getStatus());
+        String picturePath = shesh.getPicturePath();
+        ImageIcon imageIcon = new ImageIcon(picturePath);
+        Image image = imageIcon.getImage().getScaledInstance(picture.getWidth(), picture.getHeight(), Image.SCALE_SMOOTH);
+        picture.setIcon(new ImageIcon(image));
     }//GEN-LAST:event_formInternalFrameActivated
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -347,12 +356,12 @@ public class profileForm extends javax.swing.JInternalFrame {
     private javax.swing.JPanel background;
     private javax.swing.JPanel changepass;
     public javax.swing.JLabel id;
+    private javax.swing.JLabel lblaccount;
     private javax.swing.JLabel lblcontactnumber;
     private javax.swing.JLabel lblemail;
     private javax.swing.JLabel lblfirstname;
     private javax.swing.JLabel lbllastname;
     private javax.swing.JLabel lblpassword;
-    private javax.swing.JLabel lblregistration;
     private javax.swing.JLabel lblreset;
     private javax.swing.JLabel lblstatus;
     private javax.swing.JLabel lbltype;

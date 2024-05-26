@@ -68,6 +68,7 @@ public class loginForm extends javax.swing.JFrame {
             shesh.setUsername(userResultSet.getString("u_username"));
             shesh.setType(userResultSet.getString("u_type"));
             shesh.setStatus(userResultSet.getString("u_status"));
+            shesh.setPicturePath(userResultSet.getString("u_picture"));
 
             if (type.equals("Admin") || type.equals("User")) {
                 return "Login Successfully!";
@@ -121,7 +122,7 @@ public class loginForm extends javax.swing.JFrame {
         lblusername.setText("USERNAME: ");
         lowbar.add(lblusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 90, 20));
 
-        txtusername.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtusername.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
         txtusername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtusername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,7 +135,7 @@ public class loginForm extends javax.swing.JFrame {
         lblpassword.setText("PASSWORD: ");
         lowbar.add(lblpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, -1, 20));
 
-        txtpassword.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtpassword.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
         txtpassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtpassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,8 +144,9 @@ public class loginForm extends javax.swing.JFrame {
         });
         lowbar.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, 190, 40));
 
-        createaccount.setFont(new java.awt.Font("Myanmar Text", 2, 11)); // NOI18N
+        createaccount.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         createaccount.setForeground(new java.awt.Color(255, 51, 51));
+        createaccount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         createaccount.setText("Create Account?");
         createaccount.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -169,10 +171,10 @@ public class loginForm extends javax.swing.JFrame {
         exit.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblexit.setBackground(new java.awt.Color(255, 255, 255));
-        lblexit.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        lblexit.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblexit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblexit.setText("E X I T");
-        exit.add(lblexit, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 11, -1, -1));
+        exit.add(lblexit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 20));
 
         lowbar.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, 80, 40));
 
@@ -192,15 +194,16 @@ public class loginForm extends javax.swing.JFrame {
         login.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbllogin.setBackground(new java.awt.Color(255, 255, 255));
-        lbllogin.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        lbllogin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lbllogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbllogin.setText("L O G I N");
         login.add(lbllogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 11, 80, -1));
 
         lowbar.add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, 100, 40));
 
-        forgotpassword.setFont(new java.awt.Font("Myanmar Text", 2, 11)); // NOI18N
+        forgotpassword.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         forgotpassword.setForeground(new java.awt.Color(255, 51, 51));
+        forgotpassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         forgotpassword.setText("Forget Password?");
         forgotpassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -227,7 +230,7 @@ public class loginForm extends javax.swing.JFrame {
         logo.setFont(new java.awt.Font("Verdana", 1, 30)); // NOI18N
         logo.setForeground(new java.awt.Color(255, 255, 255));
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logo_wname_orig80.jpg"))); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo_wname_orig80.jpg"))); // NOI18N
         logo.setToolTipText("");
         logo.setVerifyInputWhenFocusTarget(false);
         background.add(logo);

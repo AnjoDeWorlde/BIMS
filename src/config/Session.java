@@ -11,6 +11,7 @@ public class Session {
     private String password;
     private String type;
     private String status;
+    private String picturePath;
     
     private Session(){
     }
@@ -96,5 +97,13 @@ public class Session {
 
     public void setStatus(String status) {
         this.status = status;
-    }   
+    }
+    
+    public String getPicturePath() {
+        return picturePath;
+    }
+
+    public void setPicturePath(String picturePath) {
+        this.picturePath = picturePath;
+    }
 }

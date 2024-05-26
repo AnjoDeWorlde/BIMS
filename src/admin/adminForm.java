@@ -5,7 +5,10 @@ import config.Session;
 import internalinventoryForm.inventoryForm;
 import internalproductForm.productlistsForm;
 import internalprofileForm.profileForm;
+import internalsaleForm.salesForm;
 import java.awt.Color;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import starting.loginForm;
@@ -30,7 +33,7 @@ public class adminForm extends javax.swing.JFrame {
     Color navColor = new Color(0, 174, 239);
     Color enterColor = new Color(46,49,146);
     
-    private void closeAllInternalFrames() {
+    public void closeAllInternalFrames() {
         JInternalFrame[] frames = admindesktop.getAllFrames();
         for (JInternalFrame frame : frames) {
             frame.dispose();
@@ -87,13 +90,13 @@ public class adminForm extends javax.swing.JFrame {
         navigation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         navigation.add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 90, 90));
 
-        type.setFont(new java.awt.Font("Myanmar Text", 1, 11)); // NOI18N
+        type.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         type.setForeground(new java.awt.Color(255, 255, 255));
         type.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         type.setText("(type)");
         navigation.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 150, 20));
 
-        lname.setFont(new java.awt.Font("Myanmar Text", 1, 15)); // NOI18N
+        lname.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         lname.setForeground(new java.awt.Color(255, 255, 255));
         lname.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lname.setText("ADMIN");
@@ -115,7 +118,7 @@ public class adminForm extends javax.swing.JFrame {
         });
         profile.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblprofile.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
+        lblprofile.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblprofile.setForeground(new java.awt.Color(255, 255, 255));
         lblprofile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblprofile.setText("PROFILE");
@@ -137,7 +140,7 @@ public class adminForm extends javax.swing.JFrame {
         });
         products.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblproducts.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
+        lblproducts.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblproducts.setForeground(new java.awt.Color(255, 255, 255));
         lblproducts.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblproducts.setText("PRODUCTS");
@@ -159,7 +162,7 @@ public class adminForm extends javax.swing.JFrame {
         });
         inventory.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblinventory.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
+        lblinventory.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblinventory.setForeground(new java.awt.Color(255, 255, 255));
         lblinventory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblinventory.setText("INVENTORY");
@@ -181,7 +184,7 @@ public class adminForm extends javax.swing.JFrame {
         });
         sales.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblsales.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
+        lblsales.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lblsales.setForeground(new java.awt.Color(255, 255, 255));
         lblsales.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblsales.setText("SALES");
@@ -203,7 +206,7 @@ public class adminForm extends javax.swing.JFrame {
         });
         userlists.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbluserlists.setFont(new java.awt.Font("Verdana", 1, 13)); // NOI18N
+        lbluserlists.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lbluserlists.setForeground(new java.awt.Color(255, 255, 255));
         lbluserlists.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbluserlists.setText(" USER LISTS");
@@ -216,9 +219,9 @@ public class adminForm extends javax.swing.JFrame {
 
         header.setBackground(new java.awt.Color(0, 174, 239));
 
-        logout.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        logout.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         logout.setForeground(new java.awt.Color(255, 255, 255));
-        logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/logout_orig.png"))); // NOI18N
+        logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logout_orig.png"))); // NOI18N
         logout.setText("LOGOUT");
         logout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -231,8 +234,8 @@ public class adminForm extends javax.swing.JFrame {
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
-                .addGap(0, 452, Short.MAX_VALUE)
-                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 462, Short.MAX_VALUE)
+                .addComponent(logout, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,6 +346,8 @@ public class adminForm extends javax.swing.JFrame {
 
     private void salesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesMouseClicked
         closeAllInternalFrames();
+        salesForm ssf = new salesForm(admindesktop);
+        admindesktop.add(ssf).setVisible(true);
         System.out.println("Sales Starts!");
     }//GEN-LAST:event_salesMouseClicked
 
@@ -364,6 +369,10 @@ public class adminForm extends javax.swing.JFrame {
         }else{
             lname.setText(""+shesh.getLname());
             type.setText(""+shesh.getType());
+            String picturePath = shesh.getPicturePath();
+            ImageIcon imageIcon = new ImageIcon(picturePath);
+            Image image = imageIcon.getImage().getScaledInstance(icon.getWidth(), icon.getHeight(), Image.SCALE_SMOOTH);
+            icon.setIcon(new ImageIcon(image));
         }
     }//GEN-LAST:event_formWindowActivated
 

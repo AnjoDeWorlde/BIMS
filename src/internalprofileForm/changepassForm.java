@@ -4,9 +4,11 @@ import config.Session;
 import config.dbConnector;
 import config.passwordHasher;
 import java.awt.Color;
+import java.awt.Image;
 import java.security.NoSuchAlgorithmException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
@@ -48,9 +50,6 @@ public class changepassForm extends javax.swing.JInternalFrame {
 
         background = new javax.swing.JPanel();
         picture = new javax.swing.JLabel();
-        back = new javax.swing.JLabel();
-        id = new javax.swing.JLabel();
-        lblregistration = new javax.swing.JLabel();
         check = new javax.swing.JCheckBox();
         lblmessage1 = new javax.swing.JLabel();
         txtoldpass = new javax.swing.JPasswordField();
@@ -65,6 +64,9 @@ public class changepassForm extends javax.swing.JInternalFrame {
         lblconfirmpassw = new javax.swing.JLabel();
         changepass = new javax.swing.JPanel();
         lblreset = new javax.swing.JLabel();
+        lblaccount = new javax.swing.JLabel();
+        id = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
 
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -88,33 +90,11 @@ public class changepassForm extends javax.swing.JInternalFrame {
         background.setPreferredSize(new java.awt.Dimension(550, 480));
         background.setLayout(null);
 
+        picture.setFont(new java.awt.Font("Candara", 0, 11)); // NOI18N
         picture.setForeground(new java.awt.Color(46, 49, 146));
         picture.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        picture.setText("pictures.png");
         background.add(picture);
-        picture.setBounds(10, 30, 110, 30);
-
-        back.setForeground(new java.awt.Color(46, 49, 146));
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/leftarrow_orig.png"))); // NOI18N
-        back.setText("BACK");
-        back.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backMouseClicked(evt);
-            }
-        });
-        background.add(back);
-        back.setBounds(480, 10, 60, 30);
-
-        id.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
-        id.setForeground(new java.awt.Color(46, 49, 146));
-        background.add(id);
-        id.setBounds(360, 20, 120, 50);
-
-        lblregistration.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
-        lblregistration.setForeground(new java.awt.Color(46, 49, 146));
-        lblregistration.setText("Account #");
-        background.add(lblregistration);
-        lblregistration.setBounds(150, 20, 330, 60);
+        picture.setBounds(10, 10, 110, 90);
 
         check.setBackground(new java.awt.Color(255, 255, 255));
         check.setForeground(new java.awt.Color(255, 255, 255));
@@ -135,7 +115,7 @@ public class changepassForm extends javax.swing.JInternalFrame {
         background.add(lblmessage1);
         lblmessage1.setBounds(370, 120, 30, 30);
 
-        txtoldpass.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtoldpass.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
         txtoldpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtoldpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,7 +149,7 @@ public class changepassForm extends javax.swing.JInternalFrame {
         background.add(lblmessage2);
         lblmessage2.setBounds(370, 180, 30, 30);
 
-        txtnewpass.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtnewpass.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
         txtnewpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtnewpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,7 +183,7 @@ public class changepassForm extends javax.swing.JInternalFrame {
         background.add(lblmessage3);
         lblmessage3.setBounds(370, 240, 30, 30);
 
-        txtconfirmpass.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtconfirmpass.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
         txtconfirmpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
         txtconfirmpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -234,13 +214,37 @@ public class changepassForm extends javax.swing.JInternalFrame {
         changepass.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblreset.setBackground(new java.awt.Color(255, 255, 255));
-        lblreset.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblreset.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         lblreset.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblreset.setText("CHANGE PASSWORD");
         changepass.add(lblreset, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 5, 150, 40));
 
         background.add(changepass);
         changepass.setBounds(230, 330, 160, 50);
+
+        lblaccount.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        lblaccount.setForeground(new java.awt.Color(46, 49, 146));
+        lblaccount.setText("Account #");
+        background.add(lblaccount);
+        lblaccount.setBounds(140, 30, 190, 60);
+
+        id.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        id.setForeground(new java.awt.Color(46, 49, 146));
+        background.add(id);
+        id.setBounds(330, 30, 120, 60);
+
+        back.setForeground(new java.awt.Color(46, 49, 146));
+        back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/leftarrow_orig.png"))); // NOI18N
+        back.setText("BACK");
+        back.setToolTipText("");
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
+        background.add(back);
+        back.setBounds(473, 11, 63, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -263,6 +267,10 @@ public class changepassForm extends javax.swing.JInternalFrame {
     private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
         Session shesh = Session.getInstance();
         id.setText(""+shesh.getUid());
+        String picturePath = shesh.getPicturePath();
+        ImageIcon imageIcon = new ImageIcon(picturePath);
+        Image image = imageIcon.getImage().getScaledInstance(picture.getWidth(), picture.getHeight(), Image.SCALE_SMOOTH);
+        picture.setIcon(new ImageIcon(image));
     }//GEN-LAST:event_formInternalFrameActivated
 
     private void txtnewpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnewpassActionPerformed
@@ -335,13 +343,6 @@ public class changepassForm extends javax.swing.JInternalFrame {
         changepass.setBackground(borderColor);
     }//GEN-LAST:event_changepassMouseExited
 
-    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        closeAllInternalFrames();
-        profileForm pf = new profileForm(admindesktop); 
-        admindesktop.add(pf).setVisible(true);
-        System.out.println("Admin clicked Back!");
-    }//GEN-LAST:event_backMouseClicked
-
     private void checkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkActionPerformed
         if(check.isSelected()){
             txtoldpass.setEchoChar((char)0);
@@ -366,6 +367,13 @@ public class changepassForm extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_check2ActionPerformed
 
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        closeAllInternalFrames();
+        profileForm pf = new profileForm(admindesktop); 
+        admindesktop.add(pf).setVisible(true);
+        System.out.println("Go Back!");
+    }//GEN-LAST:event_backMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel back;
     private javax.swing.JPanel background;
@@ -374,13 +382,13 @@ public class changepassForm extends javax.swing.JInternalFrame {
     private javax.swing.JCheckBox check1;
     private javax.swing.JCheckBox check2;
     public javax.swing.JLabel id;
+    private javax.swing.JLabel lblaccount;
     private javax.swing.JLabel lblconfirmpassw;
     private javax.swing.JLabel lblmessage1;
     private javax.swing.JLabel lblmessage2;
     private javax.swing.JLabel lblmessage3;
     private javax.swing.JLabel lblnewpass;
     private javax.swing.JLabel lbloldpass;
-    private javax.swing.JLabel lblregistration;
     private javax.swing.JLabel lblreset;
     private javax.swing.JLabel picture;
     public javax.swing.JPasswordField txtconfirmpass;

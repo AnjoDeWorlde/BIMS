@@ -3,8 +3,10 @@ package internalproductForm;
 import admin.adminForm;
 import config.dbConnector;
 import java.awt.Color;
+import java.awt.Image;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -82,7 +84,7 @@ public class productlistsForm extends javax.swing.JInternalFrame {
 
         back.setForeground(new java.awt.Color(46, 49, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/leftarrow_orig.png"))); // NOI18N
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/leftarrow_orig.png"))); // NOI18N
         back.setText("BACK");
         back.setToolTipText("");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -109,7 +111,7 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         create.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblcreate.setBackground(new java.awt.Color(255, 255, 255));
-        lblcreate.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        lblcreate.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         lblcreate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblcreate.setText("CREATE");
         create.add(lblcreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 70, 20));
@@ -133,7 +135,7 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         update.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblupdate.setBackground(new java.awt.Color(255, 255, 255));
-        lblupdate.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        lblupdate.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         lblupdate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblupdate.setText("UPDATE");
         update.add(lblupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 70, 20));
@@ -157,7 +159,7 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         archive.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblarchive.setBackground(new java.awt.Color(255, 255, 255));
-        lblarchive.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        lblarchive.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         lblarchive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblarchive.setText("ARCHIVE");
         archive.add(lblarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 70, 20));
@@ -246,6 +248,11 @@ public class productlistsForm extends javax.swing.JInternalFrame {
                         pef.txtqty.setText(""+resultSet.getString("p_qty"));
                         pef.txtprice.setText(""+resultSet.getString("p_price"));
                         pef.boxstatus.setSelectedItem(""+resultSet.getString("p_status"));
+                        String picturePath = resultSet.getString("p_picture");
+                        ImageIcon imageIcon = new ImageIcon(picturePath);
+                        Image image = imageIcon.getImage().getScaledInstance(pef.picture.getWidth(), pef.picture.getHeight(), Image.SCALE_SMOOTH);
+                        pef.picture.setIcon(new ImageIcon(image));
+                        pef.destination = picturePath;
                     }
                 } catch (SQLException ex) {
                 }

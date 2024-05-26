@@ -5,6 +5,7 @@ import config.dbConnector;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -84,7 +85,7 @@ public class inventoryForm extends javax.swing.JInternalFrame {
 
         back.setForeground(new java.awt.Color(46, 49, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/leftarrow_orig.png"))); // NOI18N
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/leftarrow_orig.png"))); // NOI18N
         back.setText("BACK");
         back.setToolTipText("");
         back.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -118,7 +119,7 @@ public class inventoryForm extends javax.swing.JInternalFrame {
         create.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblcreate.setBackground(new java.awt.Color(255, 255, 255));
-        lblcreate.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        lblcreate.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         lblcreate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblcreate.setText("CREATE");
         create.add(lblcreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 10, 60, 20));
@@ -142,7 +143,7 @@ public class inventoryForm extends javax.swing.JInternalFrame {
         update.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblupdate.setBackground(new java.awt.Color(255, 255, 255));
-        lblupdate.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        lblupdate.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         lblupdate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblupdate.setText("UPDATE");
         update.add(lblupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 20));
@@ -166,7 +167,7 @@ public class inventoryForm extends javax.swing.JInternalFrame {
         archive.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblarchive.setBackground(new java.awt.Color(255, 255, 255));
-        lblarchive.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        lblarchive.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         lblarchive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblarchive.setText("ARCHIVE");
         archive.add(lblarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 20));
@@ -190,7 +191,7 @@ public class inventoryForm extends javax.swing.JInternalFrame {
         print.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblprint.setBackground(new java.awt.Color(255, 255, 255));
-        lblprint.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        lblprint.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         lblprint.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblprint.setText("PRINT");
         print.add(lblprint, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 10, 50, 20));
@@ -243,18 +244,22 @@ public class inventoryForm extends javax.swing.JInternalFrame {
             tabletoryForm tlf = (tabletoryForm) selectedFrame;
             if (tlf != null && tlf.getSelectedRowIndex() != -1) {
                 try {
-                    int inventoryId = tlf.getSelectedInventoryId();
+                    int inventoryId = tlf.getSelectedInventoryId();                    
                     dbConnector connector = new dbConnector();
                     ResultSet resultSet = connector.getData("SELECT * FROM tbl_inventory WHERE i_id = '"+ inventoryId +"' ");
                     if(resultSet.next()){
                         closeAllInternalFrames();
-                        inventoryeditForm ief = new inventoryeditForm(false);
-                        System.out.println("Update Product Opens!");
+                        String selectedProductId = resultSet.getString("p_id");
+                        inventoryeditForm ief = new inventoryeditForm(false, selectedProductId);
+                        System.out.println("Update Inventory Opens!");
                         lblmessage.setText("");
                         inventorydesktop.add(ief).setVisible(true);
                         ief.id.setText(""+resultSet.getInt("i_id"));
-                        ief.boxproductID.setSelectedItem(""+resultSet.getString("p_id"));
-                        ief.txtdate.setText(""+resultSet.getInt("i_date"));
+                        ief.fillproductID();
+                        java.sql.Date date = resultSet.getDate("i_date");
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy"); // Format to display
+                        String formattedDate = dateFormat.format(date);
+                        ief.txtdate.setText(formattedDate);
                         ief.txtastocks.setText(""+resultSet.getString("i_availablestocks"));
                         ief.txtsstocks.setText(""+resultSet.getString("i_soldstocks"));
                         ief.txtlstocks.setText(""+resultSet.getString("i_lossstocks"));
@@ -284,8 +289,8 @@ public class inventoryForm extends javax.swing.JInternalFrame {
 
     private void createMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createMouseClicked
         closeAllInternalFrames();
-        inventoryeditForm ief = new inventoryeditForm(true);
-        System.out.println("Create Account Opens!");
+        inventoryeditForm ief = new inventoryeditForm(true, null);
+        System.out.println("Create Inventory Opens!");
         lblmessage.setText("");
         inventorydesktop.add(ief).setVisible(true);
     }//GEN-LAST:event_createMouseClicked
@@ -308,12 +313,12 @@ public class inventoryForm extends javax.swing.JInternalFrame {
                     dbConnector connector = new dbConnector();
                     String updateQuery = "UPDATE tbl_inventory SET i_status = 'Archive' WHERE i_id = '"+ inventoryId +"'";
                     connector.updateData(updateQuery);
-                    ResultSet resultSet = connector.getData("SELECT * FROM tbl_products WHERE i_id = '"+ inventoryId +"' ");
+                    ResultSet resultSet = connector.getData("SELECT * FROM tbl_inventory WHERE i_id = '"+ inventoryId +"' ");
                     if(resultSet.next()){
                         closeAllInternalFrames();
                         inventoryarchiveForm iaf = new inventoryarchiveForm();
-                        System.out.println("Archive Product Opens!");
-                        lblmessage.setText("");
+                        System.out.println("Archive Inventory Opens!");
+                        lblmessage.setText("Accomplished Successfully!");
                         inventorydesktop.add(iaf).setVisible(true);
                     }
                 } catch (SQLException ex) {
@@ -321,14 +326,14 @@ public class inventoryForm extends javax.swing.JInternalFrame {
             } else {
                 closeAllInternalFrames();
                 inventoryarchiveForm iaf = new inventoryarchiveForm();
-                System.out.println("Archive Product Opens!");
+                System.out.println("Archive Inventory Opens!");
                 lblmessage.setText("");
                 inventorydesktop.add(iaf).setVisible(true);
             }
         }else {
             closeAllInternalFrames();
             inventoryarchiveForm iaf = new inventoryarchiveForm();
-            System.out.println("Archive Product Opens!");
+            System.out.println("Archive Inventory Opens!");
             lblmessage.setText("");
             inventorydesktop.add(iaf).setVisible(true);
         }
@@ -344,10 +349,10 @@ public class inventoryForm extends javax.swing.JInternalFrame {
 
     private void printMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printMouseClicked
         closeAllInternalFrames();
-        inventoryprintForm ipf = new inventoryprintForm();
-        System.out.println("Print Opens!");
+        inventoryprintForm ipf = new inventoryprintForm(admindesktop);
+        System.out.println("Print Inventory Opens!");
         lblmessage.setText("");
-        inventorydesktop.add(ipf).setVisible(true);
+        admindesktop.add(ipf).setVisible(true);
     }//GEN-LAST:event_printMouseClicked
 
     private void printMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printMouseEntered

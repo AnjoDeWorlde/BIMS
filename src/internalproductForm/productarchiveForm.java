@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -31,12 +33,34 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
     
     public void displayProduct(){
         dbConnector connector = new dbConnector();
-        try{            
-            try (ResultSet resultSet = connector.getData("SELECT p_id, p_name, p_price, p_status FROM tbl_products WHERE p_status = 'Archive'")) {
-                productlists.setModel(DbUtils.resultSetToTableModel(resultSet));
-            }            
-        }catch(SQLException ex){            
-        }
+        try (ResultSet resultSet = connector.getData("SELECT p_id, p_name, p_price, p_status FROM tbl_products WHERE p_status = 'Archive'")) {
+            DefaultTableModel model = new DefaultTableModel();
+
+            // Define column names
+            String[] columnNames = {"Product ID", "Product Name", "Price", "Status"};
+            model.setColumnIdentifiers(columnNames);
+
+            // Add rows to the model
+            while (resultSet.next()) {
+                model.addRow(new Object[] {
+                    resultSet.getString("p_id"),
+                    resultSet.getString("p_name"),
+                    resultSet.getDouble("p_price"),
+                    resultSet.getString("p_status")
+                });
+            }
+
+            // Set the model to the table
+            productlists.setModel(model);
+
+            // Set column widths (optional)
+            int[] columnWidths = {85, 180, 120, 120};
+            for (int i = 0; i < columnWidths.length; i++) {
+                TableColumn column = productlists.getColumnModel().getColumn(i);
+                column.setPreferredWidth(columnWidths[i]);
+            }
+        } catch (SQLException ex) {
+        }   
     }
 
     @SuppressWarnings("unchecked")
@@ -53,8 +77,10 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(null);
 
-        scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 3));
+        scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
+        scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
+        productlists.setFont(new java.awt.Font("Garamond", 0, 11)); // NOI18N
         productlists.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -63,13 +89,14 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
 
             }
         ));
+        productlists.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         scroll.setViewportView(productlists);
 
         background.add(scroll);
-        scroll.setBounds(10, 10, 360, 390);
+        scroll.setBounds(10, 50, 510, 360);
 
         unarchive.setBackground(new java.awt.Color(255, 255, 255));
-        unarchive.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
+        unarchive.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         unarchive.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 unarchiveMouseClicked(evt);
@@ -83,26 +110,27 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
         });
         unarchive.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblunarchive.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblunarchive.setFont(new java.awt.Font("Cambria Math", 1, 12)); // NOI18N
+        lblunarchive.setForeground(new java.awt.Color(0, 0, 146));
         lblunarchive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblunarchive.setText("U N A R C H I V E");
-        unarchive.add(lblunarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 30));
+        unarchive.add(lblunarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 10));
 
         background.add(unarchive);
-        unarchive.setBounds(380, 10, 140, 50);
+        unarchive.setBounds(370, 10, 150, 30);
 
+        back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
         back.setForeground(new java.awt.Color(46, 49, 146));
-        back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/leftarrow_orig.png"))); // NOI18N
-        back.setText("BACK");
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dark blue back arrow 24.png"))); // NOI18N
         back.setToolTipText("");
+        back.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
             }
         });
         background.add(back);
-        back.setBounds(440, 380, 80, 24);
+        back.setBounds(10, 10, 80, 24);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,7 +143,7 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 

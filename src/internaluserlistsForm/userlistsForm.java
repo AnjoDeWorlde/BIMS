@@ -82,23 +82,25 @@ public class userlistsForm extends javax.swing.JInternalFrame {
         lblmessage = new javax.swing.JLabel();
 
         background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
         background.setLayout(null);
 
-        back.setForeground(new java.awt.Color(46, 49, 146));
+        back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
+        back.setForeground(new java.awt.Color(0, 0, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/leftarrow_orig.png"))); // NOI18N
         back.setText("BACK");
         back.setToolTipText("");
+        back.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
             }
         });
         background.add(back);
-        back.setBounds(460, 20, 80, 20);
+        back.setBounds(10, 10, 40, 20);
 
         create.setBackground(new java.awt.Color(255, 255, 255));
-        create.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
+        create.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
         create.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 createMouseClicked(evt);
@@ -113,16 +115,17 @@ public class userlistsForm extends javax.swing.JInternalFrame {
         create.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblcreate.setBackground(new java.awt.Color(255, 255, 255));
-        lblcreate.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        lblcreate.setFont(new java.awt.Font("Cambria", 1, 10)); // NOI18N
+        lblcreate.setForeground(new java.awt.Color(0, 0, 146));
         lblcreate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblcreate.setText("CREATE");
-        create.add(lblcreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 70, 20));
+        create.add(lblcreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 30));
 
         background.add(create);
-        create.setBounds(10, 10, 70, 40);
+        create.setBounds(240, 20, 70, 30);
 
         update.setBackground(new java.awt.Color(255, 255, 255));
-        update.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
+        update.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
         update.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 updateMouseClicked(evt);
@@ -137,16 +140,17 @@ public class userlistsForm extends javax.swing.JInternalFrame {
         update.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblupdate.setBackground(new java.awt.Color(255, 255, 255));
-        lblupdate.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        lblupdate.setFont(new java.awt.Font("Cambria", 1, 10)); // NOI18N
+        lblupdate.setForeground(new java.awt.Color(0, 0, 146));
         lblupdate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblupdate.setText("UPDATE");
-        update.add(lblupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 70, 20));
+        update.add(lblupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 30));
 
         background.add(update);
-        update.setBounds(90, 10, 70, 40);
+        update.setBounds(320, 20, 70, 30);
 
         archive.setBackground(new java.awt.Color(255, 255, 255));
-        archive.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
+        archive.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
         archive.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 archiveMouseClicked(evt);
@@ -161,16 +165,17 @@ public class userlistsForm extends javax.swing.JInternalFrame {
         archive.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblarchive.setBackground(new java.awt.Color(255, 255, 255));
-        lblarchive.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        lblarchive.setFont(new java.awt.Font("Cambria", 1, 10)); // NOI18N
+        lblarchive.setForeground(new java.awt.Color(0, 0, 146));
         lblarchive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblarchive.setText("ARCHIVE");
-        archive.add(lblarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 70, 20));
+        archive.add(lblarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 30));
 
         background.add(archive);
-        archive.setBounds(170, 10, 70, 40);
+        archive.setBounds(400, 20, 70, 30);
 
         reset.setBackground(new java.awt.Color(255, 255, 255));
-        reset.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
+        reset.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
         reset.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 resetMouseClicked(evt);
@@ -185,13 +190,14 @@ public class userlistsForm extends javax.swing.JInternalFrame {
         reset.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblreset.setBackground(new java.awt.Color(255, 255, 255));
-        lblreset.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        lblreset.setFont(new java.awt.Font("Cambria", 1, 10)); // NOI18N
+        lblreset.setForeground(new java.awt.Color(0, 0, 146));
         lblreset.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblreset.setText("RESET");
-        reset.add(lblreset, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 20));
+        reset.add(lblreset, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 40, 30));
 
         background.add(reset);
-        reset.setBounds(250, 10, 60, 40);
+        reset.setBounds(480, 20, 60, 30);
 
         userlistdesktop.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -203,28 +209,28 @@ public class userlistsForm extends javax.swing.JInternalFrame {
         );
         userlistdesktopLayout.setVerticalGroup(
             userlistdesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 410, Short.MAX_VALUE)
+            .addGap(0, 420, Short.MAX_VALUE)
         );
 
         background.add(userlistdesktop);
-        userlistdesktop.setBounds(10, 60, 530, 410);
+        userlistdesktop.setBounds(10, 60, 530, 420);
 
         lblmessage.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
-        lblmessage.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage);
-        lblmessage.setBounds(320, 20, 150, 20);
+        lblmessage.setBounds(80, 20, 150, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 

@@ -54,45 +54,48 @@ public class printsingleForm extends javax.swing.JInternalFrame {
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(null);
 
-        print.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        print.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
+        print.setForeground(new java.awt.Color(0, 0, 146));
         print.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        print.setText("Print");
+        print.setText("PRINT");
+        print.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         print.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 printMouseClicked(evt);
             }
         });
         background.add(print);
-        print.setBounds(20, 10, 70, 30);
+        print.setBounds(230, 10, 70, 30);
 
+        back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
         back.setForeground(new java.awt.Color(46, 49, 146));
-        back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/leftarrow_orig.png"))); // NOI18N
-        back.setText("BACK");
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dark blue back arrow 24.png"))); // NOI18N
         back.setToolTipText("");
+        back.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
             }
         });
         background.add(back);
-        back.setBounds(450, 10, 70, 20);
+        back.setBounds(10, 10, 30, 30);
 
         page.setBackground(new java.awt.Color(255, 255, 255));
-        page.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 8));
+        page.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 146), 3, true));
         page.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo_wname_orig35.jpg"))); // NOI18N
         page.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 310, 60));
 
+        status.setFont(new java.awt.Font("Garamond", 0, 12)); // NOI18N
         status.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         page.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 470, 20));
 
-        id.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        id.setFont(new java.awt.Font("Garamond", 0, 12)); // NOI18N
         id.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         page.add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 470, 20));
 
-        date.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        date.setFont(new java.awt.Font("Garamond", 0, 12)); // NOI18N
         date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         page.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 470, 20));
 
@@ -110,26 +113,26 @@ public class printsingleForm extends javax.swing.JInternalFrame {
         seperate2.setForeground(new java.awt.Color(0, 0, 0));
         page.add(seperate2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 470, 10));
 
-        productID.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        productID.setFont(new java.awt.Font("Garamond", 0, 12)); // NOI18N
         page.add(productID, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 430, 20));
 
-        label.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        label.setFont(new java.awt.Font("Garamond", 0, 12)); // NOI18N
         page.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 430, 20));
 
-        variableX.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        variableX.setFont(new java.awt.Font("Garamond", 0, 12)); // NOI18N
         page.add(variableX, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 430, 20));
 
-        variableY.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        variableY.setFont(new java.awt.Font("Garamond", 0, 12)); // NOI18N
         page.add(variableY, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 430, 20));
 
-        variableZ.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        variableZ.setFont(new java.awt.Font("Garamond", 0, 12)); // NOI18N
         page.add(variableZ, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 430, 20));
 
         seperate3.setForeground(new java.awt.Color(0, 0, 0));
         page.add(seperate3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 470, 10));
 
         background.add(page);
-        page.setBounds(0, 50, 530, 360);
+        page.setBounds(0, 50, 530, 370);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,7 +144,7 @@ public class printsingleForm extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

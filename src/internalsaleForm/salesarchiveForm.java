@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -30,14 +32,37 @@ public final class salesarchiveForm extends javax.swing.JInternalFrame {
     Color enterColor = new Color(46,49,146);
 
     public void displaySales(){
-        dbConnector connector = new dbConnector();
-        try{            
+        dbConnector connector = new dbConnector();      
             try (ResultSet resultSet = connector.getData("SELECT s_id, i_id,  s_net, s_status FROM tbl_sales "
                     + "WHERE s_status = 'Archive'")) {
-                sales.setModel(DbUtils.resultSetToTableModel(resultSet));
-            }        
-        }catch(SQLException ex){            
+                    DefaultTableModel model = new DefaultTableModel();
+
+        // Define column names
+        String[] columnNames = {"Sales ID", "Inventory ID", "Net Sales", "Status"};
+        model.setColumnIdentifiers(columnNames);
+        
+                
+        // Add rows to the model
+        while (resultSet.next()) {
+            model.addRow(new Object[] {
+                resultSet.getString("s_id"),
+                resultSet.getString("i_id"),
+                resultSet.getDouble("s_net"),
+                resultSet.getString("s_status")
+            });
         }
+
+        // Set the model to the table
+        sales.setModel(model);
+
+        // Set column widths (optional)
+        int[] columnWidths = {120, 120, 145, 120};
+        for (int i = 0; i < columnWidths.length; i++) {
+            TableColumn column = sales.getColumnModel().getColumn(i);
+            column.setPreferredWidth(columnWidths[i]);
+        }
+    } catch (SQLException ex) {
+    }  
     }
     
     @SuppressWarnings("unchecked")
@@ -52,8 +77,9 @@ public final class salesarchiveForm extends javax.swing.JInternalFrame {
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(null);
 
-        scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 3));
+        scroll.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
 
+        sales.setFont(new java.awt.Font("Garamond", 0, 11)); // NOI18N
         sales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -62,23 +88,25 @@ public final class salesarchiveForm extends javax.swing.JInternalFrame {
 
             }
         ));
+        sales.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        sales.setAutoscrolls(false);
         scroll.setViewportView(sales);
 
         background.add(scroll);
-        scroll.setBounds(10, 30, 510, 370);
+        scroll.setBounds(10, 40, 510, 370);
 
+        back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
         back.setForeground(new java.awt.Color(46, 49, 146));
-        back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/leftarrow_orig.png"))); // NOI18N
-        back.setText("BACK");
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dark blue back arrow 24.png"))); // NOI18N
         back.setToolTipText("");
+        back.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
             }
         });
         background.add(back);
-        back.setBounds(450, 10, 70, 20);
+        back.setBounds(10, 10, 30, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -91,7 +119,7 @@ public final class salesarchiveForm extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 

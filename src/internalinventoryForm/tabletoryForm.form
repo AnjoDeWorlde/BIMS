@@ -27,10 +27,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="background" min="-2" pref="410" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="background" min="-2" pref="420" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -43,7 +40,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
             <LineBorder thickness="3">
-              <Color PropertyName="color" blue="92" green="31" red="2e" type="rgb"/>
+              <Color PropertyName="color" blue="ff" green="cc" red="cc" type="rgb"/>
             </LineBorder>
           </Border>
         </Property>
@@ -55,20 +52,24 @@
       <SubComponents>
         <Container class="javax.swing.JScrollPane" name="table">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                 <LineBorder thickness="3">
-                  <Color PropertyName="color" blue="92" green="31" red="2e" type="rgb"/>
+                  <Color PropertyName="color" blue="ff" green="cc" red="cc" type="rgb"/>
                 </LineBorder>
               </Border>
             </Property>
+            <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
           </Properties>
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="10" width="510" height="390"/>
+              <AbsoluteConstraints x="10" y="10" width="510" height="400"/>
             </Constraint>
           </Constraints>
 
@@ -76,9 +77,13 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="inventory">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Garamond" size="11" style="0"/>
+                </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="0" rowCount="0"/>
                 </Property>
+                <Property name="autoResizeMode" type="int" value="0"/>
               </Properties>
             </Component>
           </SubComponents>

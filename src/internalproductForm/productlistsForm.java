@@ -12,6 +12,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import user.userForm;
 
 /**
  *
@@ -22,10 +23,12 @@ public class productlistsForm extends javax.swing.JInternalFrame {
     /**
      * Creates new form productlistsForm
      * @param admindesktop
+     * @param source
      */
-    public productlistsForm(JDesktopPane admindesktop) {
+    public productlistsForm(JDesktopPane admindesktop, String source) {
         initComponents();
 
+        this.source = source;
         this.admindesktop = admindesktop;
         tableplistForm tplf = new tableplistForm();
         productlistdesktop.add(tplf);
@@ -40,6 +43,7 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         return lblmessage;
     }
 
+    private String source;
     private JDesktopPane admindesktop; 
     Color borderColor = new Color(255,255,255);
     Color enterColor = new Color(46,49,146);
@@ -80,23 +84,25 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         lblmessage = new javax.swing.JLabel();
 
         background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
         background.setLayout(null);
 
-        back.setForeground(new java.awt.Color(46, 49, 146));
+        back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
+        back.setForeground(new java.awt.Color(0, 0, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/leftarrow_orig.png"))); // NOI18N
         back.setText("BACK");
         back.setToolTipText("");
+        back.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
             }
         });
         background.add(back);
-        back.setBounds(480, 10, 60, 40);
+        back.setBounds(10, 10, 40, 20);
 
         create.setBackground(new java.awt.Color(255, 255, 255));
-        create.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
+        create.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
         create.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 createMouseClicked(evt);
@@ -111,16 +117,17 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         create.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblcreate.setBackground(new java.awt.Color(255, 255, 255));
-        lblcreate.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblcreate.setFont(new java.awt.Font("Cambria", 1, 10)); // NOI18N
+        lblcreate.setForeground(new java.awt.Color(0, 0, 146));
         lblcreate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblcreate.setText("CREATE");
-        create.add(lblcreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 70, 20));
+        create.add(lblcreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 30));
 
         background.add(create);
-        create.setBounds(10, 10, 70, 40);
+        create.setBounds(310, 20, 70, 30);
 
         update.setBackground(new java.awt.Color(255, 255, 255));
-        update.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
+        update.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
         update.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 updateMouseClicked(evt);
@@ -135,16 +142,17 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         update.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblupdate.setBackground(new java.awt.Color(255, 255, 255));
-        lblupdate.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblupdate.setFont(new java.awt.Font("Cambria", 1, 10)); // NOI18N
+        lblupdate.setForeground(new java.awt.Color(0, 0, 146));
         lblupdate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblupdate.setText("UPDATE");
-        update.add(lblupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 70, 20));
+        update.add(lblupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 30));
 
         background.add(update);
-        update.setBounds(90, 10, 70, 40);
+        update.setBounds(390, 20, 70, 30);
 
         archive.setBackground(new java.awt.Color(255, 255, 255));
-        archive.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
+        archive.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
         archive.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 archiveMouseClicked(evt);
@@ -159,13 +167,14 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         archive.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblarchive.setBackground(new java.awt.Color(255, 255, 255));
-        lblarchive.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
+        lblarchive.setFont(new java.awt.Font("Cambria", 1, 10)); // NOI18N
+        lblarchive.setForeground(new java.awt.Color(0, 0, 146));
         lblarchive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblarchive.setText("ARCHIVE");
-        archive.add(lblarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 70, 20));
+        archive.add(lblarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 30));
 
         background.add(archive);
-        archive.setBounds(170, 10, 70, 40);
+        archive.setBounds(470, 20, 70, 30);
 
         productlistdesktop.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -177,17 +186,17 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         );
         productlistdesktopLayout.setVerticalGroup(
             productlistdesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 410, Short.MAX_VALUE)
+            .addGap(0, 420, Short.MAX_VALUE)
         );
 
         background.add(productlistdesktop);
-        productlistdesktop.setBounds(10, 60, 530, 410);
+        productlistdesktop.setBounds(10, 60, 530, 420);
 
         lblmessage.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
-        lblmessage.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage);
-        lblmessage.setBounds(310, 20, 170, 20);
+        lblmessage.setBounds(130, 20, 170, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -199,16 +208,23 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        adminForm parentFrame = (adminForm) SwingUtilities.getWindowAncestor(this);
-        parentFrame.restoreOriginalState();
-        System.out.println("Go Back!");
+        if ("admin".equals(source)) {
+            adminForm parentFrame = (adminForm) SwingUtilities.getWindowAncestor(this);
+            parentFrame.restoreOriginalState();
+            System.out.println("Go Back to Admin Form!");
+        } 
+        if ("user".equals(source)) {
+            userForm parentFrame = (userForm) SwingUtilities.getWindowAncestor(this);
+            parentFrame.restoreOriginalState();
+            System.out.println("Go Back to User Form!");
+        }
     }//GEN-LAST:event_backMouseClicked
 
     private void createMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createMouseClicked

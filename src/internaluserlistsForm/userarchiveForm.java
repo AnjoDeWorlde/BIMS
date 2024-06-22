@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -31,11 +33,34 @@ public final class userarchiveForm extends javax.swing.JInternalFrame {
     
     public void displayUser(){
         dbConnector connector = new dbConnector();
-        try{            
-            try (ResultSet resultSet = connector.getData("SELECT u_id, u_lname, u_email, u_type, u_status FROM tbl_user WHERE u_status = 'Archive'")) {
-                userlists.setModel(DbUtils.resultSetToTableModel(resultSet));
-            }      
-        }catch(SQLException ex){
+        try (ResultSet resultSet = connector.getData("SELECT u_id, u_lname, u_email, u_type, u_status FROM tbl_user WHERE u_status = 'Archive'")) {
+            DefaultTableModel model = new DefaultTableModel();
+
+            // Define column names
+            String[] columnNames = {"ID", "Last Name", "Email", "Type", "Status"};
+            model.setColumnIdentifiers(columnNames);
+
+            // Add rows to the model
+            while (resultSet.next()) {
+                model.addRow(new Object[] {
+                    resultSet.getString("u_id"),
+                    resultSet.getString("u_lname"),
+                    resultSet.getString("u_email"),
+                    resultSet.getString("u_type"),
+                    resultSet.getString("u_status")
+                });
+            }
+
+            // Set the model to the table
+            userlists.setModel(model);
+
+            // Set column widths (optional)
+            int[] columnWidths = {25, 100, 200, 90, 90};
+            for (int i = 0; i < columnWidths.length; i++) {
+                TableColumn column = userlists.getColumnModel().getColumn(i);
+                column.setPreferredWidth(columnWidths[i]);
+            }
+        } catch (SQLException ex) {
         }
     }
         
@@ -53,8 +78,10 @@ public final class userarchiveForm extends javax.swing.JInternalFrame {
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(null);
 
-        scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 3));
+        scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
+        scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
+        userlists.setFont(new java.awt.Font("Garamond", 0, 11)); // NOI18N
         userlists.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -63,13 +90,14 @@ public final class userarchiveForm extends javax.swing.JInternalFrame {
 
             }
         ));
+        userlists.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         scroll.setViewportView(userlists);
 
         background.add(scroll);
-        scroll.setBounds(10, 10, 360, 390);
+        scroll.setBounds(10, 50, 510, 360);
 
         unarchive.setBackground(new java.awt.Color(255, 255, 255));
-        unarchive.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
+        unarchive.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         unarchive.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 unarchiveMouseClicked(evt);
@@ -83,26 +111,27 @@ public final class userarchiveForm extends javax.swing.JInternalFrame {
         });
         unarchive.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblunarchive.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblunarchive.setFont(new java.awt.Font("Cambria Math", 1, 12)); // NOI18N
+        lblunarchive.setForeground(new java.awt.Color(46, 49, 146));
         lblunarchive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblunarchive.setText("U N A R C H I V E");
-        unarchive.add(lblunarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 30));
+        unarchive.add(lblunarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 120, 30));
 
         background.add(unarchive);
-        unarchive.setBounds(380, 10, 140, 50);
+        unarchive.setBounds(370, 10, 140, 30);
 
+        back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
         back.setForeground(new java.awt.Color(46, 49, 146));
-        back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/leftarrow_orig.png"))); // NOI18N
-        back.setText("BACK");
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dark blue back arrow 24.png"))); // NOI18N
         back.setToolTipText("");
+        back.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
             }
         });
         background.add(back);
-        back.setBounds(450, 380, 70, 20);
+        back.setBounds(10, 10, 30, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,7 +144,7 @@ public final class userarchiveForm extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 

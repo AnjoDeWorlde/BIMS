@@ -17,6 +17,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import user.userForm;
 
 /**
  *
@@ -28,9 +29,10 @@ public final class inventoryprintForm extends javax.swing.JInternalFrame {
      * Creates new form inventoryprintForm
      * @param admindesktop
      */
-    public inventoryprintForm(JDesktopPane admindesktop) {
+    public inventoryprintForm(JDesktopPane admindesktop, String source) {
         initComponents();
         
+        this.source = source;
         this.admindesktop = admindesktop;
         tabletoryForm ttf = new tabletoryForm();
         inventorydesktop.add(ttf);
@@ -45,6 +47,7 @@ public final class inventoryprintForm extends javax.swing.JInternalFrame {
         return lblmessage;
     }
     
+    private String source;
     private JDesktopPane admindesktop;
     Color borderColor = new Color(255,255,255);
     Color enterColor = new Color(46,49,146);
@@ -98,10 +101,11 @@ public final class inventoryprintForm extends javax.swing.JInternalFrame {
         back = new javax.swing.JLabel();
 
         background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
         background.setLayout(null);
 
         single.setBackground(new java.awt.Color(255, 255, 255));
-        single.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
+        single.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
         single.setPreferredSize(new java.awt.Dimension(60, 30));
         single.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -117,16 +121,17 @@ public final class inventoryprintForm extends javax.swing.JInternalFrame {
         single.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblsingle.setBackground(new java.awt.Color(255, 255, 255));
-        lblsingle.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        lblsingle.setFont(new java.awt.Font("Cambria", 1, 10)); // NOI18N
+        lblsingle.setForeground(new java.awt.Color(0, 0, 146));
         lblsingle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblsingle.setText("SINGLE");
-        single.add(lblsingle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 20));
+        single.add(lblsingle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 50, 30));
 
         background.add(single);
-        single.setBounds(10, 10, 70, 40);
+        single.setBounds(220, 20, 70, 30);
 
         all.setBackground(new java.awt.Color(255, 255, 255));
-        all.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
+        all.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
         all.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 allMouseClicked(evt);
@@ -141,16 +146,17 @@ public final class inventoryprintForm extends javax.swing.JInternalFrame {
         all.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblall.setBackground(new java.awt.Color(255, 255, 255));
-        lblall.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        lblall.setFont(new java.awt.Font("Cambria", 1, 10)); // NOI18N
+        lblall.setForeground(new java.awt.Color(0, 0, 146));
         lblall.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblall.setText("ALL");
-        all.add(lblall, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 20));
+        all.add(lblall, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 50, 30));
 
         background.add(all);
-        all.setBounds(90, 10, 70, 40);
+        all.setBounds(300, 20, 70, 30);
 
         group.setBackground(new java.awt.Color(255, 255, 255));
-        group.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
+        group.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
         group.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 groupMouseClicked(evt);
@@ -165,16 +171,17 @@ public final class inventoryprintForm extends javax.swing.JInternalFrame {
         group.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblgroup.setBackground(new java.awt.Color(255, 255, 255));
-        lblgroup.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        lblgroup.setFont(new java.awt.Font("Cambria", 1, 10)); // NOI18N
+        lblgroup.setForeground(new java.awt.Color(0, 0, 146));
         lblgroup.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblgroup.setText("GROUP");
-        group.add(lblgroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 20));
+        group.add(lblgroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 50, 30));
 
         background.add(group);
-        group.setBounds(170, 10, 70, 40);
+        group.setBounds(380, 20, 70, 30);
 
         selected.setBackground(new java.awt.Color(255, 255, 255));
-        selected.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
+        selected.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
         selected.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 selectedMouseClicked(evt);
@@ -189,13 +196,14 @@ public final class inventoryprintForm extends javax.swing.JInternalFrame {
         selected.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblselected.setBackground(new java.awt.Color(255, 255, 255));
-        lblselected.setFont(new java.awt.Font("Verdana", 1, 10)); // NOI18N
+        lblselected.setFont(new java.awt.Font("Cambria", 1, 10)); // NOI18N
+        lblselected.setForeground(new java.awt.Color(0, 0, 146));
         lblselected.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblselected.setText("SELECTED");
-        selected.add(lblselected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 20));
+        selected.add(lblselected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 60, 30));
 
         background.add(selected);
-        selected.setBounds(250, 10, 80, 40);
+        selected.setBounds(460, 20, 80, 30);
 
         inventorydesktop.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -207,30 +215,31 @@ public final class inventoryprintForm extends javax.swing.JInternalFrame {
         );
         inventorydesktopLayout.setVerticalGroup(
             inventorydesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 410, Short.MAX_VALUE)
+            .addGap(0, 420, Short.MAX_VALUE)
         );
 
         background.add(inventorydesktop);
-        inventorydesktop.setBounds(10, 60, 530, 410);
+        inventorydesktop.setBounds(10, 60, 530, 420);
 
         lblmessage.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
-        lblmessage.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage);
-        lblmessage.setBounds(330, 20, 150, 20);
+        lblmessage.setBounds(60, 20, 150, 30);
 
-        back.setForeground(new java.awt.Color(46, 49, 146));
+        back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
+        back.setForeground(new java.awt.Color(0, 0, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/leftarrow_orig.png"))); // NOI18N
         back.setText("BACK");
         back.setToolTipText("");
+        back.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
             }
         });
         background.add(back);
-        back.setBounds(480, 10, 60, 40);
+        back.setBounds(10, 10, 40, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -242,9 +251,7 @@ public final class inventoryprintForm extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -367,11 +374,20 @@ public final class inventoryprintForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_selectedMouseExited
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        adminForm grandparentFrame = (adminForm) SwingUtilities.getWindowAncestor(this);
-        grandparentFrame.closeAllInternalFrames();
-        inventoryForm inf = new inventoryForm(admindesktop);
-        admindesktop.add(inf).setVisible(true);
-        System.out.println("Go Back!");
+        if ("admin".equals(source)) {
+            adminForm grandparentFrame = (adminForm) SwingUtilities.getWindowAncestor(this);
+            grandparentFrame.closeAllInternalFrames();
+            inventoryForm inf = new inventoryForm(admindesktop, source);
+            admindesktop.add(inf).setVisible(true);
+            System.out.println("Go Back!");
+        }
+        if ("user".equals(source)) {
+            userForm grandparentFrame = (userForm) SwingUtilities.getWindowAncestor(this);
+            grandparentFrame.closeAllInternalFrames();
+            inventoryForm usf = new inventoryForm(admindesktop, source);
+            admindesktop.add(usf).setVisible(true);
+            System.out.println("Go Back to User Sales Form!");
+        }
     }//GEN-LAST:event_backMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

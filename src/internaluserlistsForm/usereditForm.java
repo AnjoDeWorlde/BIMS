@@ -95,47 +95,38 @@ public class usereditForm extends javax.swing.JInternalFrame {
         return image;
     }
     
-    public boolean duplicateEmail(){
+    public boolean duplicateEmail(String email) {
         dbConnector connector = new dbConnector();
-        
-        try{
-            String query = "SELECT * FROM tbl_user  WHERE u_email = '" + txtemail.getText() + "'";
+        try {
+            String query = "SELECT * FROM tbl_user WHERE u_email = '" + email + "'";
             ResultSet resultSet = connector.getData(query);
-            
-            if(resultSet.next()){                
-                email = resultSet.getString("u_email");
-                if(email.equals(txtemail.getText())){
-                    txtemail.setText("");
-                }
+        
+            if (resultSet.next()) {
+                lblmessage3.setText("*** ");
                 return true;
-            }else{
+            } else {
                 return false;
             }
-                
-        }catch (SQLException ex) {
+        } catch (SQLException ex) {
             return false;
         }
     }
-    
-    public boolean duplicateUser(){
+
+    public boolean duplicateUser(String username) {
         dbConnector connector = new dbConnector();
-        try{
-            String query = "SELECT * FROM tbl_user  WHERE u_username = '" + txtusername.getText() + "'";
+        try {
+            String query = "SELECT * FROM tbl_user WHERE u_username = '" + username + "'";
             ResultSet resultSet = connector.getData(query);
-            
-            if(resultSet.next()){                             
-                username = resultSet.getString("u_username");
-                if(username.equals(txtusername.getText())){
-                    txtusername.setText("");
-                }
+            if (resultSet.next()) {
+                lblmessage5.setText("*** ");
                 return true;
-            }else{
+            } else {
                 return false;
-            }                
-        }catch (SQLException ex) {
+            }
+        } catch (SQLException ex) {
             return false;
         }
-    }   
+    } 
     
     public boolean validCNum(String cNum){
         try{
@@ -184,7 +175,6 @@ public class usereditForm extends javax.swing.JInternalFrame {
         background = new javax.swing.JPanel();
         id = new javax.swing.JLabel();
         lblaccount = new javax.swing.JLabel();
-        back = new javax.swing.JLabel();
         lblmessage1 = new javax.swing.JLabel();
         txtfirstname = new javax.swing.JTextField();
         lblfirstname = new javax.swing.JLabel();
@@ -209,265 +199,221 @@ public class usereditForm extends javax.swing.JInternalFrame {
         lblmessage8 = new javax.swing.JLabel();
         boxstatus = new javax.swing.JComboBox<>();
         lblstatus = new javax.swing.JLabel();
-        boxpicture = new javax.swing.JPanel();
-        picture = new javax.swing.JLabel();
-        upload = new javax.swing.JPanel();
-        lblupload = new javax.swing.JLabel();
-        remove = new javax.swing.JPanel();
-        lblremove = new javax.swing.JLabel();
         confirm = new javax.swing.JPanel();
         lblconfirm = new javax.swing.JLabel();
+        forpicture = new javax.swing.JPanel();
+        remove = new javax.swing.JPanel();
+        lblremove = new javax.swing.JLabel();
+        upload = new javax.swing.JPanel();
+        lblupload = new javax.swing.JLabel();
+        boxpicture = new javax.swing.JPanel();
+        picture = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(null);
 
-        id.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        id.setFont(new java.awt.Font("Cambria Math", 1, 72)); // NOI18N
         id.setForeground(new java.awt.Color(46, 49, 146));
+        id.setText("0");
+        id.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         background.add(id);
-        id.setBounds(230, 10, 150, 60);
+        id.setBounds(300, 0, 150, 70);
 
-        lblaccount.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
+        lblaccount.setFont(new java.awt.Font("Cambria Math", 1, 48)); // NOI18N
         lblaccount.setForeground(new java.awt.Color(46, 49, 146));
         lblaccount.setText("Account #");
+        lblaccount.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         background.add(lblaccount);
-        lblaccount.setBounds(10, 10, 220, 60);
-
-        back.setForeground(new java.awt.Color(46, 49, 146));
-        back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/leftarrow_orig.png"))); // NOI18N
-        back.setText("BACK");
-        back.setToolTipText("");
-        back.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backMouseClicked(evt);
-            }
-        });
-        background.add(back);
-        back.setBounds(450, 20, 70, 20);
+        lblaccount.setBounds(60, 20, 240, 50);
 
         lblmessage1.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
-        lblmessage1.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage1.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage1);
-        lblmessage1.setBounds(290, 70, 30, 30);
+        lblmessage1.setBounds(290, 90, 30, 30);
 
-        txtfirstname.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        txtfirstname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
+        txtfirstname.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtfirstname.setForeground(new java.awt.Color(46, 49, 146));
+        txtfirstname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtfirstname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtfirstnameActionPerformed(evt);
             }
         });
         background.add(txtfirstname);
-        txtfirstname.setBounds(130, 70, 190, 30);
+        txtfirstname.setBounds(130, 90, 190, 30);
 
         lblfirstname.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblfirstname.setForeground(new java.awt.Color(46, 49, 146));
         lblfirstname.setText("First Name:");
         background.add(lblfirstname);
-        lblfirstname.setBounds(20, 70, 110, 30);
+        lblfirstname.setBounds(20, 90, 110, 30);
 
         lblmessage2.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
-        lblmessage2.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage2.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage2);
-        lblmessage2.setBounds(290, 110, 30, 30);
+        lblmessage2.setBounds(290, 130, 30, 30);
 
-        txtlastname.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        txtlastname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
+        txtlastname.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtlastname.setForeground(new java.awt.Color(46, 49, 146));
+        txtlastname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtlastname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtlastnameActionPerformed(evt);
             }
         });
         background.add(txtlastname);
-        txtlastname.setBounds(130, 110, 190, 30);
+        txtlastname.setBounds(130, 130, 190, 30);
 
         lbllastname.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lbllastname.setForeground(new java.awt.Color(46, 49, 146));
         lbllastname.setText("Last Name:");
         background.add(lbllastname);
-        lbllastname.setBounds(20, 110, 110, 30);
+        lbllastname.setBounds(20, 130, 110, 30);
 
         lblmessage3.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
-        lblmessage3.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage3.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage3);
-        lblmessage3.setBounds(290, 150, 30, 30);
+        lblmessage3.setBounds(290, 170, 30, 30);
 
-        txtemail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
+        txtemail.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtemail.setForeground(new java.awt.Color(46, 49, 146));
+        txtemail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtemailActionPerformed(evt);
             }
         });
         background.add(txtemail);
-        txtemail.setBounds(130, 150, 190, 30);
+        txtemail.setBounds(130, 170, 190, 30);
 
         lblemail.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblemail.setForeground(new java.awt.Color(46, 49, 146));
         lblemail.setText("E-mail:");
         background.add(lblemail);
-        lblemail.setBounds(20, 150, 110, 30);
+        lblemail.setBounds(20, 170, 110, 30);
 
         lblmessage4.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
-        lblmessage4.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage4.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage4);
-        lblmessage4.setBounds(290, 190, 30, 30);
+        lblmessage4.setBounds(290, 210, 30, 30);
 
-        txtcontactnumber.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        txtcontactnumber.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
+        txtcontactnumber.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtcontactnumber.setForeground(new java.awt.Color(46, 49, 146));
+        txtcontactnumber.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtcontactnumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtcontactnumberActionPerformed(evt);
             }
         });
         background.add(txtcontactnumber);
-        txtcontactnumber.setBounds(130, 190, 190, 30);
+        txtcontactnumber.setBounds(130, 210, 190, 30);
 
         lblcontactnumber.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblcontactnumber.setForeground(new java.awt.Color(46, 49, 146));
         lblcontactnumber.setText("Contact Number:");
         background.add(lblcontactnumber);
-        lblcontactnumber.setBounds(20, 190, 110, 30);
+        lblcontactnumber.setBounds(20, 210, 110, 30);
 
         lblmessage5.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
-        lblmessage5.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage5.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage5);
-        lblmessage5.setBounds(290, 230, 30, 30);
+        lblmessage5.setBounds(290, 250, 30, 30);
 
-        txtusername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
+        txtusername.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtusername.setForeground(new java.awt.Color(46, 49, 146));
+        txtusername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtusername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtusernameActionPerformed(evt);
             }
         });
         background.add(txtusername);
-        txtusername.setBounds(130, 230, 190, 30);
+        txtusername.setBounds(130, 250, 190, 30);
 
         lblusername.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblusername.setForeground(new java.awt.Color(46, 49, 146));
         lblusername.setText("Username:");
         background.add(lblusername);
-        lblusername.setBounds(20, 230, 110, 30);
+        lblusername.setBounds(20, 250, 110, 30);
 
         lblmessage6.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
-        lblmessage6.setForeground(new java.awt.Color(255, 0, 0));
+        lblmessage6.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage6);
-        lblmessage6.setBounds(290, 270, 30, 30);
+        lblmessage6.setBounds(290, 290, 30, 30);
 
-        txtpassword.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        txtpassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
+        txtpassword.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtpassword.setForeground(new java.awt.Color(46, 49, 146));
+        txtpassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtpassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtpasswordActionPerformed(evt);
             }
         });
         background.add(txtpassword);
-        txtpassword.setBounds(130, 270, 190, 30);
+        txtpassword.setBounds(130, 290, 190, 30);
 
         lblpassword.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblpassword.setForeground(new java.awt.Color(46, 49, 146));
         lblpassword.setText("Password:");
         background.add(lblpassword);
-        lblpassword.setBounds(20, 270, 110, 30);
+        lblpassword.setBounds(20, 290, 110, 30);
 
         lblmessage7.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
         lblmessage7.setForeground(new java.awt.Color(255, 0, 0));
         lblmessage7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage7);
-        lblmessage7.setBounds(90, 340, 30, 30);
+        lblmessage7.setBounds(90, 360, 30, 30);
 
         boxtype.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        boxtype.setForeground(new java.awt.Color(46, 49, 146));
         boxtype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "User", "Admin" }));
-        boxtype.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
+        boxtype.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         boxtype.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boxtypeActionPerformed(evt);
             }
         });
         background.add(boxtype);
-        boxtype.setBounds(20, 340, 120, 30);
+        boxtype.setBounds(20, 360, 120, 30);
 
         lbltype.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lbltype.setForeground(new java.awt.Color(46, 49, 146));
         lbltype.setText("Account Type:");
         background.add(lbltype);
-        lbltype.setBounds(20, 310, 120, 30);
+        lbltype.setBounds(20, 330, 120, 30);
 
         lblmessage8.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
         lblmessage8.setForeground(new java.awt.Color(255, 0, 0));
         lblmessage8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage8);
-        lblmessage8.setBounds(270, 340, 30, 30);
+        lblmessage8.setBounds(270, 360, 30, 30);
 
         boxstatus.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        boxstatus.setForeground(new java.awt.Color(46, 49, 146));
         boxstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "Active", "Inactive" }));
-        boxstatus.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
+        boxstatus.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         boxstatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boxstatusActionPerformed(evt);
             }
         });
         background.add(boxstatus);
-        boxstatus.setBounds(200, 340, 120, 30);
+        boxstatus.setBounds(200, 360, 120, 30);
 
         lblstatus.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblstatus.setForeground(new java.awt.Color(46, 49, 146));
         lblstatus.setText("Status:");
         background.add(lblstatus);
-        lblstatus.setBounds(200, 310, 120, 30);
+        lblstatus.setBounds(200, 330, 120, 30);
 
-        boxpicture.setBackground(new java.awt.Color(255, 255, 255));
-        boxpicture.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 3));
-        boxpicture.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        picture.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        boxpicture.add(picture, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 8, 130, 130));
-
-        background.add(boxpicture);
-        boxpicture.setBounds(350, 70, 150, 150);
-
-        upload.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
-        upload.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                uploadMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                uploadMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                uploadMouseExited(evt);
-            }
-        });
-        upload.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblupload.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        lblupload.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblupload.setText("UPLOAD");
-        upload.add(lblupload, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 20));
-
-        background.add(upload);
-        upload.setBounds(350, 230, 70, 40);
-
-        remove.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
-        remove.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                removeMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                removeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                removeMouseExited(evt);
-            }
-        });
-        remove.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblremove.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        lblremove.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblremove.setText("REMOVE");
-        remove.add(lblremove, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 20));
-
-        background.add(remove);
-        remove.setBounds(430, 230, 70, 40);
-
-        confirm.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
+        confirm.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
         confirm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 confirmMouseClicked(evt);
@@ -481,12 +427,92 @@ public class usereditForm extends javax.swing.JInternalFrame {
         });
         confirm.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblconfirm.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        lblconfirm.setFont(new java.awt.Font("Cambria Math", 1, 12)); // NOI18N
+        lblconfirm.setForeground(new java.awt.Color(46, 49, 146));
+        lblconfirm.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblconfirm.setText("C O N F I R M");
-        confirm.add(lblconfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 20));
+        confirm.add(lblconfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 90, 30));
 
         background.add(confirm);
-        confirm.setBounds(390, 360, 130, 40);
+        confirm.setBounds(410, 380, 110, 30);
+
+        forpicture.setBackground(new java.awt.Color(255, 255, 255));
+        forpicture.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 2, true));
+        forpicture.setLayout(null);
+
+        remove.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
+        remove.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                removeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                removeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                removeMouseExited(evt);
+            }
+        });
+        remove.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblremove.setFont(new java.awt.Font("Candara", 1, 13)); // NOI18N
+        lblremove.setForeground(new java.awt.Color(46, 49, 146));
+        lblremove.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblremove.setText("REMOVE");
+        remove.add(lblremove, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 50, 30));
+
+        forpicture.add(remove);
+        remove.setBounds(90, 180, 70, 30);
+
+        upload.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
+        upload.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                uploadMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                uploadMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                uploadMouseExited(evt);
+            }
+        });
+        upload.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblupload.setFont(new java.awt.Font("Candara", 1, 13)); // NOI18N
+        lblupload.setForeground(new java.awt.Color(46, 49, 146));
+        lblupload.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblupload.setText("UPLOAD");
+        upload.add(lblupload, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 50, 30));
+
+        forpicture.add(upload);
+        upload.setBounds(10, 180, 70, 30);
+
+        boxpicture.setBackground(new java.awt.Color(255, 255, 255));
+        boxpicture.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
+        boxpicture.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        picture.setFont(new java.awt.Font("Candara", 0, 11)); // NOI18N
+        picture.setForeground(new java.awt.Color(255, 15, 15));
+        picture.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        boxpicture.add(picture, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 8, 130, 140));
+
+        forpicture.add(boxpicture);
+        boxpicture.setBounds(10, 10, 150, 160);
+
+        background.add(forpicture);
+        forpicture.setBounds(340, 90, 170, 230);
+
+        back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
+        back.setForeground(new java.awt.Color(46, 49, 146));
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dark blue back arrow 24.png"))); // NOI18N
+        back.setToolTipText("");
+        back.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
+        background.add(back);
+        back.setBounds(10, 10, 70, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -499,7 +525,7 @@ public class usereditForm extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -540,93 +566,136 @@ public class usereditForm extends javax.swing.JInternalFrame {
 
     private void confirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseClicked
         String cNum = txtcontactnumber.getText();
-        if (txtfirstname.getText().isEmpty() || txtlastname.getText().isEmpty() || txtemail.getText().isEmpty()
-        || txtusername.getText().isEmpty() || txtcontactnumber.getText().isEmpty()) {
-            if(isCreating){
-                if(txtpassword.getText().isEmpty()){
-                    System.out.println("Empty All Text Field!");
-                    lblmessage1.setText("***");
-                    lblmessage2.setText("***");
-                    lblmessage3.setText("***");
-                    lblmessage4.setText("***");
-                    lblmessage5.setText("***");
-                    lblmessage6.setText("***");
-                    lblmessage7.setText("***");
-                    lblmessage8.setText("***");
-                    picture.setText("No Picture!");
-                }
-            }else{
-                System.out.println("Empty All Text Field!");
-                lblmessage1.setText("***");
-                lblmessage2.setText("***");
-                lblmessage3.setText("***");
-                lblmessage4.setText("***");
-                lblmessage5.setText("***");
-                lblmessage7.setText("***");
-                lblmessage8.setText("***");
-                picture.setText("No Picture!");
-            }
-        } else if (!validCNum(cNum)) {
+        boolean isAnyFieldEmpty = false;
+        
+        if (txtfirstname.getText().isEmpty()) {
+            lblmessage1.setText("***");
+            isAnyFieldEmpty = true;
+        } else {
+            lblmessage1.setText("");
+        }
+        if (txtlastname.getText().isEmpty()) {
+            lblmessage2.setText("***");
+            isAnyFieldEmpty = true;
+        } else {
+            lblmessage2.setText("");
+        }
+        if (txtemail.getText().isEmpty()) {
+            lblmessage3.setText("***");
+            isAnyFieldEmpty = true;
+        } else {
+            lblmessage3.setText("");
+        }
+        if (txtusername.getText().isEmpty()) {
+            lblmessage4.setText("***");
+            isAnyFieldEmpty = true;
+        } else {
+            lblmessage4.setText("");
+        }
+        if (txtcontactnumber.getText().isEmpty()) {
+            lblmessage5.setText("***");
+            isAnyFieldEmpty = true;
+        } else {
+            lblmessage5.setText("");
+        }
+        if (isCreating && txtpassword.getText().isEmpty()) {
+            lblmessage6.setText("***");
+            isAnyFieldEmpty = true;
+        } else if (!isCreating) {
+            lblmessage6.setText("");
+        }
+        if (boxtype.getSelectedItem().equals("N/A")) {
+            lblmessage7.setText("***");
+            isAnyFieldEmpty = true;
+        } else {
+            lblmessage7.setText("");
+        }
+        if (boxstatus.getSelectedItem().equals("N/A")) {
+            lblmessage8.setText("***");
+            isAnyFieldEmpty = true;
+        } else {
+            lblmessage8.setText("");
+        }
+        if (destination.isEmpty()) {
+            picture.setText("No Picture!");
+            isAnyFieldEmpty = true;
+        } else {
+            picture.setText("");
+        } 
+        if (isAnyFieldEmpty) {
+            System.out.println("Empty All Text Field!");
+            return;
+        }
+        if (duplicateEmail(txtemail.getText())) {
+            System.out.println("Email Exist!");
+            txtemail.setText("");
+            return;
+        }
+        if (!validCNum(cNum)) {
             System.out.println("Contact Number Invalid!");
             lblmessage4.setText("***");
-        } else if (txtpassword.getText().length() < 8) {
+            return;
+        }
+        if (duplicateUser(txtusername.getText())) {
+            System.out.println("Username Exist!");
+            txtusername.setText("");
+            return;
+        }
+        if (txtpassword.getText().length() < 8) {
             System.out.println("Password Invalid!");
             lblmessage6.setText("***");
             txtpassword.setText("");
-        } else if (boxtype.getSelectedItem().equals("N/A")) {
-            System.out.println("Account Type Invalid!");
-            lblmessage7.setText("***");
-        } else if (boxstatus.getSelectedItem().equals("N/A")) {
-            System.out.println("Account Status Invalid!");
-            lblmessage8.setText("***");
-        } else {
-            lblmessage1.setText("");
-            lblmessage2.setText("");
-            lblmessage3.setText("");
-            lblmessage4.setText("");
-            lblmessage5.setText("");
-            lblmessage7.setText("");
-            lblmessage8.setText("");
-            picture.setText("");
-            dbConnector connector = new dbConnector();
-            long conNum = Long.parseLong(cNum);
-            try {
-                if (isCreating) {
-                    String password = passwordHasher.hashPassword(txtpassword.getText());
-                        if (connector.insertData("INSERT INTO tbl_user(u_fname ,u_lname ,u_email ,u_contactnumber ,u_username "
-                        + ",u_password ,u_type ,u_status, u_picture) VALUES('" + txtfirstname.getText() + "','" + txtlastname.getText() + "','" 
-                        + txtemail.getText() + "','" + conNum + "','" + txtusername.getText() + "','" + password + "','"
-                        + boxtype.getSelectedItem() + "','" + boxstatus.getSelectedItem() + "','" + destination + "')")) {
-                            try {
-                                Files.copy(selectedFile.toPath(), new File(destination).toPath(), StandardCopyOption.REPLACE_EXISTING);
-                                userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
-                                userListFrame.restoreOriginalState();
-                                System.out.println("Information Inserted!");
-                                userListFrame.getLblMessage().setText("Accomplished Successfully!");
-                            } catch (IOException ex) {
-                            }
-                        } else {
-                            userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
-                            System.out.println("Information Rejected!");
-                            userListFrame.getLblMessage().setText("Failed Successfully!");
-                        }
-                } else {
-                    if(connector.updateData("UPDATE tbl_user SET u_fname = '" + txtfirstname.getText() + "', u_lname = '"
-                    + txtlastname.getText() + "', u_email = '" + txtemail.getText() + "', u_contactnumber = '"
-                    + conNum + "', u_username = '" + txtusername.getText() + "', u_type = '"  + boxtype.getSelectedItem() + "', u_status = '" 
-                    + boxstatus.getSelectedItem() + "', p_picture = '" + destination + "' WHERE u_id = '" + id.getText() + "'")){
+            return;
+        }
+
+        lblmessage1.setText("");
+        lblmessage2.setText("");
+        lblmessage3.setText("");
+        lblmessage4.setText("");
+        lblmessage5.setText("");
+        lblmessage6.setText("");
+        lblmessage7.setText("");
+        lblmessage8.setText("");
+        picture.setText("");
+
+        dbConnector connector = new dbConnector();
+        long conNum = Long.parseLong(cNum);
+        try {
+            if (isCreating) {
+                String password = passwordHasher.hashPassword(txtpassword.getText());
+                if (connector.insertData("INSERT INTO tbl_user(u_fname ,u_lname ,u_email ,u_contactnumber ,u_username "
+                    + ",u_password ,u_type ,u_status, u_picture) VALUES('" + txtfirstname.getText() + "','" + txtlastname.getText() + "','" 
+                    + txtemail.getText() + "','" + conNum + "','" + txtusername.getText() + "','" + password + "','"
+                    + boxtype.getSelectedItem() + "','" + boxstatus.getSelectedItem() + "','" + destination + "')")) {
+                    try {
+                        Files.copy(selectedFile.toPath(), new File(destination).toPath(), StandardCopyOption.REPLACE_EXISTING);
                         userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
                         userListFrame.restoreOriginalState();
-                        System.out.println("Information Updated!");
+                        System.out.println("Information Inserted!");
                         userListFrame.getLblMessage().setText("Accomplished Successfully!");
-                    } else {
-                        userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
-                        System.out.println("Information Rejected!");
-                        userListFrame.getLblMessage().setText("Failed Successfully!");
-                    }                
+                    } catch (IOException ex) {
+                    }
+                } else {
+                    userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
+                    System.out.println("Information Rejected!");
+                    userListFrame.getLblMessage().setText("Failed Successfully!");
                 }
-            } catch (NoSuchAlgorithmException ex) {
-            }  
+            } else {
+                if (connector.updateData("UPDATE tbl_user SET u_fname = '" + txtfirstname.getText() + "', u_lname = '"
+                    + txtlastname.getText() + "', u_email = '" + txtemail.getText() + "', u_contactnumber = '"
+                    + conNum + "', u_username = '" + txtusername.getText() + "', u_type = '"  + boxtype.getSelectedItem() + "', u_status = '" 
+                    + boxstatus.getSelectedItem() + "', u_picture = '" + destination + "' WHERE u_id = '" + id.getText() + "'")) {
+                    userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
+                    userListFrame.restoreOriginalState();
+                    System.out.println("Information Updated!");
+                    userListFrame.getLblMessage().setText("Accomplished Successfully!");
+                } else {
+                    userlistsForm userListFrame = (userlistsForm) SwingUtilities.getAncestorOfClass(userlistsForm.class, this);
+                    System.out.println("Information Rejected!");
+                    userListFrame.getLblMessage().setText("Failed Successfully!");
+                }
+            }
+        } catch (NoSuchAlgorithmException ex) {
         }
     }//GEN-LAST:event_confirmMouseClicked
 
@@ -702,6 +771,7 @@ public class usereditForm extends javax.swing.JInternalFrame {
     public javax.swing.JComboBox<String> boxstatus;
     public javax.swing.JComboBox<String> boxtype;
     private javax.swing.JPanel confirm;
+    private javax.swing.JPanel forpicture;
     public javax.swing.JLabel id;
     private javax.swing.JLabel lblaccount;
     private javax.swing.JLabel lblconfirm;

@@ -19,6 +19,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -69,13 +70,42 @@ public final class printselectedForm extends javax.swing.JInternalFrame {
         dbConnector connector = new dbConnector();
         try {
             String query = "SELECT i.i_id, p.p_name AS product_name, i.i_date, i.i_availablestocks, i.i_soldstocks, i.i_lossstocks, i.i_status " +
-                    "FROM tbl_inventory i " +
-                    "JOIN tbl_products p ON i.p_id = p.p_id " +
-                    "WHERE i.i_status NOT IN ('Archive')";
-            try (ResultSet resultSet = connector.getData(query)) {
-                show.setModel(DbUtils.resultSetToTableModel(resultSet));
-                formatDateColumn(show, 2);
+                       "FROM tbl_inventory i " +
+                       "JOIN tbl_products p ON i.p_id = p.p_id " +
+                       "WHERE i.i_status NOT IN ('Archive')";
+        try (ResultSet resultSet = connector.getData(query)) {
+            DefaultTableModel model = new DefaultTableModel();
+
+            // Define column names
+            String[] columnNames = {"Inventory ID", "Product", "Date", "Available", "Sold", "Loss", "Status"};
+            model.setColumnIdentifiers(columnNames);
+
+            // Add rows to the model
+            while (resultSet.next()) {
+                model.addRow(new Object[] {
+                    resultSet.getString("i_id"),
+                    resultSet.getString("product_name"),
+                    resultSet.getDate("i_date"),
+                    resultSet.getInt("i_availablestocks"),
+                    resultSet.getInt("i_soldstocks"),
+                    resultSet.getInt("i_lossstocks"),
+                    resultSet.getString("i_status")
+                });
             }
+
+            // Set the model to the table
+            show.setModel(model);
+
+            // Set column widths (optional)
+            int[] columnWidths = {80, 100, 85, 70, 45, 45, 53};
+            for (int i = 0; i < columnWidths.length; i++) {
+                TableColumn column = show.getColumnModel().getColumn(i);
+                column.setPreferredWidth(columnWidths[i]);
+            }
+
+            // Format the date column
+            formatDateColumn(show, 2);
+        }
         } catch (SQLException ex) {
         }
     }
@@ -88,10 +118,39 @@ public final class printselectedForm extends javax.swing.JInternalFrame {
                 "JOIN tbl_products p ON s.p_id = p.p_id " +
                 "JOIN tbl_inventory i ON s.i_id = i.i_id " +
                 "WHERE s.s_status NOT IN ('Archive')";
-            try (ResultSet resultSet = connector.getData(query)) {
-                show.setModel(DbUtils.resultSetToTableModel(resultSet));
-                formatDateColumn(show, 2);
+        try (ResultSet resultSet = connector.getData(query)) {
+            DefaultTableModel model = new DefaultTableModel();
+
+            // Define column names
+            String[] columnNames = {"Sales ID", "Product", "Date", "Gross Sales", "Deductions", "Net Sales", "Status"};
+            model.setColumnIdentifiers(columnNames);
+
+            // Add rows to the model
+            while (resultSet.next()) {
+                model.addRow(new Object[] {
+                    resultSet.getString("s_id"),
+                    resultSet.getString("product_name"),
+                    resultSet.getDate("s_date"),
+                    resultSet.getDouble("s_gross"),
+                    resultSet.getDouble("s_deductions"),
+                    resultSet.getDouble("s_net"),
+                    resultSet.getString("s_status")
+                });
             }
+
+            // Set the model to the table
+            show.setModel(model);
+
+            // Set column widths (optional)
+            int[] columnWidths = {53, 95, 85, 65, 65, 60, 55};
+            for (int i = 0; i < columnWidths.length; i++) {
+                TableColumn column = show.getColumnModel().getColumn(i);
+                column.setPreferredWidth(columnWidths[i]);
+            }
+
+            // Format the date column
+            formatDateColumn(show, 2);
+        }
         } catch (SQLException ex) {
         }
     }
@@ -153,75 +212,81 @@ public final class printselectedForm extends javax.swing.JInternalFrame {
         back = new javax.swing.JLabel();
         page = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
-        kind = new javax.swing.JLabel();
-        date = new javax.swing.JLabel();
         seperate1 = new javax.swing.JSeparator();
+        kind = new javax.swing.JLabel();
         seperate2 = new javax.swing.JSeparator();
+        date = new javax.swing.JLabel();
         table = new javax.swing.JScrollPane();
         show = new javax.swing.JTable();
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(null);
 
-        print.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        print.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
+        print.setForeground(new java.awt.Color(0, 0, 146));
         print.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        print.setText("Print");
+        print.setText("PRINT");
+        print.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         print.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 printMouseClicked(evt);
             }
         });
         background.add(print);
-        print.setBounds(20, 10, 70, 30);
+        print.setBounds(190, 10, 70, 30);
 
-        confirm.setFont(new java.awt.Font("Verdana", 1, 18)); // NOI18N
+        confirm.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
+        confirm.setForeground(new java.awt.Color(0, 0, 146));
         confirm.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        confirm.setText("Confirm");
+        confirm.setText("CONFIRM");
+        confirm.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         confirm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 confirmMouseClicked(evt);
             }
         });
         background.add(confirm);
-        confirm.setBounds(100, 10, 80, 30);
+        confirm.setBounds(270, 10, 80, 30);
 
+        back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
         back.setForeground(new java.awt.Color(46, 49, 146));
-        back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/leftarrow_orig.png"))); // NOI18N
-        back.setText("BACK");
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dark blue back arrow 24.png"))); // NOI18N
         back.setToolTipText("");
+        back.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
             }
         });
         background.add(back);
-        back.setBounds(450, 10, 70, 20);
+        back.setBounds(10, 10, 30, 30);
 
         page.setBackground(new java.awt.Color(255, 255, 255));
-        page.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 8));
+        page.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 146), 3, true));
         page.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo_wname_orig35.jpg"))); // NOI18N
         page.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 310, 60));
 
-        kind.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        page.add(kind, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 490, 20));
-
-        date.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        date.setText("(date)");
-        page.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 490, 20));
-
         seperate1.setForeground(new java.awt.Color(0, 0, 0));
         page.add(seperate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 490, 10));
+
+        kind.setFont(new java.awt.Font("Garamond", 0, 11)); // NOI18N
+        kind.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        page.add(kind, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 490, 20));
 
         seperate2.setForeground(new java.awt.Color(0, 0, 0));
         page.add(seperate2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 490, 10));
 
-        table.setBorder(null);
+        date.setFont(new java.awt.Font("Garamond", 0, 12)); // NOI18N
+        date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        date.setText("(date)");
+        page.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 490, 20));
+
+        table.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 146)));
         table.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
+        show.setFont(new java.awt.Font("Garamond", 0, 11)); // NOI18N
         show.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -230,6 +295,7 @@ public final class printselectedForm extends javax.swing.JInternalFrame {
 
             }
         ));
+        show.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         table.setViewportView(show);
 
         page.add(table, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 120, 480, 220));
@@ -247,7 +313,7 @@ public final class printselectedForm extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -31,12 +33,34 @@ public final class inventoryarchiveForm extends javax.swing.JInternalFrame {
 
     public void displayInventory(){
         dbConnector connector = new dbConnector();
-        try{            
-            try (ResultSet resultSet = connector.getData("SELECT i_id, p_id, i_date, i_status FROM tbl_inventory "
-                    + "WHERE i_status = 'Archive'")) {
-                inventory.setModel(DbUtils.resultSetToTableModel(resultSet));
-            }        
-        }catch(SQLException ex){            
+        try (ResultSet resultSet = connector.getData("SELECT i_id, p_id, i_date, i_status FROM tbl_inventory "
+        + "WHERE i_status = 'Archive'")) {
+            DefaultTableModel model = new DefaultTableModel();
+
+            // Define column names
+            String[] columnNames = {"Inventory ID", "Product ID", "Date", "Status"};
+            model.setColumnIdentifiers(columnNames);
+        
+            // Add rows to the model
+            while (resultSet.next()) {
+                model.addRow(new Object[] {
+                    resultSet.getString("i_id"),
+                    resultSet.getString("p_id"),
+                    resultSet.getDate("i_date"),
+                    resultSet.getString("i_status")
+                });
+            }
+
+            // Set the model to the table
+            inventory.setModel(model);
+
+            // Set column widths (optional)
+            int[] columnWidths = {120, 120, 145, 120};
+            for (int i = 0; i < columnWidths.length; i++) {
+                TableColumn column = inventory.getColumnModel().getColumn(i);
+                column.setPreferredWidth(columnWidths[i]);
+            }
+        } catch (SQLException ex) {
         }
     }
     
@@ -54,8 +78,11 @@ public final class inventoryarchiveForm extends javax.swing.JInternalFrame {
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(null);
 
-        scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 3));
+        scroll.setBackground(new java.awt.Color(255, 255, 255));
+        scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
+        scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
+        inventory.setFont(new java.awt.Font("Garamond", 0, 11)); // NOI18N
         inventory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -64,13 +91,14 @@ public final class inventoryarchiveForm extends javax.swing.JInternalFrame {
 
             }
         ));
+        inventory.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         scroll.setViewportView(inventory);
 
         background.add(scroll);
-        scroll.setBounds(10, 10, 360, 390);
+        scroll.setBounds(10, 50, 510, 360);
 
         unarchive.setBackground(new java.awt.Color(255, 255, 255));
-        unarchive.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
+        unarchive.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         unarchive.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 unarchiveMouseClicked(evt);
@@ -84,40 +112,37 @@ public final class inventoryarchiveForm extends javax.swing.JInternalFrame {
         });
         unarchive.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblunarchive.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblunarchive.setBackground(new java.awt.Color(255, 255, 255));
+        lblunarchive.setFont(new java.awt.Font("Cambria Math", 1, 12)); // NOI18N
+        lblunarchive.setForeground(new java.awt.Color(0, 0, 146));
         lblunarchive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblunarchive.setText("U N A R C H I V E");
-        unarchive.add(lblunarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, 30));
+        unarchive.add(lblunarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 10));
 
         background.add(unarchive);
-        unarchive.setBounds(380, 10, 140, 50);
+        unarchive.setBounds(370, 10, 150, 30);
 
         back.setForeground(new java.awt.Color(46, 49, 146));
-        back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/leftarrow_orig.png"))); // NOI18N
-        back.setText("BACK");
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dark blue back arrow 24.png"))); // NOI18N
         back.setToolTipText("");
+        back.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
             }
         });
         background.add(back);
-        back.setBounds(450, 380, 70, 20);
+        back.setBounds(10, 10, 30, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
         );
 
         pack();

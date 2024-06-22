@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.Random;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -32,17 +34,37 @@ public final class userresetForm extends javax.swing.JInternalFrame {
     Color borderColor = new Color(255,255,255);
     Color enterColor = new Color(46,49,146);
     
-    public void displayUser(){
+    public void displayUser() {
         dbConnector connector = new dbConnector();
-        try{            
-            try (ResultSet resultSet = connector.getData("SELECT u_id, u_email, u_contactnumber, u_username FROM tbl_user WHERE u_status = 'Reset'")) {
-                userlists.setModel(DbUtils.resultSetToTableModel(resultSet));
+
+        try {
+            ResultSet resultSet = connector.getData("SELECT u_id, u_email, u_contactnumber, u_username FROM tbl_user WHERE u_status = 'Reset'");
+            DefaultTableModel model = new DefaultTableModel();
+
+            // Define column names
+            String[] columnNames = {"ID", "Email", "Contact Number", "Username"};
+            model.setColumnIdentifiers(columnNames);
+
+            // Add rows to the model
+            while (resultSet.next()) {
+                model.addRow(new Object[] {
+                    resultSet.getString("u_id"),
+                    resultSet.getString("u_email"),
+                    resultSet.getString("u_contactnumber"),
+                    resultSet.getString("u_username")
+                });
             }
-            
-        }catch(SQLException ex){
-            System.out.println("Errors: "+ex.getMessage());
-            
-        }
+
+            // Set the model to the table
+            userlists.setModel(model);
+            // Set column widths
+            int[] columnWidths = {20, 150, 100, 85};
+            for (int i = 0; i < columnWidths.length; i++) {
+                TableColumn column = userlists.getColumnModel().getColumn(i);
+                column.setPreferredWidth(columnWidths[i]);
+            }
+        } catch (SQLException ex) {
+        } 
     }
     
     private String generatePassword() {
@@ -76,21 +98,23 @@ public final class userresetForm extends javax.swing.JInternalFrame {
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(null);
 
+        back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
         back.setForeground(new java.awt.Color(46, 49, 146));
-        back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/leftarrow_orig.png"))); // NOI18N
-        back.setText("BACK");
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dark blue back arrow 24.png"))); // NOI18N
         back.setToolTipText("");
+        back.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
             }
         });
         background.add(back);
-        back.setBounds(450, 380, 70, 20);
+        back.setBounds(0, 0, 70, 40);
 
-        scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 3));
+        scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
+        scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
+        userlists.setFont(new java.awt.Font("Garamond", 0, 11)); // NOI18N
         userlists.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -99,13 +123,14 @@ public final class userresetForm extends javax.swing.JInternalFrame {
 
             }
         ));
+        userlists.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         scroll.setViewportView(userlists);
 
         background.add(scroll);
-        scroll.setBounds(10, 10, 360, 390);
+        scroll.setBounds(10, 30, 360, 370);
 
         confirm1.setBackground(new java.awt.Color(255, 255, 255));
-        confirm1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
+        confirm1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
         confirm1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 confirm1MouseClicked(evt);
@@ -119,16 +144,17 @@ public final class userresetForm extends javax.swing.JInternalFrame {
         });
         confirm1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblconfirm1.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblconfirm1.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
+        lblconfirm1.setForeground(new java.awt.Color(0, 0, 146));
         lblconfirm1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblconfirm1.setText("C H A N G E");
-        confirm1.add(lblconfirm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 6, 110, 40));
+        confirm1.add(lblconfirm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 6, 120, 20));
 
         background.add(confirm1);
-        confirm1.setBounds(380, 270, 140, 50);
+        confirm1.setBounds(380, 330, 140, 30);
 
         confirm.setBackground(new java.awt.Color(255, 255, 255));
-        confirm.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 5));
+        confirm.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
         confirm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 confirmMouseClicked(evt);
@@ -142,43 +168,48 @@ public final class userresetForm extends javax.swing.JInternalFrame {
         });
         confirm.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblconfirm.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        lblconfirm.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
+        lblconfirm.setForeground(new java.awt.Color(0, 0, 146));
         lblconfirm.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblconfirm.setText("C O N F I R M");
-        confirm.add(lblconfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 6, 110, 40));
+        confirm.add(lblconfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 120, 30));
 
         background.add(confirm);
-        confirm.setBounds(380, 10, 140, 50);
+        confirm.setBounds(380, 70, 140, 30);
 
-        txtnewpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
+        txtnewpass.setForeground(new java.awt.Color(0, 0, 146));
+        txtnewpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtnewpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtnewpassActionPerformed(evt);
             }
         });
         background.add(txtnewpass);
-        txtnewpass.setBounds(390, 120, 100, 30);
+        txtnewpass.setBounds(380, 160, 140, 30);
 
-        lblnewpass.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        lblnewpass.setForeground(new java.awt.Color(46, 49, 146));
+        lblnewpass.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        lblnewpass.setForeground(new java.awt.Color(0, 0, 146));
+        lblnewpass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblnewpass.setText("New Password:");
         background.add(lblnewpass);
-        lblnewpass.setBounds(390, 94, 100, 20);
+        lblnewpass.setBounds(380, 140, 140, 20);
 
-        txtconfirmpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(46, 49, 146), 2));
+        txtconfirmpass.setForeground(new java.awt.Color(0, 0, 146));
+        txtconfirmpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtconfirmpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtconfirmpassActionPerformed(evt);
             }
         });
         background.add(txtconfirmpass);
-        txtconfirmpass.setBounds(390, 220, 100, 30);
+        txtconfirmpass.setBounds(380, 260, 140, 30);
 
-        lblconfirmpass.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        lblconfirmpass.setForeground(new java.awt.Color(46, 49, 146));
+        lblconfirmpass.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
+        lblconfirmpass.setForeground(new java.awt.Color(0, 0, 146));
+        lblconfirmpass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblconfirmpass.setText("Confirmed Password:");
         background.add(lblconfirmpass);
-        lblconfirmpass.setBounds(380, 190, 140, 20);
+        lblconfirmpass.setBounds(380, 230, 140, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,7 +219,7 @@ public final class userresetForm extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
         );
 
         pack();

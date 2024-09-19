@@ -28,6 +28,7 @@ public final class inventoryprintForm extends javax.swing.JInternalFrame {
     /**
      * Creates new form inventoryprintForm
      * @param admindesktop
+     * @param source
      */
     public inventoryprintForm(JDesktopPane admindesktop, String source) {
         initComponents();

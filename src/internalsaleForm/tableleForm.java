@@ -7,7 +7,6 @@ import javax.swing.JTable;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -56,9 +55,9 @@ public final class tableleForm extends javax.swing.JInternalFrame {
         // Add rows to the model
         while (resultSet.next()) {
             model.addRow(new Object[] {
-                resultSet.getString("s_id"),
-                resultSet.getString("p_id"),
-                resultSet.getString("i_id"),
+                resultSet.getInt("s_id"),
+                resultSet.getInt("p_id"),
+                resultSet.getInt("i_id"),
                 resultSet.getDouble("s_gross"),
                 resultSet.getDouble("s_deductions"),
                 resultSet.getDouble("s_net"),

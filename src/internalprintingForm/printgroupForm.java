@@ -21,7 +21,6 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -155,7 +154,7 @@ public final class printgroupForm extends javax.swing.JInternalFrame {
             // Add rows to the model
             while (resultSet.next()) {
                 model.addRow(new Object[]{
-                    resultSet.getString("i_id"),
+                    resultSet.getInt("i_id"),
                     resultSet.getString("product_name"),
                     resultSet.getDate("i_date"),
                     resultSet.getInt("i_availablestocks"),
@@ -211,7 +210,7 @@ public final class printgroupForm extends javax.swing.JInternalFrame {
             // Add rows to the model
             while (resultSet.next()) {
                 model.addRow(new Object[] {
-                    resultSet.getString("s_id"),
+                    resultSet.getInt("s_id"),
                     resultSet.getString("product_name"),
                     resultSet.getDate("s_date"),
                     resultSet.getDouble("s_gross"),

@@ -56,7 +56,7 @@ public final class tableulistForm extends javax.swing.JInternalFrame {
             // Add rows to the model
             while (resultSet.next()) {
                 model.addRow(new Object[] {
-                    resultSet.getString("u_id"),
+                    resultSet.getInt("u_id"),
                     resultSet.getString("u_lname"),
                     resultSet.getString("u_email"),
                     resultSet.getString("u_type"),

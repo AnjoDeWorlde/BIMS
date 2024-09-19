@@ -7,7 +7,6 @@ import javax.swing.JTable;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -56,8 +55,8 @@ public final class tabletoryForm extends javax.swing.JInternalFrame {
             // Add rows to the model
             while (resultSet.next()) {
                 model.addRow(new Object[] {
-                    resultSet.getString("i_id"),
-                    resultSet.getString("p_id"),
+                resultSet.getInt("i_id"),
+                resultSet.getInt("p_id"),
                 resultSet.getDate("i_date"),
                 resultSet.getInt("i_availablestocks"),
                 resultSet.getInt("i_soldstocks"),

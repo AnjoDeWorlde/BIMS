@@ -70,10 +70,6 @@ public class userForm extends javax.swing.JFrame {
         lblproducts = new javax.swing.JLabel();
         inventory = new javax.swing.JPanel();
         lblinventory = new javax.swing.JLabel();
-        sales = new javax.swing.JPanel();
-        lblsales = new javax.swing.JLabel();
-        order = new javax.swing.JPanel();
-        lblorder = new javax.swing.JLabel();
         admindesktop = new javax.swing.JDesktopPane();
         logout = new javax.swing.JLabel();
 
@@ -176,52 +172,6 @@ public class userForm extends javax.swing.JFrame {
 
         navigation.add(inventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 90, 40));
 
-        sales.setBackground(new java.awt.Color(255, 255, 255));
-        sales.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        sales.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                salesMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                salesMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                salesMouseExited(evt);
-            }
-        });
-        sales.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblsales.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
-        lblsales.setForeground(new java.awt.Color(0, 0, 146));
-        lblsales.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblsales.setText("SALES");
-        sales.add(lblsales, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 50, 20));
-
-        navigation.add(sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 90, 40));
-
-        order.setBackground(new java.awt.Color(255, 255, 255));
-        order.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        order.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                orderMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                orderMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                orderMouseExited(evt);
-            }
-        });
-        order.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblorder.setFont(new java.awt.Font("Candara", 1, 14)); // NOI18N
-        lblorder.setForeground(new java.awt.Color(0, 0, 146));
-        lblorder.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblorder.setText("ORDER");
-        order.add(lblorder, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 90, 20));
-
-        navigation.add(order, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 90, 40));
-
         background.add(navigation);
         navigation.setBounds(0, 0, 150, 490);
 
@@ -300,22 +250,6 @@ public class userForm extends javax.swing.JFrame {
         inventory.setBackground(navColor);
     }//GEN-LAST:event_inventoryMouseExited
 
-    private void orderMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderMouseEntered
-        order.setBackground(enterColor);
-    }//GEN-LAST:event_orderMouseEntered
-
-    private void orderMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderMouseExited
-        order.setBackground(navColor);
-    }//GEN-LAST:event_orderMouseExited
-
-    private void salesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesMouseEntered
-        sales.setBackground(enterColor);
-    }//GEN-LAST:event_salesMouseEntered
-
-    private void salesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesMouseExited
-        sales.setBackground(navColor);
-    }//GEN-LAST:event_salesMouseExited
-
     private void productsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productsMouseClicked
         closeAllInternalFrames();
         productlistsForm plf = new productlistsForm(admindesktop, "user");
@@ -329,20 +263,6 @@ public class userForm extends javax.swing.JFrame {
         admindesktop.add(inf).setVisible(true);
         System.out.println("Inventory Starts!");
     }//GEN-LAST:event_inventoryMouseClicked
-
-    private void orderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_orderMouseClicked
-        closeAllInternalFrames();
-        orderForm odf = new orderForm(admindesktop);
-        admindesktop.add(odf).setVisible(true);
-        System.out.println("Order Starts!");
-    }//GEN-LAST:event_orderMouseClicked
-
-    private void salesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesMouseClicked
-        closeAllInternalFrames();
-        salesForm ssf = new salesForm(admindesktop, "user");
-        admindesktop.add(ssf).setVisible(true);
-        System.out.println("Sales Starts!");
-    }//GEN-LAST:event_salesMouseClicked
 
     private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
         System.out.println("Admin Logouts!");
@@ -405,17 +325,13 @@ public class userForm extends javax.swing.JFrame {
     private javax.swing.JLabel icon;
     private javax.swing.JPanel inventory;
     private javax.swing.JLabel lblinventory;
-    private javax.swing.JLabel lblorder;
     private javax.swing.JLabel lblproducts;
     private javax.swing.JLabel lblprofile;
-    private javax.swing.JLabel lblsales;
     public javax.swing.JLabel lname;
     private javax.swing.JLabel logout;
     private javax.swing.JPanel navigation;
-    private javax.swing.JPanel order;
     private javax.swing.JPanel products;
     private javax.swing.JPanel profile;
-    private javax.swing.JPanel sales;
     public javax.swing.JLabel type;
     // End of variables declaration//GEN-END:variables
 }

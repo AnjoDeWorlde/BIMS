@@ -42,8 +42,8 @@ public class inventoryForm extends javax.swing.JInternalFrame {
         return lblmessage;
     }
     
-    private String source;
-    private JDesktopPane admindesktop; 
+    private final String source;
+    private final JDesktopPane admindesktop; 
     Color borderColor = new Color(255,255,255);
     Color enterColor = new Color(46,49,146);
     
@@ -84,12 +84,14 @@ public class inventoryForm extends javax.swing.JInternalFrame {
         lblprint = new javax.swing.JLabel();
         inventorydesktop = new javax.swing.JDesktopPane();
 
+        setPreferredSize(new java.awt.Dimension(846, 786));
+
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
-        background.setPreferredSize(new java.awt.Dimension(550, 490));
+        background.setPreferredSize(new java.awt.Dimension(0, 0));
         background.setLayout(null);
 
-        back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
+        back.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
         back.setForeground(new java.awt.Color(0, 0, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         back.setText("BACK");
@@ -101,13 +103,14 @@ public class inventoryForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(back);
-        back.setBounds(10, 10, 40, 20);
+        back.setBounds(20, 20, 70, 40);
 
-        lblmessage.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
+        lblmessage.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
         lblmessage.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblmessage.setText("INVENTORY LIST");
         background.add(lblmessage);
-        lblmessage.setBounds(70, 20, 150, 30);
+        lblmessage.setBounds(100, 30, 240, 30);
 
         create.setBackground(new java.awt.Color(255, 255, 255));
         create.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -126,14 +129,14 @@ public class inventoryForm extends javax.swing.JInternalFrame {
         create.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblcreate.setBackground(new java.awt.Color(255, 255, 255));
-        lblcreate.setFont(new java.awt.Font("Cambria", 1, 10)); // NOI18N
+        lblcreate.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
         lblcreate.setForeground(new java.awt.Color(0, 0, 146));
         lblcreate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblcreate.setText("CREATE");
-        create.add(lblcreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 60, 30));
+        create.add(lblcreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 30));
 
         background.add(create);
-        create.setBounds(230, 20, 70, 30);
+        create.setBounds(350, 20, 110, 50);
 
         update.setBackground(new java.awt.Color(255, 255, 255));
         update.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -151,14 +154,14 @@ public class inventoryForm extends javax.swing.JInternalFrame {
         update.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblupdate.setBackground(new java.awt.Color(255, 255, 255));
-        lblupdate.setFont(new java.awt.Font("Cambria", 1, 10)); // NOI18N
+        lblupdate.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
         lblupdate.setForeground(new java.awt.Color(0, 0, 146));
         lblupdate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblupdate.setText("UPDATE");
-        update.add(lblupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 50, 30));
+        update.add(lblupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 30));
 
         background.add(update);
-        update.setBounds(310, 20, 70, 30);
+        update.setBounds(470, 20, 110, 50);
 
         archive.setBackground(new java.awt.Color(255, 255, 255));
         archive.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -176,14 +179,14 @@ public class inventoryForm extends javax.swing.JInternalFrame {
         archive.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblarchive.setBackground(new java.awt.Color(255, 255, 255));
-        lblarchive.setFont(new java.awt.Font("Cambria", 1, 10)); // NOI18N
+        lblarchive.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
         lblarchive.setForeground(new java.awt.Color(0, 0, 146));
         lblarchive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblarchive.setText("ARCHIVE");
-        archive.add(lblarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 60, 30));
+        archive.add(lblarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 30));
 
         background.add(archive);
-        archive.setBounds(390, 20, 80, 30);
+        archive.setBounds(590, 20, 110, 50);
 
         print.setBackground(new java.awt.Color(255, 255, 255));
         print.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -201,14 +204,14 @@ public class inventoryForm extends javax.swing.JInternalFrame {
         print.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblprint.setBackground(new java.awt.Color(255, 255, 255));
-        lblprint.setFont(new java.awt.Font("Cambria", 1, 10)); // NOI18N
+        lblprint.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
         lblprint.setForeground(new java.awt.Color(0, 0, 146));
         lblprint.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblprint.setText("PRINT");
-        print.add(lblprint, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 50, 30));
+        print.add(lblprint, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 80, 30));
 
         background.add(print);
-        print.setBounds(480, 20, 60, 30);
+        print.setBounds(710, 20, 100, 50);
 
         inventorydesktop.setBackground(new java.awt.Color(255, 255, 255));
         inventorydesktop.setForeground(new java.awt.Color(0, 0, 146));
@@ -217,25 +220,25 @@ public class inventoryForm extends javax.swing.JInternalFrame {
         inventorydesktop.setLayout(inventorydesktopLayout);
         inventorydesktopLayout.setHorizontalGroup(
             inventorydesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
+            .addGap(0, 790, Short.MAX_VALUE)
         );
         inventorydesktopLayout.setVerticalGroup(
             inventorydesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
+            .addGap(0, 630, Short.MAX_VALUE)
         );
 
         background.add(inventorydesktop);
-        inventorydesktop.setBounds(10, 60, 530, 420);
+        inventorydesktop.setBounds(20, 100, 790, 630);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -287,12 +290,12 @@ public class inventoryForm extends javax.swing.JInternalFrame {
             } else {
                 update.setEnabled(false);
                 System.out.println("No Selected Item!");
-                lblmessage.setText("Please select an Item!");
+                lblmessage.setText("No Selected Item!");
             }
         } else {
             update.setEnabled(false);
             System.out.println("No Selected Item!");
-            lblmessage.setText("Please select an Item!");
+            lblmessage.setText("No Selected Item!");
         }
     }//GEN-LAST:event_updateMouseClicked
 
@@ -335,7 +338,7 @@ public class inventoryForm extends javax.swing.JInternalFrame {
                         closeAllInternalFrames();
                         inventoryarchiveForm iaf = new inventoryarchiveForm();
                         System.out.println("Archive Inventory Opens!");
-                        lblmessage.setText("Accomplished Successfully!");
+                        lblmessage.setText("Archive Success!");
                         inventorydesktop.add(iaf).setVisible(true);
                     }
                 } catch (SQLException ex) {

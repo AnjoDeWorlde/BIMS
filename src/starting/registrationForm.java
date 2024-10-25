@@ -96,7 +96,7 @@ public class registrationForm extends javax.swing.JFrame {
             ResultSet resultSet = connector.getData(query);
         
             if (resultSet.next()) {
-                lblmessage3.setText("*** ");
+                lblmessage3.setText("***");
                 return true;
             } else {
                 return false;
@@ -166,18 +166,25 @@ public class registrationForm extends javax.swing.JFrame {
 
         javax.swing.JPanel background = new javax.swing.JPanel();
         form = new javax.swing.JPanel();
+        lblfirstname = new javax.swing.JLabel();
         lblmessage1 = new javax.swing.JLabel();
         txtfirstname = new javax.swing.JTextField();
+        lbllastname = new javax.swing.JLabel();
         lblmessage2 = new javax.swing.JLabel();
         txtlastname = new javax.swing.JTextField();
+        lblemail = new javax.swing.JLabel();
         lblmessage3 = new javax.swing.JLabel();
         txtemail = new javax.swing.JTextField();
+        lblcontactnumber = new javax.swing.JLabel();
         lblmessage4 = new javax.swing.JLabel();
         txtcontactnumber = new javax.swing.JTextField();
+        lblusername = new javax.swing.JLabel();
         lblmessage5 = new javax.swing.JLabel();
         txtusername = new javax.swing.JTextField();
+        lblpassword = new javax.swing.JLabel();
         lblmessage6 = new javax.swing.JLabel();
         txtpassword = new javax.swing.JPasswordField();
+        lbltype = new javax.swing.JLabel();
         lblmessage7 = new javax.swing.JLabel();
         boxtype = new javax.swing.JComboBox<>();
         forpicture = new javax.swing.JPanel();
@@ -188,30 +195,47 @@ public class registrationForm extends javax.swing.JFrame {
         boxpicture = new javax.swing.JPanel();
         picture = new javax.swing.JLabel();
         lblbackground1 = new javax.swing.JLabel();
-        lblregistration = new javax.swing.JLabel();
         register = new javax.swing.JPanel();
         lblregister = new javax.swing.JLabel();
         lblbackground = new javax.swing.JLabel();
-        lblfirstname = new javax.swing.JLabel();
-        lblemail = new javax.swing.JLabel();
-        lblcontactnumber = new javax.swing.JLabel();
-        lbllastname = new javax.swing.JLabel();
-        lbltype = new javax.swing.JLabel();
-        lblpassword = new javax.swing.JLabel();
-        lblusername = new javax.swing.JLabel();
-        back = new javax.swing.JLabel();
+        side = new javax.swing.JPanel();
         diagonal1 = new javax.swing.JLabel();
-        diagonal2 = new javax.swing.JLabel();
-        diagonal3 = new javax.swing.JLabel();
         diagonal4 = new javax.swing.JLabel();
-        bubble7 = new javax.swing.JLabel();
-        bubble2 = new javax.swing.JLabel();
-        bubble3 = new javax.swing.JLabel();
         bubble1 = new javax.swing.JLabel();
+        diagonal2 = new javax.swing.JLabel();
+        bubble3 = new javax.swing.JLabel();
+        bubble5 = new javax.swing.JLabel();
+        bubble6 = new javax.swing.JLabel();
+        bubble8 = new javax.swing.JLabel();
+        diagonal5 = new javax.swing.JLabel();
+        diagonal6 = new javax.swing.JLabel();
+        bubble12 = new javax.swing.JLabel();
+        bubble13 = new javax.swing.JLabel();
+        bubble14 = new javax.swing.JLabel();
+        bubble15 = new javax.swing.JLabel();
+        diagonal3 = new javax.swing.JLabel();
+        diagoonal4 = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
+        top = new javax.swing.JPanel();
+        x = new javax.swing.JLabel();
+        mini = new javax.swing.JLabel();
         bubble9 = new javax.swing.JLabel();
         bubble10 = new javax.swing.JLabel();
+        bubble16 = new javax.swing.JLabel();
+        bubble17 = new javax.swing.JLabel();
+        bubble18 = new javax.swing.JLabel();
+        bubble19 = new javax.swing.JLabel();
+        bubble20 = new javax.swing.JLabel();
+        bubble21 = new javax.swing.JLabel();
+        diagoonal3 = new javax.swing.JLabel();
+        diagoonal5 = new javax.swing.JLabel();
+        diagoonal6 = new javax.swing.JLabel();
+        diagoonal7 = new javax.swing.JLabel();
+        diagoonal8 = new javax.swing.JLabel();
+        diagoonal9 = new javax.swing.JLabel();
+        diagoonal10 = new javax.swing.JLabel();
         bubble11 = new javax.swing.JLabel();
-        rlogo = new javax.swing.JLabel();
+        bubble22 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -225,111 +249,153 @@ public class registrationForm extends javax.swing.JFrame {
         form.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
         form.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblmessage1.setFont(new java.awt.Font("Candara", 0, 15)); // NOI18N
+        lblfirstname.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
+        lblfirstname.setForeground(new java.awt.Color(46, 49, 146));
+        lblfirstname.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblfirstname.setText("First Name:");
+        form.add(lblfirstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 110, 40));
+
+        lblmessage1.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage1.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        form.add(lblmessage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 40, 30));
+        form.add(lblmessage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 50, 40));
 
-        txtfirstname.setFont(new java.awt.Font("Candara", 0, 15)); // NOI18N
+        txtfirstname.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtfirstname.setForeground(new java.awt.Color(46, 49, 146));
-        txtfirstname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 2));
+        txtfirstname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtfirstname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtfirstnameActionPerformed(evt);
             }
         });
-        form.add(txtfirstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 280, 30));
+        form.add(txtfirstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 300, 40));
 
-        lblmessage2.setFont(new java.awt.Font("Candara", 0, 15)); // NOI18N
+        lbllastname.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
+        lbllastname.setForeground(new java.awt.Color(46, 49, 146));
+        lbllastname.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lbllastname.setText("Last Name:");
+        form.add(lbllastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 100, 40));
+
+        lblmessage2.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage2.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        form.add(lblmessage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, 40, 30));
+        form.add(lblmessage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 50, 40));
 
-        txtlastname.setFont(new java.awt.Font("Candara", 0, 15)); // NOI18N
+        txtlastname.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtlastname.setForeground(new java.awt.Color(46, 49, 146));
-        txtlastname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 2));
+        txtlastname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtlastname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtlastnameActionPerformed(evt);
             }
         });
-        form.add(txtlastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 280, 30));
+        form.add(txtlastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 300, 40));
 
-        lblmessage3.setFont(new java.awt.Font("Candara", 0, 15)); // NOI18N
+        lblemail.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
+        lblemail.setForeground(new java.awt.Color(46, 49, 146));
+        lblemail.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblemail.setText("E-mail:");
+        form.add(lblemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 230, 70, 40));
+
+        lblmessage3.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage3.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        form.add(lblmessage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 200, 40, 30));
+        form.add(lblmessage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, 50, 40));
 
-        txtemail.setFont(new java.awt.Font("Candara", 0, 15)); // NOI18N
+        txtemail.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtemail.setForeground(new java.awt.Color(46, 49, 146));
-        txtemail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 2));
+        txtemail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtemailActionPerformed(evt);
             }
         });
-        form.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 280, 30));
+        form.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 300, 40));
 
-        lblmessage4.setFont(new java.awt.Font("Candara", 0, 15)); // NOI18N
+        lblcontactnumber.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
+        lblcontactnumber.setForeground(new java.awt.Color(46, 49, 146));
+        lblcontactnumber.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblcontactnumber.setText("Contact Number:");
+        form.add(lblcontactnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 150, 40));
+
+        lblmessage4.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage4.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        form.add(lblmessage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 40, 30));
+        form.add(lblmessage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, 50, 40));
 
-        txtcontactnumber.setFont(new java.awt.Font("Candara", 0, 15)); // NOI18N
+        txtcontactnumber.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtcontactnumber.setForeground(new java.awt.Color(46, 49, 146));
-        txtcontactnumber.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 2));
+        txtcontactnumber.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtcontactnumber.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtcontactnumberActionPerformed(evt);
             }
         });
-        form.add(txtcontactnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 280, 30));
+        form.add(txtcontactnumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 300, 40));
 
-        lblmessage5.setFont(new java.awt.Font("Candara", 0, 15)); // NOI18N
+        lblusername.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
+        lblusername.setForeground(new java.awt.Color(46, 49, 146));
+        lblusername.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblusername.setText("Username:");
+        form.add(lblusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 100, 40));
+
+        lblmessage5.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage5.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        form.add(lblmessage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 280, 40, 30));
+        form.add(lblmessage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, 50, 40));
 
-        txtusername.setFont(new java.awt.Font("Candara", 0, 15)); // NOI18N
+        txtusername.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtusername.setForeground(new java.awt.Color(46, 49, 146));
-        txtusername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 2));
+        txtusername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtusername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtusernameActionPerformed(evt);
             }
         });
-        form.add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 280, 30));
+        form.add(txtusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, 300, 40));
 
-        lblmessage6.setFont(new java.awt.Font("Candara", 0, 15)); // NOI18N
+        lblpassword.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
+        lblpassword.setForeground(new java.awt.Color(46, 49, 146));
+        lblpassword.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lblpassword.setText("Password:");
+        form.add(lblpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, 90, 40));
+
+        lblmessage6.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage6.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        form.add(lblmessage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 320, 40, 30));
+        form.add(lblmessage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 410, 50, 40));
 
-        txtpassword.setFont(new java.awt.Font("Candara", 0, 15)); // NOI18N
+        txtpassword.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtpassword.setForeground(new java.awt.Color(46, 49, 146));
-        txtpassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 2));
+        txtpassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtpassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtpasswordActionPerformed(evt);
             }
         });
-        form.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 280, 30));
+        form.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, 300, 40));
 
-        lblmessage7.setFont(new java.awt.Font("Candara", 0, 15)); // NOI18N
+        lbltype.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
+        lbltype.setForeground(new java.awt.Color(46, 49, 146));
+        lbltype.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        lbltype.setText("Account Type:");
+        form.add(lbltype, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 470, -1, 40));
+
+        lblmessage7.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage7.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        form.add(lblmessage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 40, 30));
+        form.add(lblmessage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 470, 50, 40));
 
-        boxtype.setFont(new java.awt.Font("Candara", 0, 15)); // NOI18N
+        boxtype.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         boxtype.setForeground(new java.awt.Color(46, 49, 146));
         boxtype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "User", "Admin" }));
-        boxtype.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 2));
+        boxtype.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         boxtype.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boxtypeActionPerformed(evt);
             }
         });
-        form.add(boxtype, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 280, 30));
+        form.add(boxtype, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 470, 300, 40));
 
         forpicture.setBackground(new java.awt.Color(255, 255, 255));
         forpicture.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -350,14 +416,14 @@ public class registrationForm extends javax.swing.JFrame {
         });
         upload.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblupload.setFont(new java.awt.Font("Cambria Math", 1, 10)); // NOI18N
+        lblupload.setFont(new java.awt.Font("Cambria Math", 1, 20)); // NOI18N
         lblupload.setForeground(new java.awt.Color(46, 49, 146));
         lblupload.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblupload.setText("UPLOAD");
-        upload.add(lblupload, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 20));
+        upload.add(lblupload, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 30));
 
         forpicture.add(upload);
-        upload.setBounds(10, 230, 80, 40);
+        upload.setBounds(10, 340, 130, 50);
 
         remove.setBackground(new java.awt.Color(255, 255, 255));
         remove.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -374,14 +440,14 @@ public class registrationForm extends javax.swing.JFrame {
         });
         remove.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblremove.setFont(new java.awt.Font("Cambria Math", 1, 10)); // NOI18N
+        lblremove.setFont(new java.awt.Font("Cambria Math", 1, 20)); // NOI18N
         lblremove.setForeground(new java.awt.Color(46, 49, 146));
         lblremove.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblremove.setText("REMOVE");
-        remove.add(lblremove, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 60, 20));
+        remove.add(lblremove, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 30));
 
         forpicture.add(remove);
-        remove.setBounds(150, 230, 80, 40);
+        remove.setBounds(200, 340, 130, 50);
 
         boxpicture.setBackground(new java.awt.Color(255, 255, 255));
         boxpicture.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -390,23 +456,17 @@ public class registrationForm extends javax.swing.JFrame {
         picture.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
         picture.setForeground(new java.awt.Color(255, 15, 15));
         picture.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        boxpicture.add(picture, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 200, 180));
+        boxpicture.add(picture, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 300, 300));
 
         forpicture.add(boxpicture);
-        boxpicture.setBounds(10, 10, 220, 200);
+        boxpicture.setBounds(10, 10, 320, 320);
 
         lblbackground1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bg.png"))); // NOI18N
         lblbackground1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
         forpicture.add(lblbackground1);
-        lblbackground1.setBounds(-310, -140, 610, 530);
+        lblbackground1.setBounds(-890, -360, 1250, 910);
 
-        form.add(forpicture, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 240, 290));
-
-        lblregistration.setFont(new java.awt.Font("Candara", 1, 50)); // NOI18N
-        lblregistration.setForeground(new java.awt.Color(46, 49, 146));
-        lblregistration.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblregistration.setText("e g i s t r a t i o n");
-        form.add(lblregistration, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 350, 80));
+        form.add(forpicture, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 100, 340, 410));
 
         register.setBackground(new java.awt.Color(255, 255, 255));
         register.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -423,64 +483,90 @@ public class registrationForm extends javax.swing.JFrame {
         });
         register.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblregister.setFont(new java.awt.Font("Cambria Math", 1, 12)); // NOI18N
+        lblregister.setFont(new java.awt.Font("Cambria Math", 1, 20)); // NOI18N
         lblregister.setForeground(new java.awt.Color(46, 49, 146));
         lblregister.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblregister.setText("R E G I S T E R");
-        register.add(lblregister, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 20));
+        register.add(lblregister, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 180, 30));
 
-        form.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, 130, 40));
+        form.add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 550, 200, 50));
 
         lblbackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bg.png"))); // NOI18N
         lblbackground.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
-        form.add(lblbackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, 460));
+        form.add(lblbackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(-430, -260, 1250, 910));
 
         background.add(form);
-        form.setBounds(120, 50, 570, 460);
+        form.setBounds(180, 100, 820, 650);
 
-        lblfirstname.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        lblfirstname.setForeground(new java.awt.Color(46, 49, 146));
-        lblfirstname.setText("First Name:");
-        background.add(lblfirstname);
-        lblfirstname.setBounds(10, 170, 110, 30);
+        side.setBackground(new java.awt.Color(255, 255, 255));
+        side.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
+        side.setLayout(null);
 
-        lblemail.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        lblemail.setForeground(new java.awt.Color(46, 49, 146));
-        lblemail.setText("E-mail:");
-        background.add(lblemail);
-        lblemail.setBounds(10, 250, 110, 30);
+        diagonal1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        side.add(diagonal1);
+        diagonal1.setBounds(80, 130, 100, 100);
 
-        lblcontactnumber.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        lblcontactnumber.setForeground(new java.awt.Color(46, 49, 146));
-        lblcontactnumber.setText("Contact Number:");
-        background.add(lblcontactnumber);
-        lblcontactnumber.setBounds(10, 290, 110, 30);
+        diagonal4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        side.add(diagonal4);
+        diagonal4.setBounds(90, 590, 100, 100);
 
-        lbllastname.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        lbllastname.setForeground(new java.awt.Color(46, 49, 146));
-        lbllastname.setText("Last Name:");
-        background.add(lbllastname);
-        lbllastname.setBounds(10, 210, 110, 30);
+        bubble1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 50.png"))); // NOI18N
+        side.add(bubble1);
+        bubble1.setBounds(0, 350, 50, 50);
 
-        lbltype.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        lbltype.setForeground(new java.awt.Color(46, 49, 146));
-        lbltype.setText("Account Type:");
-        background.add(lbltype);
-        lbltype.setBounds(10, 410, 110, 30);
+        diagonal2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        side.add(diagonal2);
+        diagonal2.setBounds(-40, -30, 100, 100);
 
-        lblpassword.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        lblpassword.setForeground(new java.awt.Color(46, 49, 146));
-        lblpassword.setText("Password:");
-        background.add(lblpassword);
-        lblpassword.setBounds(10, 370, 110, 30);
+        bubble3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 35.png"))); // NOI18N
+        side.add(bubble3);
+        bubble3.setBounds(60, 60, 40, 40);
 
-        lblusername.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        lblusername.setForeground(new java.awt.Color(46, 49, 146));
-        lblusername.setText("Username:");
-        background.add(lblusername);
-        lblusername.setBounds(10, 330, 110, 30);
+        bubble5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
+        side.add(bubble5);
+        bubble5.setBounds(120, 20, 30, 30);
 
-        back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
+        bubble6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 50.png"))); // NOI18N
+        side.add(bubble6);
+        bubble6.setBounds(0, 120, 50, 50);
+
+        bubble8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 50.png"))); // NOI18N
+        side.add(bubble8);
+        bubble8.setBounds(0, 580, 50, 50);
+
+        diagonal5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        side.add(diagonal5);
+        diagonal5.setBounds(-20, 670, 100, 100);
+
+        diagonal6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        side.add(diagonal6);
+        diagonal6.setBounds(-40, 440, 100, 100);
+
+        bubble12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 35.png"))); // NOI18N
+        side.add(bubble12);
+        bubble12.setBounds(70, 530, 40, 40);
+
+        bubble13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 35.png"))); // NOI18N
+        side.add(bubble13);
+        bubble13.setBounds(70, 290, 40, 40);
+
+        bubble14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
+        side.add(bubble14);
+        bubble14.setBounds(140, 470, 30, 30);
+
+        bubble15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
+        side.add(bubble15);
+        bubble15.setBounds(130, 250, 30, 30);
+
+        diagonal3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        side.add(diagonal3);
+        diagonal3.setBounds(-40, 200, 100, 100);
+
+        diagoonal4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        side.add(diagoonal4);
+        diagoonal4.setBounds(90, 360, 100, 100);
+
+        back.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
         back.setForeground(new java.awt.Color(46, 49, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         back.setText("BACK");
@@ -490,66 +576,96 @@ public class registrationForm extends javax.swing.JFrame {
                 backMouseClicked(evt);
             }
         });
-        background.add(back);
-        back.setBounds(20, 20, 40, 30);
+        side.add(back);
+        back.setBounds(50, 10, 70, 40);
 
-        diagonal1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
-        background.add(diagonal1);
-        diagonal1.setBounds(80, 30, 100, 110);
+        background.add(side);
+        side.setBounds(0, 0, 180, 750);
 
-        diagonal2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
-        background.add(diagonal2);
-        diagonal2.setBounds(-10, 430, 100, 100);
+        top.setBackground(new java.awt.Color(255, 255, 255));
+        top.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
+        top.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        diagonal3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
-        background.add(diagonal3);
-        diagonal3.setBounds(-70, 150, 100, 100);
+        x.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        x.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/X.png"))); // NOI18N
+        x.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                xMouseClicked(evt);
+            }
+        });
+        top.add(x, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 30, 30));
 
-        diagonal4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
-        background.add(diagonal4);
-        diagonal4.setBounds(80, 300, 100, 100);
-
-        bubble7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 35.png"))); // NOI18N
-        background.add(bubble7);
-        bubble7.setBounds(70, 180, 50, 40);
-
-        bubble2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
-        background.add(bubble2);
-        bubble2.setBounds(100, 410, 50, 40);
-
-        bubble3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
-        background.add(bubble3);
-        bubble3.setBounds(20, 300, 50, 40);
-
-        bubble1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 50.png"))); // NOI18N
-        background.add(bubble1);
-        bubble1.setBounds(0, 50, 50, 50);
+        mini.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Minimize.png"))); // NOI18N
+        mini.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                miniMouseClicked(evt);
+            }
+        });
+        top.add(mini, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, -1, 30));
 
         bubble9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
-        background.add(bubble9);
-        bubble9.setBounds(430, 10, 25, 25);
+        top.add(bubble9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
 
         bubble10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
-        background.add(bubble10);
-        bubble10.setBounds(560, 20, 25, 25);
+        top.add(bubble10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        bubble16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
+        top.add(bubble16, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
+
+        bubble17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
+        top.add(bubble17, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, -1, -1));
+
+        bubble18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
+        top.add(bubble18, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
+
+        bubble19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
+        top.add(bubble19, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, -1));
+
+        bubble20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
+        top.add(bubble20, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, -1, -1));
+
+        bubble21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
+        top.add(bubble21, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, -1, -1));
+
+        diagoonal3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        top.add(diagoonal3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 60, 90, 80));
+
+        diagoonal5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        top.add(diagoonal5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 60, 90, 80));
+
+        diagoonal6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        top.add(diagoonal6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 90, 80));
+
+        diagoonal7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        top.add(diagoonal7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 90, 80));
+
+        diagoonal8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        top.add(diagoonal8, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 60, 90, 80));
+
+        diagoonal9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        top.add(diagoonal9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 90, 80));
+
+        diagoonal10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        top.add(diagoonal10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 90, 80));
 
         bubble11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
-        background.add(bubble11);
-        bubble11.setBounds(300, 10, 25, 25);
+        top.add(bubble11, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, -1));
 
-        rlogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo1_orig25.jpg"))); // NOI18N
-        background.add(rlogo);
-        rlogo.setBounds(10, 60, 120, 100);
+        bubble22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
+        top.add(bubble22, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, -1, -1));
+
+        background.add(top);
+        top.setBounds(160, 0, 840, 100);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
         );
 
         pack();
@@ -672,13 +788,6 @@ public class registrationForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtcontactnumberActionPerformed
 
-    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        System.out.println("Login Returned!");
-        loginForm lgf = new loginForm();
-        lgf.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_backMouseClicked
-
     private void txtusernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtusernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtusernameActionPerformed
@@ -737,6 +846,23 @@ public class registrationForm extends javax.swing.JFrame {
         remove.setBackground(origColor);
     }//GEN-LAST:event_removeMouseExited
 
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        System.out.println("Go Back!");
+        loginForm lgf = new loginForm();
+        lgf.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backMouseClicked
+
+    private void xMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xMouseClicked
+        System.out.println("System Ends!");
+        this.dispose();
+    }//GEN-LAST:event_xMouseClicked
+
+    private void miniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miniMouseClicked
+        System.out.println("System Minimizes!");
+        this.setExtendedState(loginForm.ICONIFIED);
+    }//GEN-LAST:event_miniMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -759,14 +885,36 @@ public class registrationForm extends javax.swing.JFrame {
     private javax.swing.JLabel bubble1;
     private javax.swing.JLabel bubble10;
     private javax.swing.JLabel bubble11;
-    private javax.swing.JLabel bubble2;
+    private javax.swing.JLabel bubble12;
+    private javax.swing.JLabel bubble13;
+    private javax.swing.JLabel bubble14;
+    private javax.swing.JLabel bubble15;
+    private javax.swing.JLabel bubble16;
+    private javax.swing.JLabel bubble17;
+    private javax.swing.JLabel bubble18;
+    private javax.swing.JLabel bubble19;
+    private javax.swing.JLabel bubble20;
+    private javax.swing.JLabel bubble21;
+    private javax.swing.JLabel bubble22;
     private javax.swing.JLabel bubble3;
-    private javax.swing.JLabel bubble7;
+    private javax.swing.JLabel bubble5;
+    private javax.swing.JLabel bubble6;
+    private javax.swing.JLabel bubble8;
     private javax.swing.JLabel bubble9;
     private javax.swing.JLabel diagonal1;
     private javax.swing.JLabel diagonal2;
     private javax.swing.JLabel diagonal3;
     private javax.swing.JLabel diagonal4;
+    private javax.swing.JLabel diagonal5;
+    private javax.swing.JLabel diagonal6;
+    private javax.swing.JLabel diagoonal10;
+    private javax.swing.JLabel diagoonal3;
+    private javax.swing.JLabel diagoonal4;
+    private javax.swing.JLabel diagoonal5;
+    private javax.swing.JLabel diagoonal6;
+    private javax.swing.JLabel diagoonal7;
+    private javax.swing.JLabel diagoonal8;
+    private javax.swing.JLabel diagoonal9;
     private javax.swing.JPanel form;
     private javax.swing.JPanel forpicture;
     private javax.swing.JLabel lblbackground;
@@ -784,15 +932,16 @@ public class registrationForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblmessage7;
     private javax.swing.JLabel lblpassword;
     private javax.swing.JLabel lblregister;
-    private javax.swing.JLabel lblregistration;
     private javax.swing.JLabel lblremove;
     private javax.swing.JLabel lbltype;
     private javax.swing.JLabel lblupload;
     private javax.swing.JLabel lblusername;
+    private javax.swing.JLabel mini;
     public javax.swing.JLabel picture;
     private javax.swing.JPanel register;
     private javax.swing.JPanel remove;
-    private javax.swing.JLabel rlogo;
+    private javax.swing.JPanel side;
+    private javax.swing.JPanel top;
     private javax.swing.JTextField txtcontactnumber;
     private javax.swing.JTextField txtemail;
     private javax.swing.JTextField txtfirstname;
@@ -800,5 +949,6 @@ public class registrationForm extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtpassword;
     private javax.swing.JTextField txtusername;
     private javax.swing.JPanel upload;
+    private javax.swing.JLabel x;
     // End of variables declaration//GEN-END:variables
 }

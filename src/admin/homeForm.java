@@ -26,16 +26,20 @@ public final class homeForm extends javax.swing.JInternalFrame {
         background = new javax.swing.JPanel();
         lblgreetings = new javax.swing.JLabel();
         logo = new javax.swing.JLabel();
+        mostsoldproduct1 = new javax.swing.JPanel();
+        soldproduct1 = new javax.swing.JLabel();
         randomproduct = new javax.swing.JPanel();
         lblrandomproduct = new javax.swing.JLabel();
         mostsoldproduct = new javax.swing.JPanel();
         soldproduct = new javax.swing.JLabel();
         mosthoursuseduser = new javax.swing.JPanel();
         lbluserpicture = new javax.swing.JLabel();
-        lblinfo = new javax.swing.JLabel();
+
+        setPreferredSize(new java.awt.Dimension(846, 786));
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
+        background.setPreferredSize(new java.awt.Dimension(830, 750));
         background.setLayout(null);
 
         lblgreetings.setFont(new java.awt.Font("Candara", 1, 38)); // NOI18N
@@ -47,7 +51,21 @@ public final class homeForm extends javax.swing.JInternalFrame {
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo_wname_orig35.jpg"))); // NOI18N
         background.add(logo);
-        logo.setBounds(210, 10, 320, 60);
+        logo.setBounds(280, 10, 320, 60);
+
+        mostsoldproduct1.setBackground(new java.awt.Color(255, 255, 255));
+        mostsoldproduct1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 5));
+        mostsoldproduct1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        soldproduct1.setBackground(new java.awt.Color(255, 255, 255));
+        soldproduct1.setFont(new java.awt.Font("Candara", 0, 11)); // NOI18N
+        soldproduct1.setForeground(new java.awt.Color(46, 49, 146));
+        soldproduct1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        soldproduct1.setText("soldProduct.png");
+        mostsoldproduct1.add(soldproduct1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 170, 150));
+
+        background.add(mostsoldproduct1);
+        mostsoldproduct1.setBounds(610, 550, 210, 190);
 
         randomproduct.setBackground(new java.awt.Color(255, 255, 255));
         randomproduct.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 5));
@@ -61,7 +79,7 @@ public final class homeForm extends javax.swing.JInternalFrame {
         randomproduct.add(lblrandomproduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 170, 150));
 
         background.add(randomproduct);
-        randomproduct.setBounds(40, 80, 210, 190);
+        randomproduct.setBounds(10, 170, 210, 190);
 
         mostsoldproduct.setBackground(new java.awt.Color(255, 255, 255));
         mostsoldproduct.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 5));
@@ -75,7 +93,7 @@ public final class homeForm extends javax.swing.JInternalFrame {
         mostsoldproduct.add(soldproduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 170, 150));
 
         background.add(mostsoldproduct);
-        mostsoldproduct.setBounds(40, 280, 210, 190);
+        mostsoldproduct.setBounds(20, 540, 210, 190);
 
         mosthoursuseduser.setBackground(new java.awt.Color(255, 255, 255));
         mosthoursuseduser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 5));
@@ -89,24 +107,17 @@ public final class homeForm extends javax.swing.JInternalFrame {
         mosthoursuseduser.add(lbluserpicture, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 170, 150));
 
         background.add(mosthoursuseduser);
-        mosthoursuseduser.setBounds(290, 80, 210, 190);
-
-        lblinfo.setFont(new java.awt.Font("Candara", 0, 11)); // NOI18N
-        lblinfo.setForeground(new java.awt.Color(46, 49, 146));
-        lblinfo.setText("jLabel1");
-        lblinfo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        background.add(lblinfo);
-        lblinfo.setBounds(290, 290, 210, 180);
+        mosthoursuseduser.setBounds(610, 60, 210, 190);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -115,13 +126,14 @@ public final class homeForm extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
     private javax.swing.JLabel lblgreetings;
-    private javax.swing.JLabel lblinfo;
     private javax.swing.JLabel lblrandomproduct;
     private javax.swing.JLabel lbluserpicture;
     private javax.swing.JLabel logo;
     private javax.swing.JPanel mosthoursuseduser;
     private javax.swing.JPanel mostsoldproduct;
+    private javax.swing.JPanel mostsoldproduct1;
     private javax.swing.JPanel randomproduct;
     private javax.swing.JLabel soldproduct;
+    private javax.swing.JLabel soldproduct1;
     // End of variables declaration//GEN-END:variables
 }

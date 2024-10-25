@@ -1,6 +1,6 @@
 package admin;
 
-import internaluserlistsForm.userlistsForm;
+import internalstaffsForm.stafflistsForm;
 import config.Session;
 import internalinventoryForm.inventoryForm;
 import internalproductForm.productlistsForm;
@@ -72,8 +72,8 @@ public class adminForm extends javax.swing.JFrame {
         lblsales = new javax.swing.JLabel();
         userlists = new javax.swing.JPanel();
         lbluserlists = new javax.swing.JLabel();
-        admindesktop = new javax.swing.JDesktopPane();
         logout = new javax.swing.JLabel();
+        admindesktop = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -91,13 +91,13 @@ public class adminForm extends javax.swing.JFrame {
         navigation.setBackground(new java.awt.Color(255, 255, 255));
         navigation.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
         navigation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        navigation.add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 90, 90));
+        navigation.add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 150, 150));
 
-        type.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
+        type.setFont(new java.awt.Font("Cambria Math", 1, 12)); // NOI18N
         type.setForeground(new java.awt.Color(0, 0, 146));
         type.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         type.setText("(type)");
-        navigation.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 150, 20));
+        navigation.add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 170, 20));
 
         lname.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
         lname.setForeground(new java.awt.Color(0, 0, 146));
@@ -106,7 +106,7 @@ public class adminForm extends javax.swing.JFrame {
         lname.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         lname.setVerifyInputWhenFocusTarget(false);
         lname.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        navigation.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 150, 50));
+        navigation.add(lname, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 170, 20));
 
         profile.setBackground(new java.awt.Color(255, 255, 255));
         profile.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -123,13 +123,13 @@ public class adminForm extends javax.swing.JFrame {
         });
         profile.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblprofile.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
+        lblprofile.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
         lblprofile.setForeground(new java.awt.Color(0, 0, 146));
         lblprofile.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblprofile.setText("PROFILE");
-        profile.add(lblprofile, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 110, 20));
+        profile.add(lblprofile, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 130, 20));
 
-        navigation.add(profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 110, 40));
+        navigation.add(profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 130, 40));
 
         products.setBackground(new java.awt.Color(255, 255, 255));
         products.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -146,13 +146,13 @@ public class adminForm extends javax.swing.JFrame {
         });
         products.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblproducts.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
+        lblproducts.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
         lblproducts.setForeground(new java.awt.Color(0, 0, 146));
         lblproducts.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblproducts.setText("PRODUCTS");
-        products.add(lblproducts, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 110, 20));
+        products.add(lblproducts, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 130, 20));
 
-        navigation.add(products, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 110, 40));
+        navigation.add(products, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 130, 40));
 
         inventory.setBackground(new java.awt.Color(255, 255, 255));
         inventory.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -169,13 +169,13 @@ public class adminForm extends javax.swing.JFrame {
         });
         inventory.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblinventory.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
+        lblinventory.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
         lblinventory.setForeground(new java.awt.Color(0, 0, 146));
         lblinventory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblinventory.setText("INVENTORY");
-        inventory.add(lblinventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 110, 20));
+        inventory.add(lblinventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 130, 20));
 
-        navigation.add(inventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 110, 40));
+        navigation.add(inventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 130, 40));
 
         sales.setBackground(new java.awt.Color(255, 255, 255));
         sales.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -192,13 +192,13 @@ public class adminForm extends javax.swing.JFrame {
         });
         sales.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblsales.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
+        lblsales.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
         lblsales.setForeground(new java.awt.Color(0, 0, 146));
         lblsales.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblsales.setText("SALES");
-        sales.add(lblsales, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 110, 20));
+        sales.add(lblsales, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 130, 20));
 
-        navigation.add(sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 110, 40));
+        navigation.add(sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 130, 40));
 
         userlists.setBackground(new java.awt.Color(255, 255, 255));
         userlists.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -215,35 +215,15 @@ public class adminForm extends javax.swing.JFrame {
         });
         userlists.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbluserlists.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
+        lbluserlists.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
         lbluserlists.setForeground(new java.awt.Color(0, 0, 146));
         lbluserlists.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbluserlists.setText(" USER LISTS");
-        userlists.add(lbluserlists, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 110, 20));
+        lbluserlists.setText("STAFF");
+        userlists.add(lbluserlists, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 130, 20));
 
-        navigation.add(userlists, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 110, 40));
+        navigation.add(userlists, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 130, 40));
 
-        background.add(navigation);
-        navigation.setBounds(0, 0, 150, 490);
-
-        admindesktop.setBackground(new java.awt.Color(255, 255, 255));
-        admindesktop.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
-
-        javax.swing.GroupLayout admindesktopLayout = new javax.swing.GroupLayout(admindesktop);
-        admindesktop.setLayout(admindesktopLayout);
-        admindesktopLayout.setHorizontalGroup(
-            admindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 544, Short.MAX_VALUE)
-        );
-        admindesktopLayout.setVerticalGroup(
-            admindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 484, Short.MAX_VALUE)
-        );
-
-        background.add(admindesktop);
-        admindesktop.setBounds(150, 0, 550, 490);
-
-        logout.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
+        logout.setFont(new java.awt.Font("Cambria Math", 1, 20)); // NOI18N
         logout.setForeground(new java.awt.Color(0, 0, 146));
         logout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logout.png"))); // NOI18N
@@ -253,18 +233,37 @@ public class adminForm extends javax.swing.JFrame {
                 logoutMouseClicked(evt);
             }
         });
-        background.add(logout);
-        logout.setBounds(30, 490, 88, 30);
+        navigation.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 690, 150, 40));
+
+        background.add(navigation);
+        navigation.setBounds(0, 0, 170, 750);
+
+        admindesktop.setBackground(new java.awt.Color(255, 255, 255));
+        admindesktop.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
+
+        javax.swing.GroupLayout admindesktopLayout = new javax.swing.GroupLayout(admindesktop);
+        admindesktop.setLayout(admindesktopLayout);
+        admindesktopLayout.setHorizontalGroup(
+            admindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 824, Short.MAX_VALUE)
+        );
+        admindesktopLayout.setVerticalGroup(
+            admindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 744, Short.MAX_VALUE)
+        );
+
+        background.add(admindesktop);
+        admindesktop.setBounds(170, 0, 830, 750);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -334,9 +333,9 @@ public class adminForm extends javax.swing.JFrame {
 
     private void userlistsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userlistsMouseClicked
         closeAllInternalFrames();
-        userlistsForm usf = new userlistsForm(admindesktop);
+        stafflistsForm usf = new stafflistsForm(admindesktop);
         admindesktop.add(usf).setVisible(true);
-        System.out.println("User Lists Starts!");
+        System.out.println("Staff Lists Starts!");
     }//GEN-LAST:event_userlistsMouseClicked
 
     private void salesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salesMouseClicked

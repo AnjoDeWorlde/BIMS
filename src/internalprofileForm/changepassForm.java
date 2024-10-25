@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -35,8 +34,8 @@ public class changepassForm extends javax.swing.JInternalFrame {
         bi.setNorthPane(null);
     }
     
-    private String source;
-    private JDesktopPane admindesktop; 
+    private final String source;
+    private final JDesktopPane admindesktop; 
     Color borderColor = new Color(255,255,255);
     Color enterColor = new Color(204,204,255);
     
@@ -52,6 +51,9 @@ public class changepassForm extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         background = new javax.swing.JPanel();
+        back = new javax.swing.JLabel();
+        lblaccount = new javax.swing.JLabel();
+        id = new javax.swing.JLabel();
         picture = new javax.swing.JLabel();
         check = new javax.swing.JCheckBox();
         lblmessage1 = new javax.swing.JLabel();
@@ -67,10 +69,8 @@ public class changepassForm extends javax.swing.JInternalFrame {
         lblconfirmpassw = new javax.swing.JLabel();
         changepass = new javax.swing.JPanel();
         lblreset = new javax.swing.JLabel();
-        lblaccount = new javax.swing.JLabel();
-        id = new javax.swing.JLabel();
-        back = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(846, 786));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
                 formInternalFrameActivated(evt);
@@ -91,14 +91,39 @@ public class changepassForm extends javax.swing.JInternalFrame {
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
-        background.setPreferredSize(new java.awt.Dimension(550, 490));
+        background.setPreferredSize(new java.awt.Dimension(0, 0));
         background.setLayout(null);
+
+        back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
+        back.setForeground(new java.awt.Color(46, 49, 146));
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dark blue back arrow 24.png"))); // NOI18N
+        back.setToolTipText("");
+        back.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+        });
+        background.add(back);
+        back.setBounds(10, 10, 30, 30);
+
+        lblaccount.setFont(new java.awt.Font("Cambria Math", 1, 55)); // NOI18N
+        lblaccount.setForeground(new java.awt.Color(46, 49, 146));
+        lblaccount.setText("Account #");
+        background.add(lblaccount);
+        lblaccount.setBounds(60, 70, 270, 50);
+
+        id.setFont(new java.awt.Font("Cambria Math", 1, 80)); // NOI18N
+        id.setForeground(new java.awt.Color(46, 49, 146));
+        id.setText("0");
+        background.add(id);
+        id.setBounds(330, 50, 200, 85);
 
         picture.setFont(new java.awt.Font("Candara", 0, 11)); // NOI18N
         picture.setForeground(new java.awt.Color(46, 49, 146));
         picture.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(picture);
-        picture.setBounds(40, 20, 110, 90);
+        picture.setBounds(610, 20, 190, 170);
 
         check.setBackground(new java.awt.Color(255, 255, 255));
         check.setForeground(new java.awt.Color(255, 255, 255));
@@ -111,15 +136,15 @@ public class changepassForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(check);
-        check.setBounds(420, 140, 23, 23);
+        check.setBounds(540, 230, 40, 40);
 
-        lblmessage1.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage1.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage1.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage1);
-        lblmessage1.setBounds(380, 140, 30, 30);
+        lblmessage1.setBounds(460, 190, 40, 40);
 
-        txtoldpass.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtoldpass.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtoldpass.setForeground(new java.awt.Color(0, 0, 146));
         txtoldpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtoldpass.addActionListener(new java.awt.event.ActionListener() {
@@ -128,13 +153,14 @@ public class changepassForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(txtoldpass);
-        txtoldpass.setBounds(220, 140, 190, 30);
+        txtoldpass.setBounds(230, 230, 300, 40);
 
-        lbloldpass.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lbloldpass.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lbloldpass.setForeground(new java.awt.Color(0, 0, 146));
+        lbloldpass.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lbloldpass.setText("Old Password:");
         background.add(lbloldpass);
-        lbloldpass.setBounds(60, 140, 160, 30);
+        lbloldpass.setBounds(40, 230, 190, 40);
 
         check1.setBackground(new java.awt.Color(255, 255, 255));
         check1.setForeground(new java.awt.Color(255, 255, 255));
@@ -147,15 +173,15 @@ public class changepassForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(check1);
-        check1.setBounds(420, 200, 20, 20);
+        check1.setBounds(540, 310, 40, 40);
 
-        lblmessage2.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage2.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage2.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage2);
-        lblmessage2.setBounds(380, 200, 30, 30);
+        lblmessage2.setBounds(460, 250, 40, 40);
 
-        txtnewpass.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtnewpass.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtnewpass.setForeground(new java.awt.Color(0, 0, 146));
         txtnewpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtnewpass.addActionListener(new java.awt.event.ActionListener() {
@@ -164,13 +190,14 @@ public class changepassForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(txtnewpass);
-        txtnewpass.setBounds(220, 200, 190, 30);
+        txtnewpass.setBounds(230, 310, 300, 40);
 
-        lblnewpass.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblnewpass.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lblnewpass.setForeground(new java.awt.Color(0, 0, 146));
+        lblnewpass.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblnewpass.setText("New Password:");
         background.add(lblnewpass);
-        lblnewpass.setBounds(60, 200, 160, 30);
+        lblnewpass.setBounds(40, 310, 190, 40);
 
         check2.setBackground(new java.awt.Color(255, 255, 255));
         check2.setForeground(new java.awt.Color(255, 255, 255));
@@ -183,15 +210,15 @@ public class changepassForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(check2);
-        check2.setBounds(420, 260, 20, 20);
+        check2.setBounds(540, 390, 40, 40);
 
-        lblmessage3.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage3.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage3.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage3);
-        lblmessage3.setBounds(380, 260, 30, 30);
+        lblmessage3.setBounds(460, 310, 40, 40);
 
-        txtconfirmpass.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtconfirmpass.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtconfirmpass.setForeground(new java.awt.Color(0, 0, 146));
         txtconfirmpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtconfirmpass.addActionListener(new java.awt.event.ActionListener() {
@@ -200,13 +227,14 @@ public class changepassForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(txtconfirmpass);
-        txtconfirmpass.setBounds(220, 260, 190, 30);
+        txtconfirmpass.setBounds(230, 390, 300, 40);
 
-        lblconfirmpassw.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblconfirmpassw.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lblconfirmpassw.setForeground(new java.awt.Color(0, 0, 146));
+        lblconfirmpassw.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblconfirmpassw.setText("Confirmed Password:");
         background.add(lblconfirmpassw);
-        lblconfirmpassw.setBounds(60, 260, 160, 30);
+        lblconfirmpassw.setBounds(40, 390, 190, 40);
 
         changepass.setBackground(new java.awt.Color(255, 255, 255));
         changepass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -224,49 +252,24 @@ public class changepassForm extends javax.swing.JInternalFrame {
         changepass.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblreset.setBackground(new java.awt.Color(255, 255, 255));
-        lblreset.setFont(new java.awt.Font("Cambria Math", 1, 12)); // NOI18N
+        lblreset.setFont(new java.awt.Font("Cambria Math", 1, 24)); // NOI18N
         lblreset.setForeground(new java.awt.Color(0, 0, 146));
         lblreset.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblreset.setText("CHANGE PASSWORD");
-        changepass.add(lblreset, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 30));
+        changepass.add(lblreset, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 250, 30));
 
         background.add(changepass);
-        changepass.setBounds(230, 350, 160, 30);
-
-        lblaccount.setFont(new java.awt.Font("Cambria Math", 1, 48)); // NOI18N
-        lblaccount.setForeground(new java.awt.Color(46, 49, 146));
-        lblaccount.setText("Account #");
-        background.add(lblaccount);
-        lblaccount.setBounds(160, 60, 250, 40);
-
-        id.setFont(new java.awt.Font("Cambria Math", 1, 72)); // NOI18N
-        id.setForeground(new java.awt.Color(46, 49, 146));
-        id.setText("0");
-        background.add(id);
-        id.setBounds(400, 40, 120, 70);
-
-        back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
-        back.setForeground(new java.awt.Color(46, 49, 146));
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/dark blue back arrow 24.png"))); // NOI18N
-        back.setToolTipText("");
-        back.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        back.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backMouseClicked(evt);
-            }
-        });
-        background.add(back);
-        back.setBounds(10, 10, 30, 30);
+        changepass.setBounds(500, 610, 270, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

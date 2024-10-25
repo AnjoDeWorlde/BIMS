@@ -4,6 +4,7 @@ import config.PanelPrinter;
 import config.dbConnector;
 import internalinventoryForm.inventoryprintForm;
 import internalsaleForm.salesprintForm;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -20,6 +21,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 
 /**
@@ -126,6 +128,12 @@ public final class printgroupForm extends javax.swing.JInternalFrame {
             return dateString;
         }
     }
+    
+    public void alignColumn(int columnIndex, JTable table, int alignment) {
+        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+        renderer.setHorizontalAlignment(alignment);  // Set alignment
+        table.getColumnModel().getColumn(columnIndex).setCellRenderer(renderer);
+    }
 
     private void filterInventoryByGroup() {
         String searchText = txtgroup.getText().trim();
@@ -146,6 +154,12 @@ public final class printgroupForm extends javax.swing.JInternalFrame {
 
         try (ResultSet resultSet = connector.getData(query)) {
             DefaultTableModel model = new DefaultTableModel();
+            show.setRowHeight(30);
+            
+            // Set font for table header
+            JTableHeader header = show.getTableHeader();
+            Font headerFont = new Font("Cambria Math", Font.PLAIN, 16);
+            header.setFont(headerFont);
 
             // Define column names
             String[] columnNames = {"Inventory ID", "Product", "Date", "Available", "Sold", "Loss", "Status"};
@@ -168,11 +182,19 @@ public final class printgroupForm extends javax.swing.JInternalFrame {
             show.setModel(model);
 
             // Set column widths (optional)
-            int[] columnWidths = {80, 100, 85, 70, 45, 45, 53};
+            int[] columnWidths = {100, 210, 100, 90, 60, 60, 120};
             for (int i = 0; i < columnWidths.length; i++) {
                 TableColumn column = show.getColumnModel().getColumn(i);
                 column.setPreferredWidth(columnWidths[i]);
             }
+            
+            alignColumn(0, show, DefaultTableCellRenderer.CENTER);  
+            alignColumn(1, show, DefaultTableCellRenderer.LEFT);   
+            alignColumn(2, show, DefaultTableCellRenderer.CENTER);   
+            alignColumn(3, show, DefaultTableCellRenderer.RIGHT);
+            alignColumn(4, show, DefaultTableCellRenderer.RIGHT); 
+            alignColumn(5, show, DefaultTableCellRenderer.RIGHT); 
+            alignColumn(6, show, DefaultTableCellRenderer.CENTER);
 
             // Format the date column
             formatDateColumn(show, 2);
@@ -202,6 +224,12 @@ public final class printgroupForm extends javax.swing.JInternalFrame {
             "OR s.s_status LIKE '%" + searchText + "%')" + orderClause;
         try (ResultSet resultSet = connector.getData(query)) {
             DefaultTableModel model = new DefaultTableModel();
+            show.setRowHeight(30);
+            
+            // Set font for table header
+            JTableHeader header = show.getTableHeader();
+            Font headerFont = new Font("Cambria Math", Font.PLAIN, 16);
+            header.setFont(headerFont);
 
             // Define column names
             String[] columnNames = {"Sales ID", "Product", "Date", "Gross Sales", "Deductions", "Net Sales", "Status"};
@@ -224,11 +252,19 @@ public final class printgroupForm extends javax.swing.JInternalFrame {
             show.setModel(model);
 
             // Set column widths (optional)
-            int[] columnWidths = {53, 95, 85, 65, 65, 60, 55};
+            int[] columnWidths = {70, 180, 90, 100, 100, 90, 110};
             for (int i = 0; i < columnWidths.length; i++) {
                 TableColumn column = show.getColumnModel().getColumn(i);
                 column.setPreferredWidth(columnWidths[i]);
             }
+            
+            alignColumn(0, show, DefaultTableCellRenderer.CENTER);  
+            alignColumn(1, show, DefaultTableCellRenderer.LEFT);   
+            alignColumn(2, show, DefaultTableCellRenderer.CENTER);   
+            alignColumn(3, show, DefaultTableCellRenderer.RIGHT);
+            alignColumn(4, show, DefaultTableCellRenderer.RIGHT); 
+            alignColumn(5, show, DefaultTableCellRenderer.RIGHT); 
+            alignColumn(6, show, DefaultTableCellRenderer.CENTER);
 
             // Format the date column
             formatDateColumn(show, 2);
@@ -248,17 +284,20 @@ public final class printgroupForm extends javax.swing.JInternalFrame {
         txtgroup = new javax.swing.JTextField();
         page = new javax.swing.JPanel();
         logo = new javax.swing.JLabel();
-        seperate1 = new javax.swing.JSeparator();
         kind = new javax.swing.JLabel();
-        seperate2 = new javax.swing.JSeparator();
         date = new javax.swing.JLabel();
+        seperate1 = new javax.swing.JSeparator();
+        seperate2 = new javax.swing.JSeparator();
         table = new javax.swing.JScrollPane();
         show = new javax.swing.JTable();
 
+        setPreferredSize(new java.awt.Dimension(806, 666));
+
         background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
         background.setLayout(null);
 
-        print.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
+        print.setFont(new java.awt.Font("Cambria Math", 1, 24)); // NOI18N
         print.setForeground(new java.awt.Color(0, 0, 146));
         print.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         print.setText("PRINT");
@@ -269,9 +308,9 @@ public final class printgroupForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(print);
-        print.setBounds(170, 10, 70, 30);
+        print.setBounds(260, 10, 120, 30);
 
-        group.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
+        group.setFont(new java.awt.Font("Cambria Math", 1, 24)); // NOI18N
         group.setForeground(new java.awt.Color(0, 0, 146));
         group.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         group.setText("GROUP");
@@ -282,7 +321,7 @@ public final class printgroupForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(group);
-        group.setBounds(250, 10, 80, 30);
+        group.setBounds(390, 10, 120, 30);
 
         back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
         back.setForeground(new java.awt.Color(46, 49, 146));
@@ -297,7 +336,7 @@ public final class printgroupForm extends javax.swing.JInternalFrame {
         background.add(back);
         back.setBounds(10, 10, 30, 30);
 
-        txtgroup.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        txtgroup.setFont(new java.awt.Font("Cambria Math", 0, 22)); // NOI18N
         txtgroup.setForeground(new java.awt.Color(0, 0, 146));
         txtgroup.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 146)));
         txtgroup.addActionListener(new java.awt.event.ActionListener() {
@@ -306,34 +345,34 @@ public final class printgroupForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(txtgroup);
-        txtgroup.setBounds(340, 10, 180, 30);
+        txtgroup.setBounds(530, 10, 250, 30);
 
         page.setBackground(new java.awt.Color(255, 255, 255));
-        page.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 146), 3));
+        page.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 146), 3, true));
         page.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo_wname_orig35.jpg"))); // NOI18N
-        page.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 310, 60));
+        page.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 310, 60));
 
-        seperate1.setForeground(new java.awt.Color(0, 0, 0));
-        page.add(seperate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 490, 10));
-
-        kind.setFont(new java.awt.Font("Garamond", 0, 11)); // NOI18N
+        kind.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
         kind.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        page.add(kind, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 490, 20));
+        page.add(kind, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 75, 730, 20));
 
-        seperate2.setForeground(new java.awt.Color(0, 0, 0));
-        page.add(seperate2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 490, 10));
-
-        date.setFont(new java.awt.Font("Garamond", 0, 12)); // NOI18N
+        date.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
         date.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         date.setText("(date)");
-        page.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 490, 20));
+        page.add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 730, 20));
+
+        seperate1.setForeground(new java.awt.Color(0, 0, 0));
+        page.add(seperate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 70, 740, 2));
+
+        seperate2.setForeground(new java.awt.Color(0, 0, 0));
+        page.add(seperate2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 95, 740, 2));
 
         table.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 146)));
         table.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        show.setFont(new java.awt.Font("Garamond", 0, 11)); // NOI18N
+        show.setFont(new java.awt.Font("Cambria Math", 0, 15)); // NOI18N
         show.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -343,24 +382,26 @@ public final class printgroupForm extends javax.swing.JInternalFrame {
             }
         ));
         show.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        show.getTableHeader().setResizingAllowed(false);
+        show.getTableHeader().setReorderingAllowed(false);
         table.setViewportView(show);
 
-        page.add(table, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 120, 480, 220));
+        page.add(table, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 120, 740, 440));
 
         background.add(page);
-        page.setBounds(0, 50, 530, 360);
+        page.setBounds(10, 50, 770, 570);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

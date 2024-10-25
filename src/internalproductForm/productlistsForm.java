@@ -43,8 +43,8 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         return lblmessage;
     }
 
-    private String source;
-    private JDesktopPane admindesktop; 
+    private final String source;
+    private final JDesktopPane admindesktop; 
     Color borderColor = new Color(255,255,255);
     Color enterColor = new Color(46,49,146);
     
@@ -83,11 +83,13 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         productlistdesktop = new javax.swing.JDesktopPane();
         lblmessage = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(846, 786));
+
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
         background.setLayout(null);
 
-        back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
+        back.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
         back.setForeground(new java.awt.Color(0, 0, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         back.setText("BACK");
@@ -99,7 +101,7 @@ public class productlistsForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(back);
-        back.setBounds(10, 10, 40, 20);
+        back.setBounds(20, 20, 70, 40);
 
         create.setBackground(new java.awt.Color(255, 255, 255));
         create.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -117,14 +119,14 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         create.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblcreate.setBackground(new java.awt.Color(255, 255, 255));
-        lblcreate.setFont(new java.awt.Font("Cambria", 1, 10)); // NOI18N
+        lblcreate.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
         lblcreate.setForeground(new java.awt.Color(0, 0, 146));
         lblcreate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblcreate.setText("CREATE");
-        create.add(lblcreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 30));
+        create.add(lblcreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 30));
 
         background.add(create);
-        create.setBounds(310, 20, 70, 30);
+        create.setBounds(460, 20, 110, 50);
 
         update.setBackground(new java.awt.Color(255, 255, 255));
         update.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -142,14 +144,14 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         update.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblupdate.setBackground(new java.awt.Color(255, 255, 255));
-        lblupdate.setFont(new java.awt.Font("Cambria", 1, 10)); // NOI18N
+        lblupdate.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
         lblupdate.setForeground(new java.awt.Color(0, 0, 146));
         lblupdate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblupdate.setText("UPDATE");
-        update.add(lblupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 30));
+        update.add(lblupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 30));
 
         background.add(update);
-        update.setBounds(390, 20, 70, 30);
+        update.setBounds(580, 20, 110, 50);
 
         archive.setBackground(new java.awt.Color(255, 255, 255));
         archive.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -167,14 +169,14 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         archive.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblarchive.setBackground(new java.awt.Color(255, 255, 255));
-        lblarchive.setFont(new java.awt.Font("Cambria", 1, 10)); // NOI18N
+        lblarchive.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
         lblarchive.setForeground(new java.awt.Color(0, 0, 146));
         lblarchive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblarchive.setText("ARCHIVE");
-        archive.add(lblarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 30));
+        archive.add(lblarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 30));
 
         background.add(archive);
-        archive.setBounds(470, 20, 70, 30);
+        archive.setBounds(700, 20, 110, 50);
 
         productlistdesktop.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -182,33 +184,33 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         productlistdesktop.setLayout(productlistdesktopLayout);
         productlistdesktopLayout.setHorizontalGroup(
             productlistdesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
+            .addGap(0, 790, Short.MAX_VALUE)
         );
         productlistdesktopLayout.setVerticalGroup(
             productlistdesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
+            .addGap(0, 630, Short.MAX_VALUE)
         );
 
         background.add(productlistdesktop);
-        productlistdesktop.setBounds(10, 60, 530, 420);
+        productlistdesktop.setBounds(20, 100, 790, 630);
 
-        lblmessage.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
+        lblmessage.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
         lblmessage.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage);
-        lblmessage.setBounds(130, 20, 170, 30);
+        lblmessage.setBounds(100, 30, 350, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -275,12 +277,12 @@ public class productlistsForm extends javax.swing.JInternalFrame {
             } else {
                 update.setEnabled(false);
                 System.out.println("No Selected Item!");
-                lblmessage.setText("Please select an Item!");
+                lblmessage.setText("No Selected Item!");
             }
         } else {
             update.setEnabled(false);
             System.out.println("No Selected Item!");
-            lblmessage.setText("Please select an Item!");
+            lblmessage.setText("No Selected Item!");
         }
     }//GEN-LAST:event_updateMouseClicked
 
@@ -300,14 +302,14 @@ public class productlistsForm extends javax.swing.JInternalFrame {
                 try {
                     int producttId = tlf.getSelectedProductId();
                     dbConnector connector = new dbConnector();
-                    String updateQuery = "UPDATE tbl_products SET p_status = 'Archive' WHERE p_id = '"+ producttId +"'";
+                    String updateQuery = "UPDATE tbl_products SET p_status = 'Reject' WHERE p_id = '"+ producttId +"'";
                     connector.updateData(updateQuery);
                     ResultSet resultSet = connector.getData("SELECT * FROM tbl_products WHERE p_id = '"+ producttId +"' ");
                     if(resultSet.next()){
                         closeAllInternalFrames();
                         productarchiveForm prf = new productarchiveForm();
                         System.out.println("Archive Product Opens!");
-                        lblmessage.setText("");
+                        lblmessage.setText("Archive Successfully!");
                         productlistdesktop.add(prf).setVisible(true);
                     }
                 } catch (SQLException ex) {

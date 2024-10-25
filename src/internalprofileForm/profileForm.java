@@ -32,8 +32,8 @@ public class profileForm extends javax.swing.JInternalFrame {
         bi.setNorthPane(null);
     }
 
-    private String source;
-    private JDesktopPane admindesktop; 
+    private final String source;
+    private final JDesktopPane admindesktop; 
     Color borderColor = new Color(255,255,255);
     Color enterColor = new Color(204,204,255);
 
@@ -50,13 +50,14 @@ public class profileForm extends javax.swing.JInternalFrame {
 
         background = new javax.swing.JPanel();
         back = new javax.swing.JLabel();
+        id = new javax.swing.JLabel();
+        lblaccount = new javax.swing.JLabel();
         txtfirstname = new javax.swing.JTextField();
         lblfirstname = new javax.swing.JLabel();
         txtlastname = new javax.swing.JTextField();
         lbllastname = new javax.swing.JLabel();
         txtemail = new javax.swing.JTextField();
         lblemail = new javax.swing.JLabel();
-        txttype = new javax.swing.JTextField();
         txtcontactnumber = new javax.swing.JTextField();
         lblcontactnumber = new javax.swing.JLabel();
         txtusername = new javax.swing.JTextField();
@@ -64,14 +65,14 @@ public class profileForm extends javax.swing.JInternalFrame {
         txtpassword = new javax.swing.JPasswordField();
         lblpassword = new javax.swing.JLabel();
         lbltype = new javax.swing.JLabel();
-        txtstatus = new javax.swing.JTextField();
+        txttype = new javax.swing.JTextField();
         lblstatus = new javax.swing.JLabel();
+        txtstatus = new javax.swing.JTextField();
+        picture = new javax.swing.JLabel();
         changepass = new javax.swing.JPanel();
         lblreset = new javax.swing.JLabel();
-        picture = new javax.swing.JLabel();
-        lblaccount = new javax.swing.JLabel();
-        id = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(846, 786));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
                 formInternalFrameActivated(evt);
@@ -107,7 +108,19 @@ public class profileForm extends javax.swing.JInternalFrame {
         background.add(back);
         back.setBounds(10, 10, 30, 30);
 
-        txtfirstname.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        id.setFont(new java.awt.Font("Cambria Math", 1, 80)); // NOI18N
+        id.setForeground(new java.awt.Color(46, 49, 146));
+        id.setText("0");
+        background.add(id);
+        id.setBounds(330, 50, 200, 85);
+
+        lblaccount.setFont(new java.awt.Font("Cambria Math", 1, 55)); // NOI18N
+        lblaccount.setForeground(new java.awt.Color(46, 49, 146));
+        lblaccount.setText("Account #");
+        background.add(lblaccount);
+        lblaccount.setBounds(60, 70, 270, 50);
+
+        txtfirstname.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtfirstname.setForeground(new java.awt.Color(0, 0, 146));
         txtfirstname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtfirstname.addActionListener(new java.awt.event.ActionListener() {
@@ -116,15 +129,16 @@ public class profileForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(txtfirstname);
-        txtfirstname.setBounds(160, 140, 190, 30);
+        txtfirstname.setBounds(200, 190, 300, 40);
 
-        lblfirstname.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblfirstname.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lblfirstname.setForeground(new java.awt.Color(0, 0, 146));
+        lblfirstname.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblfirstname.setText("First Name:");
         background.add(lblfirstname);
-        lblfirstname.setBounds(50, 140, 110, 30);
+        lblfirstname.setBounds(50, 190, 150, 40);
 
-        txtlastname.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtlastname.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtlastname.setForeground(new java.awt.Color(0, 0, 146));
         txtlastname.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtlastname.addActionListener(new java.awt.event.ActionListener() {
@@ -133,15 +147,16 @@ public class profileForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(txtlastname);
-        txtlastname.setBounds(160, 190, 190, 30);
+        txtlastname.setBounds(200, 260, 300, 40);
 
-        lbllastname.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lbllastname.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lbllastname.setForeground(new java.awt.Color(0, 0, 146));
+        lbllastname.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lbllastname.setText("Last Name:");
         background.add(lbllastname);
-        lbllastname.setBounds(50, 190, 110, 30);
+        lbllastname.setBounds(50, 260, 150, 40);
 
-        txtemail.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtemail.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtemail.setForeground(new java.awt.Color(0, 0, 146));
         txtemail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtemail.addActionListener(new java.awt.event.ActionListener() {
@@ -150,26 +165,16 @@ public class profileForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(txtemail);
-        txtemail.setBounds(160, 240, 190, 30);
+        txtemail.setBounds(200, 330, 300, 40);
 
-        lblemail.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblemail.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lblemail.setForeground(new java.awt.Color(0, 0, 146));
+        lblemail.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblemail.setText("E-mail:");
         background.add(lblemail);
-        lblemail.setBounds(50, 240, 110, 30);
+        lblemail.setBounds(50, 330, 150, 40);
 
-        txttype.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
-        txttype.setForeground(new java.awt.Color(0, 0, 146));
-        txttype.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
-        txttype.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttypeActionPerformed(evt);
-            }
-        });
-        background.add(txttype);
-        txttype.setBounds(370, 170, 110, 30);
-
-        txtcontactnumber.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtcontactnumber.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtcontactnumber.setForeground(new java.awt.Color(0, 0, 146));
         txtcontactnumber.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtcontactnumber.addActionListener(new java.awt.event.ActionListener() {
@@ -178,15 +183,16 @@ public class profileForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(txtcontactnumber);
-        txtcontactnumber.setBounds(160, 290, 190, 30);
+        txtcontactnumber.setBounds(200, 400, 300, 40);
 
-        lblcontactnumber.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblcontactnumber.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lblcontactnumber.setForeground(new java.awt.Color(0, 0, 146));
+        lblcontactnumber.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblcontactnumber.setText("Contact Number:");
         background.add(lblcontactnumber);
-        lblcontactnumber.setBounds(50, 290, 110, 30);
+        lblcontactnumber.setBounds(50, 400, 146, 40);
 
-        txtusername.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtusername.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtusername.setForeground(new java.awt.Color(0, 0, 146));
         txtusername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtusername.addActionListener(new java.awt.event.ActionListener() {
@@ -195,15 +201,16 @@ public class profileForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(txtusername);
-        txtusername.setBounds(160, 340, 190, 30);
+        txtusername.setBounds(200, 470, 300, 40);
 
-        lblusername.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblusername.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lblusername.setForeground(new java.awt.Color(0, 0, 146));
+        lblusername.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblusername.setText("Username:");
         background.add(lblusername);
-        lblusername.setBounds(50, 340, 110, 30);
+        lblusername.setBounds(50, 470, 150, 40);
 
-        txtpassword.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtpassword.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtpassword.setForeground(new java.awt.Color(0, 0, 146));
         txtpassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtpassword.addActionListener(new java.awt.event.ActionListener() {
@@ -212,21 +219,39 @@ public class profileForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(txtpassword);
-        txtpassword.setBounds(160, 390, 190, 30);
+        txtpassword.setBounds(200, 540, 300, 40);
 
-        lblpassword.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblpassword.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lblpassword.setForeground(new java.awt.Color(0, 0, 146));
+        lblpassword.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblpassword.setText("Password:");
         background.add(lblpassword);
-        lblpassword.setBounds(50, 390, 110, 30);
+        lblpassword.setBounds(50, 540, 150, 40);
 
-        lbltype.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lbltype.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lbltype.setForeground(new java.awt.Color(0, 0, 146));
         lbltype.setText("Account Type:");
         background.add(lbltype);
-        lbltype.setBounds(370, 140, 110, 30);
+        lbltype.setBounds(550, 260, 130, 40);
 
-        txtstatus.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txttype.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
+        txttype.setForeground(new java.awt.Color(0, 0, 146));
+        txttype.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
+        txttype.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txttypeActionPerformed(evt);
+            }
+        });
+        background.add(txttype);
+        txttype.setBounds(550, 330, 180, 40);
+
+        lblstatus.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
+        lblstatus.setForeground(new java.awt.Color(0, 0, 146));
+        lblstatus.setText("Status:");
+        background.add(lblstatus);
+        lblstatus.setBounds(550, 400, 60, 40);
+
+        txtstatus.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtstatus.setForeground(new java.awt.Color(0, 0, 146));
         txtstatus.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtstatus.addActionListener(new java.awt.event.ActionListener() {
@@ -235,13 +260,13 @@ public class profileForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(txtstatus);
-        txtstatus.setBounds(370, 270, 110, 30);
+        txtstatus.setBounds(550, 470, 180, 40);
 
-        lblstatus.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
-        lblstatus.setForeground(new java.awt.Color(0, 0, 146));
-        lblstatus.setText("Status:");
-        background.add(lblstatus);
-        lblstatus.setBounds(370, 240, 110, 30);
+        picture.setFont(new java.awt.Font("Candara", 0, 11)); // NOI18N
+        picture.setForeground(new java.awt.Color(46, 49, 146));
+        picture.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        background.add(picture);
+        picture.setBounds(610, 20, 190, 170);
 
         changepass.setBackground(new java.awt.Color(255, 255, 255));
         changepass.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -259,46 +284,24 @@ public class profileForm extends javax.swing.JInternalFrame {
         changepass.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblreset.setBackground(new java.awt.Color(255, 255, 255));
-        lblreset.setFont(new java.awt.Font("Cambria Math", 1, 12)); // NOI18N
+        lblreset.setFont(new java.awt.Font("Cambria Math", 1, 24)); // NOI18N
         lblreset.setForeground(new java.awt.Color(0, 0, 146));
         lblreset.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblreset.setText("CHANGE PASSWORD");
-        changepass.add(lblreset, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 150, 30));
+        changepass.add(lblreset, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 250, 30));
 
         background.add(changepass);
-        changepass.setBounds(360, 440, 168, 30);
-
-        picture.setFont(new java.awt.Font("Candara", 0, 11)); // NOI18N
-        picture.setForeground(new java.awt.Color(46, 49, 146));
-        picture.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        background.add(picture);
-        picture.setBounds(40, 20, 110, 90);
-
-        lblaccount.setFont(new java.awt.Font("Cambria Math", 1, 48)); // NOI18N
-        lblaccount.setForeground(new java.awt.Color(46, 49, 146));
-        lblaccount.setText("Account #");
-        background.add(lblaccount);
-        lblaccount.setBounds(160, 60, 250, 40);
-
-        id.setFont(new java.awt.Font("Cambria Math", 1, 72)); // NOI18N
-        id.setForeground(new java.awt.Color(46, 49, 146));
-        id.setText("1");
-        background.add(id);
-        id.setBounds(400, 40, 120, 70);
+        changepass.setBounds(500, 610, 270, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -336,28 +339,6 @@ public class profileForm extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtstatusActionPerformed
 
-    private void changepassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changepassMouseClicked
-        closeAllInternalFrames();
-        if ("admin".equals(source)) {
-            changepassForm cpf = new changepassForm(admindesktop, source);
-            admindesktop.add(cpf).setVisible(true);
-            System.out.println("Change Password for Admin Opens!");
-        } 
-        if ("user".equals(source)) {
-            changepassForm cpf = new changepassForm(admindesktop, source);
-            admindesktop.add(cpf).setVisible(true);
-            System.out.println("Change Password for User Opens!");
-        }
-    }//GEN-LAST:event_changepassMouseClicked
-
-    private void changepassMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changepassMouseEntered
-        changepass.setBackground(enterColor);
-    }//GEN-LAST:event_changepassMouseEntered
-
-    private void changepassMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changepassMouseExited
-        changepass.setBackground(borderColor);
-    }//GEN-LAST:event_changepassMouseExited
-
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
         if ("admin".equals(source)) {
             adminForm parentFrame = (adminForm) SwingUtilities.getWindowAncestor(this);
@@ -387,6 +368,28 @@ public class profileForm extends javax.swing.JInternalFrame {
         Image image = imageIcon.getImage().getScaledInstance(picture.getWidth(), picture.getHeight(), Image.SCALE_SMOOTH);
         picture.setIcon(new ImageIcon(image));
     }//GEN-LAST:event_formInternalFrameActivated
+
+    private void changepassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changepassMouseClicked
+        closeAllInternalFrames();
+        if ("admin".equals(source)) {
+            changepassForm cpf = new changepassForm(admindesktop, source);
+            admindesktop.add(cpf).setVisible(true);
+            System.out.println("Change Password for Admin Opens!");
+        }
+        if ("user".equals(source)) {
+            changepassForm cpf = new changepassForm(admindesktop, source);
+            admindesktop.add(cpf).setVisible(true);
+            System.out.println("Change Password for User Opens!");
+        }
+    }//GEN-LAST:event_changepassMouseClicked
+
+    private void changepassMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changepassMouseEntered
+        changepass.setBackground(enterColor);
+    }//GEN-LAST:event_changepassMouseEntered
+
+    private void changepassMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changepassMouseExited
+        changepass.setBackground(borderColor);
+    }//GEN-LAST:event_changepassMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel back;

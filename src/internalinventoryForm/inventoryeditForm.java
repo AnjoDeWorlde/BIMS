@@ -51,7 +51,7 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
     }
     
     private final String selectedProductId;
-    private Map<String, Product> productMap = new HashMap<>();
+    private Map<String, Product> productMap = new HashMap<>(); //connector to product
     private boolean isCreating; 
     Color borderColor = new Color(255,255,255);
     Color enterColor = new Color(46,49,146);   
@@ -66,7 +66,7 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
     
     public void fillproductID() {
         try {
-            String query = "SELECT p_id, p_name FROM tbl_products WHERE p_status NOT IN ('Archive', 'Inactive')";
+            String query = "SELECT p_id, p_name FROM tbl_products WHERE p_status NOT IN ('Reject')";
             dbConnector connector = new dbConnector();
             ResultSet rs = connector.getData(query);
             DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) boxproductID.getModel();
@@ -86,7 +86,7 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
 
     private String formatDateString(String dateString) {
         try {
-            SimpleDateFormat inputFormat = new SimpleDateFormat("M/d/yyyy");
+            SimpleDateFormat inputFormat = new SimpleDateFormat("MM/dd/yyyy");
             java.util.Date date = inputFormat.parse(dateString);
             SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd");
             return outputFormat.format(date);
@@ -127,22 +127,25 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
         confirm = new javax.swing.JPanel();
         lblconfirm = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(806, 666));
+
         background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
         background.setLayout(null);
 
-        id.setFont(new java.awt.Font("Cambria Math", 1, 72)); // NOI18N
+        id.setFont(new java.awt.Font("Cambria Math", 1, 88)); // NOI18N
         id.setForeground(new java.awt.Color(0, 0, 146));
         id.setText("0");
         id.setToolTipText("");
         id.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         background.add(id);
-        id.setBounds(330, 0, 140, 70);
+        id.setBounds(370, 40, 210, 90);
 
-        lblregistration.setFont(new java.awt.Font("Cambria Math", 1, 48)); // NOI18N
+        lblregistration.setFont(new java.awt.Font("Cambria Math", 1, 55)); // NOI18N
         lblregistration.setForeground(new java.awt.Color(0, 0, 146));
         lblregistration.setText("Inventory #");
         background.add(lblregistration);
-        lblregistration.setBounds(50, 20, 280, 50);
+        lblregistration.setBounds(60, 70, 320, 50);
 
         back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
         back.setForeground(new java.awt.Color(46, 49, 146));
@@ -157,13 +160,13 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
         background.add(back);
         back.setBounds(10, 10, 24, 30);
 
-        lblmessage1.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage1.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage1.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage1);
-        lblmessage1.setBounds(290, 80, 30, 30);
+        lblmessage1.setBounds(370, 180, 50, 40);
 
-        boxproductID.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        boxproductID.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         boxproductID.setForeground(new java.awt.Color(0, 0, 146));
         boxproductID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         boxproductID.addActionListener(new java.awt.event.ActionListener() {
@@ -172,21 +175,22 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(boxproductID);
-        boxproductID.setBounds(150, 80, 190, 30);
+        boxproductID.setBounds(170, 180, 270, 40);
 
-        lblproductID.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblproductID.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lblproductID.setForeground(new java.awt.Color(0, 0, 146));
+        lblproductID.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblproductID.setText("Product Name:");
         background.add(lblproductID);
-        lblproductID.setBounds(30, 80, 120, 30);
+        lblproductID.setBounds(40, 180, 130, 40);
 
-        lblmessage2.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage2.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage2.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage2);
-        lblmessage2.setBounds(310, 120, 30, 30);
+        lblmessage2.setBounds(370, 240, 50, 40);
 
-        txtdate.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtdate.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtdate.setForeground(new java.awt.Color(0, 0, 146));
         txtdate.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtdate.addActionListener(new java.awt.event.ActionListener() {
@@ -195,21 +199,22 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(txtdate);
-        txtdate.setBounds(150, 120, 190, 30);
+        txtdate.setBounds(170, 240, 270, 40);
 
-        lbldate.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lbldate.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lbldate.setForeground(new java.awt.Color(0, 0, 146));
+        lbldate.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lbldate.setText("Date:");
         background.add(lbldate);
-        lbldate.setBounds(30, 120, 120, 30);
+        lbldate.setBounds(120, 240, 50, 40);
 
-        lblmessage3.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage3.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage3.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage3);
-        lblmessage3.setBounds(310, 160, 30, 30);
+        lblmessage3.setBounds(370, 300, 50, 40);
 
-        txtastocks.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtastocks.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtastocks.setForeground(new java.awt.Color(0, 0, 146));
         txtastocks.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtastocks.addActionListener(new java.awt.event.ActionListener() {
@@ -218,21 +223,22 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(txtastocks);
-        txtastocks.setBounds(150, 160, 190, 30);
+        txtastocks.setBounds(170, 300, 270, 40);
 
-        lblastocks.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblastocks.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lblastocks.setForeground(new java.awt.Color(0, 0, 146));
+        lblastocks.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblastocks.setText("Available Stocks:");
         background.add(lblastocks);
-        lblastocks.setBounds(30, 160, 120, 30);
+        lblastocks.setBounds(20, 300, 150, 40);
 
-        lblmessage4.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage4.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage4.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage4);
-        lblmessage4.setBounds(310, 200, 30, 30);
+        lblmessage4.setBounds(370, 360, 50, 40);
 
-        txtsstocks.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtsstocks.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtsstocks.setForeground(new java.awt.Color(0, 0, 146));
         txtsstocks.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtsstocks.addActionListener(new java.awt.event.ActionListener() {
@@ -241,21 +247,22 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(txtsstocks);
-        txtsstocks.setBounds(150, 200, 190, 30);
+        txtsstocks.setBounds(170, 360, 270, 40);
 
-        lblsstocks.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblsstocks.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lblsstocks.setForeground(new java.awt.Color(0, 0, 146));
+        lblsstocks.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblsstocks.setText("Sold Stocks:");
         background.add(lblsstocks);
-        lblsstocks.setBounds(30, 200, 120, 30);
+        lblsstocks.setBounds(60, 360, 110, 40);
 
-        lblmessage5.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage5.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage5.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage5);
-        lblmessage5.setBounds(310, 240, 30, 30);
+        lblmessage5.setBounds(370, 420, 50, 40);
 
-        txtlstocks.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtlstocks.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtlstocks.setForeground(new java.awt.Color(0, 0, 146));
         txtlstocks.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtlstocks.addActionListener(new java.awt.event.ActionListener() {
@@ -264,23 +271,24 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(txtlstocks);
-        txtlstocks.setBounds(150, 240, 190, 30);
+        txtlstocks.setBounds(170, 420, 270, 40);
 
-        lbllstocks.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lbllstocks.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lbllstocks.setForeground(new java.awt.Color(0, 0, 146));
+        lbllstocks.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lbllstocks.setText("Loss Stocks:");
         background.add(lbllstocks);
-        lbllstocks.setBounds(30, 240, 120, 30);
+        lbllstocks.setBounds(60, 420, 110, 40);
 
-        lblmessage6.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage6.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage6.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage6);
-        lblmessage6.setBounds(290, 280, 30, 30);
+        lblmessage6.setBounds(370, 490, 50, 40);
 
-        boxstatus.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        boxstatus.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         boxstatus.setForeground(new java.awt.Color(0, 0, 146));
-        boxstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "Available", "Out-of-Stocks", "Limited Stock" }));
+        boxstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "Available", "Out-of-Stocks" }));
         boxstatus.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         boxstatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,21 +296,22 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(boxstatus);
-        boxstatus.setBounds(150, 280, 190, 30);
+        boxstatus.setBounds(170, 490, 270, 40);
 
-        lblstatus.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblstatus.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lblstatus.setForeground(new java.awt.Color(0, 0, 146));
+        lblstatus.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblstatus.setText("Status:");
         background.add(lblstatus);
-        lblstatus.setBounds(30, 280, 120, 30);
+        lblstatus.setBounds(110, 490, 60, 40);
 
-        lblmessage7.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage7.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage7.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage7);
-        lblmessage7.setBounds(310, 370, 30, 30);
+        lblmessage7.setBounds(690, 360, 50, 40);
 
-        txtpassword.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtpassword.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtpassword.setForeground(new java.awt.Color(0, 0, 146));
         txtpassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtpassword.addActionListener(new java.awt.event.ActionListener() {
@@ -311,16 +320,18 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(txtpassword);
-        txtpassword.setBounds(150, 370, 190, 30);
+        txtpassword.setBounds(490, 360, 270, 40);
 
-        lblpassword.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblpassword.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lblpassword.setForeground(new java.awt.Color(0, 0, 146));
+        lblpassword.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblpassword.setText("Password:");
         background.add(lblpassword);
-        lblpassword.setBounds(30, 370, 120, 30);
+        lblpassword.setBounds(490, 300, 89, 40);
 
         confirm.setBackground(new java.awt.Color(255, 255, 255));
         confirm.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        confirm.setPreferredSize(new java.awt.Dimension(200, 50));
         confirm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 confirmMouseClicked(evt);
@@ -334,24 +345,28 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
         });
         confirm.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblconfirm.setFont(new java.awt.Font("Cambria Math", 1, 12)); // NOI18N
+        lblconfirm.setFont(new java.awt.Font("Cambria Math", 1, 24)); // NOI18N
         lblconfirm.setForeground(new java.awt.Color(0, 0, 146));
         lblconfirm.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblconfirm.setText("C O N F I R M");
-        confirm.add(lblconfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 100, 30));
+        confirm.add(lblconfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 180, 30));
 
         background.add(confirm);
-        confirm.setBounds(390, 370, 120, 30);
+        confirm.setBounds(520, 550, 200, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -477,25 +492,24 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
                             inventoryForm inventoryFrame = (inventoryForm) SwingUtilities.getAncestorOfClass(inventoryForm.class, this);
                             inventoryFrame.restoreOriginalState();
                             System.out.println("Information Inserted!");
-                            inventoryFrame.getLblMessage().setText("Accomplished Successfully!");
+                            inventoryFrame.getLblMessage().setText("Create Inventory Success!");
                         } else {
                             inventoryForm inventoryFrame = (inventoryForm) SwingUtilities.getAncestorOfClass(inventoryForm.class, this);
                             System.out.println("Information Rejected!");
-                            inventoryFrame.getLblMessage().setText("Failed Successfully!");
+                            inventoryFrame.getLblMessage().setText("Create Inventory Fail!");
                         }
                     } else {
                         if (connector.updateData("UPDATE tbl_inventory SET p_id = '" + productId + "', i_date = '" + formattedDate + "', "
                             + " i_availablestocks = '" + txtastocks.getText() + "', i_soldstocks = '" + txtsstocks.getText() + "', i_lossstocks = '" + txtlstocks.getText() + "', "
                             + " i_status = '" + boxstatus.getSelectedItem() + "' WHERE i_id = '" + id.getText() + "'")) {
-                            System.out.println("Information Updated!");
                             inventoryForm inventoryFrame = (inventoryForm) SwingUtilities.getAncestorOfClass(inventoryForm.class, this);
                             inventoryFrame.restoreOriginalState();
                             System.out.println("Information Updated!");
-                            inventoryFrame.getLblMessage().setText("Accomplished Successfully!");
+                            inventoryFrame.getLblMessage().setText("Update Inventory Successful!");
                         } else {
                             inventoryForm inventoryFrame = (inventoryForm) SwingUtilities.getAncestorOfClass(inventoryForm.class, this);
                             System.out.println("Information Rejected!");
-                            inventoryFrame.getLblMessage().setText("Failed Successfully!");
+                            inventoryFrame.getLblMessage().setText("Update Inventory Fail!");
                         }
                     }
                 }

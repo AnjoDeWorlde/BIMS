@@ -121,29 +121,48 @@ public class loginForm extends javax.swing.JFrame {
     private void initComponents() {
 
         background = new javax.swing.JPanel();
+        lblmessage = new javax.swing.JLabel();
         logo = new javax.swing.JLabel();
         side = new javax.swing.JPanel();
         diagonal1 = new javax.swing.JLabel();
-        lblusername = new javax.swing.JLabel();
         diagonal4 = new javax.swing.JLabel();
-        lblpassword = new javax.swing.JLabel();
         bubble1 = new javax.swing.JLabel();
         diagonal2 = new javax.swing.JLabel();
-        diagoonal3 = new javax.swing.JLabel();
-        bubble2 = new javax.swing.JLabel();
         bubble3 = new javax.swing.JLabel();
-        bubble4 = new javax.swing.JLabel();
         bubble5 = new javax.swing.JLabel();
         bubble6 = new javax.swing.JLabel();
-        bubble7 = new javax.swing.JLabel();
         bubble8 = new javax.swing.JLabel();
+        diagonal5 = new javax.swing.JLabel();
+        diagonal6 = new javax.swing.JLabel();
+        bubble12 = new javax.swing.JLabel();
+        bubble13 = new javax.swing.JLabel();
+        bubble14 = new javax.swing.JLabel();
+        bubble15 = new javax.swing.JLabel();
+        diagonal3 = new javax.swing.JLabel();
+        diagoonal4 = new javax.swing.JLabel();
         top = new javax.swing.JPanel();
         x = new javax.swing.JLabel();
+        mini = new javax.swing.JLabel();
         bubble9 = new javax.swing.JLabel();
         bubble10 = new javax.swing.JLabel();
+        bubble16 = new javax.swing.JLabel();
+        bubble17 = new javax.swing.JLabel();
+        bubble18 = new javax.swing.JLabel();
+        bubble19 = new javax.swing.JLabel();
+        bubble20 = new javax.swing.JLabel();
+        bubble21 = new javax.swing.JLabel();
+        diagoonal3 = new javax.swing.JLabel();
+        diagoonal5 = new javax.swing.JLabel();
+        diagoonal6 = new javax.swing.JLabel();
+        diagoonal7 = new javax.swing.JLabel();
+        diagoonal8 = new javax.swing.JLabel();
+        diagoonal9 = new javax.swing.JLabel();
+        diagoonal10 = new javax.swing.JLabel();
         bubble11 = new javax.swing.JLabel();
-        lblmessage = new javax.swing.JLabel();
+        bubble22 = new javax.swing.JLabel();
+        lblusername = new javax.swing.JLabel();
         txtusername = new javax.swing.JTextField();
+        lblpassword = new javax.swing.JLabel();
         txtpassword = new javax.swing.JPasswordField();
         forgotpassword = new javax.swing.JLabel();
         createaccount = new javax.swing.JLabel();
@@ -152,6 +171,7 @@ public class loginForm extends javax.swing.JFrame {
         login = new javax.swing.JPanel();
         lbllogin = new javax.swing.JLabel();
         check = new javax.swing.JCheckBox();
+        forgotpassword1 = new javax.swing.JLabel();
         lblbackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -161,14 +181,26 @@ public class loginForm extends javax.swing.JFrame {
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setLayout(null);
 
+        lblmessage.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
+        lblmessage.setForeground(new java.awt.Color(255, 51, 51));
+        lblmessage.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblmessage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblmessageMouseClicked(evt);
+            }
+        });
+        background.add(lblmessage);
+        lblmessage.setBounds(330, 320, 240, 30);
+
         logo.setFont(new java.awt.Font("Verdana", 1, 30)); // NOI18N
         logo.setForeground(new java.awt.Color(255, 255, 255));
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo_wname_orig-removebg-preview.png"))); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Drink Keeper.png"))); // NOI18N
         logo.setToolTipText("");
+        logo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         logo.setVerifyInputWhenFocusTarget(false);
         background.add(logo);
-        logo.setBounds(0, 10, 630, 110);
+        logo.setBounds(180, 120, 820, 220);
 
         side.setBackground(new java.awt.Color(255, 255, 255));
         side.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
@@ -176,66 +208,70 @@ public class loginForm extends javax.swing.JFrame {
 
         diagonal1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
         side.add(diagonal1);
-        diagonal1.setBounds(50, 100, 100, 100);
-
-        lblusername.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
-        lblusername.setForeground(new java.awt.Color(46, 49, 146));
-        lblusername.setText("USERNAME: ");
-        side.add(lblusername);
-        lblusername.setBounds(30, 220, 110, 20);
+        diagonal1.setBounds(80, 130, 100, 100);
 
         diagonal4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
         side.add(diagonal4);
-        diagonal4.setBounds(-40, 440, 100, 100);
-
-        lblpassword.setFont(new java.awt.Font("Candara", 1, 18)); // NOI18N
-        lblpassword.setForeground(new java.awt.Color(46, 49, 146));
-        lblpassword.setText("PASSWORD:");
-        side.add(lblpassword);
-        lblpassword.setBounds(30, 280, 110, 20);
+        diagonal4.setBounds(90, 590, 100, 100);
 
         bubble1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 50.png"))); // NOI18N
         side.add(bubble1);
-        bubble1.setBounds(30, 410, 50, 50);
+        bubble1.setBounds(0, 350, 50, 50);
 
         diagonal2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
         side.add(diagonal2);
-        diagonal2.setBounds(-60, 200, 100, 100);
-
-        diagoonal3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
-        side.add(diagoonal3);
-        diagoonal3.setBounds(60, 330, 100, 100);
-
-        bubble2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
-        side.add(bubble2);
-        bubble2.setBounds(20, 300, 50, 40);
+        diagonal2.setBounds(-40, -30, 100, 100);
 
         bubble3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 35.png"))); // NOI18N
         side.add(bubble3);
-        bubble3.setBounds(110, 490, 50, 40);
-
-        bubble4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
-        side.add(bubble4);
-        bubble4.setBounds(-10, 150, 50, 40);
+        bubble3.setBounds(60, 60, 40, 40);
 
         bubble5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
         side.add(bubble5);
-        bubble5.setBounds(130, 280, 50, 40);
+        bubble5.setBounds(120, 20, 30, 30);
 
         bubble6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 50.png"))); // NOI18N
         side.add(bubble6);
-        bubble6.setBounds(0, 0, 50, 50);
-
-        bubble7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 35.png"))); // NOI18N
-        side.add(bubble7);
-        bubble7.setBounds(70, 180, 50, 40);
+        bubble6.setBounds(0, 120, 50, 50);
 
         bubble8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 50.png"))); // NOI18N
         side.add(bubble8);
-        bubble8.setBounds(30, 410, 50, 50);
+        bubble8.setBounds(0, 580, 50, 50);
+
+        diagonal5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        side.add(diagonal5);
+        diagonal5.setBounds(-20, 670, 100, 100);
+
+        diagonal6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        side.add(diagonal6);
+        diagonal6.setBounds(-40, 440, 100, 100);
+
+        bubble12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 35.png"))); // NOI18N
+        side.add(bubble12);
+        bubble12.setBounds(70, 530, 40, 40);
+
+        bubble13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 35.png"))); // NOI18N
+        side.add(bubble13);
+        bubble13.setBounds(70, 290, 40, 40);
+
+        bubble14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
+        side.add(bubble14);
+        bubble14.setBounds(140, 470, 30, 30);
+
+        bubble15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
+        side.add(bubble15);
+        bubble15.setBounds(130, 250, 30, 30);
+
+        diagonal3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        side.add(diagonal3);
+        diagonal3.setBounds(-40, 200, 100, 100);
+
+        diagoonal4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        side.add(diagoonal4);
+        diagoonal4.setBounds(90, 360, 100, 100);
 
         background.add(side);
-        side.setBounds(0, 0, 140, 520);
+        side.setBounds(0, 0, 180, 750);
 
         top.setBackground(new java.awt.Color(255, 255, 255));
         top.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
@@ -248,54 +284,105 @@ public class loginForm extends javax.swing.JFrame {
                 xMouseClicked(evt);
             }
         });
-        top.add(x, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 30, 30));
+        top.add(x, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 30, 30));
 
-        bubble9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
-        top.add(bubble9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, -1, -1));
-
-        bubble10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
-        top.add(bubble10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, -1, -1));
-
-        bubble11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
-        top.add(bubble11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, -1, -1));
-
-        background.add(top);
-        top.setBounds(130, 0, 570, 30);
-
-        lblmessage.setFont(new java.awt.Font("Cambria Math", 1, 12)); // NOI18N
-        lblmessage.setForeground(new java.awt.Color(255, 51, 51));
-        lblmessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblmessage.addMouseListener(new java.awt.event.MouseAdapter() {
+        mini.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Minimize.png"))); // NOI18N
+        mini.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblmessageMouseClicked(evt);
+                miniMouseClicked(evt);
             }
         });
-        background.add(lblmessage);
-        lblmessage.setBounds(180, 180, 250, 20);
+        top.add(mini, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, -1, 30));
 
-        txtusername.setFont(new java.awt.Font("Candara", 0, 19)); // NOI18N
+        bubble9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
+        top.add(bubble9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
+
+        bubble10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
+        top.add(bubble10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        bubble16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
+        top.add(bubble16, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
+
+        bubble17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
+        top.add(bubble17, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, -1, -1));
+
+        bubble18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
+        top.add(bubble18, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
+
+        bubble19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
+        top.add(bubble19, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, -1));
+
+        bubble20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
+        top.add(bubble20, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 20, -1, -1));
+
+        bubble21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
+        top.add(bubble21, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, -1, -1));
+
+        diagoonal3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        top.add(diagoonal3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 60, 90, 80));
+
+        diagoonal5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        top.add(diagoonal5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 60, 90, 80));
+
+        diagoonal6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        top.add(diagoonal6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 90, 80));
+
+        diagoonal7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        top.add(diagoonal7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 90, 80));
+
+        diagoonal8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        top.add(diagoonal8, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 60, 90, 80));
+
+        diagoonal9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        top.add(diagoonal9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 90, 80));
+
+        diagoonal10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
+        top.add(diagoonal10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 90, 80));
+
+        bubble11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
+        top.add(bubble11, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, -1));
+
+        bubble22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
+        top.add(bubble22, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, -1, -1));
+
+        background.add(top);
+        top.setBounds(160, 0, 840, 100);
+
+        lblusername.setFont(new java.awt.Font("Cambria Math", 1, 20)); // NOI18N
+        lblusername.setForeground(new java.awt.Color(46, 49, 146));
+        lblusername.setText("USERNAME:");
+        background.add(lblusername);
+        lblusername.setBounds(200, 370, 120, 25);
+
+        txtusername.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtusername.setForeground(new java.awt.Color(46, 49, 146));
-        txtusername.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        txtusername.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtusername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtusernameActionPerformed(evt);
             }
         });
         background.add(txtusername);
-        txtusername.setBounds(160, 210, 300, 40);
+        txtusername.setBounds(330, 360, 300, 40);
 
-        txtpassword.setFont(new java.awt.Font("Candara", 0, 19)); // NOI18N
+        lblpassword.setFont(new java.awt.Font("Cambria Math", 1, 20)); // NOI18N
+        lblpassword.setForeground(new java.awt.Color(46, 49, 146));
+        lblpassword.setText("PASSWORD:");
+        background.add(lblpassword);
+        lblpassword.setBounds(200, 420, 120, 25);
+
+        txtpassword.setFont(new java.awt.Font("Candara", 0, 16)); // NOI18N
         txtpassword.setForeground(new java.awt.Color(46, 49, 146));
-        txtpassword.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        txtpassword.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 2));
         txtpassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtpasswordActionPerformed(evt);
             }
         });
         background.add(txtpassword);
-        txtpassword.setBounds(160, 270, 300, 40);
+        txtpassword.setBounds(330, 410, 300, 40);
 
-        forgotpassword.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
+        forgotpassword.setFont(new java.awt.Font("Cambria Math", 0, 14)); // NOI18N
         forgotpassword.setForeground(new java.awt.Color(255, 51, 51));
         forgotpassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         forgotpassword.setText("Forget Password?");
@@ -305,9 +392,9 @@ public class loginForm extends javax.swing.JFrame {
             }
         });
         background.add(forgotpassword);
-        forgotpassword.setBounds(330, 320, 130, 20);
+        forgotpassword.setBounds(500, 460, 130, 20);
 
-        createaccount.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
+        createaccount.setFont(new java.awt.Font("Cambria Math", 0, 14)); // NOI18N
         createaccount.setForeground(new java.awt.Color(255, 51, 51));
         createaccount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         createaccount.setText("Create Account?");
@@ -317,7 +404,7 @@ public class loginForm extends javax.swing.JFrame {
             }
         });
         background.add(createaccount);
-        createaccount.setBounds(160, 320, 120, 20);
+        createaccount.setBounds(330, 460, 120, 20);
 
         exit.setBackground(new java.awt.Color(255, 255, 255));
         exit.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -339,10 +426,10 @@ public class loginForm extends javax.swing.JFrame {
         lblexit.setForeground(new java.awt.Color(46, 49, 146));
         lblexit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblexit.setText("E X I T");
-        exit.add(lblexit, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 60, 20));
+        exit.add(lblexit, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 20));
 
         background.add(exit);
-        exit.setBounds(160, 350, 120, 40);
+        exit.setBounds(330, 490, 120, 40);
 
         login.setBackground(new java.awt.Color(255, 255, 255));
         login.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -364,10 +451,10 @@ public class loginForm extends javax.swing.JFrame {
         lbllogin.setForeground(new java.awt.Color(46, 49, 146));
         lbllogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbllogin.setText("L O G I N");
-        login.add(lbllogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 90, 20));
+        login.add(lbllogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 20));
 
         background.add(login);
-        login.setBounds(330, 350, 130, 40);
+        login.setBounds(500, 490, 130, 40);
 
         check.setBackground(new java.awt.Color(204, 204, 255));
         check.setForeground(new java.awt.Color(46, 49, 146));
@@ -380,22 +467,34 @@ public class loginForm extends javax.swing.JFrame {
             }
         });
         background.add(check);
-        check.setBounds(470, 280, 20, 20);
+        check.setBounds(640, 420, 20, 20);
+
+        forgotpassword1.setFont(new java.awt.Font("Cambria Math", 0, 14)); // NOI18N
+        forgotpassword1.setForeground(new java.awt.Color(255, 51, 51));
+        forgotpassword1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        forgotpassword1.setText("Show Password");
+        forgotpassword1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                forgotpassword1MouseClicked(evt);
+            }
+        });
+        background.add(forgotpassword1);
+        forgotpassword1.setBounds(670, 420, 100, 18);
 
         lblbackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bg.png"))); // NOI18N
         lblbackground.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
         background.add(lblbackground);
-        lblbackground.setBounds(90, -10, 610, 530);
+        lblbackground.setBounds(-260, -160, 1260, 910);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -415,7 +514,7 @@ public class loginForm extends javax.swing.JFrame {
 
     private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
         if (txtusername.getText().isEmpty() && txtpassword.getText().isEmpty()) {
-            lblmessage.setText("Empty Text Fields!");
+            lblmessage.setText("Empty Text Box!");
             System.out.println("Empty Text Fields!");
             return;
         }
@@ -510,6 +609,15 @@ public class loginForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_xMouseClicked
 
+    private void miniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_miniMouseClicked
+        System.out.println("System Minimizes!");
+        this.setExtendedState(loginForm.ICONIFIED);
+    }//GEN-LAST:event_miniMouseClicked
+
+    private void forgotpassword1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotpassword1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_forgotpassword1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -530,22 +638,41 @@ public class loginForm extends javax.swing.JFrame {
     private javax.swing.JLabel bubble1;
     private javax.swing.JLabel bubble10;
     private javax.swing.JLabel bubble11;
-    private javax.swing.JLabel bubble2;
+    private javax.swing.JLabel bubble12;
+    private javax.swing.JLabel bubble13;
+    private javax.swing.JLabel bubble14;
+    private javax.swing.JLabel bubble15;
+    private javax.swing.JLabel bubble16;
+    private javax.swing.JLabel bubble17;
+    private javax.swing.JLabel bubble18;
+    private javax.swing.JLabel bubble19;
+    private javax.swing.JLabel bubble20;
+    private javax.swing.JLabel bubble21;
+    private javax.swing.JLabel bubble22;
     private javax.swing.JLabel bubble3;
-    private javax.swing.JLabel bubble4;
     private javax.swing.JLabel bubble5;
     private javax.swing.JLabel bubble6;
-    private javax.swing.JLabel bubble7;
     private javax.swing.JLabel bubble8;
     private javax.swing.JLabel bubble9;
     private javax.swing.JCheckBox check;
     private javax.swing.JLabel createaccount;
     private javax.swing.JLabel diagonal1;
     private javax.swing.JLabel diagonal2;
+    private javax.swing.JLabel diagonal3;
     private javax.swing.JLabel diagonal4;
+    private javax.swing.JLabel diagonal5;
+    private javax.swing.JLabel diagonal6;
+    private javax.swing.JLabel diagoonal10;
     private javax.swing.JLabel diagoonal3;
+    private javax.swing.JLabel diagoonal4;
+    private javax.swing.JLabel diagoonal5;
+    private javax.swing.JLabel diagoonal6;
+    private javax.swing.JLabel diagoonal7;
+    private javax.swing.JLabel diagoonal8;
+    private javax.swing.JLabel diagoonal9;
     public javax.swing.JPanel exit;
     private javax.swing.JLabel forgotpassword;
+    private javax.swing.JLabel forgotpassword1;
     private javax.swing.JLabel lblbackground;
     private javax.swing.JLabel lblexit;
     private javax.swing.JLabel lbllogin;
@@ -554,6 +681,7 @@ public class loginForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblusername;
     public javax.swing.JPanel login;
     private javax.swing.JLabel logo;
+    private javax.swing.JLabel mini;
     private javax.swing.JPanel side;
     private javax.swing.JPanel top;
     private javax.swing.JPasswordField txtpassword;

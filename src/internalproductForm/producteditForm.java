@@ -136,7 +136,10 @@ public class producteditForm extends javax.swing.JInternalFrame {
         boxpicture = new javax.swing.JPanel();
         picture = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(806, 666));
+
         background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
         background.setLayout(null);
 
         back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
@@ -152,26 +155,26 @@ public class producteditForm extends javax.swing.JInternalFrame {
         background.add(back);
         back.setBounds(10, 10, 30, 30);
 
-        lblproduct.setFont(new java.awt.Font("Cambria Math", 1, 48)); // NOI18N
+        lblproduct.setFont(new java.awt.Font("Cambria Math", 1, 55)); // NOI18N
         lblproduct.setForeground(new java.awt.Color(0, 0, 146));
         lblproduct.setText("Product #");
         background.add(lblproduct);
-        lblproduct.setBounds(40, 30, 240, 40);
+        lblproduct.setBounds(60, 70, 260, 50);
 
-        id.setFont(new java.awt.Font("Cambria Math", 1, 72)); // NOI18N
+        id.setFont(new java.awt.Font("Cambria Math", 1, 80)); // NOI18N
         id.setForeground(new java.awt.Color(0, 0, 146));
         id.setText("0");
         id.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         background.add(id);
-        id.setBounds(280, 10, 140, 80);
+        id.setBounds(320, 48, 220, 90);
 
-        lblmessage1.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage1.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage1.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage1);
-        lblmessage1.setBounds(300, 80, 30, 30);
+        lblmessage1.setBounds(380, 180, 40, 40);
 
-        txtname.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtname.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtname.setForeground(new java.awt.Color(0, 0, 146));
         txtname.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 2, true));
         txtname.addActionListener(new java.awt.event.ActionListener() {
@@ -180,21 +183,22 @@ public class producteditForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(txtname);
-        txtname.setBounds(140, 80, 190, 30);
+        txtname.setBounds(170, 180, 270, 40);
 
-        lblname.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblname.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lblname.setForeground(new java.awt.Color(0, 0, 146));
+        lblname.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblname.setText("Product Name:");
         background.add(lblname);
-        lblname.setBounds(40, 80, 100, 30);
+        lblname.setBounds(30, 180, 140, 40);
 
-        lblmessage2.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage2.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage2.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage2);
-        lblmessage2.setBounds(300, 130, 30, 30);
+        lblmessage2.setBounds(380, 240, 40, 40);
 
-        txtqty.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtqty.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtqty.setForeground(new java.awt.Color(0, 0, 146));
         txtqty.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 2, true));
         txtqty.addActionListener(new java.awt.event.ActionListener() {
@@ -203,21 +207,22 @@ public class producteditForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(txtqty);
-        txtqty.setBounds(140, 130, 190, 30);
+        txtqty.setBounds(170, 240, 270, 40);
 
-        lblqty.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblqty.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lblqty.setForeground(new java.awt.Color(0, 0, 146));
+        lblqty.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblqty.setText("Quantity:");
         background.add(lblqty);
-        lblqty.setBounds(40, 130, 100, 30);
+        lblqty.setBounds(30, 240, 140, 40);
 
-        lblmessage3.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage3.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage3.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage3);
-        lblmessage3.setBounds(300, 180, 30, 30);
+        lblmessage3.setBounds(380, 300, 40, 40);
 
-        txtprice.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtprice.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtprice.setForeground(new java.awt.Color(0, 0, 146));
         txtprice.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 2, true));
         txtprice.addActionListener(new java.awt.event.ActionListener() {
@@ -226,23 +231,24 @@ public class producteditForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(txtprice);
-        txtprice.setBounds(140, 180, 190, 30);
+        txtprice.setBounds(170, 300, 270, 40);
 
-        lblprice.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblprice.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lblprice.setForeground(new java.awt.Color(0, 0, 146));
+        lblprice.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblprice.setText("Price:");
         background.add(lblprice);
-        lblprice.setBounds(40, 180, 100, 30);
+        lblprice.setBounds(30, 300, 140, 40);
 
-        lblmessage4.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage4.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage4.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage4);
-        lblmessage4.setBounds(280, 230, 30, 30);
+        lblmessage4.setBounds(380, 360, 40, 40);
 
-        boxstatus.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        boxstatus.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         boxstatus.setForeground(new java.awt.Color(0, 0, 146));
-        boxstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "Active", "Inactive" }));
+        boxstatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "Approve", "Reject" }));
         boxstatus.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 2, true));
         boxstatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,21 +256,22 @@ public class producteditForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(boxstatus);
-        boxstatus.setBounds(140, 230, 190, 30);
+        boxstatus.setBounds(170, 360, 270, 40);
 
-        lblstatus.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblstatus.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lblstatus.setForeground(new java.awt.Color(0, 0, 146));
+        lblstatus.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblstatus.setText("Status:");
         background.add(lblstatus);
-        lblstatus.setBounds(40, 230, 100, 30);
+        lblstatus.setBounds(30, 360, 140, 40);
 
-        lblmessage5.setFont(new java.awt.Font("Candara", 0, 12)); // NOI18N
+        lblmessage5.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage5.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage5);
-        lblmessage5.setBounds(300, 330, 30, 30);
+        lblmessage5.setBounds(380, 480, 40, 40);
 
-        txtpassword.setFont(new java.awt.Font("Candara", 0, 13)); // NOI18N
+        txtpassword.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtpassword.setForeground(new java.awt.Color(0, 0, 146));
         txtpassword.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 2, true));
         txtpassword.addActionListener(new java.awt.event.ActionListener() {
@@ -273,16 +280,18 @@ public class producteditForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(txtpassword);
-        txtpassword.setBounds(140, 330, 190, 30);
+        txtpassword.setBounds(170, 480, 270, 40);
 
-        lblpassword.setFont(new java.awt.Font("Candara", 0, 14)); // NOI18N
+        lblpassword.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lblpassword.setForeground(new java.awt.Color(0, 0, 146));
+        lblpassword.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblpassword.setText("Password:");
         background.add(lblpassword);
-        lblpassword.setBounds(40, 330, 100, 30);
+        lblpassword.setBounds(30, 480, 140, 40);
 
         confirm.setBackground(new java.awt.Color(255, 255, 255));
         confirm.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        confirm.setPreferredSize(new java.awt.Dimension(200, 50));
         confirm.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 confirmMouseClicked(evt);
@@ -296,14 +305,14 @@ public class producteditForm extends javax.swing.JInternalFrame {
         });
         confirm.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblconfirm.setFont(new java.awt.Font("Cambria Math", 1, 12)); // NOI18N
+        lblconfirm.setFont(new java.awt.Font("Cambria Math", 1, 24)); // NOI18N
         lblconfirm.setForeground(new java.awt.Color(0, 0, 146));
         lblconfirm.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblconfirm.setText("C O N F I R M");
-        confirm.add(lblconfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 110, 30));
+        confirm.add(lblconfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 180, 30));
 
         background.add(confirm);
-        confirm.setBounds(390, 370, 130, 30);
+        confirm.setBounds(520, 550, 200, 50);
 
         forpicture.setBackground(new java.awt.Color(255, 255, 255));
         forpicture.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 2, true));
@@ -324,14 +333,14 @@ public class producteditForm extends javax.swing.JInternalFrame {
         });
         remove.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblremove.setFont(new java.awt.Font("Cambria Math", 1, 10)); // NOI18N
+        lblremove.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
         lblremove.setForeground(new java.awt.Color(0, 0, 146));
         lblremove.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblremove.setText("REMOVE");
-        remove.add(lblremove, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 30));
+        remove.add(lblremove, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 45));
 
         forpicture.add(remove);
-        remove.setBounds(90, 220, 70, 30);
+        remove.setBounds(150, 300, 120, 65);
 
         upload.setBackground(new java.awt.Color(255, 255, 255));
         upload.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
@@ -348,43 +357,39 @@ public class producteditForm extends javax.swing.JInternalFrame {
         });
         upload.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblupload.setFont(new java.awt.Font("Cambria Math", 1, 10)); // NOI18N
+        lblupload.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
         lblupload.setForeground(new java.awt.Color(0, 0, 146));
         lblupload.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblupload.setText("UPLOAD");
-        upload.add(lblupload, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 30));
+        upload.add(lblupload, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 13, 100, 40));
 
         forpicture.add(upload);
-        upload.setBounds(10, 220, 70, 30);
+        upload.setBounds(10, 300, 120, 65);
 
         boxpicture.setBackground(new java.awt.Color(255, 255, 255));
         boxpicture.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
         boxpicture.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        picture.setFont(new java.awt.Font("Candara", 0, 11)); // NOI18N
+        picture.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         picture.setForeground(new java.awt.Color(0, 0, 146));
         picture.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        boxpicture.add(picture, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 130, 160));
+        boxpicture.add(picture, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 240, 250));
 
         forpicture.add(boxpicture);
-        boxpicture.setBounds(10, 19, 150, 180);
+        boxpicture.setBounds(10, 19, 260, 270);
 
         background.add(forpicture);
-        forpicture.setBounds(350, 70, 170, 290);
+        forpicture.setBounds(480, 140, 280, 380);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -499,13 +504,13 @@ public class producteditForm extends javax.swing.JInternalFrame {
                                 productlistsForm productListFrame = (productlistsForm) SwingUtilities.getAncestorOfClass(productlistsForm.class, this);
                                 productListFrame.restoreOriginalState();
                                 System.out.println("Information Inserted!");
-                                productListFrame.getLblMessage().setText("Created Product Successfully!");
+                                productListFrame.getLblMessage().setText("Insert Product Success!");
                             } catch (IOException ex) {
                             }
                         } else {
                             productlistsForm productListFrame = (productlistsForm) SwingUtilities.getAncestorOfClass(productlistsForm.class, this);
                             System.out.println("Information Rejected!");
-                            productListFrame.getLblMessage().setText("Failed Successfully!");
+                            productListFrame.getLblMessage().setText("Insert Product Failed!");
                         }
                     } else {
                         if (connector.updateData("UPDATE tbl_products SET p_name = '" + txtname.getText() + "', p_qty = '"
@@ -514,11 +519,11 @@ public class producteditForm extends javax.swing.JInternalFrame {
                             productlistsForm productListFrame = (productlistsForm) SwingUtilities.getAncestorOfClass(productlistsForm.class, this);
                             productListFrame.restoreOriginalState();
                             System.out.println("Information Updated!");
-                            productListFrame.getLblMessage().setText("Updated Product Successfully!");
+                            productListFrame.getLblMessage().setText("Update Product Success!");
                         } else {
                             productlistsForm productListFrame = (productlistsForm) SwingUtilities.getAncestorOfClass(productlistsForm.class, this);
                             System.out.println("Information Rejected!");
-                            productListFrame.getLblMessage().setText("Failed Successfully!");
+                            productListFrame.getLblMessage().setText("Update Product Fail!");
                         }
                     }
                 }

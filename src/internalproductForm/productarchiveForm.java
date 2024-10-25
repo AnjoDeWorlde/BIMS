@@ -2,11 +2,15 @@ package internalproductForm;
 
 import config.dbConnector;
 import java.awt.Color;
+import java.awt.Font;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 
 /**
@@ -31,12 +35,19 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
     Color enterColor = new Color(46,49,146);
     
     public void displayProduct(){
-        dbConnector connector = new dbConnector();
-        try (ResultSet resultSet = connector.getData("SELECT p_id, p_name, p_price, p_status FROM tbl_products WHERE p_status = 'Archive'")) {
+        dbConnector connector = new dbConnector();       
+        try (ResultSet resultSet = connector.getData("SELECT p_id, p_name, p_qty, p_price, p_status FROM tbl_products "
+            + "WHERE p_status = 'Reject'")) {
             DefaultTableModel model = new DefaultTableModel();
+            productlists.setRowHeight(30);
 
+            // Set font for table header
+            JTableHeader header = productlists.getTableHeader();
+            Font headerFont = new Font("Cambria Math", Font.PLAIN, 20);
+            header.setFont(headerFont);
+              
             // Define column names
-            String[] columnNames = {"Product ID", "Product Name", "Price", "Status"};
+            String[] columnNames = {"Product ID", "Product Name", "Quantity", "Price", "Status"};
             model.setColumnIdentifiers(columnNames);
 
             // Add rows to the model
@@ -44,6 +55,7 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
                 model.addRow(new Object[] {
                     resultSet.getInt("p_id"),
                     resultSet.getString("p_name"),
+                    resultSet.getInt("p_qty"),
                     resultSet.getDouble("p_price"),
                     resultSet.getString("p_status")
                 });
@@ -51,15 +63,28 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
 
             // Set the model to the table
             productlists.setModel(model);
-
+            
             // Set column widths (optional)
-            int[] columnWidths = {85, 180, 120, 120};
+            int[] columnWidths = {140, 240, 120, 120, 134};
             for (int i = 0; i < columnWidths.length; i++) {
                 TableColumn column = productlists.getColumnModel().getColumn(i);
                 column.setPreferredWidth(columnWidths[i]);
             }
-        } catch (SQLException ex) {
-        }   
+            
+            alignColumn(0, productlists, DefaultTableCellRenderer.CENTER);  
+            alignColumn(1, productlists, DefaultTableCellRenderer.LEFT);   
+            alignColumn(2, productlists, DefaultTableCellRenderer.RIGHT);   
+            alignColumn(3, productlists, DefaultTableCellRenderer.RIGHT);   
+            alignColumn(4, productlists, DefaultTableCellRenderer.CENTER);
+            
+        }catch(SQLException ex){            
+        }
+    }
+    
+    public void alignColumn(int columnIndex, JTable table, int alignment) {
+        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+        renderer.setHorizontalAlignment(alignment);  // Set alignment
+        table.getColumnModel().getColumn(columnIndex).setCellRenderer(renderer);
     }
 
     @SuppressWarnings("unchecked")
@@ -73,13 +98,17 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
         lblunarchive = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(806, 666));
+
         background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
         background.setLayout(null);
 
         scroll.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
         scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scroll.setPreferredSize(new java.awt.Dimension(0, 0));
 
-        productlists.setFont(new java.awt.Font("Garamond", 0, 11)); // NOI18N
+        productlists.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         productlists.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -89,10 +118,12 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
             }
         ));
         productlists.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        productlists.getTableHeader().setResizingAllowed(false);
+        productlists.getTableHeader().setReorderingAllowed(false);
         scroll.setViewportView(productlists);
 
         background.add(scroll);
-        scroll.setBounds(10, 50, 510, 360);
+        scroll.setBounds(20, 55, 750, 555);
 
         unarchive.setBackground(new java.awt.Color(255, 255, 255));
         unarchive.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -109,14 +140,14 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
         });
         unarchive.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblunarchive.setFont(new java.awt.Font("Cambria Math", 1, 12)); // NOI18N
+        lblunarchive.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
         lblunarchive.setForeground(new java.awt.Color(0, 0, 146));
         lblunarchive.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblunarchive.setText("U N A R C H I V E");
-        unarchive.add(lblunarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 10));
+        unarchive.add(lblunarchive, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, 20));
 
         background.add(unarchive);
-        unarchive.setBounds(370, 10, 150, 30);
+        unarchive.setBounds(590, 10, 180, 40);
 
         back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
         back.setForeground(new java.awt.Color(46, 49, 146));
@@ -136,13 +167,13 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -155,11 +186,12 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
             try {
                 String producttId = productlists.getValueAt(selectedRow, 0).toString();
                 dbConnector connector = new dbConnector();
-                String updateQuery = "UPDATE tbl_products SET p_status = 'Inactive' WHERE p_id = '" + producttId + "'";
+                String updateQuery = "UPDATE tbl_products SET p_status = 'Approve' WHERE p_id = '" + producttId + "'";
                 connector.updateData(updateQuery);
                 ResultSet resultSet = connector.getData("SELECT * FROM tbl_products WHERE p_id = '" + producttId + "' ");
                 if (resultSet.next()) {
                     productlistsForm productListFrame = (productlistsForm) SwingUtilities.getAncestorOfClass(productlistsForm.class, this);
+                    productListFrame.restoreOriginalState();
                     System.out.println("Unarchive Successfully!");
                     productListFrame.getLblMessage().setText("Unarchive Successfully!");
                 }
@@ -168,7 +200,7 @@ public final class productarchiveForm extends javax.swing.JInternalFrame {
         } else {
             productlistsForm productListFrame = (productlistsForm) SwingUtilities.getAncestorOfClass(productlistsForm.class, this);
             System.out.println("No Selected Item!");
-            productListFrame.getLblMessage().setText("Please select an Item!");
+            productListFrame.getLblMessage().setText("No Selected Item!");
         }
     }//GEN-LAST:event_unarchiveMouseClicked
 

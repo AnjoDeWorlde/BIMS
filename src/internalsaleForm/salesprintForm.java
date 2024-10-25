@@ -48,8 +48,8 @@ public final class salesprintForm extends javax.swing.JInternalFrame {
         return lblmessage;
     }
     
-    private String source;
-    private JDesktopPane admindesktop;
+    private final String source;
+    private final JDesktopPane admindesktop;
     Color borderColor = new Color(255,255,255);
     Color enterColor = new Color(46,49,146);
 
@@ -101,6 +101,8 @@ public final class salesprintForm extends javax.swing.JInternalFrame {
         lblmessage = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(846, 786));
+
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
         background.setLayout(null);
@@ -122,14 +124,14 @@ public final class salesprintForm extends javax.swing.JInternalFrame {
         single.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblsingle.setBackground(new java.awt.Color(255, 255, 255));
-        lblsingle.setFont(new java.awt.Font("Cambria", 1, 10)); // NOI18N
+        lblsingle.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
         lblsingle.setForeground(new java.awt.Color(0, 0, 146));
         lblsingle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblsingle.setText("SINGLE");
-        single.add(lblsingle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 50, 30));
+        single.add(lblsingle, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 30));
 
         background.add(single);
-        single.setBounds(220, 20, 70, 30);
+        single.setBounds(340, 20, 110, 50);
 
         all.setBackground(new java.awt.Color(255, 255, 255));
         all.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -147,14 +149,14 @@ public final class salesprintForm extends javax.swing.JInternalFrame {
         all.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblall.setBackground(new java.awt.Color(255, 255, 255));
-        lblall.setFont(new java.awt.Font("Cambria", 1, 10)); // NOI18N
+        lblall.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
         lblall.setForeground(new java.awt.Color(0, 0, 146));
         lblall.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblall.setText("ALL");
-        all.add(lblall, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 50, 30));
+        all.add(lblall, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 70, 30));
 
         background.add(all);
-        all.setBounds(300, 20, 70, 30);
+        all.setBounds(460, 20, 90, 50);
 
         group.setBackground(new java.awt.Color(255, 255, 255));
         group.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -172,14 +174,14 @@ public final class salesprintForm extends javax.swing.JInternalFrame {
         group.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblgroup.setBackground(new java.awt.Color(255, 255, 255));
-        lblgroup.setFont(new java.awt.Font("Cambria", 1, 10)); // NOI18N
+        lblgroup.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
         lblgroup.setForeground(new java.awt.Color(0, 0, 146));
         lblgroup.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblgroup.setText("GROUP");
-        group.add(lblgroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 50, 30));
+        group.add(lblgroup, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 30));
 
         background.add(group);
-        group.setBounds(380, 20, 70, 30);
+        group.setBounds(560, 20, 110, 50);
 
         selected.setBackground(new java.awt.Color(255, 255, 255));
         selected.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -197,14 +199,14 @@ public final class salesprintForm extends javax.swing.JInternalFrame {
         selected.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblselected.setBackground(new java.awt.Color(255, 255, 255));
-        lblselected.setFont(new java.awt.Font("Cambria", 1, 10)); // NOI18N
+        lblselected.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
         lblselected.setForeground(new java.awt.Color(0, 0, 146));
         lblselected.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblselected.setText("SELECTED");
-        selected.add(lblselected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 60, 30));
+        selected.add(lblselected, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 30));
 
         background.add(selected);
-        selected.setBounds(460, 20, 80, 30);
+        selected.setBounds(680, 20, 130, 50);
 
         salesdesktop.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -212,23 +214,24 @@ public final class salesprintForm extends javax.swing.JInternalFrame {
         salesdesktop.setLayout(salesdesktopLayout);
         salesdesktopLayout.setHorizontalGroup(
             salesdesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 530, Short.MAX_VALUE)
+            .addGap(0, 790, Short.MAX_VALUE)
         );
         salesdesktopLayout.setVerticalGroup(
             salesdesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
+            .addGap(0, 630, Short.MAX_VALUE)
         );
 
         background.add(salesdesktop);
-        salesdesktop.setBounds(10, 60, 530, 420);
+        salesdesktop.setBounds(20, 100, 790, 630);
 
-        lblmessage.setFont(new java.awt.Font("Candara", 1, 12)); // NOI18N
+        lblmessage.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
         lblmessage.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblmessage.setText("PRINTING");
         background.add(lblmessage);
-        lblmessage.setBounds(60, 20, 150, 30);
+        lblmessage.setBounds(100, 30, 230, 30);
 
-        back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
+        back.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
         back.setForeground(new java.awt.Color(0, 0, 146));
         back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         back.setText("BACK");
@@ -240,20 +243,20 @@ public final class salesprintForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(back);
-        back.setBounds(10, 10, 40, 20);
+        back.setBounds(20, 20, 70, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -298,27 +301,27 @@ public final class salesprintForm extends javax.swing.JInternalFrame {
                         psf.status.setText(status);
                         psf.id.setText("Sales #" + id);
                         psf.date.setText(formatDateString(date));
-                        psf.productID.setText("Product Name       :                                               " + productName);
+                        psf.productID.setText(" Product Name       :                       " + productName);
                         psf.label.setText("");
-                        psf.variableX.setText("      Gross Sales     :                                                " + grosssales);
-                        psf.variableY.setText("      Deduction      :                                                " + deductionsales);
-                        psf.variableZ.setText("      Net Sales       :                                                " + netsales);
+                        psf.variableX.setText("      Gross Sales        :                       " + grosssales);
+                        psf.variableY.setText("      Deduction          :                       " + deductionsales);
+                        psf.variableZ.setText("      Net Sales            :                       " + netsales);
                     } else {
                         single.setEnabled(false);
                         System.out.println("No Selected Item!");
-                        lblmessage.setText("Please select an Item!");
+                        lblmessage.setText("No Selected Item!");
                     }
                 } catch (SQLException ex) {
                 }
             } else {
                 single.setEnabled(false);
                 System.out.println("No Selected Item!");
-                lblmessage.setText("Please select an Item!");
+                lblmessage.setText("No Selected Item!");
             }
         } else {
             single.setEnabled(false);
             System.out.println("No Selected Item!");
-            lblmessage.setText("Please select an Item!");
+            lblmessage.setText("No Selected Item!");
         }
     }//GEN-LAST:event_singleMouseClicked
 

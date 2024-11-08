@@ -84,7 +84,7 @@ public class inventoryForm extends javax.swing.JInternalFrame {
         lblprint = new javax.swing.JLabel();
         inventorydesktop = new javax.swing.JDesktopPane();
 
-        setPreferredSize(new java.awt.Dimension(846, 786));
+        setPreferredSize(new java.awt.Dimension(846, 706));
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
@@ -224,11 +224,11 @@ public class inventoryForm extends javax.swing.JInternalFrame {
         );
         inventorydesktopLayout.setVerticalGroup(
             inventorydesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
+            .addGap(0, 550, Short.MAX_VALUE)
         );
 
         background.add(inventorydesktop);
-        inventorydesktop.setBounds(20, 100, 790, 630);
+        inventorydesktop.setBounds(20, 100, 790, 550);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -238,7 +238,7 @@ public class inventoryForm extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

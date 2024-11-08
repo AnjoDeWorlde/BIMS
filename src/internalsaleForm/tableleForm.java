@@ -110,7 +110,7 @@ public final class tableleForm extends javax.swing.JInternalFrame {
         table = new javax.swing.JScrollPane();
         sales = new javax.swing.JTable();
 
-        setPreferredSize(new java.awt.Dimension(806, 666));
+        setPreferredSize(new java.awt.Dimension(806, 586));
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -135,7 +135,7 @@ public final class tableleForm extends javax.swing.JInternalFrame {
         table.setViewportView(sales);
 
         background.add(table);
-        table.setBounds(20, 20, 750, 590);
+        table.setBounds(20, 20, 750, 510);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -148,7 +148,7 @@ public final class tableleForm extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 

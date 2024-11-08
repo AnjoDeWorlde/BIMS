@@ -266,7 +266,10 @@ dbConnector connector = new dbConnector();
         show = new javax.swing.JTable();
         back = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(806, 586));
+
         background.setBackground(new java.awt.Color(255, 255, 255));
+        background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
         background.setLayout(null);
 
         print.setFont(new java.awt.Font("Cambria Math", 1, 24)); // NOI18N
@@ -283,7 +286,7 @@ dbConnector connector = new dbConnector();
         print.setBounds(320, 10, 120, 30);
 
         page.setBackground(new java.awt.Color(255, 255, 255));
-        page.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 146), 3));
+        page.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 146), 3, true));
         page.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo_wname_orig35.jpg"))); // NOI18N
@@ -321,10 +324,10 @@ dbConnector connector = new dbConnector();
         show.getTableHeader().setReorderingAllowed(false);
         table.setViewportView(show);
 
-        page.add(table, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 120, 740, 440));
+        page.add(table, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 120, 740, 360));
 
         background.add(page);
-        page.setBounds(10, 50, 770, 570);
+        page.setBounds(10, 50, 770, 490);
 
         back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
         back.setForeground(new java.awt.Color(46, 49, 146));
@@ -349,7 +352,7 @@ dbConnector connector = new dbConnector();
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

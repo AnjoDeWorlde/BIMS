@@ -51,7 +51,7 @@ public class printsingleForm extends javax.swing.JInternalFrame {
         variableZ = new javax.swing.JLabel();
         bot = new javax.swing.JSeparator();
 
-        setPreferredSize(new java.awt.Dimension(806, 666));
+        setPreferredSize(new java.awt.Dimension(806, 586));
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -113,12 +113,12 @@ public class printsingleForm extends javax.swing.JInternalFrame {
         left.setForeground(new java.awt.Color(0, 0, 0));
         left.setOrientation(javax.swing.SwingConstants.VERTICAL);
         left.setPreferredSize(new java.awt.Dimension(0, 0));
-        page.add(left, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 2, 460));
+        page.add(left, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 2, 380));
 
         right.setForeground(new java.awt.Color(0, 0, 0));
         right.setOrientation(javax.swing.SwingConstants.VERTICAL);
         right.setPreferredSize(new java.awt.Dimension(0, 0));
-        page.add(right, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 100, 2, 460));
+        page.add(right, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 100, 2, 380));
 
         productID.setFont(new java.awt.Font("Cambria Math", 0, 24)); // NOI18N
         page.add(productID, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 270, 730, 30));
@@ -137,10 +137,10 @@ public class printsingleForm extends javax.swing.JInternalFrame {
 
         bot.setForeground(new java.awt.Color(0, 0, 0));
         bot.setPreferredSize(new java.awt.Dimension(0, 0));
-        page.add(bot, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, 751, 2));
+        page.add(bot, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 751, 2));
 
         background.add(page);
-        page.setBounds(10, 50, 770, 570);
+        page.setBounds(10, 50, 770, 490);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,7 +152,7 @@ public class printsingleForm extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

@@ -83,7 +83,7 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         productlistdesktop = new javax.swing.JDesktopPane();
         lblmessage = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(846, 786));
+        setPreferredSize(new java.awt.Dimension(846, 706));
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
@@ -188,11 +188,11 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         );
         productlistdesktopLayout.setVerticalGroup(
             productlistdesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
+            .addGap(0, 550, Short.MAX_VALUE)
         );
 
         background.add(productlistdesktop);
-        productlistdesktop.setBounds(20, 100, 790, 630);
+        productlistdesktop.setBounds(20, 100, 790, 550);
 
         lblmessage.setFont(new java.awt.Font("Cambria Math", 1, 14)); // NOI18N
         lblmessage.setForeground(new java.awt.Color(255, 15, 15));
@@ -208,9 +208,7 @@ public class productlistsForm extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

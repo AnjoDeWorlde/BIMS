@@ -116,7 +116,7 @@ public final class staffresetForm extends javax.swing.JInternalFrame {
         txtconfirmpass = new javax.swing.JPasswordField();
         lblconfirmpass = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(806, 666));
+        setPreferredSize(new java.awt.Dimension(806, 586));
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -153,7 +153,7 @@ public final class staffresetForm extends javax.swing.JInternalFrame {
         scroll.setViewportView(userlists);
 
         background.add(scroll);
-        scroll.setBounds(10, 40, 570, 570);
+        scroll.setBounds(10, 40, 570, 500);
 
         confirm1.setBackground(new java.awt.Color(255, 255, 255));
         confirm1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -250,7 +250,7 @@ public final class staffresetForm extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 

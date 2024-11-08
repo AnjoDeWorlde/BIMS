@@ -136,7 +136,7 @@ public class producteditForm extends javax.swing.JInternalFrame {
         boxpicture = new javax.swing.JPanel();
         picture = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(806, 666));
+        setPreferredSize(new java.awt.Dimension(806, 586));
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -269,7 +269,7 @@ public class producteditForm extends javax.swing.JInternalFrame {
         lblmessage5.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage5);
-        lblmessage5.setBounds(380, 480, 40, 40);
+        lblmessage5.setBounds(380, 420, 40, 40);
 
         txtpassword.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtpassword.setForeground(new java.awt.Color(0, 0, 146));
@@ -280,14 +280,14 @@ public class producteditForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(txtpassword);
-        txtpassword.setBounds(170, 480, 270, 40);
+        txtpassword.setBounds(170, 420, 270, 40);
 
         lblpassword.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lblpassword.setForeground(new java.awt.Color(0, 0, 146));
         lblpassword.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblpassword.setText("Password:");
         background.add(lblpassword);
-        lblpassword.setBounds(30, 480, 140, 40);
+        lblpassword.setBounds(30, 420, 140, 40);
 
         confirm.setBackground(new java.awt.Color(255, 255, 255));
         confirm.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -312,7 +312,7 @@ public class producteditForm extends javax.swing.JInternalFrame {
         confirm.add(lblconfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 180, 30));
 
         background.add(confirm);
-        confirm.setBounds(520, 550, 200, 50);
+        confirm.setBounds(240, 470, 200, 50);
 
         forpicture.setBackground(new java.awt.Color(255, 255, 255));
         forpicture.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 2, true));
@@ -389,7 +389,7 @@ public class producteditForm extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

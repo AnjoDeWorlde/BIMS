@@ -233,10 +233,10 @@ public class adminForm extends javax.swing.JFrame {
                 logoutMouseClicked(evt);
             }
         });
-        navigation.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 690, 150, 40));
+        navigation.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 620, 150, 40));
 
         background.add(navigation);
-        navigation.setBounds(0, 0, 170, 750);
+        navigation.setBounds(0, 0, 170, 670);
 
         admindesktop.setBackground(new java.awt.Color(255, 255, 255));
         admindesktop.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
@@ -249,21 +249,21 @@ public class adminForm extends javax.swing.JFrame {
         );
         admindesktopLayout.setVerticalGroup(
             admindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 744, Short.MAX_VALUE)
+            .addGap(0, 664, Short.MAX_VALUE)
         );
 
         background.add(admindesktop);
-        admindesktop.setBounds(170, 0, 830, 750);
+        admindesktop.setBounds(170, 0, 830, 670);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 1001, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

@@ -56,7 +56,7 @@ public final class printselectedForm extends javax.swing.JInternalFrame {
         });
     }
 
-    private String source;
+    private final String source;
     
     public void CurrentDate() {
         Calendar cal = new GregorianCalendar();
@@ -213,28 +213,14 @@ public final class printselectedForm extends javax.swing.JInternalFrame {
         }
     }
 
-    private void displaySelectedRows() {
-        int[] selectedRows = show.getSelectedRows();
-        if (selectedRows.length > 0) {
-            DefaultTableModel model = (DefaultTableModel) show.getModel();
-            DefaultTableModel newModel = new DefaultTableModel();
-
-            for (int column = 0; column < model.getColumnCount(); column++) {
-                newModel.addColumn(model.getColumnName(column));
-            }
-
-            for (int row : selectedRows) {
-                Object[] rowData = new Object[model.getColumnCount()];
-                for (int column = 0; column < model.getColumnCount(); column++) {
-                    rowData[column] = model.getValueAt(row, column);
-                }
-                newModel.addRow(rowData);
-            }
-
-            show.setModel(newModel);
-        } else {
-        }
+    public void displaySelectedData(String dataType) {
+        if (dataType.equalsIgnoreCase("Inventory")) {
+            displayInventory();
+        } else if (dataType.equalsIgnoreCase("Sales")) {
+            displaySales();
     }
+}
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -253,7 +239,7 @@ public final class printselectedForm extends javax.swing.JInternalFrame {
         table = new javax.swing.JScrollPane();
         show = new javax.swing.JTable();
 
-        setPreferredSize(new java.awt.Dimension(806, 666));
+        setPreferredSize(new java.awt.Dimension(806, 586));
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -337,10 +323,10 @@ public final class printselectedForm extends javax.swing.JInternalFrame {
         show.getTableHeader().setReorderingAllowed(false);
         table.setViewportView(show);
 
-        page.add(table, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 120, 740, 440));
+        page.add(table, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 120, 740, 360));
 
         background.add(page);
-        page.setBounds(10, 50, 770, 570);
+        page.setBounds(10, 50, 770, 490);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -352,7 +338,7 @@ public final class printselectedForm extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -365,7 +351,7 @@ public final class printselectedForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_printMouseClicked
 
     private void confirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseClicked
-        displaySelectedRows();
+        displaySelectedData(source);
     }//GEN-LAST:event_confirmMouseClicked
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked

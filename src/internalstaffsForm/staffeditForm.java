@@ -95,15 +95,14 @@ public class staffeditForm extends javax.swing.JInternalFrame {
         return image;
     }
     
-    public boolean duplicateEmail(String email) {
+    public boolean duplicateEmail(String email, String userId) {
         dbConnector connector = new dbConnector();
         try {
-            String query = "SELECT * FROM tbl_user WHERE u_email = '" + email + "'";
+            String query = userId == null ? "SELECT * FROM tbl_user WHERE u_email = '" + email + "'" : "SELECT * FROM tbl_user WHERE u_email = '" + email + "' AND u_id != '" + userId + "'";
             ResultSet resultSet = connector.getData(query);
-        
             if (resultSet.next()) {
                 lblmessage3.setText("*** ");
-                return true;
+                return true; // Email exists in the database
             } else {
                 return false;
             }
@@ -111,22 +110,23 @@ public class staffeditForm extends javax.swing.JInternalFrame {
             return false;
         }
     }
-
-    public boolean duplicateUser(String username) {
+    
+    public boolean duplicateUser(String username, String userId) {
         dbConnector connector = new dbConnector();
         try {
-            String query = "SELECT * FROM tbl_user WHERE u_username = '" + username + "'";
+            String query = userId == null ? "SELECT * FROM tbl_user WHERE u_username = '" + username + "'" : "SELECT * FROM tbl_user WHERE u_username = '" + username + "' AND u_id != '" + userId + "'";
             ResultSet resultSet = connector.getData(query);
+        
             if (resultSet.next()) {
                 lblmessage5.setText("*** ");
-                return true;
+                return true; // Username exists in the database
             } else {
                 return false;
             }
         } catch (SQLException ex) {
             return false;
         }
-    } 
+    }
     
     public boolean validCNum(String cNum){
         try{
@@ -134,36 +134,6 @@ public class staffeditForm extends javax.swing.JInternalFrame {
             return bigInteger.compareTo(BigInteger.ZERO) >= 0 
                     && bigInteger.compareTo(BigInteger.valueOf(10_000_000_000L)) < 0;            
         }catch (NumberFormatException e) {
-            return false;
-        }
-    }
-    
-           
-    public boolean duplicateCheck(){
-        dbConnector connector = new dbConnector();
-        
-        try{
-            String query = "SELECT * FROM tbl_user  WHERE (u_email = '" + txtemail.getText() 
-            + "' OR u_username = '" + txtusername.getText() + "') AND u_id  != '"+id.getText()+"'";
-            ResultSet resultSet = connector.getData(query);
-            
-            if(resultSet.next()){                
-                email = resultSet.getString("u_email");
-                if(email.equals(txtemail.getText())){
-                    System.out.println("Email Exist!");
-                    txtemail.setText("");
-                }
-                username = resultSet.getString("u_username");
-                if(username.equals(txtusername.getText())){
-                    System.out.println("Username Exist!");
-                    txtusername.setText("");
-                }
-                return true;
-            }else{
-                return false;
-            }
-                
-        }catch (SQLException ex) {
             return false;
         }
     }
@@ -210,7 +180,7 @@ public class staffeditForm extends javax.swing.JInternalFrame {
         picture = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(806, 666));
+        setPreferredSize(new java.awt.Dimension(806, 586));
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -403,7 +373,7 @@ public class staffeditForm extends javax.swing.JInternalFrame {
         lblmessage8.setForeground(new java.awt.Color(255, 0, 0));
         lblmessage8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage8);
-        lblmessage8.setBounds(380, 560, 50, 40);
+        lblmessage8.setBounds(700, 430, 50, 40);
 
         boxstatus.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         boxstatus.setForeground(new java.awt.Color(46, 49, 146));
@@ -415,14 +385,14 @@ public class staffeditForm extends javax.swing.JInternalFrame {
             }
         });
         background.add(boxstatus);
-        boxstatus.setBounds(180, 560, 270, 40);
+        boxstatus.setBounds(540, 430, 230, 40);
 
         lblstatus.setFont(new java.awt.Font("Cambria Math", 0, 20)); // NOI18N
         lblstatus.setForeground(new java.awt.Color(46, 49, 146));
         lblstatus.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblstatus.setText("Status:");
         background.add(lblstatus);
-        lblstatus.setBounds(120, 560, 59, 40);
+        lblstatus.setBounds(480, 430, 59, 40);
 
         confirm.setBackground(new java.awt.Color(255, 255, 255));
         confirm.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -446,7 +416,7 @@ public class staffeditForm extends javax.swing.JInternalFrame {
         confirm.add(lblconfirm, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 180, 30));
 
         background.add(confirm);
-        confirm.setBounds(520, 550, 200, 50);
+        confirm.setBounds(520, 490, 200, 50);
 
         forpicture.setBackground(new java.awt.Color(255, 255, 255));
         forpicture.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 2, true));
@@ -513,7 +483,7 @@ public class staffeditForm extends javax.swing.JInternalFrame {
         boxpicture.setBounds(10, 10, 270, 310);
 
         background.add(forpicture);
-        forpicture.setBounds(470, 140, 290, 390);
+        forpicture.setBounds(480, 20, 290, 390);
 
         back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
         back.setForeground(new java.awt.Color(46, 49, 146));
@@ -538,7 +508,7 @@ public class staffeditForm extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -637,26 +607,28 @@ public class staffeditForm extends javax.swing.JInternalFrame {
         if (isAnyFieldEmpty) {
             System.out.println("Empty All Text Field!");
             return;
-        }
-        if (duplicateEmail(txtemail.getText())) {
-            System.out.println("Email Exist!");
-            txtemail.setText("");
-            return;
-        }
+        }      
         if (!validCNum(cNum)) {
             System.out.println("Contact Number Invalid!");
             lblmessage4.setText("***");
-            return;
-        }
-        if (duplicateUser(txtusername.getText())) {
-            System.out.println("Username Exist!");
-            txtusername.setText("");
             return;
         }
         if (txtpassword.getText().length() < 8) {
             System.out.println("Password Invalid!");
             lblmessage6.setText("***");
             txtpassword.setText("");
+            return;
+        }
+        
+        String userId = isCreating ? null : id.getText();
+        if (duplicateEmail(txtemail.getText(), userId)) {
+            System.out.println("Email Exists!");
+            txtemail.setText("");
+            return;
+        }
+        if (duplicateUser(txtusername.getText(), userId)) {
+            System.out.println("Username Exists!");
+            txtusername.setText("");
             return;
         }
 
@@ -729,6 +701,7 @@ public class staffeditForm extends javax.swing.JInternalFrame {
     private void uploadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_uploadMouseClicked
         picture.setText("");
         JFileChooser fileChooser = new JFileChooser();
+            
         int returnValue = fileChooser.showOpenDialog(null);
         if (returnValue == JFileChooser.APPROVE_OPTION) {
             try {

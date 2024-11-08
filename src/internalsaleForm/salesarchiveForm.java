@@ -101,7 +101,7 @@ public final class salesarchiveForm extends javax.swing.JInternalFrame {
         sales = new javax.swing.JTable();
         back = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(806, 666));
+        setPreferredSize(new java.awt.Dimension(806, 586));
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -127,7 +127,7 @@ public final class salesarchiveForm extends javax.swing.JInternalFrame {
         scroll.setViewportView(sales);
 
         background.add(scroll);
-        scroll.setBounds(20, 55, 750, 555);
+        scroll.setBounds(20, 55, 750, 480);
 
         back.setFont(new java.awt.Font("Candara", 1, 10)); // NOI18N
         back.setForeground(new java.awt.Color(46, 49, 146));
@@ -153,7 +153,7 @@ public final class salesarchiveForm extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 

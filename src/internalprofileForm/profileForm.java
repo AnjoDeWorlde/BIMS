@@ -72,7 +72,7 @@ public class profileForm extends javax.swing.JInternalFrame {
         changepass = new javax.swing.JPanel();
         lblreset = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(846, 786));
+        setPreferredSize(new java.awt.Dimension(846, 706));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
                 formInternalFrameActivated(evt);
@@ -301,7 +301,7 @@ public class profileForm extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

@@ -97,7 +97,7 @@ public final class staffarchiveForm extends javax.swing.JInternalFrame {
         lblunarchive = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(806, 666));
+        setPreferredSize(new java.awt.Dimension(806, 586));
 
         background.setBackground(new java.awt.Color(255, 255, 255));
         background.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -121,7 +121,7 @@ public final class staffarchiveForm extends javax.swing.JInternalFrame {
         scroll.setViewportView(userlists);
 
         background.add(scroll);
-        scroll.setBounds(20, 55, 750, 555);
+        scroll.setBounds(20, 55, 750, 480);
 
         unarchive.setBackground(new java.awt.Color(255, 255, 255));
         unarchive.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -170,7 +170,7 @@ public final class staffarchiveForm extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

@@ -56,6 +56,7 @@ public class forgotpassForm extends javax.swing.JFrame {
         lblusername = new javax.swing.JLabel();
         reset = new javax.swing.JPanel();
         lblreset2 = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
         lblbackground = new javax.swing.JLabel();
         side = new javax.swing.JPanel();
         diagonal1 = new javax.swing.JLabel();
@@ -66,7 +67,6 @@ public class forgotpassForm extends javax.swing.JFrame {
         bubble5 = new javax.swing.JLabel();
         bubble6 = new javax.swing.JLabel();
         bubble8 = new javax.swing.JLabel();
-        diagonal5 = new javax.swing.JLabel();
         diagonal6 = new javax.swing.JLabel();
         bubble12 = new javax.swing.JLabel();
         bubble13 = new javax.swing.JLabel();
@@ -86,7 +86,6 @@ public class forgotpassForm extends javax.swing.JFrame {
         bubble19 = new javax.swing.JLabel();
         bubble20 = new javax.swing.JLabel();
         bubble21 = new javax.swing.JLabel();
-        diagoonal3 = new javax.swing.JLabel();
         diagoonal5 = new javax.swing.JLabel();
         diagoonal6 = new javax.swing.JLabel();
         diagoonal7 = new javax.swing.JLabel();
@@ -105,7 +104,7 @@ public class forgotpassForm extends javax.swing.JFrame {
         background.setLayout(null);
 
         form.setBackground(new java.awt.Color(255, 255, 255));
-        form.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
+        form.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
         form.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblmessage1.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
@@ -194,12 +193,15 @@ public class forgotpassForm extends javax.swing.JFrame {
 
         form.add(reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 420, 150, 40));
 
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logooo4.png"))); // NOI18N
+        form.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 180));
+
         lblbackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bg.png"))); // NOI18N
         lblbackground.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
-        form.add(lblbackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(-440, -260, 1260, 910));
+        form.add(lblbackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(-510, -320, 1310, 890));
 
         background.add(form);
-        form.setBounds(180, 100, 820, 650);
+        form.setBounds(160, 100, 800, 570);
 
         side.setBackground(new java.awt.Color(255, 255, 255));
         side.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
@@ -236,10 +238,6 @@ public class forgotpassForm extends javax.swing.JFrame {
         bubble8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 50.png"))); // NOI18N
         side.add(bubble8);
         bubble8.setBounds(0, 580, 50, 50);
-
-        diagonal5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
-        side.add(diagonal5);
-        diagonal5.setBounds(-20, 670, 100, 100);
 
         diagonal6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
         side.add(diagonal6);
@@ -278,12 +276,18 @@ public class forgotpassForm extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                backMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                backMouseExited(evt);
+            }
         });
         side.add(back);
         back.setBounds(50, 10, 70, 40);
 
         background.add(side);
-        side.setBounds(0, 0, 180, 750);
+        side.setBounds(0, 0, 160, 670);
 
         top.setBackground(new java.awt.Color(255, 255, 255));
         top.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
@@ -296,7 +300,7 @@ public class forgotpassForm extends javax.swing.JFrame {
                 xMouseClicked(evt);
             }
         });
-        top.add(x, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 20, 30, 30));
+        top.add(x, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 30, 30));
 
         mini.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Minimize.png"))); // NOI18N
         mini.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -304,7 +308,7 @@ public class forgotpassForm extends javax.swing.JFrame {
                 miniMouseClicked(evt);
             }
         });
-        top.add(mini, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, -1, 30));
+        top.add(mini, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 20, -1, 30));
 
         bubble9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
         top.add(bubble9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
@@ -330,26 +334,23 @@ public class forgotpassForm extends javax.swing.JFrame {
         bubble21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
         top.add(bubble21, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, -1, -1));
 
-        diagoonal3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
-        top.add(diagoonal3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 60, 90, 80));
-
         diagoonal5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
-        top.add(diagoonal5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 60, 90, 80));
+        top.add(diagoonal5, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 60, 90, 80));
 
         diagoonal6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
-        top.add(diagoonal6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 90, 80));
+        top.add(diagoonal6, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 60, 90, 80));
 
         diagoonal7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
-        top.add(diagoonal7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 90, 80));
+        top.add(diagoonal7, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 90, 80));
 
         diagoonal8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
         top.add(diagoonal8, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 60, 90, 80));
 
         diagoonal9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
-        top.add(diagoonal9, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 90, 80));
+        top.add(diagoonal9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 90, 80));
 
         diagoonal10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
-        top.add(diagoonal10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 90, 80));
+        top.add(diagoonal10, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 60, 90, 80));
 
         bubble11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bubbles 25.png"))); // NOI18N
         top.add(bubble11, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, -1, -1));
@@ -358,17 +359,19 @@ public class forgotpassForm extends javax.swing.JFrame {
         top.add(bubble22, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, -1, -1));
 
         background.add(top);
-        top.setBounds(160, 0, 840, 100);
+        top.setBounds(150, 0, 810, 100);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 961, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -397,6 +400,9 @@ public class forgotpassForm extends javax.swing.JFrame {
             lblmessage1.setText("***");
             lblmessage2.setText("***");
             lblmessage3.setText("***");
+        }else if(!cNum.matches("\\d+")) {
+            System.out.println("Contact number must be numeric!");
+            lblmessage3.setText("Contact number must be numeric!");
         } else {
             dbConnector dbc = new dbConnector();
             try {
@@ -450,6 +456,14 @@ public class forgotpassForm extends javax.swing.JFrame {
         this.setExtendedState(loginForm.ICONIFIED);
     }//GEN-LAST:event_miniMouseClicked
 
+    private void backMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseEntered
+        back.setBackground(enterColor);
+    }//GEN-LAST:event_backMouseEntered
+
+    private void backMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseExited
+        back.setBackground(origColor);
+    }//GEN-LAST:event_backMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -490,10 +504,8 @@ public class forgotpassForm extends javax.swing.JFrame {
     private javax.swing.JLabel diagonal2;
     private javax.swing.JLabel diagonal3;
     private javax.swing.JLabel diagonal4;
-    private javax.swing.JLabel diagonal5;
     private javax.swing.JLabel diagonal6;
     private javax.swing.JLabel diagoonal10;
-    private javax.swing.JLabel diagoonal3;
     private javax.swing.JLabel diagoonal4;
     private javax.swing.JLabel diagoonal5;
     private javax.swing.JLabel diagoonal6;
@@ -509,6 +521,7 @@ public class forgotpassForm extends javax.swing.JFrame {
     private javax.swing.JLabel lblmessage3;
     private javax.swing.JLabel lblreset2;
     private javax.swing.JLabel lblusername;
+    private javax.swing.JLabel logo;
     private javax.swing.JLabel mini;
     private javax.swing.JPanel reset;
     private javax.swing.JPanel side;

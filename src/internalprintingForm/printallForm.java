@@ -1,12 +1,22 @@
 package internalprintingForm;
 
-import config.PanelPrinter;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Rectangle;
+import com.itextpdf.text.pdf.PdfWriter;
 import config.dbConnector;
 import internalinventoryForm.inventoryprintForm;
 import internalsaleForm.salesprintForm;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -14,7 +24,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
@@ -73,7 +82,7 @@ public final class printallForm extends javax.swing.JInternalFrame {
         } 
     }
 
-    private String source;
+    private final String source;
     private int sortState = 0;
     
     public void CurrentDate(){
@@ -289,8 +298,8 @@ dbConnector connector = new dbConnector();
         page.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 146), 3, true));
         page.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo_wname_orig35.jpg"))); // NOI18N
-        page.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 310, 60));
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logobusines.png"))); // NOI18N
+        page.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 170, 50));
 
         kind.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
         kind.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -359,9 +368,55 @@ dbConnector connector = new dbConnector();
     }// </editor-fold>//GEN-END:initComponents
 
     private void printMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printMouseClicked
-        JPanel myPanel = new JPanel();
-        PanelPrinter pPrint = new PanelPrinter(page);
-        pPrint.printPanel();
+    try {
+        // Check if the page is null
+        if (page == null) {
+            System.out.println("Page is null!");
+            return; // Exit the method if page is null
+        }
+
+        // Capture the JPanel as an image
+        BufferedImage panelImage = new BufferedImage(page.getWidth(), page.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics g = panelImage.getGraphics();
+        page.paint(g);
+        g.dispose(); // Dispose of the graphics context
+
+        // Get the Downloads directory path
+        String baseFileName = "output.pdf";
+        String downloadsPath = Paths.get(System.getProperty("user.home"), "Downloads", baseFileName).toString();
+
+        // Check if the file already exists and modify the filename if necessary
+        File file = new File(downloadsPath);
+        int counter = 1;
+        while (file.exists()) {
+            String newFileName = "output(" + counter + ").pdf";
+            downloadsPath = Paths.get(System.getProperty("user.home"), "Downloads", newFileName).toString();
+            file = new File(downloadsPath);
+            counter++;
+        }
+
+        // Define short bond paper dimensions in points (1 inch = 72 points)
+        Rectangle shortBondLandscape = new Rectangle(792, 612); // 11 x 8.5 inches in landscape
+
+        // Create a PDF document
+        Document document = new Document(shortBondLandscape);
+        PdfWriter.getInstance(document, new FileOutputStream(downloadsPath));
+        document.open();
+
+        // Convert the BufferedImage to an iText Image
+        com.itextpdf.text.Image pdfImage = com.itextpdf.text.Image.getInstance(panelImage, null);
+
+        // Scale the image to fit the short bond paper dimensions
+        pdfImage.scaleToFit(shortBondLandscape.getWidth(), shortBondLandscape.getHeight());
+        pdfImage.setAlignment(Element.ALIGN_CENTER);
+
+        // Add the image to the PDF
+        document.add(pdfImage);
+        document.close();
+
+        System.out.println("PDF saved successfully to Downloads folder: " + downloadsPath);
+    } catch (IOException | DocumentException e) {
+    }
     }//GEN-LAST:event_printMouseClicked
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked

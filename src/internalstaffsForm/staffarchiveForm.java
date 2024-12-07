@@ -189,6 +189,7 @@ public final class staffarchiveForm extends javax.swing.JInternalFrame {
                     stafflistsForm userListFrame = (stafflistsForm) SwingUtilities.getAncestorOfClass(stafflistsForm.class, this);
                     System.out.println("Unarchive Successfully!");
                     userListFrame.getLblMessage().setText("SUCCESS");
+                    userListFrame.restoreOriginalState();
                 }
             } catch (SQLException ex) {
             }

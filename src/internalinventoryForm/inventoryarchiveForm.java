@@ -194,6 +194,7 @@ public final class inventoryarchiveForm extends javax.swing.JInternalFrame {
                     inventoryForm inventoryFrame = (inventoryForm) SwingUtilities.getAncestorOfClass(inventoryForm.class, this);
                     System.out.println("Unarchive Successfully!");
                     inventoryFrame.getLblMessage().setText("SUCCESS");
+                    inventoryFrame.restoreOriginalState();
                 }
             } catch (SQLException ex) {
             }

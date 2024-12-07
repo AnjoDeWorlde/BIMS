@@ -107,8 +107,8 @@ public final class staffresetForm extends javax.swing.JInternalFrame {
         back = new javax.swing.JLabel();
         scroll = new javax.swing.JScrollPane();
         userlists = new javax.swing.JTable();
-        confirm1 = new javax.swing.JPanel();
-        lblconfirm1 = new javax.swing.JLabel();
+        change = new javax.swing.JPanel();
+        lblchange = new javax.swing.JLabel();
         confirm = new javax.swing.JPanel();
         lblconfirm = new javax.swing.JLabel();
         txtnewpass = new javax.swing.JTextField();
@@ -155,29 +155,29 @@ public final class staffresetForm extends javax.swing.JInternalFrame {
         background.add(scroll);
         scroll.setBounds(10, 40, 570, 500);
 
-        confirm1.setBackground(new java.awt.Color(255, 255, 255));
-        confirm1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
-        confirm1.addMouseListener(new java.awt.event.MouseAdapter() {
+        change.setBackground(new java.awt.Color(255, 255, 255));
+        change.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
+        change.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                confirm1MouseClicked(evt);
+                changeMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                confirm1MouseEntered(evt);
+                changeMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                confirm1MouseExited(evt);
+                changeMouseExited(evt);
             }
         });
-        confirm1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        change.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblconfirm1.setFont(new java.awt.Font("Cambria Math", 1, 24)); // NOI18N
-        lblconfirm1.setForeground(new java.awt.Color(0, 0, 146));
-        lblconfirm1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblconfirm1.setText("C H A N G E");
-        confirm1.add(lblconfirm1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, 30));
+        lblchange.setFont(new java.awt.Font("Cambria Math", 1, 24)); // NOI18N
+        lblchange.setForeground(new java.awt.Color(0, 0, 146));
+        lblchange.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblchange.setText("C H A N G E");
+        change.add(lblchange, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 160, 30));
 
-        background.add(confirm1);
-        confirm1.setBounds(590, 400, 180, 50);
+        background.add(change);
+        change.setBounds(590, 400, 180, 50);
 
         confirm.setBackground(new java.awt.Color(255, 255, 255));
         confirm.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 3));
@@ -297,7 +297,7 @@ public final class staffresetForm extends javax.swing.JInternalFrame {
         confirm.setBackground(borderColor);
     }//GEN-LAST:event_confirmMouseExited
 
-    private void confirm1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirm1MouseClicked
+    private void changeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeMouseClicked
         if(txtnewpass.getText().isEmpty() || txtconfirmpass.getText().isEmpty()){
             System.out.println("Empty Text Fields!");
             stafflistsForm userListFrame = (stafflistsForm) SwingUtilities.getAncestorOfClass(stafflistsForm.class, this);
@@ -331,15 +331,15 @@ public final class staffresetForm extends javax.swing.JInternalFrame {
                 }
             }    
         }
-    }//GEN-LAST:event_confirm1MouseClicked
+    }//GEN-LAST:event_changeMouseClicked
 
-    private void confirm1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirm1MouseEntered
-        confirm1.setBackground(enterColor);
-    }//GEN-LAST:event_confirm1MouseEntered
+    private void changeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeMouseEntered
+        change.setBackground(enterColor);
+    }//GEN-LAST:event_changeMouseEntered
 
-    private void confirm1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirm1MouseExited
-        confirm1.setBackground(borderColor);
-    }//GEN-LAST:event_confirm1MouseExited
+    private void changeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changeMouseExited
+        change.setBackground(borderColor);
+    }//GEN-LAST:event_changeMouseExited
 
     private void txtconfirmpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtconfirmpassActionPerformed
         // TODO add your handling code here:
@@ -348,10 +348,10 @@ public final class staffresetForm extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel back;
     private javax.swing.JPanel background;
+    private javax.swing.JPanel change;
     private javax.swing.JPanel confirm;
-    private javax.swing.JPanel confirm1;
+    private javax.swing.JLabel lblchange;
     private javax.swing.JLabel lblconfirm;
-    private javax.swing.JLabel lblconfirm1;
     private javax.swing.JLabel lblconfirmpass;
     private javax.swing.JLabel lblnewpass;
     private javax.swing.JScrollPane scroll;

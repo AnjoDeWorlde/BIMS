@@ -26,17 +26,25 @@ public class forgotpassForm extends javax.swing.JFrame {
     Color enterColor = new Color(204,204,255);
     
     private boolean checkUsernameAndContactNumber(String username, String cNum, String usernameDB, long contactNumberDB) {
+        boolean isValid = true;
+
         if (!cNum.equals(String.valueOf(contactNumberDB))) {
             System.out.println("Nonexistent Contact Number!");
-            txtcontactnumber.setText("Nonexistent Contact Number!");
-            return false;
+            lblmessage2.setText("***");
+            isValid = false;
+        } else {
+            lblmessage2.setText("");
         }
+
         if (!username.equals(usernameDB)) {
             System.out.println("Nonexistent Username!");
-            txtusername.setText("Nonexistent Username!");
-            return false;
-        } 
-        return true;
+            lblmessage3.setText("***");
+            isValid = false;
+        } else {
+            lblmessage3.setText("");
+        }
+
+        return isValid;
     }
         
     @SuppressWarnings("unchecked")
@@ -59,6 +67,8 @@ public class forgotpassForm extends javax.swing.JFrame {
         logo = new javax.swing.JLabel();
         lblbackground = new javax.swing.JLabel();
         side = new javax.swing.JPanel();
+        back = new javax.swing.JPanel();
+        lblback = new javax.swing.JLabel();
         diagonal1 = new javax.swing.JLabel();
         diagonal4 = new javax.swing.JLabel();
         bubble1 = new javax.swing.JLabel();
@@ -74,7 +84,6 @@ public class forgotpassForm extends javax.swing.JFrame {
         bubble15 = new javax.swing.JLabel();
         diagonal3 = new javax.swing.JLabel();
         diagoonal4 = new javax.swing.JLabel();
-        back = new javax.swing.JLabel();
         top = new javax.swing.JPanel();
         x = new javax.swing.JLabel();
         mini = new javax.swing.JLabel();
@@ -207,6 +216,29 @@ public class forgotpassForm extends javax.swing.JFrame {
         side.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
         side.setLayout(null);
 
+        back.setBackground(new java.awt.Color(255, 255, 255));
+        back.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                backMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                backMouseExited(evt);
+            }
+        });
+        back.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblback.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        lblback.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblback.setText("BACK");
+        back.add(lblback, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 20));
+
+        side.add(back);
+        back.setBounds(50, 10, 70, 40);
+
         diagonal1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
         side.add(diagonal1);
         diagonal1.setBounds(80, 130, 100, 100);
@@ -266,25 +298,6 @@ public class forgotpassForm extends javax.swing.JFrame {
         diagoonal4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-diagonal-lines-100.png"))); // NOI18N
         side.add(diagoonal4);
         diagoonal4.setBounds(90, 360, 100, 100);
-
-        back.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
-        back.setForeground(new java.awt.Color(46, 49, 146));
-        back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        back.setText("BACK");
-        back.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        back.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                backMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                backMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                backMouseExited(evt);
-            }
-        });
-        side.add(back);
-        back.setBounds(50, 10, 70, 40);
 
         background.add(side);
         side.setBounds(0, 0, 160, 670);
@@ -378,13 +391,6 @@ public class forgotpassForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        System.out.println("Go Back!");
-        loginForm lgf = new loginForm();
-        lgf.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_backMouseClicked
-
     private void resetMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseExited
         reset.setBackground(origColor);
     }//GEN-LAST:event_resetMouseExited
@@ -395,42 +401,81 @@ public class forgotpassForm extends javax.swing.JFrame {
 
     private void resetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseClicked
         String cNum = txtcontactnumber.getText();
-        if(txtemail.getText().isEmpty() || txtusername.getText().isEmpty() || cNum.isEmpty()) {
-            System.out.println("All fields are required!");
+        String eMail = txtemail.getText();
+        String uName = txtusername.getText();
+        boolean isAnyFieldEmpty = false;
+
+        // Validate email field
+        if (eMail.isEmpty()) {
+            System.out.println("Email is required!");
             lblmessage1.setText("***");
-            lblmessage2.setText("***");
-            lblmessage3.setText("***");
-        }else if(!cNum.matches("\\d+")) {
-            System.out.println("Contact number must be numeric!");
-            lblmessage3.setText("Contact number must be numeric!");
+            isAnyFieldEmpty = true;
+        } else if (!eMail.matches("^[\\w-\\.]+@[\\w-]+\\.(com|net|org)$")) {
+            System.out.println("Email is invalid!");
+            lblmessage1.setText("***");
+            isAnyFieldEmpty = true;
         } else {
-            dbConnector dbc = new dbConnector();
-            try {
-                String query = "SELECT * FROM tbl_user WHERE u_email = ?";
-                PreparedStatement statement = dbc.prepareStatement(query);
-                statement.setString(1, txtemail.getText());
-                ResultSet emailResultSet = statement.executeQuery();
-                if (emailResultSet.next()) {
-                    long contactNumberDB = emailResultSet.getLong("u_contactnumber");
-                    String usernameDB = emailResultSet.getString("u_username");
-                    if (checkUsernameAndContactNumber(txtusername.getText(), cNum, usernameDB, contactNumberDB)) {
-                        String updateQuery = "UPDATE tbl_user SET u_status = 'Reset' WHERE u_email = ?";
-                        PreparedStatement updateStatement = dbc.prepareStatement(updateQuery);
-                        updateStatement.setString(1, txtemail.getText());
-                        updateStatement.executeUpdate();
-                        System.out.println("Account's Password Reset!");
-                        loginForm lgf = new loginForm();
-                        lgf.setVisible(true);
-                        this.dispose();
-                    }
-                } else {
-                    txtemail.setText("Nonexistent Email!");
-                    System.out.println("Nonexistent Email!");
-                    txtcontactnumber.setText("");
-                    txtusername.setText("");
+            lblmessage1.setText("");
+        }
+
+        // Validate contact number field
+        if (cNum.isEmpty()) {
+            System.out.println("Contact number is required!");
+            lblmessage2.setText("***");
+            isAnyFieldEmpty = true;
+        } else if (!cNum.matches("\\d+")) {
+            System.out.println("Contact number must be numeric!");
+            lblmessage2.setText("***");
+            isAnyFieldEmpty = true;
+        } else {
+            lblmessage2.setText("");
+        }
+
+        // Validate username field
+        if (uName.isEmpty()) {
+            System.out.println("Username is required!");
+            lblmessage3.setText("***");
+            isAnyFieldEmpty = true;
+        } else {
+            lblmessage3.setText("");
+        }
+
+        // If any validation fails, stop further execution
+        if (isAnyFieldEmpty) {
+            System.out.println("Please fill all fields correctly!");
+            return;
+        }
+
+        // Proceed to the final part if all validations pass
+        dbConnector dbc = new dbConnector();
+        try {
+            String query = "SELECT * FROM tbl_user WHERE u_email = ?";
+            PreparedStatement statement = dbc.prepareStatement(query);
+            statement.setString(1, eMail);
+            ResultSet emailResultSet = statement.executeQuery();
+
+            if (emailResultSet.next()) {
+                long contactNumberDB = emailResultSet.getLong("u_contactnumber");
+                String usernameDB = emailResultSet.getString("u_username");
+
+                if (checkUsernameAndContactNumber(uName, cNum, usernameDB, contactNumberDB)) {
+                    String updateQuery = "UPDATE tbl_user SET u_status = 'Reset' WHERE u_email = ?";
+                    PreparedStatement updateStatement = dbc.prepareStatement(updateQuery);
+                    updateStatement.setString(1, eMail);
+                    updateStatement.executeUpdate();
+
+                    System.out.println("Account's Password Reset!");
+                    loginForm lgf = new loginForm();
+                    lgf.setVisible(true);
+                    this.dispose();
                 }
-            } catch (SQLException ex) {
+            } else {
+                lblmessage1.setText("***");
+                System.out.println("Nonexistent Email!");
+                txtcontactnumber.setText("");
+                txtusername.setText("");
             }
+        } catch (SQLException ex) {
         }
     }//GEN-LAST:event_resetMouseClicked
 
@@ -456,6 +501,13 @@ public class forgotpassForm extends javax.swing.JFrame {
         this.setExtendedState(loginForm.ICONIFIED);
     }//GEN-LAST:event_miniMouseClicked
 
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        System.out.println("Go Back!");
+        loginForm lgf = new loginForm();
+        lgf.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backMouseClicked
+
     private void backMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseEntered
         back.setBackground(enterColor);
     }//GEN-LAST:event_backMouseEntered
@@ -480,7 +532,7 @@ public class forgotpassForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel back;
+    private javax.swing.JPanel back;
     private javax.swing.JLabel bubble1;
     private javax.swing.JLabel bubble10;
     private javax.swing.JLabel bubble11;
@@ -513,6 +565,7 @@ public class forgotpassForm extends javax.swing.JFrame {
     private javax.swing.JLabel diagoonal8;
     private javax.swing.JLabel diagoonal9;
     private javax.swing.JPanel form;
+    private javax.swing.JLabel lblback;
     private javax.swing.JLabel lblbackground;
     private javax.swing.JLabel lblcontactnumber;
     private javax.swing.JLabel lblemail;

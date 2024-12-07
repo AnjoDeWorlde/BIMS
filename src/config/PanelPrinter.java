@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 
 public class PanelPrinter implements Printable {
 
-    private JPanel panelToPrint;
+    private final JPanel panelToPrint;
 
     public PanelPrinter(JPanel panelToPrint) {
         this.panelToPrint = panelToPrint;

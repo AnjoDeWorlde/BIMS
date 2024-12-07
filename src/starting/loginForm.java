@@ -105,9 +105,7 @@ public class loginForm extends javax.swing.JFrame {
         boolean isCapsLockOn = Toolkit.getDefaultToolkit().getLockingKeyState(KeyEvent.VK_CAPS_LOCK);
         boolean isShiftPressed = e.isShiftDown();
 
-        if (isCapsLockOn && isShiftPressed) {
-            lblmessage.setText("CAPS On!");
-        } else if (isCapsLockOn) {
+        if (isCapsLockOn) {
             lblmessage.setText("Caps Lock is ON!");
         } else if (isShiftPressed) {
             lblmessage.setText("CAPS ON!");

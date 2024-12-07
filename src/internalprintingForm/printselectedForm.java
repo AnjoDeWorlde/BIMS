@@ -213,14 +213,63 @@ public final class printselectedForm extends javax.swing.JInternalFrame {
         }
     }
 
-    public void displaySelectedData(String dataType) {
-        if (dataType.equalsIgnoreCase("Inventory")) {
-            displayInventory();
-        } else if (dataType.equalsIgnoreCase("Sales")) {
-            displaySales();
+private void displaySelectedRows() {
+    int[] selectedRows = show.getSelectedRows();
+    if (selectedRows.length > 0) {
+        DefaultTableModel model = (DefaultTableModel) show.getModel();
+        DefaultTableModel newModel = new DefaultTableModel();
+
+        // Determine if the data belongs to Inventory or Sales by checking the column names
+        boolean isInventory = model.getColumnName(0).equals("Inventory ID");
+        String[] inventoryColumnNames = {"Inventory ID", "Product", "Date", "Available", "Sold", "Loss", "Status"};
+        String[] salesColumnNames = {"Sales ID", "Product Name", "Date", "Gross Sales", "Deductions", "Net Sales", "Status"};
+        int[] inventoryColumnWidths = {100, 210, 100, 90, 60, 60, 120};
+        int[] salesColumnWidths = {70, 180, 90, 100, 100, 90, 110};
+
+        String[] columnNames = isInventory ? inventoryColumnNames : salesColumnNames;
+        int[] columnWidths = isInventory ? inventoryColumnWidths : salesColumnWidths;
+
+        // Set column names for the new model
+        newModel.setColumnIdentifiers(columnNames);
+
+        // Copy the selected rows to the new model
+        for (int row : selectedRows) {
+            Object[] rowData = new Object[model.getColumnCount()];
+            for (int column = 0; column < model.getColumnCount(); column++) {
+                rowData[column] = model.getValueAt(row, column);
+            }
+            newModel.addRow(rowData);
+        }
+
+        // Apply the new model to the table
+        show.setModel(newModel);
+
+        // Adjust column widths
+        for (int i = 0; i < columnWidths.length; i++) {
+            TableColumn column = show.getColumnModel().getColumn(i);
+            column.setPreferredWidth(columnWidths[i]);
+        }
+
+        // Set font for table header
+        JTableHeader header = show.getTableHeader();
+        Font headerFont = new Font("Cambria Math", Font.PLAIN, 16);
+        header.setFont(headerFont);
+
+        // Align columns based on type
+        alignColumn(0, show, DefaultTableCellRenderer.CENTER);
+        alignColumn(1, show, DefaultTableCellRenderer.LEFT);
+        alignColumn(2, show, DefaultTableCellRenderer.CENTER);
+        alignColumn(3, show, DefaultTableCellRenderer.RIGHT);
+        alignColumn(4, show, DefaultTableCellRenderer.RIGHT);
+        alignColumn(5, show, DefaultTableCellRenderer.RIGHT);
+        alignColumn(6, show, DefaultTableCellRenderer.CENTER);
+
+        // Format the date column
+        formatDateColumn(show, 2);
+    } else {
+        // Handle case when no rows are selected
     }
 }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -288,8 +337,8 @@ public final class printselectedForm extends javax.swing.JInternalFrame {
         page.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 146), 3, true));
         page.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo_wname_orig35.jpg"))); // NOI18N
-        page.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 340, 50));
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logobusines.png"))); // NOI18N
+        page.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 170, 50));
 
         kind.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
         kind.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -351,7 +400,7 @@ public final class printselectedForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_printMouseClicked
 
     private void confirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseClicked
-        displaySelectedData(source);
+        displaySelectedRows();
     }//GEN-LAST:event_confirmMouseClicked
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked

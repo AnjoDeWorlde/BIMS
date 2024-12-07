@@ -42,7 +42,7 @@ public class producteditForm extends javax.swing.JInternalFrame {
         bi.setNorthPane(null);initComponents();
     }
     
-    private boolean isCreating;
+    private final boolean isCreating;
     public String destination = "";
     File selectedFile;
     public String oldpath;
@@ -102,6 +102,65 @@ public class producteditForm extends javax.swing.JInternalFrame {
         ImageIcon image = new ImageIcon(newImg);
         return image;
     }
+    
+public boolean validateInputs() {
+    boolean hasErrors = false;
+
+    // Validate empty fields
+    if (txtname.getText().isEmpty()) {
+        lblmessage1.setText("***");
+        hasErrors = true;
+    } else {
+        lblmessage1.setText("");
+    }
+
+    if (txtqty.getText().isEmpty()) {
+        lblmessage2.setText("***");
+        hasErrors = true;
+    } else if (!isNumeric(txtqty.getText())) { // Check if qty is numeric
+        System.out.println("Quantity must be numeric!");
+        lblmessage2.setText("***");
+        txtqty.setText("");
+        hasErrors = true;
+    } else {
+        lblmessage2.setText("");
+    }
+
+    if (txtprice.getText().isEmpty()) {
+        lblmessage3.setText("***");
+        hasErrors = true;
+    } else if (!isNumeric(txtprice.getText())) { // Check if price is numeric
+        System.out.println("Price must be numeric!");
+        lblmessage3.setText("***");
+        txtprice.setText("");
+        hasErrors = true;
+    } else {
+        lblmessage3.setText("");
+    }
+
+    if (boxstatus.getSelectedItem().equals("N/A")) {
+        lblmessage4.setText("***");
+        hasErrors = true;
+    } else {
+        lblmessage4.setText("");
+    }
+
+    if (txtpassword.getText().isEmpty()) {
+        lblmessage5.setText("***");
+        hasErrors = true;
+    } else {
+        lblmessage5.setText("");
+    }
+
+    if (destination.isEmpty()) {
+        picture.setText("No Picture!");
+        hasErrors = true;
+    } else {
+        picture.setText("");
+    }
+
+    return !hasErrors; // Return true if there are no errors
+}
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -423,78 +482,35 @@ public class producteditForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtpasswordActionPerformed
 
     private void confirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_confirmMouseClicked
-        boolean isAnyFieldEmpty = false;
-        if (txtname.getText().isEmpty()) {
-            lblmessage1.setText("***");
-            isAnyFieldEmpty = true;
-        } else {
-            lblmessage1.setText("");
-        }
-        if (txtqty.getText().isEmpty()) {
-            lblmessage2.setText("***");
-            isAnyFieldEmpty = true;
-        } else {
-            lblmessage2.setText("");
-        }
-        if (txtprice.getText().isEmpty()) {
-            lblmessage3.setText("***");
-            isAnyFieldEmpty = true;
-        } else {
-            lblmessage3.setText("");
-        }
-        if (boxstatus.getSelectedItem().equals("N/A")) {
-            lblmessage4.setText("***");
-            isAnyFieldEmpty = true;
-        } else {
-            lblmessage4.setText("");
-        }
-        if (txtpassword.getText().isEmpty()) {
-            lblmessage5.setText("***");
-            isAnyFieldEmpty = true;
-        } else {
-            lblmessage5.setText("");
-        }
-        if (destination.isEmpty()) {
-            picture.setText("No Picture!");
-            isAnyFieldEmpty = true;
-        } else {
-            picture.setText("");
-        }
-        if (isAnyFieldEmpty) {
-            System.out.println("Empty All Text Fields!");
+        if (!validateInputs()) {
             return;
         }
-        if (!isNumeric(txtqty.getText())) {
-            System.out.println("Quantity must be numbers!");
-            lblmessage2.setText("***");
-            txtqty.setText("");
+
+        BigDecimal qty;
+        BigDecimal price;
+
+        try {
+            qty = new BigDecimal(txtqty.getText());
+            price = new BigDecimal(txtprice.getText());
+        } catch (NumberFormatException ex) {
             return;
-        } else {
-            lblmessage2.setText("");
-        }   
-        if (!isNumeric(txtprice.getText())) {
-            System.out.println("Price must be numbers!");
-            lblmessage3.setText("***");
-            txtprice.setText("");
-            return;
-        } else {
-            lblmessage3.setText("");
         }
 
         dbConnector connector = new dbConnector();
-        BigDecimal qty = new BigDecimal(txtqty.getText());
-        BigDecimal price = new BigDecimal(txtprice.getText());
         try {
             Session shesh = Session.getInstance();
             String query = "SELECT * FROM tbl_user WHERE u_id = '" + shesh.getUid() + "' ";
             ResultSet resultSet = connector.getData(query);
+
             if (resultSet.next()) {
                 String oldpass = resultSet.getString("u_password");
                 String passhash = passwordHasher.hashPassword(txtpassword.getText());
+
                 if (!equalPass(oldpass, passhash)) {
                     System.out.println("Passwords do not match!");
                     lblmessage5.setText("***");
-                } else {
+                    return;
+                }else {
                     if (isCreating) {
                         if (connector.insertData("INSERT INTO tbl_products(p_name, p_qty, p_price, p_status, p_picture) "
                         + "VALUES('" + txtname.getText() + "','" + qty + "','" + price + "','" + boxstatus.getSelectedItem() + "','" 

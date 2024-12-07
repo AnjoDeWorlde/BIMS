@@ -28,8 +28,6 @@ public final class homeForm extends javax.swing.JInternalFrame {
         logo = new javax.swing.JLabel();
         box1 = new javax.swing.JPanel();
         pic1 = new javax.swing.JLabel();
-        box2 = new javax.swing.JPanel();
-        pic2 = new javax.swing.JLabel();
         box3 = new javax.swing.JPanel();
         pic3 = new javax.swing.JLabel();
         box4 = new javax.swing.JPanel();
@@ -61,25 +59,11 @@ public final class homeForm extends javax.swing.JInternalFrame {
         pic1.setFont(new java.awt.Font("Candara", 0, 11)); // NOI18N
         pic1.setForeground(new java.awt.Color(46, 49, 146));
         pic1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pic1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/frontviewstore.png"))); // NOI18N
-        box1.add(pic1, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 8, 454, 260));
+        pic1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/businesslogo.png"))); // NOI18N
+        box1.add(pic1, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 8, 770, 260));
 
         background.add(box1);
-        box1.setBounds(20, 100, 470, 275);
-
-        box2.setBackground(new java.awt.Color(255, 255, 255));
-        box2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 5));
-        box2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        pic2.setBackground(new java.awt.Color(255, 255, 255));
-        pic2.setFont(new java.awt.Font("Candara", 0, 11)); // NOI18N
-        pic2.setForeground(new java.awt.Color(46, 49, 146));
-        pic2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pic2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/map.png"))); // NOI18N
-        box2.add(pic2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 290, 235));
-
-        background.add(box2);
-        box2.setBounds(480, 100, 330, 275);
+        box1.setBounds(20, 100, 790, 275);
 
         box3.setBackground(new java.awt.Color(255, 255, 255));
         box3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 255), 5));
@@ -103,7 +87,7 @@ public final class homeForm extends javax.swing.JInternalFrame {
         pic4.setFont(new java.awt.Font("Candara", 0, 11)); // NOI18N
         pic4.setForeground(new java.awt.Color(46, 49, 146));
         pic4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pic4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/businesslogo.png"))); // NOI18N
+        pic4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/frontviewstore.png"))); // NOI18N
         box4.add(pic4, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 10, 495, 260));
 
         background.add(box4);
@@ -126,13 +110,11 @@ public final class homeForm extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
     private javax.swing.JPanel box1;
-    private javax.swing.JPanel box2;
     private javax.swing.JPanel box3;
     private javax.swing.JPanel box4;
     private javax.swing.JLabel lblgreetings;
     private javax.swing.JLabel logo;
     private javax.swing.JLabel pic1;
-    private javax.swing.JLabel pic2;
     private javax.swing.JLabel pic3;
     private javax.swing.JLabel pic4;
     // End of variables declaration//GEN-END:variables

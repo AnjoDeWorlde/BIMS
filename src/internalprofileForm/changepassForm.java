@@ -142,7 +142,7 @@ public class changepassForm extends javax.swing.JInternalFrame {
         lblmessage1.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage1);
-        lblmessage1.setBounds(460, 190, 40, 40);
+        lblmessage1.setBounds(480, 230, 40, 40);
 
         txtoldpass.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtoldpass.setForeground(new java.awt.Color(0, 0, 146));
@@ -179,7 +179,7 @@ public class changepassForm extends javax.swing.JInternalFrame {
         lblmessage2.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage2);
-        lblmessage2.setBounds(460, 250, 40, 40);
+        lblmessage2.setBounds(480, 310, 40, 40);
 
         txtnewpass.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtnewpass.setForeground(new java.awt.Color(0, 0, 146));
@@ -216,7 +216,7 @@ public class changepassForm extends javax.swing.JInternalFrame {
         lblmessage3.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         background.add(lblmessage3);
-        lblmessage3.setBounds(460, 310, 40, 40);
+        lblmessage3.setBounds(480, 390, 40, 40);
 
         txtconfirmpass.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtconfirmpass.setForeground(new java.awt.Color(0, 0, 146));
@@ -297,6 +297,9 @@ public class changepassForm extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtconfirmpassActionPerformed
 
     private void changepassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_changepassMouseClicked
+    lblmessage1.setText("");
+    lblmessage2.setText("");
+    lblmessage3.setText("");
     if (txtoldpass.getText().isEmpty()) {
         System.out.println("Old Password Field is Empty!");
         lblmessage1.setText("***");

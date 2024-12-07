@@ -41,6 +41,12 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
         bi.setNorthPane(null);        
     }
 
+    private final String selectedProductId;
+    private final Map<String, Product> productMap = new HashMap<>(); //connector to product
+    private final boolean isCreating; 
+    Color borderColor = new Color(255,255,255);
+    Color enterColor = new Color(46,49,146);     
+    
     public void CurrentDate(){
         Calendar cal = new GregorianCalendar();
         int day = cal.get(Calendar.DATE);
@@ -49,12 +55,6 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
         
         txtdate.setText(month+"/"+day+"/"+year);
     }
-    
-    private final String selectedProductId;
-    private Map<String, Product> productMap = new HashMap<>(); //connector to product
-    private boolean isCreating; 
-    Color borderColor = new Color(255,255,255);
-    Color enterColor = new Color(46,49,146);   
   
     private boolean isNumeric(String str) {
         return str.matches("-?\\d+(\\.\\d+)?"); 
@@ -434,38 +434,36 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
             System.out.println("Empty All Text Fields!");
             return;
         }
-        if (!isNumeric(txtastocks.getText())) {
-            System.out.println("Available Stocks must be numbers!");
-            lblmessage3.setText("***");
-            txtastocks.setText("");
-            return;
-        } else {
-            lblmessage3.setText("");
-        }
-        if (!isNumeric(txtsstocks.getText())) {
-            System.out.println("Sold Stocks must be numbers!");
-            lblmessage4.setText("***");
-            txtsstocks.setText("");
-            return;
-        } else {
-            lblmessage4.setText("");
-        }
-       if (!isNumeric(txtlstocks.getText())) {
-            System.out.println("Loss Stocks must be numbers!");
-            lblmessage5.setText("***");
-            txtlstocks.setText("");
-            return;
-        } else {
-            lblmessage5.setText("");
-        }
-        if (txtpassword.getText().length() < 8) {
-            System.out.println("Password Invalid!");
-            lblmessage7.setText("***");
-            txtpassword.setText("");
-            return;
-        } else {
-            lblmessage7.setText("");
-        }
+        
+        boolean isValidationFailed = false;
+
+if (!isNumeric(txtastocks.getText())) {
+    System.out.println("Available Stocks must be numbers!");
+    lblmessage3.setText("***");
+    isValidationFailed = true;
+} else {
+    lblmessage3.setText("");
+}
+if (!isNumeric(txtsstocks.getText())) {
+    System.out.println("Sold Stocks must be numbers!");
+    lblmessage4.setText("***");
+    isValidationFailed = true;
+} else {
+    lblmessage4.setText("");
+}
+if (!isNumeric(txtlstocks.getText())) {
+    System.out.println("Loss Stocks must be numbers!");
+    lblmessage5.setText("***");
+    isValidationFailed = true;
+} else {
+    lblmessage5.setText("");
+}
+
+// If any validation failed, do not proceed
+if (isValidationFailed) {
+    return;
+}
+       
         dbConnector connector = new dbConnector();
         BigDecimal as = new BigDecimal(txtastocks.getText());
         BigDecimal ss = new BigDecimal(txtsstocks.getText());
@@ -479,8 +477,9 @@ public final class inventoryeditForm extends javax.swing.JInternalFrame {
                 String passhash = passwordHasher.hashPassword(txtpassword.getText());
                 if (!equalPass(oldpass, passhash)) {
                     System.out.println("Passwords do not match!");
-                    lblmessage5.setText("***");
+                    lblmessage7.setText("***");
                 } else {
+                    lblmessage7.setText("");
                     String selectedProductName = (String) boxproductID.getSelectedItem();
                     Product selectedProduct = productMap.get(selectedProductName);
                     String productId = selectedProduct.getId();

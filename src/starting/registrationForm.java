@@ -112,7 +112,7 @@ public class registrationForm extends javax.swing.JFrame {
             String query = "SELECT * FROM tbl_user WHERE u_username = '" + username + "'";
             ResultSet resultSet = connector.getData(query);
             if (resultSet.next()) {
-                lblmessage5.setText("*** ");
+                lblmessage5.setText("***");
                 return true;
             } else {
                 return false;
@@ -135,26 +135,42 @@ public class registrationForm extends javax.swing.JFrame {
     public boolean validateUserInput(String fName, String lName, String email, String cNum, String username, String password, String userType) {
         boolean isValid = true;
 
+        if (!fName.matches("[a-zA-Z]+")) {
+            System.out.println("First Name Invalid!");
+            lblmessage1.setText("***");
+            isValid = false;
+        }        
+
+        if (!lName.matches("[a-zA-Z]+")) {
+            System.out.println("Last Name Invalid!");
+            lblmessage2.setText("***");
+            isValid = false;
+        }
+        
+        if (!email.matches("^[\\w-\\.]+@[\\w-]+\\.(com|net|org)$")) {
+            System.out.println("Email Invalid!");
+            lblmessage3.setText("***");
+            isValid = false;
+        }
+        
         if (duplicateEmail(email)) {
             System.out.println("Email Exist!");
-            txtemail.setText("");
+            lblmessage3.setText("***");
             isValid = false;
         }
         if (!validCNum(cNum)) {
             System.out.println("Contact Number Invalid!");
-            txtcontactnumber.setText("");
-            lblmessage4.setText("*** ");
+            lblmessage4.setText("***");
             isValid = false;
         }
         if (duplicateUser(username)) {
             System.out.println("Username Exist!");
-            txtusername.setText("");
+            lblmessage5.setText("***");
             isValid = false;
         }
         if (password.length() < 8) {
             System.out.println("Password Invalid!");
-            txtpassword.setText("");
-            lblmessage6.setText("*** ");
+            lblmessage6.setText("***");
             isValid = false;
         }
         return isValid;
@@ -214,7 +230,8 @@ public class registrationForm extends javax.swing.JFrame {
         bubble15 = new javax.swing.JLabel();
         diagonal3 = new javax.swing.JLabel();
         diagoonal4 = new javax.swing.JLabel();
-        back = new javax.swing.JLabel();
+        back = new javax.swing.JPanel();
+        lblback = new javax.swing.JLabel();
         top = new javax.swing.JPanel();
         x = new javax.swing.JLabel();
         mini = new javax.swing.JLabel();
@@ -256,7 +273,7 @@ public class registrationForm extends javax.swing.JFrame {
         lblmessage1.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage1.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        form.add(lblmessage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 50, 40));
+        form.add(lblmessage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, 50, 40));
 
         txtfirstname.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtfirstname.setForeground(new java.awt.Color(46, 49, 146));
@@ -277,7 +294,7 @@ public class registrationForm extends javax.swing.JFrame {
         lblmessage2.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage2.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        form.add(lblmessage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 50, 40));
+        form.add(lblmessage2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, 50, 40));
 
         txtlastname.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtlastname.setForeground(new java.awt.Color(46, 49, 146));
@@ -298,7 +315,7 @@ public class registrationForm extends javax.swing.JFrame {
         lblmessage3.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage3.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        form.add(lblmessage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 50, 40));
+        form.add(lblmessage3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, 50, 40));
 
         txtemail.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtemail.setForeground(new java.awt.Color(46, 49, 146));
@@ -319,7 +336,7 @@ public class registrationForm extends javax.swing.JFrame {
         lblmessage4.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage4.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        form.add(lblmessage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 50, 40));
+        form.add(lblmessage4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 50, 40));
 
         txtcontactnumber.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtcontactnumber.setForeground(new java.awt.Color(46, 49, 146));
@@ -340,7 +357,7 @@ public class registrationForm extends javax.swing.JFrame {
         lblmessage5.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage5.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage5.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        form.add(lblmessage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, 50, 40));
+        form.add(lblmessage5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, 50, 40));
 
         txtusername.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtusername.setForeground(new java.awt.Color(46, 49, 146));
@@ -361,7 +378,7 @@ public class registrationForm extends javax.swing.JFrame {
         lblmessage6.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage6.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        form.add(lblmessage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 50, 40));
+        form.add(lblmessage6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 50, 40));
 
         txtpassword.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         txtpassword.setForeground(new java.awt.Color(46, 49, 146));
@@ -382,7 +399,7 @@ public class registrationForm extends javax.swing.JFrame {
         lblmessage7.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         lblmessage7.setForeground(new java.awt.Color(255, 15, 15));
         lblmessage7.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        form.add(lblmessage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 50, 40));
+        form.add(lblmessage7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, 50, 40));
 
         boxtype.setFont(new java.awt.Font("Candara", 0, 18)); // NOI18N
         boxtype.setForeground(new java.awt.Color(46, 49, 146));
@@ -560,10 +577,7 @@ public class registrationForm extends javax.swing.JFrame {
         side.add(diagoonal4);
         diagoonal4.setBounds(90, 360, 100, 100);
 
-        back.setFont(new java.awt.Font("Cambria Math", 1, 16)); // NOI18N
-        back.setForeground(new java.awt.Color(46, 49, 146));
-        back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        back.setText("BACK");
+        back.setBackground(new java.awt.Color(255, 255, 255));
         back.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -576,6 +590,13 @@ public class registrationForm extends javax.swing.JFrame {
                 backMouseExited(evt);
             }
         });
+        back.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblback.setFont(new java.awt.Font("Cambria Math", 1, 18)); // NOI18N
+        lblback.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblback.setText("BACK");
+        back.add(lblback, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 20));
+
         side.add(back);
         back.setBounds(50, 10, 70, 40);
 
@@ -691,46 +712,47 @@ public class registrationForm extends javax.swing.JFrame {
 
         if(txtfirstname.getText().isEmpty()) {
             System.out.println("First name is required!");
-            lblmessage1.setText("*** ");
+            lblmessage1.setText("***");
             isAnyFieldEmpty = true;
         } else {
             lblmessage1.setText("");
         }
         if(txtlastname.getText().isEmpty()) {
             System.out.println("Last name is required!");
-            lblmessage2.setText("*** ");
+            lblmessage2.setText("***");
             isAnyFieldEmpty = true;
         } else {
             lblmessage2.setText("");
         }
         if(txtemail.getText().isEmpty()) {
             System.out.println("Email is required!");
-            lblmessage3.setText("*** ");
+            lblmessage3.setText("***");
             isAnyFieldEmpty = true;
         } else {
             lblmessage3.setText("");
         }
-        if(txtusername.getText().isEmpty()) {
-            System.out.println("Username is required!");
-            lblmessage4.setText("*** ");
+        if(txtcontactnumber.getText().isEmpty()) {
+            System.out.println("Contact number is required!");
+            lblmessage4.setText("***");
             isAnyFieldEmpty = true;
         } else {
             lblmessage4.setText("");
         }
-        if(txtpassword.getText().isEmpty()) {
-            System.out.println("Password is required!");
-            lblmessage5.setText("*** ");
+        if(txtusername.getText().isEmpty()) {
+            System.out.println("Username is required!");
+            lblmessage5.setText("***");
             isAnyFieldEmpty = true;
         } else {
             lblmessage5.setText("");
         }
-        if(txtcontactnumber.getText().isEmpty()) {
-            System.out.println("Contact number is required!");
-            lblmessage6.setText("*** ");
+        if(txtpassword.getText().isEmpty()) {
+            System.out.println("Password is required!");
+            lblmessage6.setText("***");
             isAnyFieldEmpty = true;
         } else {
             lblmessage6.setText("");
         }
+        
         if(boxtype.getSelectedItem().equals("N/A")){
             System.out.println("Account Type is required!");
             lblmessage7.setText("***");
@@ -843,13 +865,6 @@ public class registrationForm extends javax.swing.JFrame {
         remove.setBackground(origColor);
     }//GEN-LAST:event_removeMouseExited
 
-    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        System.out.println("Go Back!");
-        loginForm lgf = new loginForm();
-        lgf.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_backMouseClicked
-
     private void xMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xMouseClicked
         System.out.println("System Ends!");
         this.dispose();
@@ -859,6 +874,13 @@ public class registrationForm extends javax.swing.JFrame {
         System.out.println("System Minimizes!");
         this.setExtendedState(loginForm.ICONIFIED);
     }//GEN-LAST:event_miniMouseClicked
+
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
+        System.out.println("Go Back!");
+        loginForm lgf = new loginForm();
+        lgf.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backMouseClicked
 
     private void backMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseEntered
         back.setBackground(enterColor);
@@ -884,7 +906,7 @@ public class registrationForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel back;
+    private javax.swing.JPanel back;
     private javax.swing.JPanel boxpicture;
     private javax.swing.JComboBox<String> boxtype;
     private javax.swing.JLabel bubble1;
@@ -920,6 +942,7 @@ public class registrationForm extends javax.swing.JFrame {
     private javax.swing.JLabel diagoonal9;
     private javax.swing.JPanel form;
     private javax.swing.JPanel forpicture;
+    private javax.swing.JLabel lblback;
     private javax.swing.JLabel lblbackground;
     private javax.swing.JLabel lblbackground1;
     private javax.swing.JLabel lblcontactnumber;

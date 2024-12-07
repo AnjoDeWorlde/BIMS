@@ -72,6 +72,7 @@ public class userForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1001, 670));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -181,10 +182,10 @@ public class userForm extends javax.swing.JFrame {
                 logoutMouseClicked(evt);
             }
         });
-        navigation.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 690, 150, 40));
+        navigation.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 620, 150, 40));
 
         background.add(navigation);
-        navigation.setBounds(0, 0, 170, 750);
+        navigation.setBounds(0, 0, 170, 670);
 
         admindesktop.setBackground(new java.awt.Color(255, 255, 255));
         admindesktop.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 3, true));
@@ -197,21 +198,21 @@ public class userForm extends javax.swing.JFrame {
         );
         admindesktopLayout.setVerticalGroup(
             admindesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 744, Short.MAX_VALUE)
+            .addGap(0, 664, Short.MAX_VALUE)
         );
 
         background.add(admindesktop);
-        admindesktop.setBounds(170, 0, 830, 750);
+        admindesktop.setBounds(170, 0, 830, 670);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 1001, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 670, Short.MAX_VALUE)
         );
 
         pack();

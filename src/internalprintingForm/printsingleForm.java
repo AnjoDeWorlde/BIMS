@@ -1,11 +1,18 @@
 package internalprintingForm;
 
-import config.PanelPrinter;
 import internalinventoryForm.inventoryprintForm;
 import internalsaleForm.salesprintForm;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.*;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Paths;
+
 
 /**
  *
@@ -26,7 +33,7 @@ public class printsingleForm extends javax.swing.JInternalFrame {
         bi.setNorthPane(null);
     }
     
-    private String source;
+    private final String source;
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -87,8 +94,8 @@ public class printsingleForm extends javax.swing.JInternalFrame {
         page.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 146), 3, true));
         page.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo_wname_orig35.jpg"))); // NOI18N
-        page.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 370, 80));
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logobusiness.png"))); // NOI18N
+        page.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 280, 80));
 
         status.setFont(new java.awt.Font("Cambria Math", 0, 24)); // NOI18N
         status.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -159,9 +166,59 @@ public class printsingleForm extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void printMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_printMouseClicked
-        JPanel myPanel = new JPanel();
-        PanelPrinter pPrint = new PanelPrinter(page);
-        pPrint.printPanel();
+    try {
+        // Check if the page is null
+        if (page == null) {
+            System.out.println("Page is null!");
+            return; // Exit the method if page is null
+        }
+
+        // Capture the JPanel as an image
+        BufferedImage panelImage = new BufferedImage(page.getWidth(), page.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics g = panelImage.getGraphics();
+        page.paint(g);
+        g.dispose(); // Dispose of the graphics context
+
+        // Get the Downloads directory path
+        String baseFileName = "output.pdf";
+        String downloadsPath = Paths.get(System.getProperty("user.home"), "Downloads", baseFileName).toString();
+
+        // Check if the file already exists and modify the filename if necessary
+        File file = new File(downloadsPath);
+        int counter = 1;
+    // Loop until we find a unique filename
+    while (file.exists()) {
+        System.out.println("File exists: " + downloadsPath); // Debugging output
+        String newFileName = "output(" + counter + ").pdf";
+        downloadsPath = Paths.get(System.getProperty("user.home"), "Downloads", newFileName).toString();
+        file = new File(downloadsPath);
+        counter++;
+    }
+
+    System.out.println("Saving to: " + downloadsPath); // Debugging output
+
+        // Define short bond paper dimensions in points (1 inch = 72 points)
+        Rectangle shortBondLandscape = new Rectangle(792, 612); // 11 x 8.5 inches in landscape
+
+        // Create a PDF document
+        Document document = new Document(shortBondLandscape);
+        PdfWriter.getInstance(document, new FileOutputStream(downloadsPath));
+        document.open();
+
+        // Convert the BufferedImage to an iText Image
+        com.itextpdf.text.Image pdfImage = com.itextpdf.text.Image.getInstance(panelImage, null);
+
+        // Scale the image to fit the short bond paper dimensions
+        pdfImage.scaleToFit(shortBondLandscape.getWidth(), shortBondLandscape.getHeight());
+        pdfImage.setAlignment(Element.ALIGN_CENTER);
+
+        // Add the image to the PDF
+        document.add(pdfImage);
+        document.close();
+
+        System.out.println("PDF saved successfully to Downloads folder: " + downloadsPath);
+    } catch (IOException | DocumentException e) {
+    }    
     }//GEN-LAST:event_printMouseClicked
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked

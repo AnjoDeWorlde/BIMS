@@ -129,12 +129,12 @@
             <Component class="javax.swing.JLabel" name="logo">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/icons/logo_wname_orig35.jpg"/>
+                  <Image iconType="3" name="/images/logobusiness.png"/>
                 </Property>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="210" y="10" width="370" height="80"/>
+                  <AbsoluteConstraints x="230" y="10" width="280" height="80"/>
                 </Constraint>
               </Constraints>
             </Component>

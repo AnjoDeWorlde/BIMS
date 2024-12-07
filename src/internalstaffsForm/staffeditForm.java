@@ -101,7 +101,8 @@ public class staffeditForm extends javax.swing.JInternalFrame {
             String query = userId == null ? "SELECT * FROM tbl_user WHERE u_email = '" + email + "'" : "SELECT * FROM tbl_user WHERE u_email = '" + email + "' AND u_id != '" + userId + "'";
             ResultSet resultSet = connector.getData(query);
             if (resultSet.next()) {
-                lblmessage3.setText("*** ");
+                System.out.println("Email Exists!");
+                lblmessage3.setText("***");
                 return true; // Email exists in the database
             } else {
                 return false;
@@ -118,7 +119,8 @@ public class staffeditForm extends javax.swing.JInternalFrame {
             ResultSet resultSet = connector.getData(query);
         
             if (resultSet.next()) {
-                lblmessage5.setText("*** ");
+                System.out.println("Username Exists!");
+                lblmessage5.setText("***");
                 return true; // Username exists in the database
             } else {
                 return false;
@@ -136,6 +138,39 @@ public class staffeditForm extends javax.swing.JInternalFrame {
         }catch (NumberFormatException e) {
             return false;
         }
+    }
+
+    public boolean validateUserInput(String fName, String lName, String email, String cNum, String username, String password, String userType) {
+        boolean isValid = true;
+
+        if (!fName.matches("[a-zA-Z]+")) {
+            System.out.println("First Name Invalid!");
+            lblmessage1.setText("***");
+            isValid = false;
+        }        
+
+        if (!lName.matches("[a-zA-Z]+")) {
+            System.out.println("Last Name Invalid!");
+            lblmessage2.setText("***");
+            isValid = false;
+        }
+        
+        if (!email.matches("^[\\w-\\.]+@[\\w-]+\\.(com|net|org)$")) {
+            System.out.println("Email Invalid!");
+            lblmessage3.setText("***");
+            isValid = false;
+        }
+        if (!validCNum(cNum)) {
+            System.out.println("Contact Number Invalid!");
+            lblmessage4.setText("***");
+            isValid = false;
+        }
+        if (password.length() < 8) {
+            System.out.println("Password Invalid!");
+            lblmessage6.setText("***");
+            isValid = false;
+        }
+        return isValid;
     }
     
     @SuppressWarnings("unchecked")
@@ -605,81 +640,67 @@ public class staffeditForm extends javax.swing.JInternalFrame {
             picture.setText("");
         } 
         if (isAnyFieldEmpty) {
-            System.out.println("Empty All Text Field!");
-            return;
-        }      
-        if (!validCNum(cNum)) {
-            System.out.println("Contact Number Invalid!");
-            lblmessage4.setText("***");
-            return;
-        }
-        if (txtpassword.getText().length() < 8) {
-            System.out.println("Password Invalid!");
-            lblmessage6.setText("***");
-            txtpassword.setText("");
-            return;
-        }
-        
-        String userId = isCreating ? null : id.getText();
-        if (duplicateEmail(txtemail.getText(), userId)) {
-            System.out.println("Email Exists!");
-            txtemail.setText("");
-            return;
-        }
-        if (duplicateUser(txtusername.getText(), userId)) {
-            System.out.println("Username Exists!");
-            txtusername.setText("");
-            return;
-        }
+            System.out.println("There is a Empty Text Field!");
+        }else{          
+            if (validateUserInput(txtfirstname.getText(), txtlastname.getText(), txtemail.getText(), cNum, txtusername.getText(), txtpassword.getText(), (String) boxtype.getSelectedItem())) {
+                dbConnector connector = new dbConnector();
+                long conNum = Long.parseLong(cNum);
+                
+                try {
+                    if (isCreating) {
+                        String userId = isCreating ? null : id.getText();
+                        boolean isDuplicate = false; // Flag to track if there are duplicates
 
-        lblmessage1.setText("");
-        lblmessage2.setText("");
-        lblmessage3.setText("");
-        lblmessage4.setText("");
-        lblmessage5.setText("");
-        lblmessage6.setText("");
-        lblmessage7.setText("");
-        lblmessage8.setText("");
-        picture.setText("");
+                        // Check for duplicate email
+                        if (duplicateEmail(txtemail.getText(), userId)) {
+                            isDuplicate = true; // Mark as duplicate
+                        } else {
+                            lblmessage3.setText("");
+                        }
 
-        dbConnector connector = new dbConnector();
-        long conNum = Long.parseLong(cNum);
-        try {
-            if (isCreating) {
-                String password = passwordHasher.hashPassword(txtpassword.getText());
-                if (connector.insertData("INSERT INTO tbl_user(u_fname ,u_lname ,u_email ,u_contactnumber ,u_username "
-                    + ",u_password ,u_type ,u_status, u_picture) VALUES('" + txtfirstname.getText() + "','" + txtlastname.getText() + "','" 
-                    + txtemail.getText() + "','" + conNum + "','" + txtusername.getText() + "','" + password + "','"
-                    + boxtype.getSelectedItem() + "','" + boxstatus.getSelectedItem() + "','" + destination + "')")) {
-                    try {
-                        Files.copy(selectedFile.toPath(), new File(destination).toPath(), StandardCopyOption.REPLACE_EXISTING);
-                        stafflistsForm userListFrame = (stafflistsForm) SwingUtilities.getAncestorOfClass(stafflistsForm.class, this);
-                        userListFrame.restoreOriginalState();
-                        System.out.println("Information Inserted!");
-                        userListFrame.getLblMessage().setText("Accomplished Successfully!");
-                    } catch (IOException ex) {
+                        // Check for duplicate username
+                        if (duplicateUser(txtusername.getText(), userId)) {
+                            isDuplicate = true; // Mark as duplicate
+                        } else {
+                            lblmessage5.setText("");
+                        }
+
+                        if (!isDuplicate) {
+                            String password = passwordHasher.hashPassword(txtpassword.getText());
+                            if (connector.insertData("INSERT INTO tbl_user(u_fname, u_lname, u_email, u_contactnumber, u_username, u_password, u_type, u_status, u_picture) VALUES('" + txtfirstname.getText() + "','" 
+                            + txtlastname.getText() + "','" + txtemail.getText() + "','" + conNum + "','" + txtusername.getText() + "','" + password + "','" + boxtype.getSelectedItem() + "','" + boxstatus.getSelectedItem() + "','" 
+                            + destination + "')")) {
+
+                                try {
+                                    Files.copy(selectedFile.toPath(), new File(destination).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                                    stafflistsForm userListFrame = (stafflistsForm) SwingUtilities.getAncestorOfClass(stafflistsForm.class, this);
+                                    userListFrame.restoreOriginalState();
+                                    System.out.println("Information Inserted!");
+                                   userListFrame.getLblMessage().setText("Accomplished Successfully!");
+                                } catch (IOException ex) {
+                                }
+                            } else {
+                                System.out.println("Information Rejected!");
+                                stafflistsForm userListFrame = (stafflistsForm) SwingUtilities.getAncestorOfClass(stafflistsForm.class, this);
+                                userListFrame.getLblMessage().setText("Failed Successfully!");
+                            }
+                        }
+                    } else {
+                        if (connector.updateData("UPDATE tbl_user SET u_fname = '" + txtfirstname.getText() + "', u_lname = '" + txtlastname.getText() + "', u_email = '" + txtemail.getText() + "', u_contactnumber = '"
+                        + conNum + "', u_username = '" + txtusername.getText() + "', u_type = '" + boxtype.getSelectedItem() + "', u_status = '" + boxstatus.getSelectedItem() + "', u_picture = '" + destination + "' WHERE u_id = '" + id.getText() + "'")) {
+                            stafflistsForm userListFrame = (stafflistsForm) SwingUtilities.getAncestorOfClass(stafflistsForm.class, this);
+                            userListFrame.restoreOriginalState();
+                            System.out.println("Information Updated!");
+                            userListFrame.getLblMessage().setText("Accomplished Successfully!");
+                        } else {
+                            System.out.println("Information Rejected!");
+                            stafflistsForm userListFrame = (stafflistsForm) SwingUtilities.getAncestorOfClass(stafflistsForm.class, this);
+                            userListFrame.getLblMessage().setText("Failed Successfully!");
+                        }
                     }
-                } else {
-                    stafflistsForm userListFrame = (stafflistsForm) SwingUtilities.getAncestorOfClass(stafflistsForm.class, this);
-                    System.out.println("Information Rejected!");
-                    userListFrame.getLblMessage().setText("Failed Successfully!");
-                }
-            } else {
-                if (connector.updateData("UPDATE tbl_user SET u_fname = '" + txtfirstname.getText() + "', u_lname = '"
-                    + txtlastname.getText() + "', u_email = '" + txtemail.getText() + "', u_contactnumber = '"
-                    + conNum + "', u_username = '" + txtusername.getText() + "', u_type = '"  + boxtype.getSelectedItem() + "', u_status = '" 
-                    + boxstatus.getSelectedItem() + "', u_picture = '" + destination + "' WHERE u_id = '" + id.getText() + "'")) {
-                    stafflistsForm userListFrame = (stafflistsForm) SwingUtilities.getAncestorOfClass(stafflistsForm.class, this);
-                    userListFrame.restoreOriginalState();
-                    System.out.println("Information Updated!");
-                    userListFrame.getLblMessage().setText("Accomplished Successfully!");
-                } else {
-                    stafflistsForm userListFrame = (stafflistsForm) SwingUtilities.getAncestorOfClass(stafflistsForm.class, this);
-                    System.out.println("Information Rejected!");
-                    userListFrame.getLblMessage().setText("Failed Successfully!");
+                } catch (NoSuchAlgorithmException ex) {
                 }
             }
-        } catch (NoSuchAlgorithmException ex) {
         }
     }//GEN-LAST:event_confirmMouseClicked
 

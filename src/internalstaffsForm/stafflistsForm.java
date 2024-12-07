@@ -36,13 +36,13 @@ public class stafflistsForm extends javax.swing.JInternalFrame {
         update.setEnabled(false);
     }
 
+    private final JDesktopPane admindesktop; 
+    Color borderColor = new Color(255,255,255);
+    Color enterColor = new Color(46,49,146);    
+    
     public JLabel getLblMessage() {
         return lblmessage;
     }
-
-    private final JDesktopPane admindesktop; 
-    Color borderColor = new Color(255,255,255);
-    Color enterColor = new Color(46,49,146);
     
     private void closeAllInternalFrames() {
         JInternalFrame[] frames = userlistdesktop.getAllFrames();

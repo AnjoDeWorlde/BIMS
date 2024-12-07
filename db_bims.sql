@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2024 at 10:06 AM
+-- Generation Time: Dec 03, 2024 at 04:53 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,14 +42,13 @@ CREATE TABLE `tbl_inventory` (
 --
 
 INSERT INTO `tbl_inventory` (`i_id`, `p_id`, `i_date`, `i_availablestocks`, `i_soldstocks`, `i_lossstocks`, `i_status`) VALUES
-(1, 1, '2024-08-09', 20, 5, 0, 'Available'),
-(2, 5, '2024-09-01', 15, 3, 2, 'Archive'),
-(3, 2, '2024-07-28', 9, 0, 2, 'Available'),
-(4, 4, '2024-08-12', 20, 15, 0, 'Available'),
-(5, 6, '2024-10-14', 50, 50, 5, 'Out-of-Stocks'),
-(6, 1, '2024-10-25', 4, 0, 9, 'Out-of-Stocks'),
-(7, 1, '2024-07-08', 1, 0, 0, 'Available'),
-(8, 6, '2024-10-25', 100, 85, 15, 'Out-of-Stocks');
+(1, 1, '2024-09-20', 50, 40, 0, 'Out-of-Stocks'),
+(2, 1, '2024-09-30', 30, 30, 0, 'Out-of-Stocks'),
+(3, 2, '2024-09-21', 20, 14, 1, 'Available'),
+(4, 3, '2024-10-07', 15, 5, 10, 'Available'),
+(5, 1, '2024-10-08', 30, 30, 5, 'Out-of-Stocks'),
+(6, 10, '2024-11-28', 20, 17, 1, 'Inactive'),
+(7, 12, '2024-11-29', 50, 30, 0, 'Inactive');
 
 --
 -- Triggers `tbl_inventory`
@@ -107,13 +106,23 @@ CREATE TABLE `tbl_products` (
 --
 
 INSERT INTO `tbl_products` (`p_id`, `p_name`, `p_qty`, `p_price`, `p_status`, `p_picture`) VALUES
-(1, 'Coke Mismo', 12.00, 200.00, 'Approve', 'src/images/productphotos/coke_mismo.png'),
-(2, 'Wilkins 300ml', 30.00, 226.00, 'Approve', 'src/images/productphotos/300ml_wilkins.png'),
-(3, 'Wilkins 500ml', 24.00, 235.00, 'Approve', 'src/images/productphotos/500ml_wilkins.png'),
-(4, 'Sprite 8oz', 24.00, 180.00, 'Approve', 'src/images/productphotos/8oz_sprite.png'),
-(5, 'Royal 8oz', 24.00, 180.00, 'Approve', 'src/images/productphotos/8oz_royalorange.png'),
-(6, 'Coke 8oz', 24.00, 190.00, 'Approve', 'src/images/productphotos/8oz_coke.png'),
-(7, 'Lemon 8oz', 24.00, 180.00, 'Reject', 'src/images/productphotos/8oz_royallemon.png');
+(1, '8oz Coke', 24.00, 200.00, 'Approve', 'src/images/productphotos/8oz_coke.png'),
+(2, '8oz Royal Orange', 24.00, 200.00, 'Approve', 'src/images/productphotos/8oz_royalorange.png'),
+(3, '8oz Sprite', 24.00, 200.00, 'Approve', 'src/images/productphotos/8oz_sprite.png'),
+(4, '8oz Sparkle', 24.00, 200.00, 'Approve', 'src/images/productphotos/8oz_sparkle.png'),
+(5, '300ml Wilkins', 15.00, 115.00, 'Approve', 'src/images/productphotos/300ml_wilkins.png'),
+(6, '500ml Wilkins', 12.00, 120.00, 'Approve', 'src/images/productphotos/500ml_wilkins.png'),
+(7, 'Cobra Yellow', 24.00, 320.00, 'Approve', 'src/images/productphotos/cobra_yellow.png'),
+(8, 'Cobra Green', 24.00, 310.00, 'Approve', 'src/images/productphotos/cobra_green.png'),
+(9, 'Litro Coke', 12.00, 390.00, 'Approve', 'src/images/productphotos/litro_coke.png'),
+(10, 'Litro Royal Orange', 12.00, 390.00, 'Approve', 'src/images/productphotos/litro_royalorange.png'),
+(11, 'Litro Sprite', 12.00, 390.00, 'Approve', 'src/images/productphotos/litro_sprite.png'),
+(12, 'Swakto Coke', 12.00, 140.00, 'Approve', 'src/images/productphotos/swakto_coke.png'),
+(13, 'Swakto Royal Orange', 12.00, 140.00, 'Approve', 'src/images/productphotos/swakto_royalorange.png'),
+(14, 'Swakto Sprite', 12.00, 140.00, 'Approve', 'src/images/productphotos/swakto_sprite.png'),
+(15, 'Vitamilk Banana', 24.00, 380.00, 'Approve', 'src/images/productphotos/vitamilk_banana.png'),
+(16, 'Vitamilk Double Choco', 24.00, 380.00, 'Approve', 'src/images/productphotos/vitamilk_doushake.png'),
+(17, 'Test', 0.00, 0.00, 'Approve', 'src/images/productphotos/test.png');
 
 -- --------------------------------------------------------
 
@@ -136,14 +145,13 @@ CREATE TABLE `tbl_sales` (
 --
 
 INSERT INTO `tbl_sales` (`s_id`, `p_id`, `i_id`, `s_gross`, `s_deductions`, `s_net`, `s_status`) VALUES
-(1, 1, 1, 1000.00, 0.00, 1000.00, 'Available'),
-(2, 5, 2, 540.00, 360.00, 180.00, 'Archive'),
-(3, 2, 3, 0.00, 452.00, -452.00, 'Available'),
-(4, 4, 4, 2700.00, 0.00, 2700.00, 'Available'),
-(5, 6, 5, 9500.00, 950.00, 8550.00, 'Out-of-Stocks'),
-(6, 1, 6, 0.00, 1800.00, -1800.00, 'Out-of-Stocks'),
-(7, 1, 7, 0.00, 0.00, 0.00, 'Available'),
-(8, 6, 8, 16150.00, 2850.00, 13300.00, 'Out-of-Stocks');
+(1, 1, 1, 8000.00, 0.00, 8000.00, 'Out-of-Stocks'),
+(2, 1, 2, 6000.00, 0.00, 6000.00, 'Out-of-Stocks'),
+(3, 2, 3, 2800.00, 200.00, 2600.00, 'Available'),
+(4, 3, 4, 1000.00, 2000.00, -1000.00, 'Available'),
+(5, 1, 5, 6000.00, 1000.00, 5000.00, 'Out-of-Stocks'),
+(6, 10, 6, 6630.00, 390.00, 6240.00, 'Inactive'),
+(7, 12, 7, 4200.00, 0.00, 4200.00, 'Inactive');
 
 -- --------------------------------------------------------
 
@@ -169,8 +177,8 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`u_id`, `u_fname`, `u_lname`, `u_email`, `u_contactnumber`, `u_username`, `u_password`, `u_type`, `u_status`, `u_picture`) VALUES
-(1, 'System', 'Owner', 'systemowner_101@gmail.com', 9999999999, 'admin', 'QeVlP8euuJQCbWu3stt/ZZArRUlF+o/WWmMnBHtSd/s=', 'Admin', 'Active', 'src/images/userphotos/black.png'),
-(2, 'Steve', 'Minecraft', 'axediamond12@outlook.com', 9484712459, 'steve', '14XWNRGmRaJIdaEJ4O8dplYN2U0Um2c0lJqWVWyzRJ8=', 'User', 'Inactive', 'src/images/userphotos/Minecraft.png');
+(1, 'User', 'Example', 'user_example123@gmail.com', 1111111111, 'user12345', '14XWNRGmRaJIdaEJ4O8dplYN2U0Um2c0lJqWVWyzRJ8=', 'User', 'Active', 'src/images/userphotos/Black.png'),
+(2, 'Admin', 'Testing', 'admin_testing098@gmail.com', 9999999999, 'admin09876', 'QeVlP8euuJQCbWu3stt/ZZArRUlF+o/WWmMnBHtSd/s=', 'Admin', 'Active', 'src/images/userphotos/Red.png');
 
 --
 -- Indexes for dumped tables
@@ -211,19 +219,19 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `tbl_inventory`
 --
 ALTER TABLE `tbl_inventory`
-  MODIFY `i_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `i_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_products`
 --
 ALTER TABLE `tbl_products`
-  MODIFY `p_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `p_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tbl_sales`
 --
 ALTER TABLE `tbl_sales`
-  MODIFY `s_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `s_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
